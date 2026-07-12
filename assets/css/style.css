@@ -218,11 +218,19 @@ nav a:hover{
 
 .hero-image{
 
-    background:linear-gradient(135deg,#ececec,#d9d9d9);
+    background-image:url("../images/hero.webp");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
 
     border-radius:28px;
 
     aspect-ratio:1;
+
+    box-shadow:var(--shadow-large);
 
 }
 
