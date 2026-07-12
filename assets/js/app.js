@@ -7,14 +7,42 @@ app.js
 
 "use strict";
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", initialiseApp);
 
-    await initialiseUI();
+async function initialiseApp() {
 
-    await initialiseRecipes();
+    try {
 
-    initialiseShopping();
+        if (typeof initialiseUI === "function") {
+            await initialiseUI();
+        }
 
-    refreshHomepage();
+        if (typeof initialiseRecipes === "function") {
+            await initialiseRecipes();
+        }
 
-});
+        if (typeof initialiseShopping === "function") {
+            initialiseShopping();
+        }
+
+        if (typeof refreshHomepage === "function") {
+            refreshHomepage();
+        }
+
+        if (typeof updateRecipeCounter === "function") {
+            updateRecipeCounter();
+        }
+
+        if (typeof generateShoppingList === "function") {
+            generateShoppingList();
+        }
+
+    }
+
+    catch (error) {
+
+        console.error("App initialisation failed:", error);
+
+    }
+
+}

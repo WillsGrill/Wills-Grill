@@ -9,28 +9,36 @@ recipes.js
 
 let recipes = [];
 
-/* ============================================
+/* ==================================================
    Initialise
-============================================ */
+================================================== */
 
 async function initialiseRecipes() {
 
-    const recipeList = document.getElementById("recipeList");
+    const browsePage = document.getElementById("recipeList");
     const recipePage = document.getElementById("recipePage");
 
-    if (!recipeList && !recipePage) return;
+    if (!browsePage && !recipePage) {
+
+        return;
+
+    }
 
     try {
 
-       const response = await fetch(PATHS.recipes);
+        const response = await fetch(PATHS.recipes);
 
         if (!response.ok) {
+
             throw new Error("Unable to load recipes.");
+
         }
 
         recipes = await response.json();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(error);
 
@@ -38,7 +46,7 @@ async function initialiseRecipes() {
 
     }
 
-    if (recipeList) {
+    if (browsePage) {
 
         renderRecipes(recipes);
 
@@ -54,21 +62,22 @@ async function initialiseRecipes() {
 
 }
 
-/* ============================================
+/* ==================================================
    Browse Page
-============================================ */
+================================================== */
 
 function renderRecipes(recipeArray) {
 
-    const recipeList = document.getElementById("recipeList");
+    const container =
+        document.getElementById("recipeList");
 
-    if (!recipeList) return;
+    if (!container) return;
 
-    recipeList.innerHTML = "";
+    container.innerHTML = "";
 
     recipeArray.forEach(recipe => {
 
-        recipeList.innerHTML += createRecipeCard(recipe);
+        container.innerHTML += createRecipeCard(recipe);
 
     });
 
@@ -86,52 +95,72 @@ function createRecipeCard(recipe) {
 
 <article class="recipe-card">
 
-    <div class="recipe-image">
+<div class="recipe-image">
 
-        <img
-            src="../assets/images/recipes/${recipe.image}"
-            alt="${recipe.name}"
-            loading="lazy">
+<img
+src="../assets/images/recipes/${recipe.image}"
+alt="${recipe.name}"
+loading="lazy">
 
-    </div>
+</div>
 
-    <div class="recipe-body">
+<div class="recipe-body">
 
-        <h3>${recipe.name}</h3>
+<h3>
 
-        <p>${recipe.description}</p>
+${recipe.name}
 
-        <div class="recipe-meta">
+</h3>
 
-            <span>⏱ ${recipe.prepTime + recipe.cookTime} mins</span>
+<p>
 
-            <span>👥 ${recipe.serves}</span>
+${recipe.description}
 
-            <span>${recipe.difficulty}</span>
+</p>
 
-        </div>
+<div class="recipe-meta">
 
-        <div class="recipe-actions">
+<span>
 
-            <button
-                class="button viewRecipe"
-                data-id="${recipe.id}">
+⏱ ${recipe.prepTime + recipe.cookTime} mins
 
-                View Recipe
+</span>
 
-            </button>
+<span>
 
-            <button
-                class="button button-outline addRecipe"
-                data-id="${recipe.id}">
+👥 ${recipe.serves}
 
-                Add
+</span>
 
-            </button>
+<span>
 
-        </div>
+${recipe.difficulty}
 
-    </div>
+</span>
+
+</div>
+
+<div class="recipe-actions">
+
+<button
+class="button viewRecipe"
+data-id="${recipe.id}">
+
+View Recipe
+
+</button>
+
+<button
+class="button button-outline addRecipe"
+data-id="${recipe.id}">
+
+Add
+
+</button>
+
+</div>
+
+</div>
 
 </article>
 
@@ -139,9 +168,65 @@ function createRecipeCard(recipe) {
 
 }
 
-/* ============================================
+/* ==================================================
+   Search
+================================================== */
+
+function initialiseSearch() {
+
+    const search =
+        document.getElementById("searchBox");
+
+    if (!search) return;
+
+    search.addEventListener("input", () => {
+
+        const value =
+            search.value
+            .toLowerCase()
+            .trim();
+
+        if (value === "") {
+
+            renderRecipes(recipes);
+
+            return;
+
+        }
+
+        const filtered = recipes.filter(recipe => {
+
+            return (
+
+                recipe.name
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                recipe.description
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                recipe.category
+                    .toLowerCase()
+                    .includes(value)
+
+            );
+
+        });
+
+        renderRecipes(filtered);
+
+    });
+
+}
+
+/* ==================================================
    Recipe Page
-============================================ */
+================================================== */
 
 function renderRecipePage() {
 
@@ -163,7 +248,7 @@ function renderRecipePage() {
 
 <h2>Recipe not found</h2>
 
-<p>The requested recipe could not be found.</p>
+<p>This recipe could not be loaded.</p>
 
 </div>
 
@@ -175,11 +260,19 @@ function renderRecipePage() {
 
     const ingredientHTML = recipe.ingredients.map(item => {
 
-        return `<li>${formatIngredient(item)}</li>`;
+        return `
+
+<li>
+
+${formatIngredient(item)}
+
+</li>
+
+`;
 
     }).join("");
 
-    const methodHTML = recipe.steps.map((step, index) => {
+    const stepHTML = recipe.steps.map((step, index) => {
 
         return `
 
@@ -217,9 +310,13 @@ alt="${recipe.name}">
 
 <div class="recipe-summary">
 
-<h2>${recipe.name}</h2>
+<h2>
 
-<p class="recipe-description">
+${recipe.name}
+
+</h2>
+
+<p>
 
 ${recipe.description}
 
@@ -263,7 +360,11 @@ Add To Shopping List
 
 <div class="panel">
 
-<h3>Ingredients</h3>
+<h3>
+
+Ingredients
+
+</h3>
 
 <ul class="ingredients">
 
@@ -275,7 +376,7 @@ ${ingredientHTML}
 
 <div>
 
-<h3 class="mb-3">
+<h3>
 
 Method
 
@@ -283,26 +384,41 @@ Method
 
 <div class="method">
 
-${methodHTML}
+${stepHTML}
 
 </div>
 
 <div class="panel mt-4">
 
-<h3>Nutrition</h3>
+<h3>
+
+Nutrition
+
+</h3>
 
 <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
+
 <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
+
 <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
+
 <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
 
 </div>
 
 <div class="panel mt-4">
 
-<h3>Chef's Tip</h3>
+<h3>
 
-<p>${recipe.tip}</p>
+Chef's Tip
+
+</h3>
+
+<p>
+
+${recipe.tip}
+
+</p>
 
 </div>
 
@@ -320,45 +436,9 @@ ${methodHTML}
 
 }
 
-/* ============================================
-   Search
-============================================ */
-
-function initialiseSearch() {
-
-    const search = document.getElementById("searchBox");
-
-    if (!search) return;
-
-    search.addEventListener("input", () => {
-
-        const value = search.value.toLowerCase().trim();
-
-        if (value === "") {
-
-            renderRecipes(recipes);
-
-            return;
-
-        }
-
-        const filtered = recipes.filter(recipe =>
-
-            recipe.name.toLowerCase().includes(value) ||
-            recipe.description.toLowerCase().includes(value) ||
-            recipe.category.toLowerCase().includes(value)
-
-        );
-
-        renderRecipes(filtered);
-
-    });
-
-}
-
-/* ============================================
+/* ==================================================
    Navigation
-============================================ */
+================================================== */
 
 document.addEventListener("click", event => {
 

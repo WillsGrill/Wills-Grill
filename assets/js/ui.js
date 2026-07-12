@@ -9,31 +9,37 @@ ui.js
 
 let ingredients = [];
 
-/* ============================================
+/* ==================================================
    Initialise
-============================================ */
+================================================== */
 
-async function initialiseUI(){
+async function initialiseUI() {
 
     await loadIngredients();
 
 }
 
-/* ============================================
-   Load ingredients database
-============================================ */
+/* ==================================================
+   Load Ingredient Database
+================================================== */
 
-async function loadIngredients(){
+async function loadIngredients() {
 
-    try{
+    try {
 
         const response = await fetch(PATHS.ingredients);
+
+        if (!response.ok) {
+
+            throw new Error("Unable to load ingredients.");
+
+        }
 
         ingredients = await response.json();
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
@@ -41,11 +47,11 @@ async function loadIngredients(){
 
 }
 
-/* ============================================
-   Lookup ingredient
-============================================ */
+/* ==================================================
+   Ingredient Lookup
+================================================== */
 
-function ingredientFromID(id){
+function ingredientFromID(id) {
 
     return ingredients.find(
 
@@ -55,11 +61,11 @@ function ingredientFromID(id){
 
 }
 
-/* ============================================
-   Format ingredient
-============================================ */
+/* ==================================================
+   Ingredient Formatter
+================================================== */
 
-function formatIngredient(item){
+function formatIngredient(item) {
 
     const ingredient = ingredientFromID(
 
@@ -67,36 +73,80 @@ function formatIngredient(item){
 
     );
 
-    if(!ingredient){
+    if (!ingredient) {
 
-        return item.ingredient;
+        return `${item.quantity} × ${item.ingredient}`;
 
     }
 
-    return `${item.quantity} ${ingredient.unit} ${ingredient.name}`;
+    let unit = ingredient.unit;
+
+    if (
+        item.quantity === 1 &&
+        unit === "clove"
+    ) {
+
+        unit = "clove";
+
+    }
+
+    else if (
+        unit === "clove"
+    ) {
+
+        unit = "cloves";
+
+    }
+
+    else if (
+        item.quantity === 1 &&
+        unit === "each"
+    ) {
+
+        unit = "";
+
+    }
+
+    return `${item.quantity} ${unit} ${ingredient.name}`
+        .replace(/\s+/g, " ")
+        .trim();
 
 }
 
-/* ============================================
-   Homepage counters
-============================================ */
+/* ==================================================
+   Homepage
+================================================== */
 
-function refreshHomepage(){
+function refreshHomepage() {
 
     const recipeCount =
+        document.getElementById("recipeCount");
 
-        document.getElementById(
+    if (recipeCount) {
 
-            "recipeCount"
-
-        );
-
-    if(recipeCount){
-
-        recipeCount.textContent = recipes.length;
+        recipeCount.textContent =
+            recipes.length;
 
     }
 
-    updateRecipeCounter();
+}
+
+/* ==================================================
+   Helpers
+================================================== */
+
+function getIngredientName(id){
+
+    const ingredient = ingredientFromID(id);
+
+    return ingredient
+        ? ingredient.name
+        : id;
+
+}
+
+function getIngredient(id){
+
+    return ingredientFromID(id);
 
 }
