@@ -65,3 +65,79 @@ footer {
     color: #777;
     padding: 40px;
 }
+
+/* ==========================
+   Browse Recipes
+========================== */
+
+#recipeList{
+    display:grid;
+    gap:24px;
+    margin-top:30px;
+}
+
+.recipe-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+}
+
+.recipe-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 16px 40px rgba(0,0,0,.12);
+
+}
+
+.recipe-card h2{
+
+    color:var(--navy);
+
+    margin-bottom:10px;
+
+}
+
+.recipe-card p{
+
+    margin:10px 0;
+
+    line-height:1.6;
+
+}
+
+.addButton{
+
+    margin-top:20px;
+
+    max-width:260px;
+
+}
+
+@media (min-width:900px){
+
+    #recipeList{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (min-width:1300px){
+
+    #recipeList{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}

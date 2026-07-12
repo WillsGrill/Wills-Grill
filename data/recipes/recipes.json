@@ -1,24 +1,42 @@
 [
   {
-    "id": "REC-001",
-    "name": "Mediterranean Chicken Tray Bake",
-    "servings": 2,
-    "ingredients": [
-      {
-        "ingredient": "ING-M001",
-        "amount": 2,
-        "unit": "fillets"
-      },
-      {
-        "ingredient": "ING-V003",
-        "amount": 1,
-        "unit": "whole"
-      },
-      {
-        "ingredient": "ING-H001",
-        "amount": 10,
-        "unit": "g"
-      }
-    ]
+    "id": "REC-F001",
+    "name": "Mediterranean Baked Cod",
+    "description": "Cod baked with tomatoes, olives and basil.",
+    "cookTime": 30,
+    "serves": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "REC-C001",
+    "name": "Greek Lemon Chicken",
+    "description": "Chicken with lemon, oregano and roasted vegetables.",
+    "cookTime": 40,
+    "serves": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "REC-F002",
+    "name": "Thai Fishcakes",
+    "description": "Healthy homemade fishcakes with sweet chilli dip.",
+    "cookTime": 25,
+    "serves": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "REC-T001",
+    "name": "Turkey Koftas",
+    "description": "Mediterranean turkey koftas with yoghurt dressing.",
+    "cookTime": 30,
+    "serves": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "REC-F003",
+    "name": "Pesto Mackerel Pasta",
+    "description": "Smoked mackerel with pesto and wholemeal pasta.",
+    "cookTime": 20,
+    "serves": 2,
+    "difficulty": "Easy"
   }
 ]
