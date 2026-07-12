@@ -3,15 +3,12 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <title>Shopping List | Will's Grill</title>
 
-<title>Shopping List | Will's Grill</title>
-
-<link rel="stylesheet"
-href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 </head>
 
@@ -19,164 +16,112 @@ href="../assets/css/style.css">
 
 <header>
 
-<div class="wrapper header-inner">
+    <div class="wrapper header-inner">
 
-<div class="logo">
+        <div class="logo">
 
-<h1>Will's Grill</h1>
+            <h1>Will's Grill</h1>
+            <p>Healthy food. Simple cooking.</p>
 
-<p>Healthy food. Simple cooking.</p>
+        </div>
 
-</div>
+        <nav>
 
-<nav>
+            <a href="../index.html">Home</a>
+            <a href="browse.html">Browse Recipes</a>
+            <a href="shopping-list.html">Shopping List</a>
 
-<a href="../index.html">
+        </nav>
 
-Home
-
-</a>
-
-<a href="browse.html">
-
-Browse Recipes
-
-</a>
-
-<a href="shopping-list.html">
-
-Shopping List
-
-</a>
-
-</nav>
-
-</div>
+    </div>
 
 </header>
 
 <main class="wrapper section">
 
-<h2>
+    <h2>Shopping List</h2>
 
-Shopping List
+    <p class="mt-2">
 
-</h2>
+        Ingredients from your selected recipes.
 
-<p class="mt-2">
+    </p>
 
-Ingredients from your selected recipes.
+    <div class="shopping-layout">
 
-</p>
+        <div class="shopping-sidebar">
 
-<div class="shopping-layout">
+            <div class="panel">
 
-<div class="shopping-sidebar">
+                <h3>Selected Recipes</h3>
 
-<div class="panel">
+                <p id="selectedRecipeCount">0</p>
 
-<h3>
+                <button
+                    id="clearShopping"
+                    class="button mt-3">
 
-Selected Recipes
+                    Clear Selection
 
-</h3>
+                </button>
 
-<p id="selectedRecipeCount">
+            </div>
 
-0
+            <div class="panel">
 
-</p>
+                <h3>Shopping Tips</h3>
 
-<button
-class="button mt-3"
-id="clearShopping">
+                <p>✓ Tick items as you shop.</p>
+                <p>✓ Pantry items are included.</p>
+                <p>✓ Ingredients are automatically merged.</p>
 
-Clear Selection
+            </div>
 
-</button>
+        </div>
 
-</div>
+        <div>
 
-<div class="panel">
+            <div id="shoppingList">
 
-<h3>
+                <div class="panel">
 
-Shopping Tips
+                    Loading shopping list...
 
-</h3>
+                </div>
 
-<p>
+            </div>
 
-✓ Tick items as you shop.
+        </div>
 
-</p>
-
-<p>
-
-✓ Pantry items are included.
-
-</p>
-
-<p>
-
-✓ Ingredients are automatically merged.
-
-</p>
-
-</div>
-
-</div>
-
-<div>
-
-<div
-id="shoppingList">
-
-<div class="panel">
-
-<p>
-
-No recipes selected yet.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </main>
 
 <footer>
 
-<p>
-
-© Will's Grill
-
-</p>
+    <p>© Will's Grill</p>
 
 </footer>
 
+<!-- JavaScript -->
+
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/ui.js"></script>
 <script src="../assets/js/recipes.js"></script>
 <script src="../assets/js/shopping.js"></script>
-<script src="../assets/js/ui.js"></script>
 <script src="../assets/js/app.js"></script>
 
 <script>
 
 document
-.getElementById("clearShopping")
-.addEventListener("click",()=>{
+    .getElementById("clearShopping")
+    .addEventListener("click", () => {
 
-localStorage.removeItem("willsGrillShopping");
+        localStorage.removeItem("willsGrillShopping");
 
-location.reload();
+        location.reload();
 
-});
+    });
 
 </script>
 
