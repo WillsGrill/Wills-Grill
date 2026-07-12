@@ -22,7 +22,7 @@ async function initialiseRecipes() {
 
     try {
 
-        const response = await fetch("../data/recipes.json");
+       const response = await fetch("../data/recipes/recipes.json");
 
         if (!response.ok) {
             throw new Error("Unable to load recipes.");
