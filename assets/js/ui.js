@@ -27,7 +27,7 @@ async function loadIngredients(){
 
     try{
 
-        const response = await fetch("../data/ingredients/ingredients.json");
+        const response = await fetch(PATHS.ingredients);
 
         ingredients = await response.json();
 
