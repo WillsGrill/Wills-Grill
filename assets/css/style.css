@@ -127,11 +127,11 @@ header{
     top:0;
     z-index:1000;
 
-    background:rgba(255,255,255,.95);
+    background:#111111;
 
-    backdrop-filter:blur(10px);
+    border-bottom:3px solid #c8a24a;
 
-    border-bottom:1px solid var(--grey200);
+    box-shadow:0 4px 16px rgba(0,0,0,.15);
 
 }
 
@@ -140,7 +140,35 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    min-height:78px;
+    min-height:88px;
+
+}
+
+.brand{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    text-decoration:none;
+
+}
+
+.brand-logo{
+
+    height:64px;
+
+    width:auto;
+
+    display:block;
+
+    transition:transform .25s ease;
+
+}
+
+.brand:hover .brand-logo{
+
+    transform:scale(1.05);
 
 }
 
@@ -153,34 +181,70 @@ header{
 
 .logo h1{
 
-    font-size:1.8rem;
+    color:white;
+
+    font-size:1.9rem;
+
+    letter-spacing:-.03em;
 
 }
 
-.logo span{
+.logo p{
 
-    color:var(--grey500);
-    font-size:.9rem;
+    color:#d7b45a;
+
+    font-size:.95rem;
 
 }
 
 nav{
 
     display:flex;
-    gap:28px;
+    gap:30px;
 
 }
 
 nav a{
 
+    color:white;
+
     font-weight:600;
-    transition:var(--transition);
+
+    transition:.25s ease;
+
+    position:relative;
 
 }
 
 nav a:hover{
 
-    opacity:.6;
+    color:#d7b45a;
+
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+
+    left:0;
+
+    width:0;
+
+    height:2px;
+
+    background:#d7b45a;
+
+    transition:.25s ease;
+
+}
+
+nav a:hover::after{
+
+    width:100%;
 
 }
 
@@ -686,9 +750,7 @@ input[type="checkbox"]{
 
 }
 
-/* ==========================================================
-   FOOTER
-========================================================== */
+/* ========= FOOTER ========= */
 
 footer{
 
@@ -696,17 +758,19 @@ footer{
 
     padding:50px 0;
 
+    background:#111111;
+
+    border-top:3px solid #c8a24a;
+
     text-align:center;
-
-    background:white;
-
-    border-top:1px solid var(--grey200);
 
 }
 
 footer p{
 
-    color:var(--grey500);
+    color:white;
+
+    letter-spacing:.03em;
 
 }
 
@@ -766,21 +830,35 @@ grid-template-columns:1fr;
 
 .header-inner{
 
-flex-direction:column;
+    flex-direction:column;
 
-gap:18px;
+    gap:20px;
 
-padding:20px 0;
+    padding:20px 0;
+
+}
+
+.brand{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.brand-logo{
+
+    height:72px;
 
 }
 
 nav{
 
-flex-wrap:wrap;
+    justify-content:center;
 
-justify-content:center;
+    flex-wrap:wrap;
 
-gap:16px;
+    gap:20px;
 
 }
 
