@@ -127,7 +127,7 @@ header{
     top:0;
     z-index:1000;
 
-    background:#111111;
+    background:#000000;
 
     border-bottom:3px solid #c8a24a;
 
@@ -156,7 +156,7 @@ header{
 
 .brand-logo{
 
-    height:64px;
+    height:78px;
 
     width:auto;
 
@@ -758,7 +758,7 @@ footer{
 
     padding:50px 0;
 
-    background:#111111;
+    background:#000000;
 
     border-top:3px solid #c8a24a;
 
@@ -848,7 +848,7 @@ grid-template-columns:1fr;
 
 .brand-logo{
 
-    height:72px;
+    height:84px;
 
 }
 
