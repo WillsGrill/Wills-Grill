@@ -1,8 +1,6 @@
 /*
 ==================================================
 Will's Grill
-Alpha v1.0
-
 app.js
 ==================================================
 */
@@ -11,11 +9,11 @@ app.js
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    await initialiseUI();
+
     await initialiseRecipes();
 
     initialiseShopping();
-
-    initialiseUI();
 
     refreshHomepage();
 
