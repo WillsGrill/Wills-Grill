@@ -1,8 +1,8 @@
 /* ==========================================================
    WILL'S GRILL
-   Alpha v1.0
-   Part 1/2
-   ========================================================== */
+   Beta Stylesheet
+   Part 1 of 2
+========================================================== */
 
 /* ---------- RESET ---------- */
 
@@ -47,10 +47,10 @@ body{
     --radius-large:28px;
 
     --shadow-small:0 4px 12px rgba(0,0,0,.06);
-    --shadow:0 10px 30px rgba(0,0,0,.08);
-    --shadow-large:0 20px 60px rgba(0,0,0,.12);
+    --shadow:0 10px 28px rgba(0,0,0,.10);
+    --shadow-large:0 18px 40px rgba(0,0,0,.12);
 
-    --max-width:1280px;
+    --max-width:1440px;
 
     --transition:.25s ease;
 
@@ -59,35 +59,49 @@ body{
 /* ---------- TYPOGRAPHY ---------- */
 
 h1,h2,h3,h4{
+
     line-height:1.15;
     font-weight:700;
     color:var(--black);
+
 }
 
 h1{
+
     font-size:2.4rem;
+
 }
 
 h2{
+
     font-size:2rem;
+
 }
 
 h3{
-    font-size:1.35rem;
+
+    font-size:1.25rem;
+
 }
 
 p{
+
     color:var(--grey700);
+
 }
 
 a{
+
     text-decoration:none;
     color:inherit;
+
 }
 
 img{
+
     display:block;
     width:100%;
+
 }
 
 /* ---------- LAYOUT ---------- */
@@ -124,11 +138,8 @@ header{
 .header-inner{
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     min-height:78px;
 
 }
@@ -136,7 +147,6 @@ header{
 .logo{
 
     display:flex;
-
     flex-direction:column;
 
 }
@@ -145,14 +155,11 @@ header{
 
     font-size:1.8rem;
 
-    letter-spacing:-.03em;
-
 }
 
 .logo span{
 
     color:var(--grey500);
-
     font-size:.9rem;
 
 }
@@ -160,7 +167,6 @@ header{
 nav{
 
     display:flex;
-
     gap:28px;
 
 }
@@ -168,7 +174,6 @@ nav{
 nav a{
 
     font-weight:600;
-
     transition:var(--transition);
 
 }
@@ -190,11 +195,8 @@ nav a:hover{
 .hero-grid{
 
     display:grid;
-
     grid-template-columns:1.1fr .9fr;
-
     gap:50px;
-
     align-items:center;
 
 }
@@ -202,24 +204,21 @@ nav a:hover{
 .hero h2{
 
     font-size:clamp(2.7rem,6vw,4.5rem);
-
     margin-bottom:22px;
 
 }
 
 .hero p{
 
-    font-size:1.15rem;
-
+    font-size:1.1rem;
     margin-bottom:35px;
-
     max-width:620px;
 
 }
 
 .hero-image{
 
-    background:linear-gradient(135deg,#e8e8e8,#d8d8d8);
+    background:linear-gradient(135deg,#ececec,#d9d9d9);
 
     border-radius:28px;
 
@@ -232,14 +231,10 @@ nav a:hover{
 .button{
 
     display:inline-flex;
-
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
-
-    gap:10px;
-
-    padding:15px 28px;
+    padding:12px 20px;
 
     border:none;
 
@@ -249,17 +244,17 @@ nav a:hover{
 
     background:var(--black);
 
-    color:var(--white);
+    color:white;
 
     font-weight:700;
 
-    transition:var(--transition);
+    transition:.2s ease;
 
 }
 
 .button:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 
     box-shadow:var(--shadow);
 
@@ -275,40 +270,6 @@ nav a:hover{
 
 }
 
-/* ---------- STATS ---------- */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:25px;
-
-}
-
-.stat{
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:var(--radius);
-
-    box-shadow:var(--shadow-small);
-
-    text-align:center;
-
-}
-
-.stat h3{
-
-    font-size:2.5rem;
-
-    margin-bottom:10px;
-
-}
-
 /* ---------- SEARCH ---------- */
 
 .search{
@@ -321,27 +282,30 @@ nav a:hover{
 
     width:100%;
 
-    padding:18px 22px;
+    padding:16px 22px;
 
     border-radius:16px;
 
     border:1px solid var(--grey300);
 
-    font-size:1rem;
-
     background:white;
+
+    font-size:1rem;
 
 }
 
-/* ---------- RECIPE GRID ---------- */
+/* ==========================================================
+   RECIPE GRID
+========================================================== */
 
 .recipe-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
 
-    gap:30px;
+    gap:22px;
 
 }
 
@@ -349,47 +313,75 @@ nav a:hover{
 
     background:white;
 
-    border-radius:22px;
+    border-radius:18px;
 
     overflow:hidden;
-
-    box-shadow:var(--shadow-small);
-
-    transition:var(--transition);
 
     display:flex;
 
     flex-direction:column;
+
+    box-shadow:var(--shadow-small);
+
+    transition:.2s ease;
 
 }
 
 .recipe-card:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-4px);
 
-    box-shadow:var(--shadow-large);
+    box-shadow:var(--shadow);
 
 }
 
-.recipe-photo{
+.recipe-image{
 
-    aspect-ratio:16/10;
+    width:100%;
+
+    height:180px;
 
     background:#d9d9d9;
+
+    overflow:hidden;
+
+}
+
+.recipe-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
 
 }
 
 .recipe-body{
 
-    padding:24px;
-
     display:flex;
 
     flex-direction:column;
 
-    gap:18px;
+    gap:12px;
+
+    padding:18px;
 
     flex:1;
+
+}
+
+.recipe-body h3{
+
+    font-size:1.15rem;
+
+}
+
+.recipe-body p{
+
+    font-size:.92rem;
+
+    line-height:1.45;
 
 }
 
@@ -397,11 +389,9 @@ nav a:hover{
 
     display:flex;
 
-    flex-wrap:wrap;
+    justify-content:space-between;
 
-    gap:16px;
-
-    font-size:.9rem;
+    font-size:.82rem;
 
     color:var(--grey500);
 
@@ -413,18 +403,22 @@ nav a:hover{
 
     display:flex;
 
-    gap:12px;
-
-    flex-wrap:wrap;
+    gap:10px;
 
 }
 
-/* ==========================================================
-   STYLE.CSS
-   Part 2 of 2
-========================================================== */
+.recipe-actions .button{
 
-/* ========= RECIPE PAGE ========= */
+    flex:1;
+
+    padding:10px 14px;
+
+    font-size:.9rem;
+
+}
+/* ==========================================================
+   RECIPE PAGE
+========================================================== */
 
 .recipe-hero{
 
@@ -432,7 +426,7 @@ nav a:hover{
 
     grid-template-columns:1fr 1fr;
 
-    gap:50px;
+    gap:40px;
 
     margin-bottom:50px;
 
@@ -440,13 +434,13 @@ nav a:hover{
 
 .recipe-hero-image{
 
-    aspect-ratio:1;
+    border-radius:20px;
+
+    overflow:hidden;
 
     background:#d9d9d9;
 
-    border-radius:24px;
-
-    overflow:hidden;
+    aspect-ratio:1;
 
 }
 
@@ -462,7 +456,7 @@ nav a:hover{
 
 .recipe-summary h2{
 
-    font-size:2.8rem;
+    font-size:2.6rem;
 
 }
 
@@ -478,17 +472,17 @@ nav a:hover{
 
     flex-wrap:wrap;
 
-    gap:12px;
+    gap:10px;
 
 }
 
 .badge{
 
-    background:#efefef;
-
-    padding:10px 16px;
+    background:var(--grey100);
 
     border-radius:999px;
+
+    padding:10px 16px;
 
     font-size:.9rem;
 
@@ -500,23 +494,25 @@ nav a:hover{
 
     display:grid;
 
-    grid-template-columns:340px 1fr;
+    grid-template-columns:320px 1fr;
 
-    gap:40px;
+    gap:35px;
 
     align-items:start;
 
 }
 
-/* ========= PANELS ========= */
+/* ==========================================================
+   PANELS
+========================================================== */
 
 .panel{
 
     background:white;
 
-    border-radius:20px;
+    border-radius:18px;
 
-    padding:28px;
+    padding:24px;
 
     box-shadow:var(--shadow-small);
 
@@ -528,7 +524,9 @@ nav a:hover{
 
 }
 
-/* ========= INGREDIENTS ========= */
+/* ==========================================================
+   INGREDIENTS
+========================================================== */
 
 .ingredients{
 
@@ -546,13 +544,15 @@ nav a:hover{
 
     display:flex;
 
-    gap:12px;
-
     align-items:flex-start;
+
+    gap:10px;
 
 }
 
-/* ========= METHOD ========= */
+/* ==========================================================
+   METHOD
+========================================================== */
 
 .method{
 
@@ -560,7 +560,7 @@ nav a:hover{
 
     flex-direction:column;
 
-    gap:18px;
+    gap:16px;
 
 }
 
@@ -572,9 +572,9 @@ nav a:hover{
 
     align-items:flex-start;
 
-    padding:18px;
-
     background:white;
+
+    padding:18px;
 
     border-radius:18px;
 
@@ -606,15 +606,17 @@ nav a:hover{
 
 }
 
-/* ========= SHOPPING LIST ========= */
+/* ==========================================================
+   SHOPPING
+========================================================== */
 
 .shopping-layout{
 
     display:grid;
 
-    grid-template-columns:300px 1fr;
+    grid-template-columns:280px 1fr;
 
-    gap:35px;
+    gap:30px;
 
 }
 
@@ -638,9 +640,9 @@ nav a:hover{
 
     margin-bottom:14px;
 
-    border-bottom:2px solid var(--grey-200);
-
     padding-bottom:10px;
+
+    border-bottom:2px solid var(--grey200);
 
 }
 
@@ -660,13 +662,11 @@ nav a:hover{
 
     display:flex;
 
-    gap:12px;
+    gap:10px;
 
     align-items:center;
 
 }
-
-/* ========= CHECKBOX ========= */
 
 input[type="checkbox"]{
 
@@ -678,7 +678,9 @@ input[type="checkbox"]{
 
 }
 
-/* ========= FOOTER ========= */
+/* ==========================================================
+   FOOTER
+========================================================== */
 
 footer{
 
@@ -686,33 +688,27 @@ footer{
 
     padding:50px 0;
 
+    text-align:center;
+
     background:white;
 
-    border-top:1px solid var(--grey-200);
-
-    text-align:center;
+    border-top:1px solid var(--grey200);
 
 }
 
 footer p{
 
-    color:var(--grey-500);
+    color:var(--grey500);
 
 }
 
-/* ========= UTILITIES ========= */
+/* ==========================================================
+   UTILITIES
+========================================================== */
 
-.hidden{
+.hidden{display:none!important;}
 
-    display:none!important;
-
-}
-
-.text-center{
-
-    text-align:center;
-
-}
+.text-center{text-align:center;}
 
 .mt-1{margin-top:10px;}
 .mt-2{margin-top:20px;}
@@ -726,9 +722,11 @@ footer p{
 .mb-4{margin-bottom:40px;}
 .mb-5{margin-bottom:60px;}
 
-/* ========= RESPONSIVE ========= */
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
 
-@media(max-width:1000px){
+@media(max-width:1100px){
 
 .hero-grid{
 
@@ -762,19 +760,19 @@ grid-template-columns:1fr;
 
 flex-direction:column;
 
-padding:20px 0;
+gap:18px;
 
-gap:20px;
+padding:20px 0;
 
 }
 
 nav{
 
-justify-content:center;
-
 flex-wrap:wrap;
 
-gap:18px;
+justify-content:center;
+
+gap:16px;
 
 }
 
@@ -790,21 +788,33 @@ font-size:2.5rem;
 
 }
 
-.recipe-body{
+.recipe-grid{
 
-padding:20px;
+grid-template-columns:1fr;
 
 }
 
-.button{
+.recipe-body{
 
-width:100%;
+padding:16px;
 
 }
 
 .recipe-actions{
 
 flex-direction:column;
+
+}
+
+.recipe-actions .button{
+
+width:100%;
+
+}
+
+.button{
+
+width:100%;
 
 }
 
