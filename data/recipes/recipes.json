@@ -1,0 +1,24 @@
+[
+  {
+    "id": "REC-001",
+    "name": "Mediterranean Chicken Tray Bake",
+    "servings": 2,
+    "ingredients": [
+      {
+        "ingredient": "ING-M001",
+        "amount": 2,
+        "unit": "fillets"
+      },
+      {
+        "ingredient": "ING-V003",
+        "amount": 1,
+        "unit": "whole"
+      },
+      {
+        "ingredient": "ING-H001",
+        "amount": 10,
+        "unit": "g"
+      }
+    ]
+  }
+]

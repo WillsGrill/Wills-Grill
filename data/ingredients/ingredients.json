@@ -1,0 +1,14 @@
+{
+  "ING-H001": {
+    "name": "Fresh Basil",
+    "category": "Herbs"
+  },
+  "ING-M001": {
+    "name": "Chicken Breast",
+    "category": "Meat"
+  },
+  "ING-V003": {
+    "name": "Courgette",
+    "category": "Vegetables"
+  }
+}
