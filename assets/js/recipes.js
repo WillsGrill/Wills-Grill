@@ -15,15 +15,6 @@ let recipes = [];
 
 async function initialiseRecipes() {
 
-    const browsePage = document.getElementById("recipeList");
-    const recipePage = document.getElementById("recipePage");
-
-    if (!browsePage && !recipePage) {
-
-        return;
-
-    }
-
     try {
 
         const response = await fetch(PATHS.recipes);
@@ -46,7 +37,7 @@ async function initialiseRecipes() {
 
     }
 
-    if (browsePage) {
+    if (document.getElementById("recipeList")) {
 
         renderRecipes(recipes);
 
@@ -54,7 +45,7 @@ async function initialiseRecipes() {
 
     }
 
-    if (recipePage) {
+    if (document.getElementById("recipePage")) {
 
         renderRecipePage();
 
@@ -68,8 +59,7 @@ async function initialiseRecipes() {
 
 function renderRecipes(recipeArray) {
 
-    const container =
-        document.getElementById("recipeList");
+    const container = document.getElementById("recipeList");
 
     if (!container) return;
 
@@ -77,7 +67,7 @@ function renderRecipes(recipeArray) {
 
     recipeArray.forEach(recipe => {
 
-        container.innerHTML += createRecipeCard(recipe);
+        container.insertAdjacentHTML("beforeend", createRecipeCard(recipe));
 
     });
 
@@ -95,72 +85,52 @@ function createRecipeCard(recipe) {
 
 <article class="recipe-card">
 
-<div class="recipe-image">
+    <div class="recipe-image">
 
-<img
-src="../assets/images/recipes/${recipe.image}"
-alt="${recipe.name}"
-loading="lazy">
+        <img
+            src="../assets/images/recipes/${recipe.image}"
+            alt="${recipe.name}"
+            loading="lazy">
 
-</div>
+    </div>
 
-<div class="recipe-body">
+    <div class="recipe-body">
 
-<h3>
+        <h3>${recipe.name}</h3>
 
-${recipe.name}
+        <p>${recipe.description}</p>
 
-</h3>
+        <div class="recipe-meta">
 
-<p>
+            <span>⏱ ${recipe.prepTime + recipe.cookTime} mins</span>
 
-${recipe.description}
+            <span>👥 ${recipe.serves}</span>
 
-</p>
+            <span>${recipe.difficulty}</span>
 
-<div class="recipe-meta">
+        </div>
 
-<span>
+        <div class="recipe-actions">
 
-⏱ ${recipe.prepTime + recipe.cookTime} mins
+            <button
+                class="button viewRecipe"
+                data-id="${recipe.id}">
 
-</span>
+                View Recipe
 
-<span>
+            </button>
 
-👥 ${recipe.serves}
+            <button
+                class="button button-outline addRecipe"
+                data-id="${recipe.id}">
 
-</span>
+                Add
 
-<span>
+            </button>
 
-${recipe.difficulty}
+        </div>
 
-</span>
-
-</div>
-
-<div class="recipe-actions">
-
-<button
-class="button viewRecipe"
-data-id="${recipe.id}">
-
-View Recipe
-
-</button>
-
-<button
-class="button button-outline addRecipe"
-data-id="${recipe.id}">
-
-Add
-
-</button>
-
-</div>
-
-</div>
+    </div>
 
 </article>
 
@@ -174,19 +144,15 @@ Add
 
 function initialiseSearch() {
 
-    const search =
-        document.getElementById("searchBox");
+    const search = document.getElementById("searchBox");
 
     if (!search) return;
 
     search.addEventListener("input", () => {
 
-        const value =
-            search.value
-            .toLowerCase()
-            .trim();
+        const value = search.value.toLowerCase().trim();
 
-        if (value === "") {
+        if (!value) {
 
             renderRecipes(recipes);
 
@@ -194,31 +160,19 @@ function initialiseSearch() {
 
         }
 
-        const filtered = recipes.filter(recipe => {
+        renderRecipes(
 
-            return (
+            recipes.filter(recipe =>
 
-                recipe.name
-                    .toLowerCase()
-                    .includes(value)
+                recipe.name.toLowerCase().includes(value) ||
 
-                ||
+                recipe.description.toLowerCase().includes(value) ||
 
-                recipe.description
-                    .toLowerCase()
-                    .includes(value)
+                recipe.category.toLowerCase().includes(value)
 
-                ||
+            )
 
-                recipe.category
-                    .toLowerCase()
-                    .includes(value)
-
-            );
-
-        });
-
-        renderRecipes(filtered);
+        );
 
     });
 
@@ -248,7 +202,7 @@ function renderRecipePage() {
 
 <h2>Recipe not found</h2>
 
-<p>This recipe could not be loaded.</p>
+<p>The requested recipe could not be found.</p>
 
 </div>
 
@@ -258,43 +212,27 @@ function renderRecipePage() {
 
     }
 
-    const ingredientHTML = recipe.ingredients.map(item => {
+    const ingredientHTML = recipe.ingredients.map(item =>
 
-        return `
+        `<li>${formatIngredient(item)}</li>`
 
-<li>
+    ).join("");
 
-${formatIngredient(item)}
+    const methodHTML = recipe.steps.map((step, index) =>
 
-</li>
-
-`;
-
-    }).join("");
-
-    const stepHTML = recipe.steps.map((step, index) => {
-
-        return `
+        `
 
 <div class="step">
 
-<div class="step-number">
+<div class="step-number">${index + 1}</div>
 
-${index + 1}
-
-</div>
-
-<div>
-
-${step}
+<div>${step}</div>
 
 </div>
 
-</div>
+`
 
-`;
-
-    }).join("");
+    ).join("");
 
     container.innerHTML = `
 
@@ -310,17 +248,9 @@ alt="${recipe.name}">
 
 <div class="recipe-summary">
 
-<h2>
+<h2>${recipe.name}</h2>
 
-${recipe.name}
-
-</h2>
-
-<p>
-
-${recipe.description}
-
-</p>
+<p>${recipe.description}</p>
 
 <div class="recipe-badges">
 
@@ -360,11 +290,7 @@ Add To Shopping List
 
 <div class="panel">
 
-<h3>
-
-Ingredients
-
-</h3>
+<h3>Ingredients</h3>
 
 <ul class="ingredients">
 
@@ -376,49 +302,30 @@ ${ingredientHTML}
 
 <div>
 
-<h3>
-
-Method
-
-</h3>
+<h3>Method</h3>
 
 <div class="method">
 
-${stepHTML}
+${methodHTML}
 
 </div>
 
 <div class="panel mt-4">
 
-<h3>
-
-Nutrition
-
-</h3>
+<h3>Nutrition</h3>
 
 <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
-
 <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
-
 <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
-
 <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
 
 </div>
 
 <div class="panel mt-4">
 
-<h3>
+<h3>Chef's Tip</h3>
 
-Chef's Tip
-
-</h3>
-
-<p>
-
-${recipe.tip}
-
-</p>
+<p>${recipe.tip}</p>
 
 </div>
 
