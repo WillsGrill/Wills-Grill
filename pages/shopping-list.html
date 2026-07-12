@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Shopping List | Will's Grill</title>
+
+<link rel="stylesheet"
+href="../assets/css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="wrapper header-inner">
+
+<div class="logo">
+
+<h1>Will's Grill</h1>
+
+<p>Healthy food. Simple cooking.</p>
+
+</div>
+
+<nav>
+
+<a href="../index.html">
+
+Home
+
+</a>
+
+<a href="browse.html">
+
+Browse Recipes
+
+</a>
+
+<a href="shopping-list.html">
+
+Shopping List
+
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<main class="wrapper section">
+
+<h2>
+
+Shopping List
+
+</h2>
+
+<p class="mt-2">
+
+Ingredients from your selected recipes.
+
+</p>
+
+<div class="shopping-layout">
+
+<div class="shopping-sidebar">
+
+<div class="panel">
+
+<h3>
+
+Selected Recipes
+
+</h3>
+
+<p id="selectedRecipeCount">
+
+0
+
+</p>
+
+<button
+class="button mt-3"
+id="clearShopping">
+
+Clear Selection
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h3>
+
+Shopping Tips
+
+</h3>
+
+<p>
+
+✓ Tick items as you shop.
+
+</p>
+
+<p>
+
+✓ Pantry items are included.
+
+</p>
+
+<p>
+
+✓ Ingredients are automatically merged.
+
+</p>
+
+</div>
+
+</div>
+
+<div>
+
+<div
+id="shoppingList">
+
+<div class="panel">
+
+<p>
+
+No recipes selected yet.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<p>
+
+© Will's Grill
+
+</p>
+
+</footer>
+
+<script src="../assets/js/recipes.js"></script>
+<script src="../assets/js/shopping.js"></script>
+<script src="../assets/js/ui.js"></script>
+<script src="../assets/js/app.js"></script>
+
+<script>
+
+document
+.getElementById("clearShopping")
+.addEventListener("click",()=>{
+
+localStorage.removeItem("willsGrillShopping");
+
+location.reload();
+
+});
+
+</script>
+
+</body>
+
+</html>
