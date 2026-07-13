@@ -359,6 +359,20 @@ nav a:hover::after{
 
 /* ---------- SEARCH ---------- */
 
+.page-heading-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:24px;
+
+}
+
+.page-heading-row h2{
+    margin-bottom:8px;
+}
+
 .search{
 
     margin:40px 0;
