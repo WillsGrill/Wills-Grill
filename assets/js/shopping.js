@@ -496,9 +496,7 @@ function generateShoppingList() {
 
     if (!shoppingPage) return;
 
-    const selected = getSelectedRecipes()
-        .map(id => String(id).trim())
-        .filter(Boolean);
+    const selected = getSelectedRecipes();
 
     if (!selected.length) {
 
