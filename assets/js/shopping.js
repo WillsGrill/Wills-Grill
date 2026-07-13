@@ -48,6 +48,13 @@ function attachShoppingEvents() {
             return;
         }
 
+        const copyButton = event.target.closest("#copyShoppingList");
+
+        if (copyButton) {
+            copyShoppingListToClipboard();
+            return;
+        }
+
     });
 
 }
@@ -213,6 +220,97 @@ function getShoppingIngredientsForRecipes(recipeIDs) {
     });
 
     return Object.values(shopping);
+
+}
+
+function copyShoppingListToClipboard() {
+
+    const container = document.getElementById("shoppingList");
+
+    if (!container) return;
+
+    const lines = [];
+
+    container.querySelectorAll(".shopping-category").forEach(category => {
+
+        const heading = category.querySelector("h3");
+
+        if (heading && heading.textContent.trim()) {
+            lines.push(heading.textContent.trim());
+        }
+
+        category.querySelectorAll(".shopping-items li").forEach(item => {
+
+            const text = item.textContent.replace(/\s+/g, " ").trim();
+
+            if (text) {
+                lines.push(text);
+            }
+
+        });
+
+        lines.push("");
+
+    });
+
+    const text = lines.join("\n").trim();
+
+    if (!text) return;
+
+    const button = document.getElementById("copyShoppingList");
+
+    const updateButtonLabel = label => {
+        if (button) {
+            button.textContent = label;
+        }
+    };
+
+    const resetButtonLabel = () => {
+        if (button) {
+            button.textContent = "Copy Shopping List";
+        }
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                updateButtonLabel("Copied!");
+                window.setTimeout(resetButtonLabel, 1500);
+            })
+            .catch(() => {
+                fallbackCopyShoppingList(text, updateButtonLabel, resetButtonLabel);
+            });
+
+        return;
+
+    }
+
+    fallbackCopyShoppingList(text, updateButtonLabel, resetButtonLabel);
+
+}
+
+function fallbackCopyShoppingList(text, updateButtonLabel, resetButtonLabel) {
+
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = text;
+    tempTextArea.setAttribute("readonly", "");
+    tempTextArea.style.position = "fixed";
+    tempTextArea.style.left = "-9999px";
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+
+    try {
+        document.execCommand("copy");
+        updateButtonLabel("Copied!");
+    }
+    catch (error) {
+        updateButtonLabel("Copy failed");
+        console.warn("Unable to copy shopping list.", error);
+    }
+
+    document.body.removeChild(tempTextArea);
+    window.setTimeout(resetButtonLabel, 1500);
 
 }
 
