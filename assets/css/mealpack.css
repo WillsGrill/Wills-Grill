@@ -104,6 +104,29 @@ a.button.button-outline:hover {
     background: radial-gradient(circle at top left, #d4af37 20%, #111 40%);
 }
 
+.mp-logo-image {
+    display: block;
+    width: 140px;
+    height: auto;
+    margin: 0 auto 24px;
+    border-radius: 18px;
+}
+
+.mp-cover-hero-image {
+    margin: 32px auto 0;
+    max-width: 720px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 44px rgba(0,0,0,.12);
+}
+
+.mp-cover-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .mp-tagline {
     text-transform: uppercase;
     letter-spacing: .35em;
@@ -284,6 +307,10 @@ a.button.button-outline:hover {
 
     .mp-recipe-image img {
         min-height: 220px;
+    }
+
+    .mp-logo-image {
+        width: 120px;
     }
 }
 

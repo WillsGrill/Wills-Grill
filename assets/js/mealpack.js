@@ -205,7 +205,7 @@ function buildRecipePage(recipe) {
     <div class="mp-card mp-cover-small">
 
         <div class="mp-recipe-image">
-            <img src="../assets/images/homepage-hero-image.jpg" alt="Will's Grill hero image">
+            <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
         </div>
 
         <div class="mp-recipe-summary">
@@ -303,9 +303,13 @@ function buildMealPackMarkup() {
     <div class="mp-cover-panel">
 
         <div class="mp-branding">
-            <div class="mp-logo"></div>
+            <img src="../assets/images/logo.jpg" alt="Will's Grill" class="mp-logo-image">
             <p class="mp-tagline">Healthy food. Simple cooking.</p>
             <h1>Meal Pack</h1>
+        </div>
+
+        <div class="mp-cover-hero-image">
+            <img src="../assets/images/homepage-hero-image.jpg" alt="Will's Grill hero image">
         </div>
 
         <div class="mp-cover-meta">
