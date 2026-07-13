@@ -289,6 +289,7 @@ function buildMealPackMarkup() {
     return `
 
 <div class="mp-toolbar">
+    <button id="clearMealPack" class="button button-outline">Clear Recipes</button>
     <button id="printMealPack" class="button">Print Meal Pack</button>
     <a class="button button-outline" href="shopping-list.html">Back to Shopping List</a>
 </div>
@@ -373,6 +374,14 @@ function renderMealPackError() {
 }
 
 function attachMealPackEvents() {
+
+    const clearButton = document.getElementById("clearMealPack");
+    if (clearButton) {
+        clearButton.addEventListener("click", () => {
+            localStorage.removeItem(MEALPACK_STORAGE);
+            renderMealPack();
+        });
+    }
 
     const printButton = document.getElementById("printMealPack");
     if (printButton) {
