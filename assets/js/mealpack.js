@@ -24,6 +24,10 @@ async function initialiseMealPack() {
 
     try {
 
+        if (typeof initialiseUI === "function") {
+            await initialiseUI();
+        }
+
         if (typeof initialiseRecipes === "function") {
             await initialiseRecipes();
         }
@@ -149,10 +153,7 @@ function buildContentsPage(selectedRecipes) {
 function buildRecipePage(recipe) {
 
     const ingredientHTML = recipe.ingredients.map(item => {
-        const ingredient = ingredientFromID(item.ingredient);
-        const text = ingredient
-            ? `${item.quantity} ${ingredient.unit} ${ingredient.name}`.replace(/\s+/g, " ").trim()
-            : `${item.quantity} ${item.ingredient}`;
+        const text = formatIngredient(item);
         return `<li>${text}</li>`;
     }).join("");
 
