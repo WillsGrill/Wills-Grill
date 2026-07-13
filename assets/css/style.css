@@ -503,6 +503,66 @@ nav a:hover::after{
     font-size:.9rem;
 
 }
+
+.recipe-quantity-control{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex:1;
+}
+
+.recipe-quantity-control .addRecipe,
+.recipe-quantity-control .quantity-stepper-btn {
+    flex:1;
+    min-width:0;
+}
+
+.recipe-quantity-control .quantity-stepper-btn {
+    width:40px;
+    min-width:40px;
+    padding:10px 0;
+    border-radius:999px;
+    border:2px solid var(--black);
+    background:white;
+    color:var(--black);
+    font-size:1rem;
+    line-height:1;
+}
+
+.recipe-quantity-control .quantity-stepper-btn:hover {
+    transform:none;
+    background:var(--black);
+    color:white;
+}
+
+.recipe-quantity-control .quantity-value {
+    min-width:44px;
+    text-align:center;
+    font-weight:700;
+    color:var(--black);
+}
+
+.recipe-quantity-control .removeRecipe {
+    width:40px;
+    min-width:40px;
+    padding:10px 0;
+    border-radius:999px;
+    border:2px solid #c0392b;
+    background:white;
+    color:#c0392b;
+    font-size:1rem;
+    line-height:1;
+}
+
+.recipe-quantity-control .removeRecipe:hover {
+    transform:none;
+    background:#c0392b;
+    color:white;
+}
+
+.recipe-quantity-control-large {
+    flex:1.2;
+}
 /* ==========================================================
    RECIPE PAGE
 ========================================================== */

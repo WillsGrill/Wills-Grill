@@ -27,11 +27,27 @@ function attachShoppingEvents() {
 
     document.addEventListener("click", event => {
 
-        const button = event.target.closest(".addRecipe");
+        const addButton = event.target.closest(".addRecipe");
 
-        if (button) {
-            const quantity = parseInt(button.dataset.quantity || "1", 10);
-            toggleRecipe(button.dataset.id, quantity);
+        if (addButton) {
+            const quantity = parseInt(addButton.dataset.quantity || "1", 10);
+            toggleRecipe(addButton.dataset.id, quantity);
+            return;
+        }
+
+        const stepperButton = event.target.closest(".quantity-stepper-btn");
+
+        if (stepperButton) {
+            const recipeID = stepperButton.dataset.id;
+            const delta = parseInt(stepperButton.dataset.delta || "1", 10);
+            updateRecipeQuantity(recipeID, delta);
+            return;
+        }
+
+        const removeButton = event.target.closest(".removeRecipe");
+
+        if (removeButton) {
+            removeRecipeFromSelection(removeButton.dataset.id);
             return;
         }
 
@@ -91,6 +107,40 @@ function toggleRecipe(recipeID, quantity = 1) {
 
     updateRecipeCounter();
 
+    generateShoppingList();
+
+}
+
+function updateRecipeQuantity(recipeID, delta) {
+
+    let selected = getSelectedRecipes();
+    const existingIndex = selected.findIndex(item => item.id === recipeID);
+
+    if (existingIndex < 0) return;
+
+    const nextQuantity = selected[existingIndex].quantity + delta;
+
+    if (nextQuantity <= 0) {
+        selected.splice(existingIndex, 1);
+    } else {
+        selected[existingIndex].quantity = nextQuantity;
+    }
+
+    saveSelectedRecipes(selected);
+    updateButtons();
+    updateRecipeCounter();
+    generateShoppingList();
+
+}
+
+function removeRecipeFromSelection(recipeID) {
+
+    let selected = getSelectedRecipes();
+    selected = selected.filter(item => item.id !== recipeID);
+
+    saveSelectedRecipes(selected);
+    updateButtons();
+    updateRecipeCounter();
     generateShoppingList();
 
 }
@@ -161,29 +211,44 @@ function updateButtons() {
 
     const selected = getSelectedRecipes();
 
-    document.querySelectorAll(".addRecipe").forEach(button => {
+    document.querySelectorAll(".recipe-quantity-control").forEach(control => {
 
-        const selection = selected.find(item => item.id === button.dataset.id);
+        const recipeID = control.dataset.id;
+        const selection = selected.find(item => item.id === recipeID);
         const added = Boolean(selection);
-        const quantity = parseInt(button.dataset.quantity || "1", 10);
 
-        button.textContent = added
+        if (!added) {
+            control.innerHTML = `
+                <button
+                    class="button button-outline addRecipe"
+                    data-id="${recipeID}"
+                    data-quantity="1">
+                    Add Recipe
+                </button>
+            `;
+            return;
+        }
 
-            ? `✓ ${selection.quantity}x`
-
-            : quantity === 2
-
-                ? "Add 2x"
-
-                : "Add";
-
-        button.classList.toggle(
-
-            "button-outline",
-
-            !added
-
-        );
+        control.innerHTML = `
+            <button
+                class="button button-outline quantity-stepper-btn"
+                data-id="${recipeID}"
+                data-delta="-1">
+                −
+            </button>
+            <span class="quantity-value">${selection.quantity}</span>
+            <button
+                class="button button-outline quantity-stepper-btn"
+                data-id="${recipeID}"
+                data-delta="1">
+                +
+            </button>
+            <button
+                class="button removeRecipe"
+                data-id="${recipeID}">
+                🗑
+            </button>
+        `;
 
     });
 
