@@ -17,6 +17,10 @@ function initialiseShopping() {
 
     attachShoppingEvents();
 
+    if (typeof generateShoppingList === "function") {
+        generateShoppingList();
+    }
+
 }
 
 /* ============================================
@@ -670,7 +674,9 @@ document.addEventListener(
 
     ()=>{
 
-        generateShoppingList();
+        if (typeof generateShoppingList === "function") {
+            generateShoppingList();
+        }
 
     }
 
