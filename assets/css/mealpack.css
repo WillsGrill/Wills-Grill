@@ -1,0 +1,385 @@
+/*
+==================================================
+Will's Grill
+mealpack.css
+==================================================
+*/
+
+:root {
+    color-scheme: light;
+}
+
+html {
+    background: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #fff;
+    color: #111;
+    line-height: 1.6;
+}
+
+button,
+a.button {
+    font: inherit;
+    border: 1px solid #111;
+    border-radius: 999px;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border .2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover,
+a.button:hover {
+    background: #111;
+    color: #fff;
+}
+
+button.button-outline,
+a.button.button-outline {
+    background: transparent;
+    color: #111;
+    border-color: #111;
+}
+
+button.button-outline:hover,
+a.button.button-outline:hover {
+    background: #111;
+    color: #fff;
+}
+
+#mealpack {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
+
+.mp-toolbar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 32px;
+}
+
+.mp-page {
+    page-break-after: always;
+    margin-bottom: 40px;
+}
+
+.mp-page:last-child {
+    page-break-after: auto;
+}
+
+.mp-cover-page {
+    min-height: 80vh;
+    display: grid;
+    place-items: center;
+}
+
+.mp-cover-panel {
+    border: 1px solid #111;
+    padding: 64px 56px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,.08);
+}
+
+.mp-branding {
+    max-width: 520px;
+    margin: 0 auto 48px;
+}
+
+.mp-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, #d4af37 20%, #111 40%);
+}
+
+.mp-tagline {
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-size: .85rem;
+    color: #777;
+    margin-bottom: 28px;
+}
+
+.mp-cover-page h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin: 0;
+}
+
+.mp-cover-meta {
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 48px;
+    font-size: 1rem;
+}
+
+.mp-cover-meta p {
+    margin: 0;
+}
+
+.mp-cover-meta p:first-child {
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.mp-contents h2,
+.mp-shopping-page h2 {
+    margin-bottom: 24px;
+}
+
+.mp-card {
+    border: 1px solid #111;
+    border-radius: 24px;
+    padding: 32px;
+    background: #fff;
+}
+
+.mp-contents-list,
+.mp-list {
+    display: grid;
+    gap: 10px;
+}
+
+.mp-contents-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.mp-contents-row span:first-child {
+    font-weight: 600;
+}
+
+.mp-shopping-page .mp-card {
+    padding: 32px;
+}
+
+.mp-shopping-page h2 {
+    margin-top: 0;
+}
+
+.shopping-category {
+    margin-bottom: 28px;
+}
+
+.shopping-category h3 {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+}
+
+.shopping-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+}
+
+.shopping-items li {
+    display: block;
+    margin: 0;
+}
+
+.shopping-items label {
+    display: block;
+    line-height: 1.4;
+    color: #111;
+    font-size: 0.95rem;
+}
+
+.shopping-items input[type="checkbox"] {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.mp-cover-small {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.mp-recipe-image img {
+    width: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    height: 100%;
+}
+
+.mp-recipe-summary h2 {
+    font-size: 2.4rem;
+    margin-bottom: 18px;
+}
+
+.mp-recipe-meta,
+.mp-recipe-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.mp-recipe-meta span,
+.mp-recipe-badges span {
+    background: #f4f4f4;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+}
+
+.mp-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.mp-info-panel h3,
+.mp-method-panel h3,
+.mp-tip-panel h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.mp-list-ingredients,
+.mp-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.mp-list-ingredients li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.mp-steps li {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+}
+
+.mp-step-number {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+}
+
+.mp-tip-panel {
+    margin-top: 24px;
+}
+
+.mp-tip-panel p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.mp-empty {
+    min-height: 80vh;
+    display: grid;
+    place-items: center;
+}
+
+.mp-empty-card {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px;
+    border: 1px solid #111;
+    border-radius: 24px;
+}
+
+.mp-empty-card h1 {
+    margin-bottom: 16px;
+    font-size: 2rem;
+}
+
+.mp-empty-card p {
+    margin-bottom: 24px;
+    color: #555;
+}
+
+@media (max-width: 960px) {
+    #mealpack {
+        width: min(960px, 96%);
+    }
+
+    .mp-cover-small,
+    .mp-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shopping-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    body {
+        background: #fff;
+    }
+
+    .mp-toolbar,
+    a.button,
+    button {
+        display: none !important;
+    }
+
+    #mealpack {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mp-page {
+        page-break-after: always;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mp-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .mp-cover-page,
+    .mp-contents,
+    .mp-shopping-page,
+    .mp-recipe {
+        page-break-inside: avoid;
+    }
+
+    .shopping-items {
+        column-count: 2;
+        grid-template-columns: none;
+        gap: 8px 32px;
+    }
+}

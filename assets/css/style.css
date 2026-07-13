@@ -980,16 +980,16 @@ width:100%;
     .shopping-category {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        margin-bottom: 24px !important;
+        margin-bottom: 16px !important;
         background: white !important;
         border: 1px solid #e7e7e7 !important;
-        border-radius: 20px !important;
-        padding: 18px !important;
+        border-radius: 16px !important;
+        padding: 14px 16px !important;
     }
 
     .shopping-category h3 {
-        font-size: 1.35rem !important;
-        margin-bottom: 16px !important;
+        font-size: 1.15rem !important;
+        margin-bottom: 10px !important;
     }
 
     .shopping-items {
@@ -997,13 +997,15 @@ width:100%;
         padding: 0 !important;
         margin: 0 !important;
         column-count: 2 !important;
-        column-gap: 2.2rem !important;
+        column-gap: 1.4rem !important;
+        column-rule: 0.5px solid #e7e7e7 !important;
+        line-height: 1.25 !important;
     }
 
     .shopping-items li {
-        display: inline-block !important;
+        display: block !important;
         width: 100% !important;
-        margin-bottom: 10px !important;
+        margin: 0 0 6px !important;
         padding: 0 !important;
         border: none !important;
         break-inside: avoid !important;
@@ -1011,8 +1013,14 @@ width:100%;
     }
 
     .shopping-items label {
+        display: block !important;
         font-size: 0.95rem !important;
         color: #111 !important;
+        padding-left: 0 !important;
+    }
+
+    .shopping-items input[type="checkbox"] {
+        display: none !important;
     }
 
     .recipe-hero,

@@ -41,6 +41,13 @@ function attachShoppingEvents() {
             return;
         }
 
+        const mealPackButton = event.target.closest("#createMealPack");
+
+        if (mealPackButton) {
+            window.location.href = "mealpack.html";
+            return;
+        }
+
     });
 
 }
@@ -154,6 +161,106 @@ function updateRecipeCounter() {
     counter.textContent =
 
         getSelectedRecipes().length;
+
+}
+
+function getShoppingIngredientsForRecipes(recipeIDs) {
+
+    const selectedIds = Array.isArray(recipeIDs)
+        ? recipeIDs.map(id => String(id).trim()).filter(Boolean)
+        : [];
+
+    const shopping = {};
+
+    selectedIds.forEach(recipeID => {
+
+        const recipe = recipes.find(
+
+            r => String(r.id).trim() === recipeID
+
+        );
+
+        if (!recipe) return;
+
+        recipe.ingredients.forEach(item => {
+
+            const ingredient = ingredientFromID(
+
+                item.ingredient
+
+            );
+
+            if (!ingredient) return;
+
+            const key = ingredient.id;
+
+            if (!shopping[key]) {
+
+                shopping[key] = {
+
+                    ...ingredient,
+
+                    quantity: 0
+
+                };
+
+            }
+
+            shopping[key].quantity += item.quantity;
+
+        });
+
+    });
+
+    return Object.values(shopping);
+
+}
+
+function buildShoppingListHTML(items) {
+
+    const categories = {};
+
+    items.forEach(item => {
+
+        if (!categories[item.category]) {
+
+            categories[item.category] = [];
+
+        }
+
+        categories[item.category].push(item);
+
+    });
+
+    return Object.keys(categories).sort().map(category => `
+
+<div class="shopping-category">
+
+<h3>${category}</h3>
+
+<ul class="shopping-items">
+
+${categories[category].map(item => `
+
+<li>
+
+<label>
+
+<input type="checkbox">
+
+${item.quantity} ${item.unit} ${item.name}
+
+</label>
+
+</li>
+
+`).join('')}
+
+</ul>
+
+</div>
+
+`).join('');
 
 }
 

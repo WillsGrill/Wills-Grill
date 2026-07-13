@@ -1,0 +1,350 @@
+/*
+==================================================
+Will's Grill
+mealpack.js
+==================================================
+*/
+
+"use strict";
+
+const MEALPACK_CONTAINER_ID = "mealpack";
+const MEALPACK_STORAGE = "willsGrillShopping";
+
+const PAGE_BREAK_CLASS = "mealpack-page-break";
+
+/* ============================================
+   Initialise
+============================================ */
+
+document.addEventListener("DOMContentLoaded", initialiseMealPack);
+
+async function initialiseMealPack() {
+
+    if (!document.getElementById(MEALPACK_CONTAINER_ID)) return;
+
+    try {
+
+        if (typeof initialiseRecipes === "function") {
+            await initialiseRecipes();
+        }
+
+        renderMealPack();
+
+    }
+
+    catch (error) {
+
+        console.error("Meal Pack initialisation failed:", error);
+        renderMealPackError();
+
+    }
+
+}
+
+/* ============================================
+   Helpers
+============================================ */
+
+function getSelectedRecipeIDs() {
+
+    const data = localStorage.getItem(MEALPACK_STORAGE);
+    if (!data) return [];
+
+    try {
+        const parsed = JSON.parse(data);
+        return Array.isArray(parsed)
+            ? parsed.map(id => String(id).trim()).filter(Boolean)
+            : [];
+    }
+    catch (error) {
+        console.warn("Invalid Meal Pack recipe selection.", error);
+        return [];
+    }
+
+}
+
+function getSelectedRecipes() {
+
+    const selectedIDs = getSelectedRecipeIDs();
+    return selectedIDs
+        .map(id => recipes.find(recipe => String(recipe.id).trim() === id))
+        .filter(Boolean);
+
+}
+
+function getMealPackData() {
+
+    const selectedRecipes = getSelectedRecipes();
+    const ingredientItems = getShoppingIngredientsForRecipes(
+        selectedRecipes.map(recipe => recipe.id)
+    );
+
+    return {
+        selectedRecipes,
+        ingredientItems,
+        generatedDate: new Date(),
+        recipeCount: selectedRecipes.length,
+    };
+
+}
+
+function formatDate(date) {
+
+    return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+
+}
+
+function buildShoppingHTML(items) {
+
+    return buildShoppingListHTML(items);
+
+}
+
+function buildContentsPage(selectedRecipes) {
+
+    const contents = [
+        { label: "Shopping List", page: 3 },
+        ...selectedRecipes.map((recipe, index) => ({
+            label: recipe.name,
+            page: 4 + index,
+        })),
+    ];
+
+    return `
+
+<section class="mp-page mp-contents">
+
+    <div class="mp-card">
+
+        <h2>Contents</h2>
+
+        <div class="mp-contents-list">
+
+            ${contents.map(row => `
+
+            <div class="mp-contents-row">
+
+                <span>${row.label}</span>
+
+                <span>${row.page}</span>
+
+            </div>
+
+            `).join("")}
+
+        </div>
+
+    </div>
+
+</section>
+
+`;
+
+}
+
+function buildRecipePage(recipe) {
+
+    const ingredientHTML = recipe.ingredients.map(item => {
+        const ingredient = ingredientFromID(item.ingredient);
+        const text = ingredient
+            ? `${item.quantity} ${ingredient.unit} ${ingredient.name}`.replace(/\s+/g, " ").trim()
+            : `${item.quantity} ${item.ingredient}`;
+        return `<li>${text}</li>`;
+    }).join("");
+
+    const methodHTML = recipe.steps.map((step, index) => `
+
+        <li>
+            <span class="mp-step-number">${index + 1}</span>
+            <span>${step}</span>
+        </li>
+
+    `).join("");
+
+    return `
+
+<section class="mp-page mp-recipe">
+
+    <div class="mp-card mp-cover-small">
+
+        <div class="mp-recipe-image">
+            <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
+        </div>
+
+        <div class="mp-recipe-summary">
+            <h2>${recipe.name}</h2>
+            <p>${recipe.description}</p>
+
+            <div class="mp-recipe-meta">
+                <span>Prep ${recipe.prepTime} mins</span>
+                <span>Cook ${recipe.cookTime} mins</span>
+                <span>Serves ${recipe.serves}</span>
+            </div>
+
+            <div class="mp-recipe-badges">
+                <span>${recipe.difficulty}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mp-card mp-details-grid">
+
+        <div class="mp-info-panel">
+            <h3>Nutrition</h3>
+            <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
+            <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
+            <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
+            <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
+        </div>
+
+        <div>
+            <h3>Ingredients</h3>
+            <ul class="mp-list mp-list-ingredients">
+                ${ingredientHTML}
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="mp-card mp-method-panel">
+
+        <h3>Method</h3>
+
+        <ol class="mp-steps">
+            ${methodHTML}
+        </ol>
+
+    </div>
+
+    <div class="mp-card mp-tip-panel">
+
+        <h3>Chef's Tip</h3>
+        <p>${recipe.tip}</p>
+
+    </div>
+
+</section>
+
+`;
+
+}
+
+function buildMealPackMarkup() {
+
+    const { selectedRecipes, ingredientItems, generatedDate, recipeCount } = getMealPackData();
+
+    if (!selectedRecipes.length) {
+        return `
+
+<div class="mp-empty">
+
+    <div class="mp-empty-card">
+
+        <h1>No recipes selected</h1>
+
+        <p>Choose recipes on the Shopping List page, then click Create Meal Pack.</p>
+
+        <a class="button" href="shopping-list.html">Back to Shopping List</a>
+
+    </div>
+
+</div>
+
+`;
+    }
+
+    return `
+
+<div class="mp-toolbar">
+    <button id="printMealPack" class="button">Print Meal Pack</button>
+    <a class="button button-outline" href="shopping-list.html">Back to Shopping List</a>
+</div>
+
+<section class="mp-page mp-cover-page">
+
+    <div class="mp-cover-panel">
+
+        <div class="mp-branding">
+            <div class="mp-logo"></div>
+            <p class="mp-tagline">Healthy food. Simple cooking.</p>
+            <h1>Meal Pack</h1>
+        </div>
+
+        <div class="mp-cover-meta">
+            <p><strong>Date</strong></p>
+            <p>${formatDate(generatedDate)}</p>
+            <p><strong>Recipes</strong></p>
+            <p>${recipeCount}</p>
+            <p><strong>Includes</strong></p>
+            <p>Shopping List</p>
+        </div>
+
+    </div>
+
+</section>
+
+${buildContentsPage(selectedRecipes)}
+
+<section class="mp-page mp-shopping-page">
+
+    <div class="mp-card">
+        <h2>Shopping List</h2>
+        ${buildShoppingHTML(ingredientItems)}
+    </div>
+
+</section>
+
+${selectedRecipes.map(buildRecipePage).join("")}
+
+`;
+
+}
+
+function renderMealPack() {
+
+    const container = document.getElementById(MEALPACK_CONTAINER_ID);
+    if (!container) return;
+
+    container.innerHTML = buildMealPackMarkup();
+    attachMealPackEvents();
+
+}
+
+function renderMealPackError() {
+
+    const container = document.getElementById(MEALPACK_CONTAINER_ID);
+    if (!container) return;
+
+    container.innerHTML = `
+
+<div class="mp-empty">
+
+    <div class="mp-empty-card">
+
+        <h1>Something went wrong</h1>
+
+        <p>We were unable to build your Meal Pack. Please try again.</p>
+
+        <a class="button" href="shopping-list.html">Back to Shopping List</a>
+
+    </div>
+
+</div>
+
+`;
+
+}
+
+function attachMealPackEvents() {
+
+    const printButton = document.getElementById("printMealPack");
+    if (printButton) {
+        printButton.addEventListener("click", () => window.print());
+    }
+
+}
