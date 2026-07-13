@@ -147,8 +147,12 @@ header{
 .brand{
 
     display:flex;
+
     align-items:center;
-    gap:18px;
+
+    gap:30px;
+
+    margin-right:40px;
 
     text-decoration:none;
 
@@ -156,13 +160,11 @@ header{
 
 .brand-logo{
 
-    height:78px;
+    height:82px;
 
     width:auto;
 
     display:block;
-
-    transition:transform .25s ease;
 
 }
 
@@ -172,28 +174,33 @@ header{
 
 }
 
-.logo{
+.logo-tagline{
 
     display:flex;
+
     flex-direction:column;
 
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:4px;
+
+    margin-left:4px;
+
+    line-height:1.2;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
 }
 
-.logo h1{
+.tagline-white{
 
-    color:white;
+    color:#ffffff;
 
-    font-size:1.9rem;
-
-    letter-spacing:-.03em;
-
-}
-
-.logo p{
-
-    color:#d7b45a;
-
-    font-size:.95rem;
+    font-size:1rem;
 
 }
 
@@ -842,7 +849,21 @@ grid-template-columns:1fr;
 
     flex-direction:column;
 
+    align-items:center;
+
+    gap:12px;
+
+    margin-right:0;
+
+}
+
+.logo-tagline{
+
+    align-items:center;
+
     text-align:center;
+
+    margin-left:0;
 
 }
 

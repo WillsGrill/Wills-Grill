@@ -274,6 +274,8 @@ ${recipe.difficulty}
 
 </div>
 
+<div class="recipe-actions">
+
 <button
 class="button addRecipe"
 data-id="${recipe.id}">
@@ -281,6 +283,16 @@ data-id="${recipe.id}">
 Add To Shopping List
 
 </button>
+
+<button
+class="button button-outline printRecipe"
+data-id="${recipe.id}">
+
+Print Recipe
+
+</button>
+
+</div>
 
 </div>
 
@@ -349,10 +361,18 @@ ${methodHTML}
 
 document.addEventListener("click", event => {
 
-    const button = event.target.closest(".viewRecipe");
+    const viewButton = event.target.closest(".viewRecipe");
 
-    if (!button) return;
+    if (viewButton) {
+        window.location.href = `recipe.html?id=${viewButton.dataset.id}`;
+        return;
+    }
 
-    window.location.href = `recipe.html?id=${button.dataset.id}`;
+    const printButton = event.target.closest(".printRecipe");
+
+    if (printButton) {
+        window.print();
+        return;
+    }
 
 });
