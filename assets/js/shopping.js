@@ -95,7 +95,15 @@ function getSelectedRecipes() {
 
     if (!data) return [];
 
-    return JSON.parse(data);
+    try {
+        const parsed = JSON.parse(data);
+        return Array.isArray(parsed) ? parsed : [];
+    }
+    catch (error) {
+        console.warn("Invalid shopping selection data, resetting storage.", error);
+        localStorage.removeItem(STORAGE_KEY);
+        return [];
+    }
 
 }
 
@@ -163,19 +171,41 @@ function generateShoppingList() {
 
     if (!shoppingPage) return;
 
-    const selected = getSelectedRecipes();
+    const selected = getSelectedRecipes()
+        .map(id => String(id).trim())
+        .filter(Boolean);
+
+    if (!selected.length) {
+
+        shoppingPage.innerHTML = `
+
+<div class="panel">
+
+<p>No recipes have been selected yet.</p>
+
+</div>
+
+`;
+
+        return;
+
+    }
 
     let shopping = {};
+    let missingRecipes = [];
 
     selected.forEach(recipeID => {
 
         const recipe = recipes.find(
 
-            r => r.id === recipeID
+            r => String(r.id).trim() === recipeID
 
         );
 
-        if (!recipe) return;
+        if (!recipe) {
+            missingRecipes.push(recipeID);
+            return;
+        }
 
         recipe.ingredients.forEach(item => {
 
@@ -207,11 +237,27 @@ function generateShoppingList() {
 
     });
 
-    renderShoppingList(
+    const items = Object.values(shopping);
 
-        Object.values(shopping)
+    if (!items.length) {
 
-    );
+        shoppingPage.innerHTML = `
+
+<div class="panel">
+
+<p>Selected recipes did not return any shopping ingredients.</p>
+
+${missingRecipes.length ? `<p>Missing recipes: ${missingRecipes.join(", ")}</p>` : ""}
+
+</div>
+
+`;
+
+        return;
+
+    }
+
+    renderShoppingList(items);
 
 }
 
