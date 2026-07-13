@@ -270,11 +270,39 @@ function updateRecipeCounter() {
 
     );
 
-    if (!counter) return;
+    const names = document.getElementById(
 
-    counter.textContent =
+        "selectedRecipeNames"
 
-        getSelectedRecipes().reduce((total, item) => total + item.quantity, 0);
+    );
+
+    const selected = getSelectedRecipes();
+    const totalCount = selected.reduce((total, item) => total + item.quantity, 0);
+
+    if (counter) {
+        counter.textContent = totalCount;
+    }
+
+    if (!names) return;
+
+    if (!selected.length) {
+        names.textContent = "No recipes selected.";
+        return;
+    }
+
+    const recipeSummary = selected.map(item => {
+
+        const recipe = Array.isArray(recipes)
+            ? recipes.find(r => String(r.id).trim() === String(item.id).trim())
+            : null;
+
+        const recipeName = recipe?.name || item.id;
+
+        return item.quantity > 1 ? `${recipeName} ×${item.quantity}` : recipeName;
+
+    });
+
+    names.textContent = recipeSummary.join(", ");
 
 }
 

@@ -133,15 +133,34 @@ function buildShoppingHTML(items) {
 
 }
 
-function buildContentsPage(selectedRecipes) {
+function getMealPackPageLayout(selectedRecipes, ingredientItems) {
+
+    const shoppingItemsPerPage = 24;
+    const shoppingPageCount = Math.max(
+        1,
+        Math.ceil((Array.isArray(ingredientItems) ? ingredientItems.length : 0) / shoppingItemsPerPage)
+    );
+
+    const firstRecipePage = 3 + shoppingPageCount;
 
     const contents = [
-        { label: "Shopping List", page: 3 },
+        {
+            label: "Shopping List",
+            page: shoppingPageCount > 1 ? `3-${2 + shoppingPageCount}` : "3"
+        },
         ...selectedRecipes.map((recipe, index) => ({
             label: recipe.name,
-            page: 4 + index,
+            page: firstRecipePage + index,
         })),
     ];
+
+    return { contents, shoppingPageCount, firstRecipePage };
+
+}
+
+function buildContentsPage(selectedRecipes, ingredientItems) {
+
+    const { contents } = getMealPackPageLayout(selectedRecipes, ingredientItems);
 
     return `
 
@@ -321,7 +340,7 @@ function buildMealPackMarkup() {
 
 </section>
 
-${buildContentsPage(selectedRecipes)}
+${buildContentsPage(selectedRecipes, ingredientItems)}
 
 <section class="mp-page mp-shopping-page">
 
