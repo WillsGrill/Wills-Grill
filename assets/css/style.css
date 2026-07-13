@@ -974,6 +974,21 @@ width:100%;
         padding: 0 !important;
     }
 
+    .shopping-layout {
+        display: block !important;
+        width: auto !important;
+    }
+
+    .shopping-category {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-bottom: 16px !important;
+    }
+
+    .shopping-items {
+        gap: 8px !important;
+    }
+
     .recipe-hero,
     .recipe-columns {
         display: grid !important;

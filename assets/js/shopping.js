@@ -29,9 +29,17 @@ function attachShoppingEvents() {
 
         const button = event.target.closest(".addRecipe");
 
-        if (!button) return;
+        if (button) {
+            toggleRecipe(button.dataset.id);
+            return;
+        }
 
-        toggleRecipe(button.dataset.id);
+        const printButton = event.target.closest("#printShopping");
+
+        if (printButton) {
+            window.print();
+            return;
+        }
 
     });
 
