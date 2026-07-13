@@ -122,9 +122,19 @@ function createRecipeCard(recipe) {
 
             <button
                 class="button button-outline addRecipe"
-                data-id="${recipe.id}">
+                data-id="${recipe.id}"
+                data-quantity="1">
 
                 Add
+
+            </button>
+
+            <button
+                class="button button-outline addRecipe"
+                data-id="${recipe.id}"
+                data-quantity="2">
+
+                Add 2x
 
             </button>
 
@@ -278,9 +288,19 @@ ${recipe.difficulty}
 
 <button
 class="button addRecipe"
-data-id="${recipe.id}">
+data-id="${recipe.id}"
+data-quantity="1">
 
 Add To Shopping List
+
+</button>
+
+<button
+class="button addRecipe"
+data-id="${recipe.id}"
+data-quantity="2">
+
+Add 2x To Shopping List
 
 </button>
 

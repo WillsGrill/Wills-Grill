@@ -49,16 +49,38 @@ async function initialiseMealPack() {
    Helpers
 ============================================ */
 
-function getSelectedRecipeIDs() {
+function getSelectedRecipeSelections() {
 
     const data = localStorage.getItem(MEALPACK_STORAGE);
     if (!data) return [];
 
     try {
         const parsed = JSON.parse(data);
-        return Array.isArray(parsed)
-            ? parsed.map(id => String(id).trim()).filter(Boolean)
-            : [];
+
+        if (!Array.isArray(parsed)) {
+            return [];
+        }
+
+        return parsed
+            .map(item => {
+
+                if (typeof item === "string") {
+                    return { id: String(item).trim(), quantity: 1 };
+                }
+
+                if (item && typeof item === "object") {
+                    const quantity = parseInt(item.quantity || 1, 10);
+                    return {
+                        id: String(item.id || "").trim(),
+                        quantity: Number.isFinite(quantity) && quantity > 0 ? quantity : 1
+                    };
+                }
+
+                return null;
+
+            })
+            .filter(Boolean)
+            .filter(item => item.id);
     }
     catch (error) {
         console.warn("Invalid Meal Pack recipe selection.", error);
@@ -69,9 +91,14 @@ function getSelectedRecipeIDs() {
 
 function getSelectedRecipes() {
 
-    const selectedIDs = getSelectedRecipeIDs();
-    return selectedIDs
-        .map(id => recipes.find(recipe => String(recipe.id).trim() === id))
+    const selectedItems = getSelectedRecipeSelections();
+    return selectedItems
+        .map(selection => {
+            const recipe = recipes.find(recipe => String(recipe.id).trim() === String(selection.id).trim());
+            return recipe
+                ? { ...recipe, quantity: selection.quantity }
+                : null;
+        })
         .filter(Boolean);
 
 }
@@ -79,9 +106,7 @@ function getSelectedRecipes() {
 function getMealPackData() {
 
     const selectedRecipes = getSelectedRecipes();
-    const ingredientItems = getShoppingIngredientsForRecipes(
-        selectedRecipes.map(recipe => recipe.id)
-    );
+    const ingredientItems = getShoppingIngredientsForRecipes(selectedRecipes);
 
     return {
         selectedRecipes,
@@ -152,8 +177,15 @@ function buildContentsPage(selectedRecipes) {
 
 function buildRecipePage(recipe) {
 
+    const quantity = parseInt(recipe.quantity || 1, 10);
+    const scaledQuantity = Number.isFinite(quantity) && quantity > 0 ? quantity : 1;
+
     const ingredientHTML = recipe.ingredients.map(item => {
-        const text = formatIngredient(item);
+        const scaledItem = {
+            ...item,
+            quantity: item.quantity * scaledQuantity
+        };
+        const text = formatIngredient(scaledItem);
         return `<li>${text}</li>`;
     }).join("");
 
@@ -173,7 +205,7 @@ function buildRecipePage(recipe) {
     <div class="mp-card mp-cover-small">
 
         <div class="mp-recipe-image">
-            <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
+            <img src="../assets/images/homepage-hero-image.jpg" alt="Will's Grill hero image">
         </div>
 
         <div class="mp-recipe-summary">
@@ -183,7 +215,7 @@ function buildRecipePage(recipe) {
             <div class="mp-recipe-meta">
                 <span>Prep ${recipe.prepTime} mins</span>
                 <span>Cook ${recipe.cookTime} mins</span>
-                <span>Serves ${recipe.serves}</span>
+                <span>Serves ${recipe.serves * scaledQuantity}</span>
             </div>
 
             <div class="mp-recipe-badges">

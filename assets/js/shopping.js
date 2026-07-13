@@ -30,7 +30,8 @@ function attachShoppingEvents() {
         const button = event.target.closest(".addRecipe");
 
         if (button) {
-            toggleRecipe(button.dataset.id);
+            const quantity = parseInt(button.dataset.quantity || "1", 10);
+            toggleRecipe(button.dataset.id, quantity);
             return;
         }
 
@@ -63,17 +64,24 @@ function attachShoppingEvents() {
    Toggle Recipe
 ============================================ */
 
-function toggleRecipe(recipeID) {
+function toggleRecipe(recipeID, quantity = 1) {
 
     let selected = getSelectedRecipes();
+    const existingIndex = selected.findIndex(item => item.id === recipeID);
 
-    if (selected.includes(recipeID)) {
+    if (existingIndex >= 0) {
 
-        selected = selected.filter(id => id !== recipeID);
+        const nextQuantity = selected[existingIndex].quantity + quantity;
+
+        if (nextQuantity <= 0) {
+            selected.splice(existingIndex, 1);
+        } else {
+            selected[existingIndex].quantity = nextQuantity;
+        }
 
     } else {
 
-        selected.push(recipeID);
+        selected.push({ id: recipeID, quantity });
 
     }
 
@@ -111,7 +119,31 @@ function getSelectedRecipes() {
 
     try {
         const parsed = JSON.parse(data);
-        return Array.isArray(parsed) ? parsed : [];
+
+        if (!Array.isArray(parsed)) {
+            return [];
+        }
+
+        return parsed
+            .map(item => {
+
+                if (typeof item === "string") {
+                    return { id: item, quantity: 1 };
+                }
+
+                if (item && typeof item === "object") {
+                    const quantity = parseInt(item.quantity || 1, 10);
+                    return {
+                        id: String(item.id || "").trim(),
+                        quantity: Number.isFinite(quantity) && quantity > 0 ? quantity : 1
+                    };
+                }
+
+                return null;
+
+            })
+            .filter(Boolean)
+            .filter(item => item.id);
     }
     catch (error) {
         console.warn("Invalid shopping selection data, resetting storage.", error);
@@ -131,13 +163,19 @@ function updateButtons() {
 
     document.querySelectorAll(".addRecipe").forEach(button => {
 
-        const added = selected.includes(button.dataset.id);
+        const selection = selected.find(item => item.id === button.dataset.id);
+        const added = Boolean(selection);
+        const quantity = parseInt(button.dataset.quantity || "1", 10);
 
         button.textContent = added
 
-            ? "✓ Added"
+            ? `✓ ${selection.quantity}x`
 
-            : "Add";
+            : quantity === 2
+
+                ? "Add 2x"
+
+                : "Add";
 
         button.classList.toggle(
 
@@ -167,19 +205,36 @@ function updateRecipeCounter() {
 
     counter.textContent =
 
-        getSelectedRecipes().length;
+        getSelectedRecipes().reduce((total, item) => total + item.quantity, 0);
 
 }
 
-function getShoppingIngredientsForRecipes(recipeIDs) {
+function getShoppingIngredientsForRecipes(selections) {
 
-    const selectedIds = Array.isArray(recipeIDs)
-        ? recipeIDs.map(id => String(id).trim()).filter(Boolean)
+    const selectedItems = Array.isArray(selections)
+        ? selections
         : [];
 
     const shopping = {};
 
-    selectedIds.forEach(recipeID => {
+    selectedItems.forEach(selection => {
+
+        let recipeID = "";
+        let quantity = 1;
+
+        if (typeof selection === "string") {
+            recipeID = String(selection).trim();
+        }
+
+        else if (selection && typeof selection === "object") {
+            recipeID = String(selection.id || "").trim();
+            quantity = parseInt(selection.quantity || 1, 10);
+            if (!Number.isFinite(quantity) || quantity <= 0) {
+                quantity = 1;
+            }
+        }
+
+        if (!recipeID) return;
 
         const recipe = recipes.find(
 
@@ -213,7 +268,7 @@ function getShoppingIngredientsForRecipes(recipeIDs) {
 
             }
 
-            shopping[key].quantity += item.quantity;
+            shopping[key].quantity += item.quantity * quantity;
 
         });
 
@@ -399,7 +454,13 @@ function generateShoppingList() {
     let shopping = {};
     let missingRecipes = [];
 
-    selected.forEach(recipeID => {
+    selected.forEach(selection => {
+
+        const recipeID = selection && selection.id
+            ? String(selection.id).trim()
+            : "";
+
+        const quantity = parseInt(selection.quantity || 1, 10);
 
         const recipe = recipes.find(
 
@@ -436,7 +497,7 @@ function generateShoppingList() {
 
             }
 
-            shopping[key].quantity += item.quantity;
+            shopping[key].quantity += item.quantity * quantity;
 
         });
 
