@@ -980,11 +980,39 @@ width:100%;
     .shopping-category {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        margin-bottom: 24px !important;
+        background: white !important;
+        border: 1px solid #e7e7e7 !important;
+        border-radius: 20px !important;
+        padding: 18px !important;
+    }
+
+    .shopping-category h3 {
+        font-size: 1.35rem !important;
         margin-bottom: 16px !important;
     }
 
     .shopping-items {
-        gap: 8px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        column-count: 2 !important;
+        column-gap: 2.2rem !important;
+    }
+
+    .shopping-items li {
+        display: inline-block !important;
+        width: 100% !important;
+        margin-bottom: 10px !important;
+        padding: 0 !important;
+        border: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .shopping-items label {
+        font-size: 0.95rem !important;
+        color: #111 !important;
     }
 
     .recipe-hero,
