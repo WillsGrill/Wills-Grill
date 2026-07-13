@@ -202,62 +202,57 @@ function buildRecipePage(recipe) {
 
 <section class="mp-page mp-recipe">
 
-    <div class="mp-card mp-cover-small">
+    <div class="mp-card mp-recipe-layout">
 
-        <div class="mp-recipe-image">
-            <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
-        </div>
-
-        <div class="mp-recipe-summary">
-            <h2>${recipe.name}</h2>
-            <p>${recipe.description}</p>
-
-            <div class="mp-recipe-meta">
-                <span>Prep ${recipe.prepTime} mins</span>
-                <span>Cook ${recipe.cookTime} mins</span>
-                <span>Serves ${recipe.serves * scaledQuantity}</span>
+        <div class="mp-recipe-header">
+            <div class="mp-recipe-image">
+                <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
             </div>
 
-            <div class="mp-recipe-badges">
-                <span>${recipe.difficulty}</span>
+            <div class="mp-recipe-summary">
+                <h2>${recipe.name}</h2>
+                <p>${recipe.description}</p>
+
+                <div class="mp-recipe-meta">
+                    <span>Prep ${recipe.prepTime} mins</span>
+                    <span>Cook ${recipe.cookTime} mins</span>
+                    <span>Serves ${recipe.serves * scaledQuantity}</span>
+                </div>
+
+                <div class="mp-recipe-badges">
+                    <span>${recipe.difficulty}</span>
+                </div>
             </div>
         </div>
 
-    </div>
+        <div class="mp-recipe-body">
+            <div class="mp-info-panel">
+                <h3>Nutrition</h3>
+                <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
+                <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
+                <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
+                <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
+            </div>
 
-    <div class="mp-card mp-details-grid">
+            <div class="mp-ingredients-panel">
+                <h3>Ingredients</h3>
+                <ul class="mp-list mp-list-ingredients">
+                    ${ingredientHTML}
+                </ul>
+            </div>
 
-        <div class="mp-info-panel">
-            <h3>Nutrition</h3>
-            <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
-            <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
-            <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
-            <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
+            <div class="mp-method-panel">
+                <h3>Method</h3>
+                <ol class="mp-steps">
+                    ${methodHTML}
+                </ol>
+            </div>
         </div>
 
-        <div>
-            <h3>Ingredients</h3>
-            <ul class="mp-list mp-list-ingredients">
-                ${ingredientHTML}
-            </ul>
+        <div class="mp-card mp-tip-panel">
+            <h3>Chef's Tip</h3>
+            <p>${recipe.tip}</p>
         </div>
-
-    </div>
-
-    <div class="mp-card mp-method-panel">
-
-        <h3>Method</h3>
-
-        <ol class="mp-steps">
-            ${methodHTML}
-        </ol>
-
-    </div>
-
-    <div class="mp-card mp-tip-panel">
-
-        <h3>Chef's Tip</h3>
-        <p>${recipe.tip}</p>
 
     </div>
 
