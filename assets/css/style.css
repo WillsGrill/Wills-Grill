@@ -204,6 +204,14 @@ header{
 
 }
 
+.tagline-gold{
+
+    color:#d7b45a;
+
+    font-size:1rem;
+
+}
+
 nav{
 
     display:flex;
