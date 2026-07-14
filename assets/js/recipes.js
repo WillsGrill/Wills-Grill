@@ -298,7 +298,7 @@ Add Recipe
 class="button button-outline printRecipe"
 data-id="${recipe.id}">
 
-Download One-Page PDF
+Preview & Print PDF
 
 </button>
 
@@ -382,7 +382,7 @@ async function loadImageAsDataURL(url) {
     const response = await fetch(url);
 
     if (!response.ok) {
-        throw new Error("Unable to load recipe image.");
+        throw new Error("Unable to load image.");
     }
 
     const blob = await response.blob();
@@ -434,74 +434,94 @@ async function generateRecipePDF(recipe) {
 
     const pageWidth = 297;
     const pageHeight = 210;
-    const margin = 12;
+    const margin = 10;
     const gold = [200, 162, 74];
     const black = [17, 17, 17];
     const muted = [79, 79, 79];
+    const light = [245, 245, 245];
 
     doc.setFillColor(...black);
-    doc.rect(0, 0, pageWidth, 8, "F");
+    doc.rect(0, 0, pageWidth, 23, "F");
     doc.setDrawColor(...gold);
     doc.setLineWidth(0.8);
-    doc.rect(margin, margin, pageWidth - (margin * 2), pageHeight - (margin * 2));
+    doc.line(0, 23, pageWidth, 23);
+    doc.rect(margin, 30, pageWidth - (margin * 2), pageHeight - 40);
+
+    try {
+        const logoData = await loadImageAsDataURL("../assets/images/logo.jpg");
+
+        doc.addImage(logoData, "JPEG", margin, 2, 34, 19);
+    }
+    catch (error) {
+        console.warn("Will's Grill logo was omitted from the PDF.", error);
+    }
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(...gold);
+    doc.text("RECIPE CARD", pageWidth - margin, 12, { align: "right" });
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(7.5);
+    doc.setTextColor(255, 255, 255);
+    doc.text("Healthy food. Simple cooking.", pageWidth - margin, 17, { align: "right" });
 
     try {
         const imageData = await loadImageAsDataURL(
             `../assets/images/recipes/${recipe.image}`
         );
 
-        doc.addImage(imageData, "JPEG", margin + 4, margin + 4, 52, 39);
+        doc.addImage(imageData, "JPEG", 16, 37, 51, 35);
     }
     catch (error) {
         console.warn("Recipe image was omitted from the PDF.", error);
-        doc.setFillColor(245, 245, 245);
-        doc.rect(margin + 4, margin + 4, 52, 39, "F");
+        doc.setFillColor(...light);
+        doc.rect(16, 37, 51, 35, "F");
     }
 
-    const titleX = margin + 62;
-    let headerY = margin + 10;
+    const titleX = 76;
+    let headerY = 43;
 
     headerY = recipePDFText(
         doc,
         recipe.name,
         titleX,
         headerY,
-        200,
+        190,
         { fontSize: 18, lineHeight: 7, color: black, fontStyle: "bold" }
     );
 
-    headerY += 2;
+    headerY += 1.5;
 
-    recipePDFText(
+    const descriptionEndY = recipePDFText(
         doc,
         recipe.description,
         titleX,
         headerY,
-        200,
-        { fontSize: 9, lineHeight: 4, color: muted }
+        190,
+        { fontSize: 8.6, lineHeight: 3.8, color: muted }
     );
 
-    const badgeY = margin + 42;
-    doc.setFillColor(245, 245, 245);
+    const badgeY = Math.max(descriptionEndY + 2, 65);
+    doc.setFillColor(...light);
     doc.roundedRect(titleX, badgeY, 34, 8, 3, 3, "F");
     doc.roundedRect(titleX + 38, badgeY, 31, 8, 3, 3, "F");
-    doc.roundedRect(titleX + 73, badgeY, 24, 8, 3, 3, "F");
+    doc.roundedRect(titleX + 73, badgeY, 27, 8, 3, 3, "F");
     doc.setTextColor(...black);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(7.5);
     doc.text(`${recipe.prepTime + recipe.cookTime} mins`, titleX + 17, badgeY + 5.2, { align: "center" });
     doc.text(`Serves ${recipe.serves}`, titleX + 53.5, badgeY + 5.2, { align: "center" });
-    doc.text(recipe.difficulty, titleX + 85, badgeY + 5.2, { align: "center" });
+    doc.text(recipe.difficulty, titleX + 86.5, badgeY + 5.2, { align: "center" });
 
-    const contentY = 68;
-    const contentBottom = pageHeight - margin - 6;
-    const ingredientsX = margin + 4;
-    const methodX = 91;
-    const detailsX = 224;
+    const contentY = Math.max(badgeY + 18, 88);
+    const contentBottom = 188;
+    const ingredientsX = 16;
+    const methodX = 88;
+    const detailsX = 216;
 
     doc.setDrawColor(...gold);
     doc.setLineWidth(0.45);
-    doc.line(margin + 4, 60, pageWidth - margin - 4, 60);
+    doc.line(16, contentY - 9, pageWidth - 16, contentY - 9);
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
@@ -512,8 +532,8 @@ async function generateRecipePDF(recipe) {
 
     doc.setDrawColor(222, 222, 222);
     doc.setLineWidth(0.25);
-    doc.line(84, contentY - 4, 84, contentBottom);
-    doc.line(217, contentY - 4, 217, contentBottom);
+    doc.line(80, contentY - 4, 80, contentBottom);
+    doc.line(209, contentY - 4, 209, contentBottom);
 
     let ingredientsY = contentY + 7;
 
@@ -523,31 +543,72 @@ async function generateRecipePDF(recipe) {
             `• ${formatIngredient(item)}`,
             ingredientsX,
             ingredientsY,
-            62,
-            { fontSize: 8.2, lineHeight: 3.8, color: muted }
-        ) + 1.1;
+            57,
+            { fontSize: 8.1, lineHeight: 3.75, color: muted }
+        ) + 1.2;
     });
+
+    let methodFontSize = 8.4;
+    let methodLineHeight = 4.1;
+    let methodEntries;
+
+    do {
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(methodFontSize);
+
+        methodEntries = recipe.steps.map(step => {
+            const lines = doc.splitTextToSize(step, 112);
+            return {
+                lines,
+                height: Math.max(7, lines.length * methodLineHeight)
+            };
+        });
+
+        const totalHeight = methodEntries.reduce(
+            (total, entry) => total + entry.height,
+            0
+        );
+        const minimumGaps = Math.max(0, recipe.steps.length - 1) * 3;
+
+        if (totalHeight + minimumGaps <= contentBottom - contentY - 7) {
+            break;
+        }
+
+        methodFontSize -= 0.2;
+        methodLineHeight -= 0.08;
+    }
+    while (methodFontSize >= 7.2);
+
+    const totalMethodHeight = methodEntries.reduce(
+        (total, entry) => total + entry.height,
+        0
+    );
+    const availableMethodHeight = contentBottom - contentY - 7;
+    const methodGap = recipe.steps.length > 1
+        ? Math.max(
+            3,
+            (availableMethodHeight - totalMethodHeight) / (recipe.steps.length - 1)
+        )
+        : 0;
 
     let methodY = contentY + 7;
 
-    recipe.steps.forEach((step, index) => {
+    methodEntries.forEach((entry, index) => {
         doc.setFillColor(...black);
-        doc.circle(methodX + 3, methodY - 1.2, 3, "F");
+        doc.circle(methodX + 3.5, methodY - 1.2, 3.5, "F");
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(6.5);
-        doc.text(String(index + 1), methodX + 3, methodY + 0.9, { align: "center" });
+        doc.setFontSize(6.8);
+        doc.text(String(index + 1), methodX + 3.5, methodY - 1.2, {
+            align: "center",
+            baseline: "middle"
+        });
+        doc.setTextColor(...muted);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(methodFontSize);
+        doc.text(entry.lines, methodX + 11, methodY);
 
-        const nextY = recipePDFText(
-            doc,
-            step,
-            methodX + 9,
-            methodY,
-            116,
-            { fontSize: 8.2, lineHeight: 3.8, color: muted }
-        );
-
-        methodY = nextY + 2;
+        methodY += entry.height + methodGap;
     });
 
     let detailsY = contentY + 7;
@@ -571,7 +632,7 @@ async function generateRecipePDF(recipe) {
     detailsY += 6;
     doc.setDrawColor(...gold);
     doc.setLineWidth(0.35);
-    doc.line(detailsX, detailsY, pageWidth - margin - 4, detailsY);
+    doc.line(detailsX, detailsY, pageWidth - 16, detailsY);
     detailsY += 7;
 
     doc.setFont("helvetica", "bold");
@@ -583,21 +644,100 @@ async function generateRecipePDF(recipe) {
         recipe.tip,
         detailsX,
         detailsY + 6,
-        54,
+        57,
         { fontSize: 8.2, lineHeight: 3.8, color: muted }
     );
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(7);
     doc.setTextColor(...muted);
-    doc.text("Will's Grill • Healthy food. Simple cooking.", margin + 4, pageHeight - margin - 3);
+    doc.text("Will's Grill • Healthy food. Simple cooking.", 16, pageHeight - 15);
 
     const filename = recipe.name
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)/g, "");
 
-    doc.save(`${filename}-recipe.pdf`);
+    openRecipePDFPreview(doc, `${filename}-recipe.pdf`);
+
+}
+
+function openRecipePDFPreview(doc, filename) {
+
+    const pdfURL = URL.createObjectURL(doc.output("blob"));
+    const overlay = document.createElement("div");
+    const dialog = document.createElement("section");
+    const toolbar = document.createElement("div");
+    const title = document.createElement("h2");
+    const actions = document.createElement("div");
+    const printButton = document.createElement("button");
+    const downloadButton = document.createElement("button");
+    const closeButton = document.createElement("button");
+    const frame = document.createElement("iframe");
+
+    overlay.className = "pdf-preview-overlay";
+    overlay.setAttribute("role", "presentation");
+    dialog.className = "pdf-preview-dialog";
+    dialog.setAttribute("role", "dialog");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("aria-labelledby", "pdfPreviewTitle");
+    toolbar.className = "pdf-preview-toolbar";
+    title.id = "pdfPreviewTitle";
+    title.textContent = "Your one-page recipe PDF";
+    actions.className = "pdf-preview-actions";
+    printButton.className = "button";
+    printButton.textContent = "Print PDF";
+    downloadButton.className = "button button-outline";
+    downloadButton.textContent = "Download PDF";
+    closeButton.className = "pdf-preview-close";
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "Close PDF preview");
+    closeButton.textContent = "×";
+    frame.className = "pdf-preview-frame";
+    frame.title = "Recipe PDF preview";
+    frame.src = `${pdfURL}#view=FitH`;
+
+    const handleKeydown = event => {
+        if (event.key === "Escape" && document.body.contains(overlay)) {
+            closePreview();
+        }
+    };
+
+    const closePreview = () => {
+        frame.src = "about:blank";
+        overlay.remove();
+        document.removeEventListener("keydown", handleKeydown);
+        URL.revokeObjectURL(pdfURL);
+    };
+
+    printButton.addEventListener("click", () => {
+        frame.contentWindow?.focus();
+        frame.contentWindow?.print();
+    });
+
+    downloadButton.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = pdfURL;
+        link.download = filename;
+        link.click();
+    });
+
+    closeButton.addEventListener("click", closePreview);
+
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay) {
+            closePreview();
+        }
+    });
+
+    document.addEventListener("keydown", handleKeydown);
+
+    actions.append(printButton, downloadButton);
+    toolbar.append(title, actions, closeButton);
+    dialog.append(toolbar, frame);
+    overlay.append(dialog);
+    document.body.append(overlay);
+    closeButton.focus();
 
 }
 
