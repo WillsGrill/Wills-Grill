@@ -622,6 +622,8 @@ nav a[aria-current="page"]::after{
 
     align-items:center;
 
+    flex-wrap:wrap;
+
     gap:10px;
 
 }
@@ -695,7 +697,7 @@ nav a[aria-current="page"]::after{
 }
 
 .recipe-quantity-control-large {
-    flex:1.2;
+    flex:1 1 260px;
 }
 /* ==========================================================
    RECIPE PAGE
@@ -721,7 +723,21 @@ nav a[aria-current="page"]::after{
 
     background:#d9d9d9;
 
-    aspect-ratio:1;
+    aspect-ratio:4 / 3;
+
+    height:180px;
+
+    max-width:100%;
+
+}
+
+.recipe-hero-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
 
 }
 
@@ -1154,6 +1170,8 @@ padding:16px;
 .recipe-actions{
 
 flex-direction:column;
+
+align-items:stretch;
 
 }
 

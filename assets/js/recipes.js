@@ -296,13 +296,13 @@ Preview & Print PDF
 
 </div>
 
+</div>
+
 <div class="recipe-hero-image">
 
 <img
 src="../assets/images/recipes/${recipe.image}"
 alt="${recipe.name}">
-
-</div>
 
 </div>
 
