@@ -673,7 +673,7 @@ async function generateShoppingListPDF() {
     const gold = [200, 162, 74];
     const muted = [79, 79, 79];
     const light = [245, 245, 245];
-    const contentTop = 38;
+    const contentTop = 42;
     const contentBottom = 194;
     const columnGap = 7;
     const columns = 4;
