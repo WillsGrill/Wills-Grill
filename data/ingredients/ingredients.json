@@ -771,4 +771,61 @@
     "unit": "g",
     "pantry": true
   }
+  ,
+{
+  "id": "ING-G645",
+  "name": "Spanish Rice",
+  "category": "Grains & Pasta",
+  "unit": "g",
+  "pantry": false
+},
+{
+  "id": "ING-G650",
+  "name": "Wholemeal Pitta",
+  "category": "Grains & Pasta",
+  "unit": "each",
+  "pantry": false
+},
+{
+  "id": "ING-G655",
+  "name": "Wholemeal Wrap",
+  "category": "Grains & Pasta",
+  "unit": "each",
+  "pantry": false
+},
+{
+  "id": "ING-F340",
+  "name": "Basa Fillet",
+  "category": "Fish & Seafood",
+  "unit": "fillet",
+  "pantry": false
+},
+{
+  "id": "ING-V300",
+  "name": "Tenderstem Broccoli",
+  "category": "Vegetables",
+  "unit": "g",
+  "pantry": false
+},
+{
+  "id": "ING-V305",
+  "name": "Mange Tout",
+  "category": "Vegetables",
+  "unit": "g",
+  "pantry": false
+},
+{
+  "id": "ING-C997",
+  "name": "Tzatziki",
+  "category": "Condiments & Pantry",
+  "unit": "g",
+  "pantry": false
+},
+{
+  "id": "ING-C998",
+  "name": "Hummus",
+  "category": "Condiments & Pantry",
+  "unit": "g",
+  "pantry": false
+}
 ]
