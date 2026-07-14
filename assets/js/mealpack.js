@@ -338,7 +338,7 @@ function buildMealPackMarkup() {
 
 <div class="mp-toolbar">
     <button id="clearMealPack" class="button button-outline">Clear Recipes</button>
-    <button id="printMealPack" class="button">Print Meal Pack</button>
+    <button id="printMealPack" class="button">Preview & Print PDF</button>
     <a class="button button-outline" href="shopping-list.html">Back to Shopping List</a>
 </div>
 
@@ -477,7 +477,7 @@ function openMealPackPDFPreview(doc, filename) {
     dialog.setAttribute("aria-labelledby", "mealPackPdfPreviewTitle");
     toolbar.className = "pdf-preview-toolbar";
     title.id = "mealPackPdfPreviewTitle";
-    title.textContent = "Your Meal Pack PDF";
+    title.textContent = "Your meal-pack PDF";
     actions.className = "pdf-preview-actions";
     printButton.className = "button";
     printButton.textContent = "Print PDF";
@@ -488,7 +488,7 @@ function openMealPackPDFPreview(doc, filename) {
     closeButton.setAttribute("aria-label", "Close PDF preview");
     closeButton.textContent = "×";
     frame.className = "pdf-preview-frame";
-    frame.title = "Meal Pack PDF preview";
+    frame.title = "Meal-pack PDF preview";
     frame.src = `${pdfURL}#view=FitH`;
 
     const handleKeydown = event => {
@@ -633,16 +633,16 @@ function drawMealPackContentsPage(doc, entries, assets, shoppingRangeLabel) {
     const gold = [200, 162, 74];
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
+    doc.setFontSize(22);
     doc.setTextColor(...black);
-    doc.text("Contents", 16, 54);
+    doc.text("Contents", 16, 55);
 
     doc.setFillColor(...light);
-    doc.roundedRect(16, 58, 265, 126, 4, 4, "F");
+    doc.roundedRect(16, 61, 265, 121, 4, 4, "F");
 
     doc.setDrawColor(...gold);
-    doc.setLineWidth(0.35);
-    doc.line(20, 66, 277, 66);
+    doc.setLineWidth(0.5);
+    doc.line(20, 71, 277, 71);
 
     const contentsRows = [
         {
@@ -653,18 +653,22 @@ function drawMealPackContentsPage(doc, entries, assets, shoppingRangeLabel) {
         ...entries.recipes,
     ];
 
-    let rowY = 70;
+    let rowY = 79;
 
     contentsRows.forEach(row => {
-        if (rowY > 182) return;
+        if (rowY > 176) return;
 
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(8.9);
-        doc.setTextColor(...muted);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10.8);
+        doc.setTextColor(...black);
 
         doc.textWithLink(row.label, 21, rowY, {
             pageNumber: row.pageNumber
         });
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10.2);
+        doc.setTextColor(...muted);
 
         const pageLabel = String(row.pageLabel);
         const pageLabelWidth = doc.getTextWidth(pageLabel);
@@ -672,7 +676,7 @@ function drawMealPackContentsPage(doc, entries, assets, shoppingRangeLabel) {
             pageNumber: row.pageNumber,
         });
 
-        rowY += 3.6;
+        rowY += 6;
     });
 
 }
@@ -720,20 +724,16 @@ function drawMealPackShoppingSection(doc, items, assets) {
 
         drawMealPackPDFFrame(doc, assets, "", "SHOPPING LIST");
 
-        doc.setDrawColor(...black);
-        doc.setLineWidth(0);
-
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(16);
-        doc.setTextColor(...black);
-        doc.text("Shopping List", 16, 54);
-
         doc.setDrawColor(222, 222, 222);
         doc.setLineWidth(0.25);
         for (let columnIndex = 1; columnIndex < columns; columnIndex += 1) {
             const separatorX = contentLeft + (columnIndex * (columnWidth + columnGap)) - (columnGap / 2);
             doc.line(separatorX, contentTop - 2, separatorX, contentBottom);
         }
+
+        doc.setDrawColor(200, 162, 74);
+        doc.setLineWidth(0.35);
+        doc.line(contentLeft, contentTop - 8, contentRight, contentTop - 8);
 
         currentColumn = 0;
         currentY = contentTop;
