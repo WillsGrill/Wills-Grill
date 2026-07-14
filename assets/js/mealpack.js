@@ -133,13 +133,23 @@ function buildShoppingHTML(items) {
 
 }
 
+function splitShoppingItemsIntoPages(items, itemsPerPage = 24) {
+
+    const shoppingItems = Array.isArray(items) ? items : [];
+    const pages = [];
+
+    for (let index = 0; index < shoppingItems.length; index += itemsPerPage) {
+        pages.push(shoppingItems.slice(index, index + itemsPerPage));
+    }
+
+    return pages.length ? pages : [[]];
+
+}
+
 function getMealPackPageLayout(selectedRecipes, ingredientItems) {
 
-    const shoppingItemsPerPage = 24;
-    const shoppingPageCount = Math.max(
-        1,
-        Math.ceil((Array.isArray(ingredientItems) ? ingredientItems.length : 0) / shoppingItemsPerPage)
-    );
+    const shoppingPageCount =
+        splitShoppingItemsIntoPages(ingredientItems).length;
 
     const firstRecipePage = 3 + shoppingPageCount;
 
@@ -155,6 +165,25 @@ function getMealPackPageLayout(selectedRecipes, ingredientItems) {
     ];
 
     return { contents, shoppingPageCount, firstRecipePage };
+
+}
+
+function buildShoppingPages(items) {
+
+    const pages = splitShoppingItemsIntoPages(items);
+
+    return pages.map((pageItems, index) => `
+
+<section class="mp-page mp-shopping-page">
+
+    <div class="mp-card">
+        <h2>Shopping List${pages.length > 1 ? ` (${index + 1} of ${pages.length})` : ""}</h2>
+        ${buildShoppingHTML(pageItems)}
+    </div>
+
+</section>
+
+`).join("");
 
 }
 
@@ -342,14 +371,7 @@ function buildMealPackMarkup() {
 
 ${buildContentsPage(selectedRecipes, ingredientItems)}
 
-<section class="mp-page mp-shopping-page">
-
-    <div class="mp-card">
-        <h2>Shopping List</h2>
-        ${buildShoppingHTML(ingredientItems)}
-    </div>
-
-</section>
+${buildShoppingPages(ingredientItems)}
 
 ${selectedRecipes.map(buildRecipePage).join("")}
 

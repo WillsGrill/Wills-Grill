@@ -310,7 +310,7 @@ Print Recipe
 
 <div class="recipe-columns">
 
-<div class="panel">
+<section class="panel recipe-ingredients">
 
 <h3>Ingredients</h3>
 
@@ -320,9 +320,11 @@ ${ingredientHTML}
 
 </ul>
 
-</div>
+</section>
 
-<div>
+<div class="recipe-details">
+
+<section class="recipe-method">
 
 <h3>Method</h3>
 
@@ -332,7 +334,11 @@ ${methodHTML}
 
 </div>
 
-<div class="panel mt-4">
+</section>
+
+<div class="recipe-side">
+
+<section class="panel recipe-nutrition">
 
 <h3>Nutrition</h3>
 
@@ -341,13 +347,15 @@ ${methodHTML}
 <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
 <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
 
-</div>
+</section>
 
-<div class="panel mt-4">
+<section class="panel recipe-tip mt-4">
 
 <h3>Chef's Tip</h3>
 
 <p>${recipe.tip}</p>
+
+</section>
 
 </div>
 

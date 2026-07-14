@@ -8,6 +8,7 @@ shopping.js
 "use strict";
 
 const STORAGE_KEY = "willsGrillShopping";
+const COMPLETED_ITEMS_KEY = "willsGrillCompletedShoppingItems";
 
 /* ============================================
    Initialise
@@ -76,7 +77,42 @@ function attachShoppingEvents() {
             return;
         }
 
+        const clearButton = event.target.closest("#clearShopping");
+
+        if (clearButton) {
+            clearShoppingSelection();
+        }
+
     });
+
+    document.addEventListener("change", event => {
+
+        const checkbox = event.target.closest(".shopping-item-check");
+
+        if (!checkbox) return;
+
+        updateCompletedShoppingItem(
+            checkbox.dataset.shoppingItem,
+            checkbox.checked
+        );
+
+    });
+
+}
+
+function clearShoppingSelection() {
+
+    const confirmed = window.confirm(
+        "Clear all selected recipes and shopping-list tick marks?"
+    );
+
+    if (!confirmed) return;
+
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(COMPLETED_ITEMS_KEY);
+    updateButtons();
+    updateRecipeCounter();
+    generateShoppingList();
 
 }
 
@@ -204,6 +240,50 @@ function getSelectedRecipes() {
         localStorage.removeItem(STORAGE_KEY);
         return [];
     }
+
+}
+
+function getCompletedShoppingItems() {
+
+    const data = localStorage.getItem(COMPLETED_ITEMS_KEY);
+
+    if (!data) return new Set();
+
+    try {
+        const parsed = JSON.parse(data);
+
+        return new Set(
+            Array.isArray(parsed)
+                ? parsed.map(item => String(item))
+                : []
+        );
+    }
+    catch (error) {
+        console.warn("Invalid completed shopping-item data, resetting storage.", error);
+        localStorage.removeItem(COMPLETED_ITEMS_KEY);
+        return new Set();
+    }
+
+}
+
+function updateCompletedShoppingItem(itemID, completed) {
+
+    if (!itemID) return;
+
+    const completedItems = getCompletedShoppingItems();
+    const normalizedID = String(itemID);
+
+    if (completed) {
+        completedItems.add(normalizedID);
+    }
+    else {
+        completedItems.delete(normalizedID);
+    }
+
+    localStorage.setItem(
+        COMPLETED_ITEMS_KEY,
+        JSON.stringify([...completedItems])
+    );
 
 }
 
@@ -469,6 +549,7 @@ function fallbackCopyShoppingList(text, updateButtonLabel, resetButtonLabel) {
 function buildShoppingListHTML(items) {
 
     const categories = {};
+    const completedItems = getCompletedShoppingItems();
 
     items.forEach(item => {
 
@@ -496,7 +577,11 @@ ${categories[category].map(item => `
 
 <label>
 
-<input type="checkbox">
+<input
+    class="shopping-item-check"
+    type="checkbox"
+    data-shopping-item="${item.id}"
+    ${completedItems.has(String(item.id)) ? "checked" : ""}>
 
 ${item.quantity} ${item.unit} ${item.name}
 
@@ -636,59 +721,7 @@ function renderShoppingList(items){
 
     if(!container) return;
 
-    container.innerHTML="";
-
-    const categories={};
-
-    items.forEach(item=>{
-
-        if(!categories[item.category]){
-
-            categories[item.category]=[];
-
-        }
-
-        categories[item.category].push(item);
-
-    });
-
-    Object.keys(categories).sort().forEach(category=>{
-
-        container.innerHTML+=`
-
-<div class="shopping-category">
-
-<h3>
-
-${category}
-
-</h3>
-
-<ul class="shopping-items">
-
-${categories[category].map(item=>`
-
-<li>
-
-<label>
-
-<input type="checkbox">
-
-${item.quantity} ${item.unit} ${item.name}
-
-</label>
-
-</li>
-
-`).join("")}
-
-</ul>
-
-</div>
-
-`;
-
-    });
+    container.innerHTML = buildShoppingListHTML(items);
 
 }
 
