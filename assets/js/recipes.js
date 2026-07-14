@@ -243,14 +243,6 @@ function renderRecipePage() {
 
 <div class="recipe-hero">
 
-<div class="recipe-hero-image">
-
-<img
-src="../assets/images/recipes/${recipe.image}"
-alt="${recipe.name}">
-
-</div>
-
 <div class="recipe-summary">
 
 <h2>${recipe.name}</h2>
@@ -301,6 +293,14 @@ data-id="${recipe.id}">
 Preview & Print PDF
 
 </button>
+
+</div>
+
+<div class="recipe-hero-image">
+
+<img
+src="../assets/images/recipes/${recipe.image}"
+alt="${recipe.name}">
 
 </div>
 

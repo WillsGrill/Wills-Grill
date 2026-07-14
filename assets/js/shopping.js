@@ -734,7 +734,7 @@ async function generateShoppingListPDF() {
         doc.setFontSize(8.4);
         doc.setTextColor(...muted);
         doc.text("Will's Grill • Healthy food. Simple cooking.", 16, 192);
-        doc.text(`Page ${pageNumber}`, pageWidth - margin, 192, { align: "right" });
+        doc.text(`Page ${pageNumber}`, pageWidth * 0.78, 192, { align: "center" });
 
         doc.setDrawColor(222, 222, 222);
         doc.setLineWidth(0.25);
