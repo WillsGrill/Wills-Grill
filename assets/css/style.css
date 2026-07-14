@@ -931,6 +931,12 @@ nav a[aria-current="page"]::after{
 
 }
 
+.shopping-sidebar .panel .button + .button{
+
+    margin-top:12px !important;
+
+}
+
 .shopping-category{
 
     margin-bottom:35px;
@@ -983,7 +989,7 @@ input[type="checkbox"]{
 
 footer{
 
-    margin-top:80px;
+    margin-top:64px;
 
     padding:50px 0;
 
@@ -1056,6 +1062,22 @@ grid-template-columns:1fr;
 }
 
 @media(max-width:700px){
+
+.page-heading-row{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:12px;
+
+}
+
+.search{
+
+    margin:24px 0;
+
+}
 
 .header-inner{
 
@@ -1141,9 +1163,34 @@ width:100%;
 
 }
 
+.recipe-quantity-control-large{
+
+    width:100%;
+
+    flex:1 1 auto;
+
+}
+
 .button{
 
 width:100%;
+
+}
+
+.recipe-quantity-control .button,
+.recipe-quantity-control .addRecipe,
+.recipe-quantity-control .quantity-stepper-btn,
+.recipe-quantity-control .removeRecipe{
+
+    width:auto;
+
+}
+
+footer{
+
+    margin-top:48px;
+
+    padding:36px 0;
 
 }
 

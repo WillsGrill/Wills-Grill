@@ -9,8 +9,10 @@ mealpack.js
 
 const MEALPACK_CONTAINER_ID = "mealpack";
 const MEALPACK_STORAGE = "willsGrillShopping";
-
-const PAGE_BREAK_CLASS = "mealpack-page-break";
+const MEALPACK_PDF_STATE = {
+    url: null,
+    filename: ""
+};
 
 /* ============================================
    Initialise
@@ -32,7 +34,7 @@ async function initialiseMealPack() {
             await initialiseRecipes();
         }
 
-        renderMealPack();
+        await renderMealPack();
 
     }
 
@@ -338,54 +340,79 @@ function buildMealPackMarkup() {
 
 <div class="mp-toolbar">
     <button id="clearMealPack" class="button button-outline">Clear Recipes</button>
-    <button id="printMealPack" class="button">Preview & Print PDF</button>
     <a class="button button-outline" href="shopping-list.html">Back to Shopping List</a>
 </div>
 
-<section class="mp-page mp-cover-page">
+<section class="mp-pdf-shell">
 
-    <div class="mp-cover-panel">
+    <div class="mp-pdf-meta">
+        <h1>Your Meal Pack PDF</h1>
+        <p>${recipeCount} recipe${recipeCount === 1 ? "" : "s"} • Generated ${formatDate(generatedDate)}</p>
+    </div>
 
-        <div class="mp-branding">
-            <img src="../assets/images/logo.jpg" alt="Will's Grill" class="mp-logo-image">
-            <p class="mp-tagline">Healthy food. Simple cooking.</p>
-            <h1>Meal Pack</h1>
-        </div>
+    <div class="mp-pdf-actions" aria-label="Meal Pack PDF actions">
+        <button id="printMealPack" class="button">Print PDF</button>
+        <button id="downloadMealPack" class="button button-outline">Download PDF</button>
+    </div>
 
-        <div class="mp-cover-hero-image">
-            <img src="../assets/images/homepage-hero-image.jpg" alt="Will's Grill hero image">
-        </div>
+    <p id="mealPackPdfStatus" class="mp-pdf-status" aria-live="polite">Building your custom Meal Pack PDF...</p>
 
-        <div class="mp-cover-meta">
-            <p><strong>Date</strong></p>
-            <p>${formatDate(generatedDate)}</p>
-            <p><strong>Recipes</strong></p>
-            <p>${recipeCount}</p>
-            <p><strong>Includes</strong></p>
-            <p>Shopping List</p>
-        </div>
-
+    <div class="mp-pdf-frame-wrap">
+        <iframe
+            id="mealPackPdfFrame"
+            class="mp-pdf-frame"
+            title="Meal Pack PDF preview"
+            loading="lazy"
+            src="about:blank"></iframe>
     </div>
 
 </section>
-
-${buildContentsPage(selectedRecipes, ingredientItems)}
-
-${buildShoppingPages(ingredientItems)}
-
-${selectedRecipes.map(buildRecipePage).join("")}
 
 `;
 
 }
 
-function renderMealPack() {
+async function renderMealPack() {
 
     const container = document.getElementById(MEALPACK_CONTAINER_ID);
     if (!container) return;
 
     container.innerHTML = buildMealPackMarkup();
     attachMealPackEvents();
+
+    const result = await generateMealPackPDFDocument();
+    if (!result) {
+        setMealPackPDFStatus("Unable to generate PDF preview. Please try again.");
+        return;
+    }
+
+    applyMealPackPDFToFrame(result.doc, result.filename);
+    setMealPackPDFStatus("Preview ready.");
+
+}
+
+function setMealPackPDFStatus(message) {
+
+    const status = document.getElementById("mealPackPdfStatus");
+    if (status) {
+        status.textContent = message;
+    }
+
+}
+
+function applyMealPackPDFToFrame(doc, filename) {
+
+    const frame = document.getElementById("mealPackPdfFrame");
+    if (!frame) return;
+
+    if (MEALPACK_PDF_STATE.url) {
+        URL.revokeObjectURL(MEALPACK_PDF_STATE.url);
+        MEALPACK_PDF_STATE.url = null;
+    }
+
+    MEALPACK_PDF_STATE.url = URL.createObjectURL(doc.output("blob"));
+    MEALPACK_PDF_STATE.filename = filename;
+    frame.src = `${MEALPACK_PDF_STATE.url}#view=FitH`;
 
 }
 
@@ -454,84 +481,6 @@ function mealPackPDFText(doc, text, x, y, width, options = {}) {
     doc.text(lines, x, y);
 
     return y + (lines.length * lineHeight);
-
-}
-
-function openMealPackPDFPreview(doc, filename) {
-
-    const pdfURL = URL.createObjectURL(doc.output("blob"));
-    const overlay = document.createElement("div");
-    const dialog = document.createElement("section");
-    const toolbar = document.createElement("div");
-    const title = document.createElement("h2");
-    const actions = document.createElement("div");
-    const printButton = document.createElement("button");
-    const downloadButton = document.createElement("button");
-    const closeButton = document.createElement("button");
-    const frame = document.createElement("iframe");
-
-    overlay.className = "pdf-preview-overlay";
-    dialog.className = "pdf-preview-dialog";
-    dialog.setAttribute("role", "dialog");
-    dialog.setAttribute("aria-modal", "true");
-    dialog.setAttribute("aria-labelledby", "mealPackPdfPreviewTitle");
-    toolbar.className = "pdf-preview-toolbar";
-    title.id = "mealPackPdfPreviewTitle";
-    title.textContent = "Your meal-pack PDF";
-    actions.className = "pdf-preview-actions";
-    printButton.className = "button";
-    printButton.textContent = "Print PDF";
-    downloadButton.className = "button button-outline";
-    downloadButton.textContent = "Download PDF";
-    closeButton.className = "pdf-preview-close";
-    closeButton.type = "button";
-    closeButton.setAttribute("aria-label", "Close PDF preview");
-    closeButton.textContent = "×";
-    frame.className = "pdf-preview-frame";
-    frame.title = "Meal-pack PDF preview";
-    frame.src = `${pdfURL}#view=FitH`;
-
-    const handleKeydown = event => {
-        if (event.key === "Escape" && document.body.contains(overlay)) {
-            closePreview();
-        }
-    };
-
-    const closePreview = () => {
-        frame.src = "about:blank";
-        overlay.remove();
-        document.removeEventListener("keydown", handleKeydown);
-        URL.revokeObjectURL(pdfURL);
-    };
-
-    printButton.addEventListener("click", () => {
-        frame.contentWindow?.focus();
-        frame.contentWindow?.print();
-    });
-
-    downloadButton.addEventListener("click", () => {
-        const link = document.createElement("a");
-        link.href = pdfURL;
-        link.download = filename;
-        link.click();
-    });
-
-    closeButton.addEventListener("click", closePreview);
-
-    overlay.addEventListener("click", event => {
-        if (event.target === overlay) {
-            closePreview();
-        }
-    });
-
-    document.addEventListener("keydown", handleKeydown);
-
-    actions.append(printButton, downloadButton);
-    toolbar.append(title, actions, closeButton);
-    dialog.append(toolbar, frame);
-    overlay.append(dialog);
-    document.body.append(overlay);
-    closeButton.focus();
 
 }
 
@@ -1019,19 +968,18 @@ function drawMealPackRecipePage(doc, recipe, assets) {
 
 }
 
-async function generateMealPackPDF() {
+async function generateMealPackPDFDocument() {
 
     const jsPDF = window.jspdf?.jsPDF;
 
     if (!jsPDF) {
-        window.print();
-        return;
+        return null;
     }
 
     const data = getMealPackData();
 
     if (!data.selectedRecipes.length) {
-        return;
+        return null;
     }
 
     const doc = new jsPDF({
@@ -1120,7 +1068,7 @@ async function generateMealPackPDF() {
     }
 
     const filename = `meal-pack-${new Date().toISOString().slice(0, 10)}.pdf`;
-    openMealPackPDFPreview(doc, filename);
+    return { doc, filename };
 
 }
 
@@ -1130,6 +1078,10 @@ function attachMealPackEvents() {
     if (clearButton) {
         clearButton.addEventListener("click", () => {
             localStorage.removeItem(MEALPACK_STORAGE);
+            if (MEALPACK_PDF_STATE.url) {
+                URL.revokeObjectURL(MEALPACK_PDF_STATE.url);
+                MEALPACK_PDF_STATE.url = null;
+            }
             renderMealPack();
         });
     }
@@ -1137,7 +1089,21 @@ function attachMealPackEvents() {
     const printButton = document.getElementById("printMealPack");
     if (printButton) {
         printButton.addEventListener("click", () => {
-            generateMealPackPDF();
+            const frame = document.getElementById("mealPackPdfFrame");
+            frame?.contentWindow?.focus();
+            frame?.contentWindow?.print();
+        });
+    }
+
+    const downloadButton = document.getElementById("downloadMealPack");
+    if (downloadButton) {
+        downloadButton.addEventListener("click", () => {
+            if (!MEALPACK_PDF_STATE.url) return;
+
+            const link = document.createElement("a");
+            link.href = MEALPACK_PDF_STATE.url;
+            link.download = MEALPACK_PDF_STATE.filename || `meal-pack-${new Date().toISOString().slice(0, 10)}.pdf`;
+            link.click();
         });
     }
 
