@@ -280,6 +280,11 @@ function buildRecipePage(recipe) {
                 <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
                 <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
                 <p><strong>Fat:</strong> ${recipe.nutrition.fat} g</p>
+
+                <div class="mp-tip-panel">
+                    <h3>Chef's Tip</h3>
+                    <p>${recipe.tip}</p>
+                </div>
             </div>
 
             <div class="mp-ingredients-panel">
@@ -295,11 +300,6 @@ function buildRecipePage(recipe) {
                     ${methodHTML}
                 </ol>
             </div>
-        </div>
-
-        <div class="mp-card mp-tip-panel">
-            <h3>Chef's Tip</h3>
-            <p>${recipe.tip}</p>
         </div>
 
     </div>

@@ -326,6 +326,10 @@ a.button.button-outline:hover {
     background: #fafafa;
 }
 
+.mp-info-panel .mp-tip-panel {
+    margin-top:18px;
+}
+
 @media print {
     body {
         print-color-adjust: exact;
@@ -519,15 +523,20 @@ a.button.button-outline:hover {
 
     .mp-recipe > .mp-card {
         display:grid;
-        grid-template-rows:auto 1fr auto;
+        grid-template-rows:auto 1fr;
         gap:8px;
         height:100%;
         box-sizing:border-box;
+        padding:6mm;
+        border:1px solid #c8a24a;
+        border-radius:0;
     }
 
     .mp-recipe-header {
         grid-template-columns:105px minmax(0, 1fr);
         gap:12px;
+        padding-bottom:7px;
+        border-bottom:2px solid #c8a24a;
     }
 
     .mp-recipe-image,
@@ -564,6 +573,16 @@ a.button.button-outline:hover {
         gap:10px;
     }
 
+    .mp-recipe-body > * {
+        border-left:1px solid #dedede;
+        padding-left:8px;
+    }
+
+    .mp-recipe-body > :first-child {
+        border-left:0;
+        padding-left:0;
+    }
+
     .mp-info-panel h3,
     .mp-ingredients-panel h3,
     .mp-method-panel h3,
@@ -597,10 +616,10 @@ a.button.button-outline:hover {
     }
 
     .mp-tip-panel {
-        margin-top:0;
+        margin-top:8px;
         padding:6px 0 0;
         border:0;
-        border-top:1px solid #d8d8d8;
+        border-top:1px solid #c8a24a;
         background:transparent;
     }
 }

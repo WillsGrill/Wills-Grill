@@ -1059,7 +1059,7 @@ width:100%;
 @media print {
 
     @page {
-        size: landscape;
+        size: A4 landscape;
         margin: 8mm;
     }
 
@@ -1159,13 +1159,19 @@ width:100%;
     }
 
     #recipePage {
+        height:194mm;
+        box-sizing:border-box;
+        padding:5mm;
+        border:1px solid #c8a24a;
         break-inside:avoid-page !important;
         page-break-inside:avoid !important;
     }
 
     .recipe-hero {
         grid-template-columns:140px minmax(0, 1fr) !important;
-        margin:0 0 10px !important;
+        margin:0 0 8px !important;
+        padding-bottom:8px !important;
+        border-bottom:2px solid #c8a24a !important;
     }
 
     .recipe-hero-image,
@@ -1277,6 +1283,18 @@ width:100%;
         gap:8px !important;
     }
 
+    .recipe-ingredients,
+    .recipe-method,
+    .recipe-side {
+        border-left:1px solid #dedede !important;
+        padding-left:8px !important;
+    }
+
+    .recipe-ingredients {
+        border-left:0 !important;
+        padding-left:0 !important;
+    }
+
     .recipe-nutrition p,
     .recipe-tip p {
         font-size:.75rem !important;
@@ -1285,7 +1303,7 @@ width:100%;
     }
 
     .recipe-tip {
-        border-top:1px solid #d8d8d8 !important;
+        border-top:1px solid #c8a24a !important;
         padding-top:6px !important;
     }
 
