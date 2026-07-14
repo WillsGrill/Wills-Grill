@@ -675,7 +675,6 @@ async function generateShoppingListPDF() {
     const light = [245, 245, 245];
     const contentTop = 38;
     const contentBottom = 194;
-    const contentHeight = contentBottom - contentTop;
     const columnGap = 7;
     const columns = 4;
     const contentLeft = margin + 6;
@@ -701,6 +700,15 @@ async function generateShoppingListPDF() {
             return { category, entries };
         });
 
+    let logoData = null;
+
+    try {
+        logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.jpg");
+    }
+    catch (error) {
+        console.warn("Will's Grill logo was omitted from the shopping-list PDF.", error);
+    }
+
     const drawPageFrame = pageNumber => {
         doc.setFillColor(...black);
         doc.rect(0, 0, pageWidth, 23, "F");
@@ -709,6 +717,10 @@ async function generateShoppingListPDF() {
         doc.line(0, 23, pageWidth, 23);
         doc.rect(margin, 30, pageWidth - (margin * 2), pageHeight - 40);
 
+        if (logoData) {
+            doc.addImage(logoData, "JPEG", margin, 2, 34, 19);
+        }
+
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8.5);
         doc.setTextColor(...gold);
@@ -716,12 +728,13 @@ async function generateShoppingListPDF() {
         doc.setFont("helvetica", "normal");
         doc.setFontSize(7.5);
         doc.setTextColor(255, 255, 255);
-        doc.text(`Page ${pageNumber}`, pageWidth - margin, 17, { align: "right" });
+        doc.text("Healthy food. Simple cooking.", pageWidth - margin, 17, { align: "right" });
 
         doc.setFont("helvetica", "normal");
         doc.setFontSize(7);
         doc.setTextColor(...muted);
         doc.text("Will's Grill • Healthy food. Simple cooking.", 16, pageHeight - 15);
+        doc.text(`Page ${pageNumber}`, pageWidth - margin, pageHeight - 15, { align: "right" });
 
         doc.setDrawColor(222, 222, 222);
         doc.setLineWidth(0.25);
@@ -735,14 +748,6 @@ async function generateShoppingListPDF() {
         doc.setLineWidth(0.35);
         doc.line(contentLeft, contentTop - 4, contentRight, contentTop - 4);
     };
-
-    try {
-        const logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.jpg");
-        doc.addImage(logoData, "JPEG", margin, 2, 34, 19);
-    }
-    catch (error) {
-        console.warn("Will's Grill logo was omitted from the shopping-list PDF.", error);
-    }
 
     let pageNumber = 1;
     drawPageFrame(pageNumber);
@@ -764,46 +769,74 @@ async function generateShoppingListPDF() {
         currentY = contentTop;
     };
 
-    categoryBlocks.forEach(block => {
-        const columnX = () => contentLeft + (currentColumn * (columnWidth + columnGap));
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(8.1);
+    const categoryHeadingHeight = 6;
+    const itemSpacing = 1.8;
+    const checkboxSize = 2.7;
+    const checkboxTextGap = 1.8;
+    const entryXPadding = 1.6;
+    const textWidth = columnWidth - (entryXPadding * 2) - checkboxSize - checkboxTextGap;
 
-        const entryLineCounts = block.entries.map(entry =>
-            doc.splitTextToSize(entry, columnWidth - 3).length
-        );
-
-        const blockHeight =
-            6 +
-            (entryLineCounts.reduce((total, count) => total + (count * 3.9), 0)) +
-            (block.entries.length * 1.6) +
-            3;
-
-        if (currentY + blockHeight > contentBottom) {
-            moveToNextColumn();
-        }
-
-        const x = columnX();
+    const drawCategoryHeading = category => {
+        const x = contentLeft + (currentColumn * (columnWidth + columnGap));
 
         doc.setFillColor(...light);
-        doc.roundedRect(x, currentY - 4, columnWidth, 6, 1.5, 1.5, "F");
+        doc.roundedRect(x, currentY - 4, columnWidth, categoryHeadingHeight, 1.5, 1.5, "F");
         doc.setTextColor(...black);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8.4);
-        doc.text(block.category.toUpperCase(), x + 1.8, currentY);
-
+        doc.text(category.toUpperCase(), x + 1.8, currentY);
         currentY += 5;
+    };
 
-        block.entries.forEach(entry => {
+    const ensureVerticalSpace = neededHeight => {
+        if (currentY + neededHeight <= contentBottom) {
+            return;
+        }
+
+        moveToNextColumn();
+    };
+
+    categoryBlocks.forEach(block => {
+        const firstEntry = block.entries[0] || "";
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8.1);
+        const firstLines = doc.splitTextToSize(firstEntry, textWidth);
+        const minimumBlockHeight =
+            categoryHeadingHeight +
+            (Math.max(1, firstLines.length) * 3.9) +
+            itemSpacing +
+            2;
+
+        ensureVerticalSpace(minimumBlockHeight);
+        drawCategoryHeading(block.category);
+
+        block.entries.forEach((entry, entryIndex) => {
             doc.setFont("helvetica", "normal");
             doc.setFontSize(8.1);
-            doc.setTextColor(...muted);
-            const lines = doc.splitTextToSize(entry, columnWidth - 3);
-            doc.text(lines, x + 1.5, currentY);
-            currentY += (lines.length * 3.9) + 1.6;
-        });
+            const lines = doc.splitTextToSize(entry, textWidth);
+            const entryHeight = (lines.length * 3.9) + itemSpacing;
 
-        currentY += 1.8;
+            if (currentY + entryHeight > contentBottom) {
+                moveToNextColumn();
+                drawCategoryHeading(block.category);
+            }
+
+            const x = contentLeft + (currentColumn * (columnWidth + columnGap));
+            const checkboxX = x + entryXPadding;
+            const checkboxY = currentY - 2.3;
+
+            doc.setDrawColor(155, 155, 155);
+            doc.setLineWidth(0.25);
+            doc.rect(checkboxX, checkboxY, checkboxSize, checkboxSize);
+
+            doc.setTextColor(...muted);
+            doc.text(lines, checkboxX + checkboxSize + checkboxTextGap, currentY);
+            currentY += entryHeight;
+
+            if (entryIndex === block.entries.length - 1) {
+                currentY += 2;
+            }
+        });
     });
 
     const filename = `shopping-list-${new Date().toISOString().slice(0, 10)}.pdf`;
