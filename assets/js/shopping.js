@@ -673,8 +673,8 @@ async function generateShoppingListPDF() {
     const gold = [200, 162, 74];
     const muted = [79, 79, 79];
     const light = [245, 245, 245];
-    const contentTop = 42;
-    const contentBottom = 194;
+    const contentTop = 47;
+    const contentBottom = 186;
     const columnGap = 7;
     const columns = 4;
     const contentLeft = margin + 6;
@@ -730,11 +730,11 @@ async function generateShoppingListPDF() {
         doc.setTextColor(255, 255, 255);
         doc.text("Healthy food. Simple cooking.", pageWidth - margin, 17, { align: "right" });
 
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(7);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8.4);
         doc.setTextColor(...muted);
-        doc.text("Will's Grill • Healthy food. Simple cooking.", 16, pageHeight - 15);
-        doc.text(`Page ${pageNumber}`, pageWidth - margin, pageHeight - 15, { align: "right" });
+        doc.text("Will's Grill • Healthy food. Simple cooking.", 16, 192);
+        doc.text(`Page ${pageNumber}`, pageWidth - margin, 192, { align: "right" });
 
         doc.setDrawColor(222, 222, 222);
         doc.setLineWidth(0.25);
@@ -746,7 +746,7 @@ async function generateShoppingListPDF() {
 
         doc.setDrawColor(...gold);
         doc.setLineWidth(0.35);
-        doc.line(contentLeft, contentTop - 4, contentRight, contentTop - 4);
+        doc.line(contentLeft, contentTop - 8, contentRight, contentTop - 8);
     };
 
     let pageNumber = 1;
