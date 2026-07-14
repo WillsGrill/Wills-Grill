@@ -337,6 +337,48 @@ nav a[aria-current="page"]::after{
 
 }
 
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+
+    gap:18px;
+
+}
+
+.stat{
+
+    background:var(--white);
+
+    border:1px solid var(--grey200);
+
+    border-radius:18px;
+
+    padding:22px 20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-small);
+
+}
+
+.stat h3{
+
+    font-size:2rem;
+
+    margin-bottom:6px;
+
+}
+
+.stat p{
+
+    color:var(--grey500);
+
+    font-weight:600;
+
+}
+
 /* ---------- BUTTONS ---------- */
 
 .button{
@@ -799,7 +841,19 @@ nav a[aria-current="page"]::after{
 
 }
 
+#recipePage{
+
+    display:grid;
+
+    gap:34px;
+
+}
+
 .recipe-details{
+
+    display:grid;
+
+    gap:20px;
 
     min-width:0;
 
@@ -838,6 +892,20 @@ nav a[aria-current="page"]::after{
     margin-top:8px;
     font-size:0.95rem;
     color:#6b7280;
+
+}
+
+.recipe-side{
+
+    display:grid;
+
+    gap:16px;
+
+}
+
+.recipe-tip{
+
+    margin-top:0 !important;
 
 }
 
@@ -955,7 +1023,17 @@ nav a[aria-current="page"]::after{
 
 .shopping-category{
 
-    margin-bottom:35px;
+    margin-bottom:0;
+
+    border:1px solid var(--grey200);
+
+    border-radius:16px;
+
+    padding:18px 20px;
+
+    background:var(--white);
+
+    box-shadow:var(--shadow-small);
 
 }
 
@@ -978,6 +1056,14 @@ nav a[aria-current="page"]::after{
     flex-direction:column;
 
     gap:12px;
+
+}
+
+#shoppingList{
+
+    display:grid;
+
+    gap:16px;
 
 }
 
@@ -1075,6 +1161,12 @@ grid-template-columns:1fr;
 
 }
 
+.stats{
+
+grid-template-columns:repeat(3, minmax(0, 1fr));
+
+}
+
 }
 
 @media(max-width:700px){
@@ -1158,6 +1250,20 @@ font-size:2.5rem;
 .recipe-grid{
 
 grid-template-columns:1fr;
+
+}
+
+.stats{
+
+grid-template-columns:1fr;
+
+gap:14px;
+
+}
+
+.stat{
+
+padding:18px;
 
 }
 
