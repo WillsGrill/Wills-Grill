@@ -298,7 +298,7 @@ Add Recipe
 class="button button-outline printRecipe"
 data-id="${recipe.id}">
 
-Print Recipe
+Download One-Page PDF
 
 </button>
 
@@ -377,6 +377,230 @@ ${methodHTML}
    Navigation
 ================================================== */
 
+async function loadImageAsDataURL(url) {
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Unable to load recipe image.");
+    }
+
+    const blob = await response.blob();
+
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+
+}
+
+function recipePDFText(doc, text, x, y, width, options = {}) {
+
+    const {
+        fontSize = 9,
+        lineHeight = 4.4,
+        color = [17, 17, 17],
+        fontStyle = "normal"
+    } = options;
+
+    doc.setFontSize(fontSize);
+    doc.setTextColor(...color);
+    doc.setFont("helvetica", fontStyle);
+
+    const lines = doc.splitTextToSize(String(text), width);
+    doc.text(lines, x, y);
+
+    return y + (lines.length * lineHeight);
+
+}
+
+async function generateRecipePDF(recipe) {
+
+    const jsPDF = window.jspdf?.jsPDF;
+
+    if (!jsPDF) {
+        window.print();
+        return;
+    }
+
+    const doc = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4",
+        compress: true
+    });
+
+    const pageWidth = 297;
+    const pageHeight = 210;
+    const margin = 12;
+    const gold = [200, 162, 74];
+    const black = [17, 17, 17];
+    const muted = [79, 79, 79];
+
+    doc.setFillColor(...black);
+    doc.rect(0, 0, pageWidth, 8, "F");
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.8);
+    doc.rect(margin, margin, pageWidth - (margin * 2), pageHeight - (margin * 2));
+
+    try {
+        const imageData = await loadImageAsDataURL(
+            `../assets/images/recipes/${recipe.image}`
+        );
+
+        doc.addImage(imageData, "JPEG", margin + 4, margin + 4, 52, 39);
+    }
+    catch (error) {
+        console.warn("Recipe image was omitted from the PDF.", error);
+        doc.setFillColor(245, 245, 245);
+        doc.rect(margin + 4, margin + 4, 52, 39, "F");
+    }
+
+    const titleX = margin + 62;
+    let headerY = margin + 10;
+
+    headerY = recipePDFText(
+        doc,
+        recipe.name,
+        titleX,
+        headerY,
+        200,
+        { fontSize: 18, lineHeight: 7, color: black, fontStyle: "bold" }
+    );
+
+    headerY += 2;
+
+    recipePDFText(
+        doc,
+        recipe.description,
+        titleX,
+        headerY,
+        200,
+        { fontSize: 9, lineHeight: 4, color: muted }
+    );
+
+    const badgeY = margin + 42;
+    doc.setFillColor(245, 245, 245);
+    doc.roundedRect(titleX, badgeY, 34, 8, 3, 3, "F");
+    doc.roundedRect(titleX + 38, badgeY, 31, 8, 3, 3, "F");
+    doc.roundedRect(titleX + 73, badgeY, 24, 8, 3, 3, "F");
+    doc.setTextColor(...black);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(7.5);
+    doc.text(`${recipe.prepTime + recipe.cookTime} mins`, titleX + 17, badgeY + 5.2, { align: "center" });
+    doc.text(`Serves ${recipe.serves}`, titleX + 53.5, badgeY + 5.2, { align: "center" });
+    doc.text(recipe.difficulty, titleX + 85, badgeY + 5.2, { align: "center" });
+
+    const contentY = 68;
+    const contentBottom = pageHeight - margin - 6;
+    const ingredientsX = margin + 4;
+    const methodX = 91;
+    const detailsX = 224;
+
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.45);
+    doc.line(margin + 4, 60, pageWidth - margin - 4, 60);
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(...black);
+    doc.text("INGREDIENTS", ingredientsX, contentY);
+    doc.text("METHOD", methodX, contentY);
+    doc.text("NUTRITION", detailsX, contentY);
+
+    doc.setDrawColor(222, 222, 222);
+    doc.setLineWidth(0.25);
+    doc.line(84, contentY - 4, 84, contentBottom);
+    doc.line(217, contentY - 4, 217, contentBottom);
+
+    let ingredientsY = contentY + 7;
+
+    recipe.ingredients.forEach(item => {
+        ingredientsY = recipePDFText(
+            doc,
+            `• ${formatIngredient(item)}`,
+            ingredientsX,
+            ingredientsY,
+            62,
+            { fontSize: 8.2, lineHeight: 3.8, color: muted }
+        ) + 1.1;
+    });
+
+    let methodY = contentY + 7;
+
+    recipe.steps.forEach((step, index) => {
+        doc.setFillColor(...black);
+        doc.circle(methodX + 3, methodY - 1.2, 3, "F");
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(6.5);
+        doc.text(String(index + 1), methodX + 3, methodY + 0.9, { align: "center" });
+
+        const nextY = recipePDFText(
+            doc,
+            step,
+            methodX + 9,
+            methodY,
+            116,
+            { fontSize: 8.2, lineHeight: 3.8, color: muted }
+        );
+
+        methodY = nextY + 2;
+    });
+
+    let detailsY = contentY + 7;
+
+    [
+        ["Calories", recipe.nutrition.calories],
+        ["Protein", `${recipe.nutrition.protein} g`],
+        ["Carbs", `${recipe.nutrition.carbs} g`],
+        ["Fat", `${recipe.nutrition.fat} g`]
+    ].forEach(([label, value]) => {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8.2);
+        doc.setTextColor(...black);
+        doc.text(`${label}:`, detailsX, detailsY);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...muted);
+        doc.text(String(value), detailsX + 24, detailsY);
+        detailsY += 5.2;
+    });
+
+    detailsY += 6;
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.35);
+    doc.line(detailsX, detailsY, pageWidth - margin - 4, detailsY);
+    detailsY += 7;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(...black);
+    doc.text("CHEF'S TIP", detailsX, detailsY);
+    recipePDFText(
+        doc,
+        recipe.tip,
+        detailsX,
+        detailsY + 6,
+        54,
+        { fontSize: 8.2, lineHeight: 3.8, color: muted }
+    );
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(7);
+    doc.setTextColor(...muted);
+    doc.text("Will's Grill • Healthy food. Simple cooking.", margin + 4, pageHeight - margin - 3);
+
+    const filename = recipe.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+
+    doc.save(`${filename}-recipe.pdf`);
+
+}
+
 document.addEventListener("click", event => {
 
     const viewButton = event.target.closest(".viewRecipe");
@@ -389,7 +613,14 @@ document.addEventListener("click", event => {
     const printButton = event.target.closest(".printRecipe");
 
     if (printButton) {
-        window.print();
+        const recipe = recipes.find(recipe =>
+            recipe.id === printButton.dataset.id
+        );
+
+        if (recipe) {
+            generateRecipePDF(recipe);
+        }
+
         return;
     }
 
