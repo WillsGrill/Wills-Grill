@@ -436,7 +436,7 @@ async function generateRecipePDF(recipe) {
     const pageHeight = 210;
     const margin = 10;
     const gold = [200, 162, 74];
-    const black = [17, 17, 17];
+    const black = [0, 0, 0];
     const muted = [79, 79, 79];
     const light = [245, 245, 245];
 

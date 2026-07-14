@@ -59,7 +59,7 @@ function attachShoppingEvents() {
         const printButton = event.target.closest("#printShopping");
 
         if (printButton) {
-            window.print();
+            generateShoppingListPDF();
             return;
         }
 
@@ -543,6 +543,271 @@ function fallbackCopyShoppingList(text, updateButtonLabel, resetButtonLabel) {
 
     document.body.removeChild(tempTextArea);
     window.setTimeout(resetButtonLabel, 1500);
+
+}
+
+async function loadShoppingPDFImageAsDataURL(url) {
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Unable to load image.");
+    }
+
+    const blob = await response.blob();
+
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+
+}
+
+function openShoppingPDFPreview(doc, filename) {
+
+    const pdfURL = URL.createObjectURL(doc.output("blob"));
+    const overlay = document.createElement("div");
+    const dialog = document.createElement("section");
+    const toolbar = document.createElement("div");
+    const title = document.createElement("h2");
+    const actions = document.createElement("div");
+    const printButton = document.createElement("button");
+    const downloadButton = document.createElement("button");
+    const closeButton = document.createElement("button");
+    const frame = document.createElement("iframe");
+
+    overlay.className = "pdf-preview-overlay";
+    dialog.className = "pdf-preview-dialog";
+    dialog.setAttribute("role", "dialog");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("aria-labelledby", "shoppingPdfPreviewTitle");
+    toolbar.className = "pdf-preview-toolbar";
+    title.id = "shoppingPdfPreviewTitle";
+    title.textContent = "Your shopping-list PDF";
+    actions.className = "pdf-preview-actions";
+    printButton.className = "button";
+    printButton.textContent = "Print PDF";
+    downloadButton.className = "button button-outline";
+    downloadButton.textContent = "Download PDF";
+    closeButton.className = "pdf-preview-close";
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "Close PDF preview");
+    closeButton.textContent = "×";
+    frame.className = "pdf-preview-frame";
+    frame.title = "Shopping-list PDF preview";
+    frame.src = `${pdfURL}#view=FitH`;
+
+    const handleKeydown = event => {
+        if (event.key === "Escape" && document.body.contains(overlay)) {
+            closePreview();
+        }
+    };
+
+    const closePreview = () => {
+        frame.src = "about:blank";
+        overlay.remove();
+        document.removeEventListener("keydown", handleKeydown);
+        URL.revokeObjectURL(pdfURL);
+    };
+
+    printButton.addEventListener("click", () => {
+        frame.contentWindow?.focus();
+        frame.contentWindow?.print();
+    });
+
+    downloadButton.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = pdfURL;
+        link.download = filename;
+        link.click();
+    });
+
+    closeButton.addEventListener("click", closePreview);
+
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay) {
+            closePreview();
+        }
+    });
+
+    document.addEventListener("keydown", handleKeydown);
+
+    actions.append(printButton, downloadButton);
+    toolbar.append(title, actions, closeButton);
+    dialog.append(toolbar, frame);
+    overlay.append(dialog);
+    document.body.append(overlay);
+    closeButton.focus();
+
+}
+
+async function generateShoppingListPDF() {
+
+    const jsPDF = window.jspdf?.jsPDF;
+
+    if (!jsPDF) {
+        window.print();
+        return;
+    }
+
+    const selections = getSelectedRecipes();
+    const items = getShoppingIngredientsForRecipes(selections);
+
+    if (!items.length) {
+        return;
+    }
+
+    const doc = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4",
+        compress: true
+    });
+
+    const pageWidth = 297;
+    const pageHeight = 210;
+    const margin = 10;
+    const black = [0, 0, 0];
+    const gold = [200, 162, 74];
+    const muted = [79, 79, 79];
+    const light = [245, 245, 245];
+    const contentTop = 38;
+    const contentBottom = 194;
+    const contentHeight = contentBottom - contentTop;
+    const columnGap = 7;
+    const columns = 4;
+    const contentLeft = margin + 6;
+    const contentRight = pageWidth - margin - 6;
+    const columnWidth = (contentRight - contentLeft - (columnGap * (columns - 1))) / columns;
+
+    const categories = {};
+
+    items.forEach(item => {
+        if (!categories[item.category]) {
+            categories[item.category] = [];
+        }
+        categories[item.category].push(item);
+    });
+
+    const categoryBlocks = Object.keys(categories)
+        .sort()
+        .map(category => {
+            const entries = categories[category]
+                .map(item => `${item.quantity} ${item.unit} ${item.name}`)
+                .sort((a, b) => a.localeCompare(b));
+
+            return { category, entries };
+        });
+
+    const drawPageFrame = pageNumber => {
+        doc.setFillColor(...black);
+        doc.rect(0, 0, pageWidth, 23, "F");
+        doc.setDrawColor(...gold);
+        doc.setLineWidth(0.8);
+        doc.line(0, 23, pageWidth, 23);
+        doc.rect(margin, 30, pageWidth - (margin * 2), pageHeight - 40);
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8.5);
+        doc.setTextColor(...gold);
+        doc.text("SHOPPING LIST", pageWidth - margin, 12, { align: "right" });
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(7.5);
+        doc.setTextColor(255, 255, 255);
+        doc.text(`Page ${pageNumber}`, pageWidth - margin, 17, { align: "right" });
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(7);
+        doc.setTextColor(...muted);
+        doc.text("Will's Grill • Healthy food. Simple cooking.", 16, pageHeight - 15);
+
+        doc.setDrawColor(222, 222, 222);
+        doc.setLineWidth(0.25);
+
+        for (let columnIndex = 1; columnIndex < columns; columnIndex += 1) {
+            const separatorX = contentLeft + (columnIndex * (columnWidth + columnGap)) - (columnGap / 2);
+            doc.line(separatorX, contentTop - 2, separatorX, contentBottom);
+        }
+
+        doc.setDrawColor(...gold);
+        doc.setLineWidth(0.35);
+        doc.line(contentLeft, contentTop - 4, contentRight, contentTop - 4);
+    };
+
+    try {
+        const logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.jpg");
+        doc.addImage(logoData, "JPEG", margin, 2, 34, 19);
+    }
+    catch (error) {
+        console.warn("Will's Grill logo was omitted from the shopping-list PDF.", error);
+    }
+
+    let pageNumber = 1;
+    drawPageFrame(pageNumber);
+
+    let currentColumn = 0;
+    let currentY = contentTop;
+
+    const moveToNextColumn = () => {
+        if (currentColumn < columns - 1) {
+            currentColumn += 1;
+            currentY = contentTop;
+            return;
+        }
+
+        doc.addPage();
+        pageNumber += 1;
+        drawPageFrame(pageNumber);
+        currentColumn = 0;
+        currentY = contentTop;
+    };
+
+    categoryBlocks.forEach(block => {
+        const columnX = () => contentLeft + (currentColumn * (columnWidth + columnGap));
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8.1);
+
+        const entryLineCounts = block.entries.map(entry =>
+            doc.splitTextToSize(entry, columnWidth - 3).length
+        );
+
+        const blockHeight =
+            6 +
+            (entryLineCounts.reduce((total, count) => total + (count * 3.9), 0)) +
+            (block.entries.length * 1.6) +
+            3;
+
+        if (currentY + blockHeight > contentBottom) {
+            moveToNextColumn();
+        }
+
+        const x = columnX();
+
+        doc.setFillColor(...light);
+        doc.roundedRect(x, currentY - 4, columnWidth, 6, 1.5, 1.5, "F");
+        doc.setTextColor(...black);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8.4);
+        doc.text(block.category.toUpperCase(), x + 1.8, currentY);
+
+        currentY += 5;
+
+        block.entries.forEach(entry => {
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(8.1);
+            doc.setTextColor(...muted);
+            const lines = doc.splitTextToSize(entry, columnWidth - 3);
+            doc.text(lines, x + 1.5, currentY);
+            currentY += (lines.length * 3.9) + 1.6;
+        });
+
+        currentY += 1.8;
+    });
+
+    const filename = `shopping-list-${new Date().toISOString().slice(0, 10)}.pdf`;
+    openShoppingPDFPreview(doc, filename);
 
 }
 
