@@ -1609,7 +1609,7 @@
   },
   {
     "id": "REC021",
-    "name": "Smoky Chicken, Butter Bean & Artichoke Stew",
+    "name": "Smoky Chicken, Butter Bean & Aubergine Stew",
     "description": "With Chorizo, Red Pepper & Rosemary",
     "category": "Chicken",
     "prepTime": 15,
@@ -1627,8 +1627,8 @@
         "quantity": 400
       },
       {
-        "ingredient": "ING-V340",
-        "quantity": 200
+        "ingredient": "ING-V245",
+        "quantity": 1
       },
       {
         "ingredient": "ING-M450",
@@ -1655,6 +1655,10 @@
         "quantity": 1
       },
       {
+        "ingredient": "ING-O820",
+        "quantity": 1
+      },
+      {
         "ingredient": "ING-S110",
         "quantity": 1
       },
@@ -1671,16 +1675,16 @@
       "Cut the chicken breast into bite-sized pieces and finely dice the chorizo.",
       "Heat the extra virgin olive oil in a large casserole pan and cook the chorizo briefly until it releases its smoky oils.",
       "Add the chicken and brown it lightly on all sides.",
-      "Add the fresh onion and red pepper and cook until they begin to soften.",
+      "Add the fresh onion, red pepper and diced aubergine, then cook for 6–8 minutes until softened and lightly coloured.",
       "Stir in the Easy Garlic, smoked paprika, chopped rosemary and black pepper for one minute.",
-      "Add the chopped tomatoes, drained butter beans and artichoke hearts, then bring to a gentle simmer.",
+      "Add the chopped tomatoes and drained butter beans, then bring to a gentle simmer.",
       "Cook uncovered until the sauce has thickened and the chicken is cooked through with no pink remaining.",
-      "Check the seasoning without automatically adding salt, then serve in warm bowls."
+      "Stir through the red wine vinegar, check the seasoning without automatically adding salt, then serve in warm bowls."
     ],
     "nutrition": {
-      "calories": 420,
+      "calories": 415,
       "protein": 42,
-      "carbs": 36,
+      "carbs": 35,
       "fat": 11
     },
     "tip": "Dice the chorizo very finely so 40 g flavours the entire stew; it already supplies salt, so taste before adding any more."
