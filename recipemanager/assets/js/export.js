@@ -72,7 +72,10 @@ async function saveToRepository() {
     }
     catch (error) {
         console.error(error);
-        setStatus("Unable to save locally. Start Recipe Manager with python3 recipemanager/local_server.py, then try again.", true);
+        const message = error instanceof TypeError
+            ? "Unable to reach the local save server. Start Recipe Manager with python3 recipemanager/local_server.py and open its localhost URL."
+            : `Unable to save: ${error.message || "Unknown error."}`;
+        setStatus(message, true);
     }
     finally {
         saveRepositoryButton.disabled = false;
@@ -84,7 +87,7 @@ function validateExportData() {
     const ingredientIds = new Set();
 
     for (const ingredient of ingredients) {
-        if (!ingredient.id || !/^ING-[A-Z]-\d{3}$/.test(ingredient.id)) return "An ingredient has an invalid ID.";
+        if (!ingredient.id || !/^ING-[A-Z]\d{3}$/.test(ingredient.id)) return `Ingredient ${ingredient.id || "without an ID"} has an invalid ID.`;
         if (!ingredient.name || !ingredient.category) return `Ingredient ${ingredient.id} is missing a name or category.`;
         if (ingredientIds.has(ingredient.id)) return `Duplicate ingredient ID: ${ingredient.id}.`;
         ingredientIds.add(ingredient.id);

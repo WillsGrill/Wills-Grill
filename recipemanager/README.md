@@ -15,6 +15,8 @@ The Export page uses the local browser drafts rather than silently replacing the
 
 ## Running locally
 
+On macOS, double-click `Start Recipe Manager.command` in the repository folder. The launcher starts the local server and opens Recipe Manager in Safari. Keep its Terminal window open while editing, then press Control-C in that window when finished.
+
 From the repository root, run `python3 recipemanager/local_server.py` and open `http://127.0.0.1:8000/recipemanager/index.html`. This local-only server lets the Export page's **Save to repository** action write validated drafts to `data/recipes/recipes.json`, `data/ingredients/ingredients.json`, and any staged recipe images. Review `git diff`, then commit and push normally. GitHub Pages remains read-only.
 
 ## Browser storage
