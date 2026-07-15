@@ -14,6 +14,12 @@ const CONFIG = {
 
     ingredientsFile: `${ROOT}data/ingredients/ingredients.json`,
 
+    recipesDraftKey: "willsgrill-recipes-draft-v2",
+
+    ingredientsDraftKey: "willsgrill-ingredients-draft-v2",
+
+    editorDatabase: "willsgrill-editor-v2",
+
     recipeImages: `${ROOT}assets/images/recipes/`,
 
     saveEndpoint: `${ROOT}api/recipemanager/save`

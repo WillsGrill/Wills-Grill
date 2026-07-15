@@ -1,6 +1,5 @@
 "use strict";
 
-const downloadPackageButton = document.getElementById("downloadPackageButton");
 const packageSummary = document.getElementById("packageSummary");
 const packageStatus = document.getElementById("packageStatus");
 const refreshDataButton = document.getElementById("refreshDataButton");
@@ -9,13 +8,12 @@ const saveRepositoryButton = document.getElementById("saveRepositoryButton");
 let recipes = [];
 let ingredients = [];
 
-const RECIPES_DRAFT_KEY = "willsgrill-recipes-draft";
-const INGREDIENTS_DRAFT_KEY = "willsgrill-ingredients-draft";
+const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
+const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 const METHOD_STEP_COUNT = 8;
 const RECIPE_CATEGORIES = ["BBQ", "Chicken", "Fish", "Turkey", "Vegetarian"];
 const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 
-downloadPackageButton.addEventListener("click", downloadExportZip);
 refreshDataButton.addEventListener("click", discardLocalChanges);
 saveRepositoryButton.addEventListener("click", saveToRepository);
 initialiseExportPage();
@@ -36,7 +34,6 @@ async function initialiseExportPage() {
 
         const changedImages = await getChangedRecipeImages(recipes);
         packageSummary.textContent = `${recipes.length} recipes, ${ingredients.length} ingredients, and ${changedImages.length} changed image${changedImages.length === 1 ? "" : "s"}.`;
-        downloadPackageButton.disabled = false;
         saveRepositoryButton.disabled = false;
     }
     catch (error) {
@@ -79,50 +76,6 @@ async function saveToRepository() {
     }
     finally {
         saveRepositoryButton.disabled = false;
-    }
-}
-
-async function downloadExportZip() {
-    if (typeof JSZip === "undefined") {
-        setStatus("The ZIP library could not be loaded. Check your internet connection and try again.", true);
-        return;
-    }
-
-    downloadPackageButton.disabled = true;
-    setStatus("Preparing ZIP...");
-
-    try {
-        const validationError = validateExportData();
-        if (validationError) throw new Error(validationError);
-
-        const zip = new JSZip();
-        zip.file("data/ingredients/ingredients.json", JSON.stringify(ingredients, null, 2));
-        zip.file("data/recipes/recipes.json", JSON.stringify(recipes, null, 2));
-
-        const changedImages = await getChangedRecipeImages(recipes);
-
-        for (const changedImage of changedImages) {
-            zip.file(`assets/images/recipes/${changedImage.filename}`, changedImage.blob);
-        }
-
-        const blob = await zip.generateAsync({
-            type: "blob",
-            compression: "DEFLATE",
-            compressionOptions: { level: 6 }
-        });
-
-        downloadBlob(blob, `willsgrill-export-${getDateStamp()}.zip`);
-        const imageMessage = changedImages.length
-            ? ` Included ${changedImages.length} changed image${changedImages.length === 1 ? "" : "s"}.`
-            : " No changed images were included.";
-        setStatus(`ZIP downloaded.${imageMessage}`);
-    }
-    catch (error) {
-        console.error(error);
-        setStatus("Unable to create the export ZIP.", true);
-    }
-    finally {
-        downloadPackageButton.disabled = false;
     }
 }
 
@@ -172,7 +125,7 @@ function clearChangedRecipeImages() {
             return;
         }
 
-        const request = indexedDB.open("willsgrill-editor", 1);
+        const request = indexedDB.open(CONFIG.editorDatabase, 1);
         request.onsuccess = () => {
             const database = request.result;
             if (!database.objectStoreNames.contains("changed-images")) {
@@ -209,7 +162,7 @@ function getChangedRecipeImages(recipeList) {
             return;
         }
 
-        const request = indexedDB.open("willsgrill-editor", 1);
+        const request = indexedDB.open(CONFIG.editorDatabase, 1);
 
         request.onupgradeneeded = () => {
             request.result.createObjectStore("changed-images", { keyPath: "filename" });
@@ -249,17 +202,6 @@ function readDraft(key, fallback) {
     }
 }
 
-function downloadBlob(blob, filename) {
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = filename;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    URL.revokeObjectURL(url);
-}
-
 function blobToBase64(blob) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -267,10 +209,6 @@ function blobToBase64(blob) {
         reader.onerror = () => reject(new Error("Unable to read a changed recipe image."));
         reader.readAsDataURL(blob);
     });
-}
-
-function getDateStamp() {
-    return new Date().toISOString().slice(0, 10);
 }
 
 function setStatus(message, isError = false) {

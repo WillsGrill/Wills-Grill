@@ -39,7 +39,7 @@
         <header class="page-header">
             <div>
                 <h2>Export</h2>
-                <p>Download the current website files as a ZIP.</p>
+                <p>Validate and save the current website data to the repository.</p>
             </div>
         </header>
 
@@ -52,20 +52,9 @@
                 <div class="package-actions">
                     <button id="refreshDataButton" type="button" class="secondary-button">Discard local changes</button>
                     <button id="saveRepositoryButton" type="button" class="primary-button" disabled>Save to repository</button>
-                    <button id="downloadPackageButton" type="button" class="primary-button" disabled>Download ZIP</button>
                 </div>
             </div>
             <p id="packageStatus" class="editor-feedback" aria-live="polite"></p>
-        </section>
-
-        <section class="card package-card">
-            <h3>ZIP structure</h3>
-            <p class="package-description">The downloaded ZIP matches the website repository structure exactly.</p>
-            <ul class="package-file-list">
-                <li>data/ingredients/ingredients.json</li>
-                <li>data/recipes/recipes.json</li>
-                <li>assets/images/recipes/</li>
-            </ul>
         </section>
 
     </main>
@@ -73,7 +62,6 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="../assets/js/export.js"></script>
 
 </body>

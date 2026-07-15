@@ -943,26 +943,6 @@ input[type="file"]::file-selector-button:hover{
 
 }
 
-.package-description{
-
-    max-width:720px;
-    margin-bottom:20px;
-    color:var(--muted);
-    line-height:1.5;
-
-}
-
-.package-file-list{
-
-    display:grid;
-    gap:10px;
-    padding-left:20px;
-    color:var(--gold);
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:.9rem;
-
-}
-
 .package-summary{
 
     display:flex;

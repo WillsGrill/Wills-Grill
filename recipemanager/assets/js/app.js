@@ -32,8 +32,8 @@ async function loadDashboardStats() {
             throw new Error("Website data must contain recipe and ingredient arrays.");
         }
 
-        recipes = readDraft("willsgrill-recipes-draft", recipes);
-        ingredients = readDraft("willsgrill-ingredients-draft", ingredients);
+        recipes = readDraft(CONFIG.recipesDraftKey, recipes);
+        ingredients = readDraft(CONFIG.ingredientsDraftKey, ingredients);
 
         updateStat(
 

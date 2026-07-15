@@ -8,7 +8,7 @@ let ingredientSearchText = "";
 let ingredientCategoryFilter = "";
 let ingredientSortKey = "name-asc";
 
-const INGREDIENTS_DRAFT_KEY = "willsgrill-ingredients-draft";
+const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 
 document.addEventListener("DOMContentLoaded", initialiseIngredientsPage);
 
@@ -78,7 +78,7 @@ async function loadIngredientData() {
         }
 
         ingredients = readDraft(INGREDIENTS_DRAFT_KEY, ingredientData);
-        recipes = readDraft("willsgrill-recipes-draft", recipeData);
+        recipes = readDraft(CONFIG.recipesDraftKey, recipeData);
         populateIngredientCategoryFilter();
         renderIngredientTable();
 

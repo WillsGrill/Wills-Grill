@@ -10,8 +10,8 @@ let recipeCategoryFilter = "";
 let recipeSortKey = "name-asc";
 let pendingRecipeImage = null;
 
-const RECIPES_DRAFT_KEY = "willsgrill-recipes-draft";
-const INGREDIENTS_DRAFT_KEY = "willsgrill-ingredients-draft";
+const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
+const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 const METHOD_STEP_COUNT = 8;
 const RECIPE_CATEGORIES = ["BBQ", "Chicken", "Fish", "Turkey", "Vegetarian"];
 const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
@@ -29,7 +29,6 @@ function initialiseRecipesPage() {
     const searchInput = document.getElementById("recipeSearch");
     const newRecipeButton = document.getElementById("newRecipeButton");
     const closeEditorButton = document.getElementById("closeEditor");
-    const exportRecipesButton = document.getElementById("exportRecipesButton");
     const categoryFilter = document.getElementById("recipeCategoryFilter");
     const sortSelect = document.getElementById("recipeSort");
 
@@ -60,10 +59,6 @@ function initialiseRecipesPage() {
 
     if (closeEditorButton) {
         closeEditorButton.addEventListener("click", closeEditor);
-    }
-
-    if (exportRecipesButton) {
-        exportRecipesButton.addEventListener("click", exportCurrentRecipes);
     }
 
     document.querySelectorAll(".tab").forEach((tab) => {
@@ -121,43 +116,6 @@ async function loadJSON(path) {
 
     return response.json();
 
-}
-
-function exportCurrentRecipes() {
-    const validationError = validateRecipeCollection(recipes);
-
-    if (validationError) {
-        alert(`Recipes cannot be exported: ${validationError}`);
-        return;
-    }
-
-    downloadRecipeFile(recipes);
-}
-
-function validateRecipeCollection(recipeList) {
-    const recipeIds = new Set();
-
-    for (const recipe of recipeList) {
-        if (!recipe.id) return "A recipe is missing an ID.";
-        if (recipeIds.has(recipe.id)) return `Duplicate recipe ID: ${recipe.id}.`;
-        recipeIds.add(recipe.id);
-
-        if (recipe.image && !/^rec\d{3}\.jpg$/i.test(recipe.image)) {
-            return `Invalid image filename on ${recipe.id}: ${recipe.image}.`;
-        }
-
-        if (!Array.isArray(recipe.steps) || recipe.steps.length !== METHOD_STEP_COUNT || recipe.steps.some((step) => !String(step).trim())) {
-            return `${recipe.id} needs exactly ${METHOD_STEP_COUNT} completed method steps.`;
-        }
-
-        for (const row of recipe.ingredients || []) {
-            if (!ingredients.some((ingredient) => ingredient.id === row.ingredient)) {
-                return `${recipe.id} references missing ingredient ${row.ingredient}.`;
-            }
-        }
-    }
-
-    return "";
 }
 
 function renderRecipeTable() {
@@ -483,7 +441,7 @@ function renderEditor() {
                     <label class="full-width">
                         Upload Image
                         <input id="recipeImageFile" type="file" accept="image/*">
-                        <span class="field-help">The image will be converted to a web-friendly JPEG and named automatically, for example rec001.jpg.</span>
+                        <span class="field-help">The image will be converted to a web-friendly JPEG, named automatically, and staged for the repository upload workflow.</span>
                     </label>
                     <div id="recipeImagePreview" class="recipe-image-upload-preview ${currentRecipe.image ? "has-image" : ""}">
                         ${currentRecipe.image ? `<span>Current image: ${escapeHtml(currentRecipe.image)}</span>` : "Select an image to convert it."}
@@ -494,7 +452,6 @@ function renderEditor() {
             <div class="editor-actions">
                 <button type="submit" class="primary-button">Save</button>
                 <button type="button" class="secondary-button" id="duplicateRecipeButton">Duplicate</button>
-                <button type="button" class="secondary-button" id="downloadRecipeJson">Download JSON</button>
             </div>
 
             <p id="editorFeedback" class="editor-feedback"></p>
@@ -507,23 +464,7 @@ function renderEditor() {
         form.addEventListener("submit", handleRecipeSave);
     }
 
-    const downloadButton = document.getElementById("downloadRecipeJson");
     const duplicateButton = document.getElementById("duplicateRecipeButton");
-
-    if (downloadButton) {
-        downloadButton.addEventListener("click", () => {
-            const recipeToDownload = collectRecipeFromForm();
-            if (!recipeToDownload) return;
-
-            const validationError = validateRecipe(recipeToDownload);
-            if (validationError) {
-                showEditorFeedback(validationError, true);
-                return;
-            }
-
-            downloadRecipeFile(recipeToDownload);
-        });
-    }
 
     if (duplicateButton) {
         duplicateButton.addEventListener("click", duplicateCurrentRecipe);
@@ -604,10 +545,9 @@ async function handleRecipeImageSelection(event) {
         if (currentRecipe) currentRecipe.image = filename;
 
         pendingRecipeImage = { filename, blob: jpegBlob };
-        downloadRecipeImage(jpegBlob, filename);
 
         if (preview) {
-            preview.innerHTML = `<strong>${escapeHtml(filename)}</strong><span>Converted JPEG downloaded.</span>`;
+            preview.innerHTML = `<strong>${escapeHtml(filename)}</strong><span>Converted JPEG ready to stage when the recipe is saved.</span>`;
             preview.classList.add("has-image");
         }
     }
@@ -668,17 +608,6 @@ function convertRecipeImageToJpeg(image) {
     });
 }
 
-function downloadRecipeImage(blob, filename) {
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-}
-
 function saveChangedRecipeImage(filename, blob) {
     return new Promise((resolve, reject) => {
         if (!window.indexedDB) {
@@ -686,7 +615,7 @@ function saveChangedRecipeImage(filename, blob) {
             return;
         }
 
-        const request = indexedDB.open("willsgrill-editor", 1);
+        const request = indexedDB.open(CONFIG.editorDatabase, 1);
 
         request.onupgradeneeded = () => {
             request.result.createObjectStore("changed-images", { keyPath: "filename" });
@@ -713,7 +642,7 @@ function saveChangedRecipeImage(filename, blob) {
 function removeChangedRecipeImage(filename) {
     if (!filename || !window.indexedDB) return;
 
-    const request = indexedDB.open("willsgrill-editor", 1);
+    const request = indexedDB.open(CONFIG.editorDatabase, 1);
     request.onsuccess = () => {
         const database = request.result;
         const transaction = database.transaction("changed-images", "readwrite");
@@ -938,7 +867,7 @@ async function handleRecipeSave(event) {
         }
         catch (error) {
             console.error(error);
-            showEditorFeedback("Recipe saved, but the converted image could not be staged for ZIP export.", true);
+            showEditorFeedback("Recipe saved, but the converted image could not be staged for repository upload.", true);
             currentRecipe = recipe;
             renderRecipeTable();
             return;
@@ -947,8 +876,7 @@ async function handleRecipeSave(event) {
     pendingRecipeImage = null;
     currentRecipe = recipe;
     renderRecipeTable();
-    showEditorFeedback("Recipe saved. Downloading updated JSON.", false);
-    downloadRecipeFile(recipes);
+    showEditorFeedback("Recipe saved and ready for repository upload.", false);
 
 }
 
@@ -1128,20 +1056,6 @@ function showEditorFeedback(message, isError) {
     if (!feedback) return;
     feedback.textContent = message;
     feedback.classList.toggle("error", Boolean(isError));
-
-}
-
-function downloadRecipeFile(data) {
-
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "recipes.json";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(link.href);
 
 }
 

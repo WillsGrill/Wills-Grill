@@ -595,17 +595,17 @@
   },
   {
     "id": "REC015",
-    "name": "Lemon Garlic Prawn Orzo",
-    "description": "With Cherry Tomatoes & Fresh Parsley",
+    "name": "Lemon Garlic Prawn Rice",
+    "description": "With Cherry Tomatoes, Spinach & Fresh Parsley",
     "category": "Fish",
     "prepTime": 15,
-    "cookTime": 15,
+    "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
     "image": "rec015.jpg",
     "ingredients": [
       { "ingredient": "ING-F325", "quantity": 250 },
-      { "ingredient": "ING-G610", "quantity": 180 },
+      { "ingredient": "ING-G620", "quantity": 180 },
       { "ingredient": "ING-V201", "quantity": 160 },
       { "ingredient": "ING-V220", "quantity": 2 },
       { "ingredient": "ING-H005", "quantity": 5 },
@@ -616,22 +616,22 @@
       { "ingredient": "ING-S105", "quantity": 1 }
     ],
     "steps": [
-      "Cook the orzo in salted water until tender.",
-      "Heat olive oil in a pan and soften the garlic for a minute.",
-      "Add the cherry tomatoes and cook until they begin to burst.",
-      "Stir in the prawns and cook until they turn pink.",
-      "Add the baby spinach and let it wilt into the pan.",
-      "Drain the orzo and toss it through the prawn mixture.",
-      "Finish with lemon juice and chopped parsley.",
-      "Serve immediately while the orzo is still glossy."
+      "Rinse the basmati rice under cold water until the water runs mostly clear.",
+      "Cook the rice in salted water until tender, then drain if necessary and keep covered.",
+      "Heat the olive oil in a large frying pan and soften the garlic for a minute.",
+      "Add the cherry tomatoes and cook until they soften and begin to burst.",
+      "Stir in the prawns and cook until pink, opaque and cooked through.",
+      "Add the baby spinach and let it wilt into the tomato and prawn mixture.",
+      "Fold in the cooked rice, lemon juice and chopped parsley, then season with salt and pepper.",
+      "Serve immediately with an extra squeeze of lemon if desired."
     ],
     "nutrition": {
-      "calories": 480,
-      "protein": 34,
-      "carbs": 54,
-      "fat": 14
+      "calories": 475,
+      "protein": 33,
+      "carbs": 57,
+      "fat": 12
     },
-    "tip": "Keep the heat moderate once the prawns go in so they stay tender."
+    "tip": "Keep the heat moderate once the prawns go in, and fold in the rice gently so the grains stay separate."
   },
   {
     "id": "REC016",
@@ -761,15 +761,16 @@
   },
   {
     "id": "REC019",
-    "name": "Baked Feta Pasta",
+    "name": "Chicken Baked Feta Pasta",
     "description": "With Roasted Cherry Tomatoes & Fresh Basil",
-    "category": "Vegetarian",
-    "prepTime": 10,
-    "cookTime": 25,
+    "category": "Chicken",
+    "prepTime": 15,
+    "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
     "image": "rec019.jpg",
     "ingredients": [
+      { "ingredient": "ING-M401", "quantity": 250 },
       { "ingredient": "ING-D505", "quantity": 200 },
       { "ingredient": "ING-G605", "quantity": 180 },
       { "ingredient": "ING-V201", "quantity": 250 },
@@ -781,34 +782,35 @@
       { "ingredient": "ING-S101", "quantity": 1 }
     ],
     "steps": [
-      "Heat the oven and place the cherry tomatoes, onion and garlic in a baking dish.",
-      "Drizzle with olive oil and season with salt and pepper.",
-      "Nestle the block of feta into the centre of the dish.",
-      "Bake until the tomatoes are soft and the feta is melting.",
-      "Cook the penne while the tomatoes roast.",
-      "Mash the feta and tomatoes together to form a sauce.",
-      "Toss the pasta through the sauce and add the basil.",
-      "Serve immediately."
+      "Heat the oven and cut the chicken breast into bite-sized pieces.",
+      "Place the cherry tomatoes, onion and garlic in a baking dish, drizzle with olive oil and season with salt and pepper.",
+      "Nestle the block of feta into the centre, arrange the chicken around it and turn the chicken in the seasoned oil.",
+      "Bake until the tomatoes are soft, the feta is melting and the chicken is cooked through with no pink remaining.",
+      "Cook the penne until al dente while the chicken and tomatoes roast, reserving a little pasta water.",
+      "Mash the feta and tomatoes together, then stir in enough pasta water to make a silky sauce.",
+      "Toss the penne, cooked chicken and fresh basil through the feta sauce.",
+      "Check the seasoning and serve immediately."
     ],
     "nutrition": {
-      "calories": 690,
-      "protein": 27,
+      "calories": 825,
+      "protein": 58,
       "carbs": 66,
-      "fat": 34
+      "fat": 38
     },
-    "tip": "Reserve a little pasta water so the feta sauce turns silky rather than dry."
+    "tip": "Cut the chicken into evenly sized pieces so it cooks through at the same time as the tomatoes and feta."
   },
   {
     "id": "REC020",
-    "name": "Spinach & Chickpea Curry",
+    "name": "Chicken, Spinach & Chickpea Curry",
     "description": "With Basmati Rice & Fresh Coriander",
-    "category": "Vegetarian",
-    "prepTime": 15,
-    "cookTime": 25,
+    "category": "Chicken",
+    "prepTime": 20,
+    "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
     "image": "rec020.jpg",
     "ingredients": [
+      { "ingredient": "ING-M401", "quantity": 500 },
       { "ingredient": "ING-B701", "quantity": 250 },
       { "ingredient": "ING-V255", "quantity": 120 },
       { "ingredient": "ING-V210", "quantity": 1 },
@@ -824,20 +826,20 @@
     ],
     "steps": [
       "Cook the basmati rice and keep it covered while you make the curry.",
-      "Heat the olive oil and soften the onion in a large pan.",
-      "Add the garlic, turmeric, cumin, ground coriander and chilli flakes.",
-      "Stir in the chickpeas and chopped tomatoes.",
-      "Simmer until the sauce thickens slightly.",
-      "Add the baby spinach and let it wilt into the curry.",
-      "Check the seasoning and stir through most of the fresh coriander.",
+      "Cut the chicken breast into bite-sized pieces, then heat the olive oil in a large pan.",
+      "Brown the chicken on all sides, add the onion and cook until softened.",
+      "Add the garlic, turmeric, cumin, ground coriander and chilli flakes, then stir for one minute.",
+      "Stir in the chickpeas and chopped tomatoes and bring the sauce to a gentle simmer.",
+      "Cook until the sauce thickens and the chicken is cooked through with no pink remaining.",
+      "Add the baby spinach, let it wilt, then season and stir through most of the fresh coriander.",
       "Serve the curry over the rice with the remaining coriander on top."
     ],
     "nutrition": {
-      "calories": 490,
-      "protein": 17,
+      "calories": 630,
+      "protein": 47,
       "carbs": 70,
-      "fat": 14
+      "fat": 18
     },
-    "tip": "If the curry seems too thick, loosen it with a splash of water before serving."
+    "tip": "Keep the curry at a gentle simmer so the chicken stays tender; loosen the sauce with a splash of water if needed."
   }
 ]
