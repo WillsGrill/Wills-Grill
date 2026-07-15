@@ -706,21 +706,6 @@ async function generateShoppingListPDF() {
         compress: true
     });
 
-    const pageWidth = 297;
-    const pageHeight = 210;
-    const margin = 10;
-    const black = [0, 0, 0];
-    const gold = [200, 162, 74];
-    const muted = [79, 79, 79];
-    const light = [245, 245, 245];
-    const contentTop = 47;
-    const contentBottom = 186;
-    const columnGap = 7;
-    const columns = 4;
-    const contentLeft = margin + 6;
-    const contentRight = pageWidth - margin - 6;
-    const columnWidth = (contentRight - contentLeft - (columnGap * (columns - 1))) / columns;
-
     const categories = {};
 
     items.forEach(item => {
@@ -740,155 +725,18 @@ async function generateShoppingListPDF() {
             return { category, entries };
         });
 
-    let logoData = null;
+    const assets = { logoData: null };
 
     try {
-        logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.jpg");
+        assets.logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.jpg");
     }
     catch (error) {
         console.warn("Will's Grill logo was omitted from the shopping-list PDF.", error);
     }
 
-    const drawPageFrame = pageNumber => {
-        doc.setFillColor(...black);
-        doc.rect(0, 0, pageWidth, 23, "F");
-        doc.setDrawColor(...gold);
-        doc.setLineWidth(0.8);
-        doc.line(0, 23, pageWidth, 23);
-        doc.rect(margin, 30, pageWidth - (margin * 2), pageHeight - 40);
-
-        if (logoData) {
-            doc.addImage(logoData, "JPEG", margin, 2, 34, 19);
-        }
-
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(8.5);
-        doc.setTextColor(...gold);
-        doc.text("SHOPPING LIST", pageWidth - margin, 12, { align: "right" });
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(7.5);
-        doc.setTextColor(255, 255, 255);
-        doc.text("Healthy food. Simple cooking.", pageWidth - margin, 17, { align: "right" });
-
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(8.4);
-        doc.setTextColor(...muted);
-        doc.text("Will's Grill • Healthy food. Simple cooking.", 16, 192);
-
-        doc.setDrawColor(222, 222, 222);
-        doc.setLineWidth(0.25);
-
-        for (let columnIndex = 1; columnIndex < columns; columnIndex += 1) {
-            const separatorX = contentLeft + (columnIndex * (columnWidth + columnGap)) - (columnGap / 2);
-            doc.line(separatorX, contentTop - 2, separatorX, contentBottom);
-        }
-
-        doc.setDrawColor(...gold);
-        doc.setLineWidth(0.35);
-        doc.line(contentLeft, contentTop - 8, contentRight, contentTop - 8);
-    };
-
-    let pageNumber = 1;
-    drawPageFrame(pageNumber);
-
-    let currentColumn = 0;
-    let currentY = contentTop;
-
-    const moveToNextColumn = () => {
-        if (currentColumn < columns - 1) {
-            currentColumn += 1;
-            currentY = contentTop;
-            return;
-        }
-
-        doc.addPage();
-        pageNumber += 1;
-        drawPageFrame(pageNumber);
-        currentColumn = 0;
-        currentY = contentTop;
-    };
-
-    const categoryHeadingHeight = 6;
-    const itemSpacing = 1.8;
-    const checkboxSize = 2.7;
-    const checkboxTextGap = 1.8;
-    const entryXPadding = 1.6;
-    const textWidth = columnWidth - (entryXPadding * 2) - checkboxSize - checkboxTextGap;
-
-    const drawCategoryHeading = category => {
-        const x = contentLeft + (currentColumn * (columnWidth + columnGap));
-
-        doc.setFillColor(...light);
-        doc.roundedRect(x, currentY - 4, columnWidth, categoryHeadingHeight, 1.5, 1.5, "F");
-        doc.setTextColor(...black);
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(8.4);
-        doc.text(category.toUpperCase(), x + 1.8, currentY);
-        currentY += 5;
-    };
-
-    const ensureVerticalSpace = neededHeight => {
-        if (currentY + neededHeight <= contentBottom) {
-            return;
-        }
-
-        moveToNextColumn();
-    };
-
-    categoryBlocks.forEach(block => {
-        const firstEntry = block.entries[0] || "";
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(8.1);
-        const firstLines = doc.splitTextToSize(firstEntry, textWidth);
-        const minimumBlockHeight =
-            categoryHeadingHeight +
-            (Math.max(1, firstLines.length) * 3.9) +
-            itemSpacing +
-            2;
-
-        ensureVerticalSpace(minimumBlockHeight);
-        drawCategoryHeading(block.category);
-
-        block.entries.forEach((entry, entryIndex) => {
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(8.1);
-            const lines = doc.splitTextToSize(entry, textWidth);
-            const entryHeight = (lines.length * 3.9) + itemSpacing;
-
-            if (currentY + entryHeight > contentBottom) {
-                moveToNextColumn();
-                drawCategoryHeading(block.category);
-            }
-
-            const x = contentLeft + (currentColumn * (columnWidth + columnGap));
-            const checkboxX = x + entryXPadding;
-            const checkboxY = currentY - 2.3;
-
-            doc.setDrawColor(155, 155, 155);
-            doc.setLineWidth(0.25);
-            doc.rect(checkboxX, checkboxY, checkboxSize, checkboxSize);
-
-            doc.setTextColor(...muted);
-            doc.text(lines, checkboxX + checkboxSize + checkboxTextGap, currentY);
-            currentY += entryHeight;
-
-            if (entryIndex === block.entries.length - 1) {
-                currentY += 2;
-            }
-        });
-    });
-
-    const totalPages = doc.getNumberOfPages();
-
-    for (let pageIndex = 1; pageIndex <= totalPages; pageIndex += 1) {
-        doc.setPage(pageIndex);
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(8.4);
-        doc.setTextColor(...muted);
-        doc.text(`Page ${pageIndex} of ${totalPages}`, pageWidth / 2, 192, {
-            align: "center"
-        });
-    }
+    WillsGrillPDF.setDocumentProperties(doc, "Shopping List | Will's Grill", "Combined recipe shopping list");
+    WillsGrillPDF.drawShoppingPages(doc, categoryBlocks, { assets, useCurrentPage: true });
+    WillsGrillPDF.addPageNumbers(doc);
 
     const filename = `shopping-list-${new Date().toISOString().slice(0, 10)}.pdf`;
     openShoppingPDFPreview(doc, filename);

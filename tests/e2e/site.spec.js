@@ -30,6 +30,42 @@ test("recipe links, filters, and empty actions behave clearly", async ({ page })
   await expect(page.getByRole("button", { name: "Print Shopping List" })).toBeDisabled();
 });
 
+test("all recipe and shopping PDF layouts render without overflow errors", async ({ page }) => {
+  await page.goto("/pages/recipe.html?id=REC025");
+  await expect(page.locator("#recipePage h1")).toBeVisible();
+  const result = await page.evaluate(() => {
+    const recipePageCounts = recipes.map(recipe => {
+      const doc = new window.jspdf.jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const pages = WillsGrillPDF.drawRecipePages(doc, recipe, {
+        assets: {},
+        imageData: null,
+        ingredientLines: recipe.ingredients.map(formatIngredient),
+        serves: recipe.serves
+      });
+      return { id: recipe.id, pages: pages.lastPage - pages.firstPage + 1 };
+    });
+
+    const shoppingDoc = new window.jspdf.jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    const grouped = ingredients.reduce((result, ingredient) => {
+      (result[ingredient.category] ||= []).push(ingredient);
+      return result;
+    }, {});
+    const blocks = Object.entries(grouped).map(([category, items]) => ({
+      category,
+      entries: items.map(item => formatIngredientRecord(item, 1))
+    }));
+    WillsGrillPDF.drawShoppingPages(shoppingDoc, blocks, { assets: {}, useCurrentPage: true });
+
+    return {
+      recipePageCounts,
+      shoppingPages: shoppingDoc.getNumberOfPages()
+    };
+  });
+  expect(result.recipePageCounts).toHaveLength(25);
+  expect(result.recipePageCounts.every(item => item.pages >= 1 && item.pages <= 2)).toBeTruthy();
+  expect(result.shoppingPages).toBeGreaterThan(1);
+});
+
 test("mobile menu exposes every main destination", async ({ page }) => {
   const viewport = page.viewportSize();
   test.skip(!viewport || viewport.width >= 700, "Mobile navigation check");
