@@ -18,6 +18,10 @@ const CONFIG = {
 
     ingredientsDraftKey: "willsgrill-ingredients-draft-v2",
 
+    recipePreviewKey: "willsgrill-recipe-preview-v1",
+
+    recipePreviewPage: `${ROOT}pages/recipe.html`,
+
     editorDatabase: "willsgrill-editor-v2",
 
     recipeImages: `${ROOT}assets/images/recipes/`,

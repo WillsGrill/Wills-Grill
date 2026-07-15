@@ -27,6 +27,13 @@ async function initialiseRecipes() {
 
         recipes = await response.json();
 
+        const preview = getRecipeManagerPreview();
+        if (preview?.recipe?.id) {
+            const existingIndex = recipes.findIndex(recipe => recipe.id === preview.recipe.id);
+            if (existingIndex >= 0) recipes[existingIndex] = preview.recipe;
+            else recipes.push(preview.recipe);
+        }
+
     }
 
     catch (error) {
@@ -51,6 +58,19 @@ async function initialiseRecipes() {
 
     }
 
+}
+
+function getRecipeManagerPreview() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("preview") !== "recipemanager") return null;
+
+    try {
+        return JSON.parse(localStorage.getItem("willsgrill-recipe-preview-v1"));
+    }
+    catch (error) {
+        console.error("Unable to load the RecipeManager preview.", error);
+        return null;
+    }
 }
 
 /* ==================================================

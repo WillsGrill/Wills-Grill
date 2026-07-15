@@ -37,6 +37,17 @@ async function loadIngredients() {
 
         ingredients = await response.json();
 
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("preview") === "recipemanager") {
+            try {
+                const preview = JSON.parse(localStorage.getItem("willsgrill-recipe-preview-v1"));
+                if (Array.isArray(preview?.ingredients)) ingredients = preview.ingredients;
+            }
+            catch (error) {
+                console.error("Unable to load preview ingredients.", error);
+            }
+        }
+
     }
 
     catch (error) {

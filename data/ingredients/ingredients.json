@@ -476,13 +476,6 @@
     "pantry": true
   },
   {
-    "id": "ING-G610",
-    "name": "Orzo",
-    "category": "Grains & Pasta",
-    "unit": "g",
-    "pantry": true
-  },
-  {
     "id": "ING-G615",
     "name": "Couscous",
     "category": "Grains & Pasta",
@@ -889,22 +882,8 @@
     "pantry": true
   },
   {
-    "id": "ING-S200",
-    "name": "Saffron",
-    "category": "Spices",
-    "unit": "pinch",
-    "pantry": true
-  },
-  {
     "id": "ING-S205",
     "name": "Sumac",
-    "category": "Spices",
-    "unit": "tsp",
-    "pantry": true
-  },
-  {
-    "id": "ING-S210",
-    "name": "Za'atar",
     "category": "Spices",
     "unit": "tsp",
     "pantry": true
@@ -926,13 +905,6 @@
   {
     "id": "ING-S225",
     "name": "Caraway Seeds",
-    "category": "Spices",
-    "unit": "tsp",
-    "pantry": true
-  },
-  {
-    "id": "ING-S230",
-    "name": "Aleppo Pepper",
     "category": "Spices",
     "unit": "tsp",
     "pantry": true
@@ -1279,13 +1251,6 @@
     "category": "Beans & Pulses",
     "unit": "g",
     "pantry": false
-  },
-  {
-    "id": "ING-O840",
-    "name": "Sherry Vinegar",
-    "category": "Oils & Vinegars",
-    "unit": "tbsp",
-    "pantry": true
   },
   {
     "id": "ING-O845",

@@ -29,6 +29,7 @@ function initialiseRecipesPage() {
     const searchInput = document.getElementById("recipeSearch");
     const newRecipeButton = document.getElementById("newRecipeButton");
     const closeEditorButton = document.getElementById("closeEditor");
+    const previewRecipeButton = document.getElementById("previewRecipeButton");
     const categoryFilter = document.getElementById("recipeCategoryFilter");
     const sortSelect = document.getElementById("recipeSort");
 
@@ -59,6 +60,10 @@ function initialiseRecipesPage() {
 
     if (closeEditorButton) {
         closeEditorButton.addEventListener("click", closeEditor);
+    }
+
+    if (previewRecipeButton) {
+        previewRecipeButton.addEventListener("click", previewCurrentRecipe);
     }
 
     document.querySelectorAll(".tab").forEach((tab) => {
@@ -163,6 +168,7 @@ function renderRecipeTable() {
             <td>${escapeHtml(recipe.image || "")}</td>
             <td class="edit-action">
                 <div class="table-actions">
+                    <button type="button" class="secondary-button table-action-button" data-action="preview-recipe" data-recipe-id="${escapeHtml(recipe.id || "")}">Preview</button>
                     <button type="button" class="secondary-button table-action-button" data-action="edit-recipe" data-recipe-id="${escapeHtml(recipe.id || "")}">Edit</button>
                     <button type="button" class="danger-button table-action-button" data-action="delete-recipe" data-recipe-id="${escapeHtml(recipe.id || "")}">Delete</button>
                 </div>
@@ -172,6 +178,10 @@ function renderRecipeTable() {
 
     tableBody.querySelectorAll("[data-action='edit-recipe']").forEach((button) => {
         button.addEventListener("click", () => openEditor(findRecipeById(button.getAttribute("data-recipe-id"))));
+    });
+
+    tableBody.querySelectorAll("[data-action='preview-recipe']").forEach((button) => {
+        button.addEventListener("click", () => previewRecipe(findRecipeById(button.getAttribute("data-recipe-id"))));
     });
 
     tableBody.querySelectorAll("[data-action='delete-recipe']").forEach((button) => {
@@ -292,6 +302,9 @@ function openEditor(recipe) {
         editorPanel.classList.add("open");
     }
 
+    const previewButton = document.getElementById("previewRecipeButton");
+    if (previewButton) previewButton.disabled = false;
+
     updateActiveTab();
 }
 
@@ -308,6 +321,22 @@ function closeEditor() {
     activeEditorTab = "general";
     pendingRecipeImage = null;
 
+    const previewButton = document.getElementById("previewRecipeButton");
+    if (previewButton) previewButton.disabled = true;
+
+}
+
+function previewCurrentRecipe() {
+    const recipe = collectRecipeFromForm();
+    if (recipe) previewRecipe(recipe);
+}
+
+function previewRecipe(recipe) {
+    if (!recipe?.id) return;
+
+    localStorage.setItem(CONFIG.recipePreviewKey, JSON.stringify({ recipe, ingredients }));
+    const url = `${CONFIG.recipePreviewPage}?id=${encodeURIComponent(recipe.id)}&preview=recipemanager`;
+    window.open(url, "_blank");
 }
 
 function duplicateCurrentRecipe() {
@@ -454,6 +483,15 @@ function renderEditor() {
                 <button type="button" class="secondary-button" id="duplicateRecipeButton">Duplicate</button>
             </div>
 
+            <div id="currentRecipeImage" class="recipe-current-image editor-section ${activeEditorTab === "image" ? "visible" : "hidden"}" data-tab="image">
+                <h3>Current Image</h3>
+                ${currentRecipe.image ? `
+                    <img src="${escapeHtml(`${CONFIG.recipeImages}${encodeURIComponent(currentRecipe.image)}`)}"
+                         alt="Current image for ${escapeHtml(currentRecipe.name || "this recipe")}">
+                    <span>${escapeHtml(currentRecipe.image)}</span>
+                ` : '<p class="field-help">No image has been added to this recipe.</p>'}
+            </div>
+
             <p id="editorFeedback" class="editor-feedback"></p>
         </form>
     `;
@@ -545,6 +583,7 @@ async function handleRecipeImageSelection(event) {
         if (currentRecipe) currentRecipe.image = filename;
 
         pendingRecipeImage = { filename, blob: jpegBlob };
+        displayCurrentRecipeImage(jpegBlob, filename);
 
         if (preview) {
             preview.innerHTML = `<strong>${escapeHtml(filename)}</strong><span>Converted JPEG ready to stage when the recipe is saved.</span>`;
@@ -554,6 +593,24 @@ async function handleRecipeImageSelection(event) {
     catch (error) {
         console.error(error);
         if (preview) preview.textContent = "Unable to convert this image.";
+    }
+}
+
+function displayCurrentRecipeImage(blob, filename) {
+    const container = document.getElementById("currentRecipeImage");
+    if (!container) return;
+
+    const objectUrl = URL.createObjectURL(blob);
+    container.innerHTML = `
+        <h3>Current Image</h3>
+        <img src="${objectUrl}" alt="New image for this recipe">
+        <span>${escapeHtml(filename)}</span>
+    `;
+
+    const image = container.querySelector("img");
+    if (image) {
+        image.addEventListener("load", () => URL.revokeObjectURL(objectUrl), { once: true });
+        image.addEventListener("error", () => URL.revokeObjectURL(objectUrl), { once: true });
     }
 }
 
