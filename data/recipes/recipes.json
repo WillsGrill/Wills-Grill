@@ -19,6 +19,10 @@
         "quantity": 120
       },
       {
+        "ingredient": "ING-B705",
+        "quantity": 120
+      },
+      {
         "ingredient": "ING-V201",
         "quantity": 160
       },
@@ -36,7 +40,7 @@
       },
       {
         "ingredient": "ING-C975",
-        "quantity": 60
+        "quantity": 40
       },
       {
         "ingredient": "ING-C901",
@@ -47,35 +51,35 @@
         "quantity": 2
       },
       {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-S105",
         "quantity": 1
       },
       {
-        "ingredient": "ING-S105",
+        "ingredient": "ING-S150",
         "quantity": 1
       }
     ],
     "steps": [
-      "Slice the chicken breast into strips and season with salt and pepper.",
+      "Slice the chicken breast into strips and season with black pepper and dried oregano.",
       "Heat one tablespoon of olive oil in a pan and cook the chicken until golden and cooked through.",
-      "Whisk the lemon juice with the remaining olive oil to make a simple dressing.",
-      "Arrange the baby spinach, cherry tomatoes, cucumber and red onion in bowls.",
+      "Whisk the lemon juice and zest with the remaining olive oil to make a simple dressing.",
+      "Drain the cannellini beans and arrange them with the baby spinach, cherry tomatoes, cucumber and red onion in bowls.",
       "Add the warm chicken on top of the salad.",
       "Scatter over the feta and black olives.",
       "Drizzle with the lemon dressing and toss lightly.",
       "Serve straight away while the chicken is still warm."
     ],
     "nutrition": {
-      "calories": 430,
-      "protein": 42,
-      "carbs": 14,
-      "fat": 23
+      "calories": 565,
+      "protein": 49,
+      "carbs": 36,
+      "fat": 27
     },
     "tip": "Keep the chicken in large strips so it stays juicy and slices neatly through the salad."
   },
   {
     "id": "REC002",
-    "name": "BBQ Salmon with Spanish Rice",
+    "name": "BBQ Salmon with Spanish Grains",
     "description": "With Tenderstem Broccoli, Mange Tout & Lemon",
     "category": "Fish",
     "prepTime": 20,
@@ -94,23 +98,23 @@
       },
       {
         "ingredient": "ING-V300",
-        "quantity": 120
+        "quantity": 160
       },
       {
         "ingredient": "ING-V305",
-        "quantity": 100
+        "quantity": 140
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-H015",
@@ -118,30 +122,34 @@
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
         "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1
       }
     ],
     "steps": [
-      "Cook the Spanish rice according to the packet instructions and keep it warm.",
-      "Toss the tenderstem broccoli and mange tout with olive oil, garlic and seasoning.",
-      "Roast or pan-fry the vegetables until just tender and lightly charred.",
-      "Brush the salmon fillets with a little olive oil and season with salt and pepper.",
-      "Cook the salmon on a hot grill or griddle until the fish flakes easily.",
+      "Cook the wholegrain Spanish grains according to the packet instructions and keep them warm.",
+      "Toss the tenderstem broccoli and mange tout with extra virgin olive oil, Easy Garlic, smoked paprika, salt and pepper.",
+      "Spread the vegetables over a lined baking tray and roast until just tender and lightly charred.",
+      "Season the salmon with black pepper and place it on the tray beside the vegetables.",
+      "Roast until the salmon flakes easily and the vegetables are browned at the edges.",
       "Squeeze over fresh lemon juice and sprinkle with chopped dill.",
-      "Fluff the rice and fold through a little extra lemon zest if you like.",
-      "Serve the salmon over the rice with the vegetables alongside."
+      "Fluff the grains and fold through the lemon zest.",
+      "Serve the salmon over the Spanish grains with the vegetables alongside."
     ],
     "nutrition": {
-      "calories": 520,
-      "protein": 35,
-      "carbs": 48,
-      "fat": 21
+      "calories": 544,
+      "protein": 36,
+      "carbs": 37,
+      "fat": 28
     },
-    "tip": "A very hot pan gives the salmon a better BBQ-style finish without drying it out."
+    "tip": "Preheat the baking tray with the oven so the vegetables start to char as soon as they go in."
   },
   {
     "id": "REC003",
@@ -171,7 +179,7 @@
         "quantity": 60
       },
       {
-        "ingredient": "ING-V265",
+        "ingredient": "ING-V255",
         "quantity": 100
       },
       {
@@ -184,25 +192,29 @@
       },
       {
         "ingredient": "ING-D505",
-        "quantity": 40
+        "quantity": 30
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1
       },
       {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-S105",
         "quantity": 1
       },
       {
-        "ingredient": "ING-S105",
+        "ingredient": "ING-S150",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
         "quantity": 1
       }
     ],
     "steps": [
-      "Season the chicken and cook it in a hot pan until browned and fully cooked.",
+      "Season the chicken with black pepper, oregano and smoked paprika, then cook it in a hot pan until browned and fully cooked.",
       "Warm the wholemeal pittas so they are soft and ready to fill.",
-      "Slice the tomatoes and red onion and toss them with the mixed salad leaves.",
+      "Slice the tomatoes and red onion and toss them with the baby spinach.",
       "Stir a little lemon juice into the tzatziki for extra freshness.",
       "Split the pittas and spread each one with hummus.",
       "Fill with salad, chicken, feta and red onion.",
@@ -210,10 +222,10 @@
       "Serve immediately while the pittas are warm."
     ],
     "nutrition": {
-      "calories": 560,
-      "protein": 45,
-      "carbs": 38,
-      "fat": 24
+      "calories": 570,
+      "protein": 50,
+      "carbs": 57,
+      "fat": 17
     },
     "tip": "Warm the pittas just before serving so they do not split when filled."
   },
@@ -254,7 +266,7 @@
       },
       {
         "ingredient": "ING-D505",
-        "quantity": "60"
+        "quantity": "50"
       },
       {
         "ingredient": "ING-C975",
@@ -265,19 +277,15 @@
         "quantity": "1"
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": "1"
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": "2"
+        "ingredient": "ING-C999",
+        "quantity": "1"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": "1"
-      },
-      {
-        "ingredient": "ING-S101",
         "quantity": "1"
       },
       {
@@ -286,8 +294,8 @@
       }
     ],
     "steps": [
-      "Cut the chicken into strips and marinate with olive oil, garlic, oregano, lemon, salt and pepper.",
-      "Cook the chicken on a hot griddle or barbecue-style pan until nicely charred.",
+      "Cut the chicken into strips and marinate with extra virgin olive oil, Easy Garlic, oregano, lemon juice and zest, and black pepper.",
+      "Cook the chicken on a hot griddle, lined baking tray or air-fryer basket until nicely charred and cooked through.",
       "Prepare a Greek salad with cucumber, cherry tomatoes, red onion, feta and olives.",
       "Warm the pittas in a dry pan or oven.",
       "Stir the tzatziki so it is smooth and ready to spoon over the chicken.",
@@ -296,9 +304,9 @@
       "Serve with the remaining salad on the side."
     ],
     "nutrition": {
-      "calories": 590,
-      "protein": 48,
-      "carbs": 40,
+      "calories": 640,
+      "protein": 49,
+      "carbs": 60,
       "fat": 25
     },
     "tip": "If time allows, marinate the chicken for 30 minutes before cooking for extra flavour."
@@ -306,7 +314,7 @@
   {
     "id": "REC005",
     "name": "Mediterranean Chicken Wrap",
-    "description": "With Hummus, Feta & Mixed Salad",
+    "description": "With Hummus, Feta & Baby Spinach",
     "category": "Chicken",
     "prepTime": 15,
     "cookTime": 15,
@@ -328,10 +336,10 @@
       },
       {
         "ingredient": "ING-D505",
-        "quantity": 50
+        "quantity": 35
       },
       {
-        "ingredient": "ING-V265",
+        "ingredient": "ING-V255",
         "quantity": 100
       },
       {
@@ -351,33 +359,33 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-S101",
-        "quantity": 1
-      },
-      {
         "ingredient": "ING-S105",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
         "quantity": 1
       }
     ],
     "steps": [
-      "Season and cook the chicken until golden and cooked through.",
+      "Season the chicken with black pepper, oregano and smoked paprika, then cook until golden and cooked through.",
       "Warm the wraps so they are easier to fold.",
-      "Mix the salad leaves with cucumber, cherry tomatoes and red onion.",
+      "Mix the baby spinach with cucumber, cherry tomatoes and red onion.",
       "Spread each wrap with hummus.",
       "Add the chicken on top of the hummus layer.",
       "Pile in the salad and crumble over the feta.",
-      "Drizzle with a little lemon juice and olive oil.",
+      "Finish with lemon juice; the hummus will keep the wrap moist without extra oil.",
       "Roll up tightly and serve."
     ],
     "nutrition": {
-      "calories": 540,
-      "protein": 43,
-      "carbs": 42,
-      "fat": 20
+      "calories": 583,
+      "protein": 50,
+      "carbs": 57,
+      "fat": 19
     },
     "tip": "Keep the filling just off-centre so the wrap rolls more neatly."
   },
@@ -452,10 +460,10 @@
       "Serve the chilli over the rice with the remaining coriander on top."
     ],
     "nutrition": {
-      "calories": 510,
-      "protein": 36,
-      "carbs": 55,
-      "fat": 14
+      "calories": 461,
+      "protein": 30,
+      "carbs": 63,
+      "fat": 11
     },
     "tip": "Let the chilli simmer uncovered at the end so the sauce reduces cleanly."
   },
@@ -511,10 +519,6 @@
         "quantity": 5
       },
       {
-        "ingredient": "ING-S101",
-        "quantity": 1
-      },
-      {
         "ingredient": "ING-S105",
         "quantity": 1
       }
@@ -522,7 +526,7 @@
     "steps": [
       "Season the tuna steaks and sear them quickly in a hot pan.",
       "Drain and rinse the cannellini beans.",
-      "Whisk together lemon juice, olive oil, capers, salt and pepper.",
+      "Whisk together lemon juice, lemon zest, olive oil, capers and black pepper.",
       "Slice the cherry tomatoes, cucumber and red onion.",
       "Toss the rocket with the beans and vegetables in a large bowl.",
       "Slice the tuna and lay it over the salad.",
@@ -530,16 +534,16 @@
       "Serve while the tuna is still warm."
     ],
     "nutrition": {
-      "calories": 410,
-      "protein": 42,
-      "carbs": 20,
-      "fat": 18
+      "calories": 448,
+      "protein": 53,
+      "carbs": 41,
+      "fat": 10
     },
     "tip": "Do not overcook the tuna; it should stay tender in the centre."
   },
   {
     "id": "REC008",
-    "name": "BBQ Mackerel with Spanish Rice",
+    "name": "Herb & Lemon Mackerel with Spanish Grains",
     "description": "With Tenderstem Broccoli, Mange Tout & Lemon",
     "category": "Fish",
     "prepTime": 20,
@@ -569,7 +573,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
@@ -582,7 +586,7 @@
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
@@ -590,27 +594,27 @@
       }
     ],
     "steps": [
-      "Cook the Spanish rice until fluffy and keep it warm.",
-      "Toss the broccoli and mange tout with olive oil, garlic, salt and pepper.",
-      "Cook the vegetables quickly so they stay bright and crisp.",
-      "Season the mackerel fillets and cook them skin-side down first.",
-      "Turn the fish to finish cooking through.",
-      "Squeeze over lemon juice and add the chopped dill.",
-      "Fluff the rice and check the seasoning of the vegetables.",
-      "Serve the mackerel with the rice and vegetables on the side."
+      "Heat the oven and cook the wholegrain Spanish grains according to the packet instructions.",
+      "Mix the extra virgin olive oil with the chopped dill, crushed garlic, lemon zest, lemon juice, salt and black pepper.",
+      "Place each mackerel fillet on its own sheet of foil and spoon over the herb and lemon blend.",
+      "Seal each foil parcel loosely, place on a baking tray and bake until the mackerel flakes easily.",
+      "Steam or quickly pan-cook the tenderstem broccoli and mange tout so they remain bright and crisp.",
+      "Open the foil parcels carefully and spoon the warm herb and lemon juices back over the fish.",
+      "Fluff the Spanish grains and check the seasoning of the vegetables.",
+      "Serve each mackerel parcel with the Spanish grains and vegetables."
     ],
     "nutrition": {
-      "calories": 560,
+      "calories": 513,
       "protein": 31,
-      "carbs": 46,
+      "carbs": 34,
       "fat": 28
     },
-    "tip": "Mackerel benefits from a very hot pan so the skin crisps before the flesh overcooks."
+    "tip": "Leave a little air inside each foil parcel so the herb and lemon steam can circulate around the mackerel."
   },
   {
     "id": "REC009",
     "name": "Chicken Shakshuka",
-    "description": "With Feta & Crusty Bread",
+    "description": "With Spinach, Feta & Wholemeal Pitta",
     "category": "Chicken",
     "prepTime": 15,
     "cookTime": 20,
@@ -620,11 +624,11 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 250
+        "quantity": 200
       },
       {
         "ingredient": "ING-D530",
-        "quantity": 4
+        "quantity": 2
       },
       {
         "ingredient": "ING-C950",
@@ -639,8 +643,8 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-S110",
@@ -655,15 +659,19 @@
         "quantity": 50
       },
       {
+        "ingredient": "ING-V255",
+        "quantity": 80
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.5
+      },
+      {
         "ingredient": "ING-G650",
         "quantity": 2
       },
       {
-        "ingredient": "ING-O805",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
@@ -673,19 +681,19 @@
     ],
     "steps": [
       "Cook the chicken in a large pan until lightly browned and almost cooked through.",
-      "Add olive oil, onion and red pepper and soften them for a few minutes.",
-      "Stir in the garlic, smoked paprika and cumin.",
+      "Add extra virgin olive oil, onion and red pepper and soften them for a few minutes.",
+      "Stir in the Easy Garlic, smoked paprika, cumin and chilli flakes.",
       "Pour in the chopped tomatoes and simmer until the sauce thickens slightly.",
-      "Make four small wells in the sauce and crack in the eggs.",
+      "Stir in the baby spinach until wilted, then make two small wells in the sauce and crack in the eggs.",
       "Cover the pan and cook until the egg whites are set but the yolks are still soft.",
       "Scatter the feta over the top and warm the pittas separately.",
       "Serve the shakshuka with the pittas for scooping."
     ],
     "nutrition": {
-      "calories": 520,
-      "protein": 40,
-      "carbs": 28,
-      "fat": 27
+      "calories": 614,
+      "protein": 45,
+      "carbs": 62,
+      "fat": 22
     },
     "tip": "Keep the heat fairly low once the eggs go in so the yolks stay soft."
   },
@@ -705,7 +713,7 @@
         "quantity": 2
       },
       {
-        "ingredient": "ING-G605",
+        "ingredient": "ING-G705",
         "quantity": 180
       },
       {
@@ -714,26 +722,26 @@
       },
       {
         "ingredient": "ING-D515",
-        "quantity": 40
+        "quantity": 25
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-C935",
-        "quantity": 1
+        "quantity": 35
       },
       {
         "ingredient": "ING-V255",
         "quantity": 80
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
@@ -741,7 +749,7 @@
         "quantity": 5
       },
       {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-C901",
         "quantity": 1
       },
       {
@@ -750,20 +758,20 @@
       }
     ],
     "steps": [
-      "Cook the penne in salted water until al dente.",
-      "Heat a little olive oil in a pan and soften the onion and garlic.",
+      "Cook the wholemeal penne until al dente, reserving a little pasta water before draining.",
+      "Heat the extra virgin olive oil in a pan and soften the onion and Easy Garlic.",
       "Add the basa fillets and cook gently until they start to flake.",
       "Stir in the green pesto and cherry tomatoes.",
       "Add the baby spinach and let it wilt into the sauce.",
       "Drain the pasta and toss it through the fish and pesto mixture.",
-      "Finish with chopped basil and grated parmesan.",
+      "Finish with lemon juice, chopped basil and grated parmesan.",
       "Serve immediately while the sauce is glossy and warm."
     ],
     "nutrition": {
-      "calories": 610,
-      "protein": 38,
-      "carbs": 58,
-      "fat": 24
+      "calories": 694,
+      "protein": 46,
+      "carbs": 77,
+      "fat": 23
     },
     "tip": "Fold the fish into the pasta gently so the basa stays in large flakes."
   },
@@ -772,8 +780,8 @@
     "name": "Thai Fishcakes",
     "description": "With Sweet Chilli Dip & Asian Slaw",
     "category": "Fish",
-    "prepTime": 20,
-    "cookTime": 15,
+    "prepTime": 15,
+    "cookTime": 20,
     "serves": 2,
     "difficulty": "Medium",
     "image": "rec011.jpg",
@@ -787,12 +795,8 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-G635",
-        "quantity": 40
-      },
-      {
         "ingredient": "ING-G640",
-        "quantity": 40
+        "quantity": 60
       },
       {
         "ingredient": "ING-V295",
@@ -807,7 +811,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-C925",
+        "ingredient": "ING-P060",
         "quantity": 1
       },
       {
@@ -815,16 +819,12 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V280",
-        "quantity": 80
+        "ingredient": "ING-O801",
+        "quantity": 0.5
       },
       {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
+        "ingredient": "ING-V395",
+        "quantity": 200
       },
       {
         "ingredient": "ING-D501",
@@ -840,7 +840,7 @@
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
@@ -848,22 +848,22 @@
       }
     ],
     "steps": [
-      "Flake the pollock and mix it with the egg, breadcrumbs, panko, spring onions and coriander.",
+      "Flake the pollock and mix it with the egg, panko, spring onions and coriander.",
       "Season the mixture with salt, pepper and a squeeze of lime.",
       "Shape into small fishcakes and chill briefly if the mixture feels soft.",
       "Mix the Greek yoghurt, honey, chilli flakes and a little lime juice for the dip.",
-      "Combine the carrot, cucumber and red onion with sesame oil, soy sauce and lime for the slaw.",
-      "Shallow-fry the fishcakes until crisp and golden on both sides.",
+      "Toss the bagged rainbow slaw with sesame oil, low-salt soy sauce and lime.",
+      "Place the fishcakes on a lined baking tray, brush lightly with extra virgin olive oil and bake until crisp, golden and cooked through.",
       "Serve the fishcakes with the sweet chilli dip and the slaw on the side.",
       "Finish with extra coriander if you want a fresher flavour."
     ],
     "nutrition": {
-      "calories": 470,
-      "protein": 34,
-      "carbs": 28,
-      "fat": 22
+      "calories": 465,
+      "protein": 42,
+      "carbs": 45,
+      "fat": 12
     },
-    "tip": "Chilling the fishcakes for a few minutes helps them hold together in the pan."
+    "tip": "Chilling the fishcakes for a few minutes helps them hold together while baking."
   },
   {
     "id": "REC012",
@@ -881,24 +881,20 @@
         "quantity": 2
       },
       {
-        "ingredient": "ING-G635",
-        "quantity": 40
-      },
-      {
         "ingredient": "ING-G640",
-        "quantity": 20
+        "quantity": 60
       },
       {
         "ingredient": "ING-H005",
         "quantity": 5
       },
       {
-        "ingredient": "ING-H030",
-        "quantity": 5
+        "ingredient": "ING-S170",
+        "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-C901",
@@ -917,40 +913,44 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 2
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C915",
         "quantity": 1
       }
     ],
     "steps": [
       "Preheat the oven and chop the courgette, aubergine and red pepper into even pieces.",
-      "Toss the vegetables with olive oil, garlic, salt and pepper.",
+      "Toss the vegetables with extra virgin olive oil, Easy Garlic, salt and pepper.",
       "Roast the vegetables until tender and lightly browned.",
-      "Mix the breadcrumbs with chopped parsley and thyme.",
-      "Brush the cod with a little olive oil and press the herb crumb onto the top.",
+      "Mix the panko with chopped parsley, dried thyme and lemon zest.",
+      "Brush the cod with Dijon mustard and press the herb crumb onto the top.",
       "Bake the cod until it flakes easily and the topping is golden.",
       "Squeeze lemon over the fish and vegetables.",
       "Serve the cod with the garlic roasted vegetables."
     ],
     "nutrition": {
-      "calories": 420,
-      "protein": 39,
-      "carbs": 22,
-      "fat": 18
+      "calories": 456,
+      "protein": 34,
+      "carbs": 44,
+      "fat": 17
     },
-    "tip": "Cut the vegetables to a similar size so they roast evenly."
+    "tip": "Buying pre-cut Mediterranean vegetables makes this a quick one-tray dinner; otherwise cut everything to a similar size so it roasts evenly."
   },
   {
     "id": "REC013",
     "name": "Mediterranean Baked Salmon",
-    "description": "With Roasted Vegetables & Herby Potatoes",
+    "description": "With Roasted Vegetables & Wholewheat Couscous",
     "category": "Fish",
     "prepTime": 20,
     "cookTime": 25,
@@ -971,7 +971,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V230",
+        "ingredient": "ING-V225",
         "quantity": 1
       },
       {
@@ -983,7 +983,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-G615",
+        "ingredient": "ING-G710",
         "quantity": 150
       },
       {
@@ -991,7 +991,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
@@ -1008,7 +1008,7 @@
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
@@ -1016,9 +1016,9 @@
       }
     ],
     "steps": [
-      "Cook the couscous and fluff it with a fork once the grains are tender.",
+      "Prepare the wholewheat couscous in a separate bowl and fluff it with a fork once tender.",
       "Chop the courgette, aubergine, pepper, cherry tomatoes and red onion into roasting pieces.",
-      "Toss the vegetables with olive oil, oregano, salt and pepper.",
+      "Toss the vegetables with extra virgin olive oil, oregano, salt and pepper.",
       "Roast the vegetables until softened and lightly caramelised.",
       "Season the salmon and place it on top of the tray for the final part of cooking.",
       "Bake until the salmon is just cooked through.",
@@ -1026,10 +1026,10 @@
       "Serve the salmon with the vegetables and couscous."
     ],
     "nutrition": {
-      "calories": 560,
-      "protein": 36,
-      "carbs": 42,
-      "fat": 26
+      "calories": 753,
+      "protein": 43,
+      "carbs": 84,
+      "fat": 28
     },
     "tip": "Add the salmon part-way through roasting so it stays tender and does not dry out."
   },
@@ -1046,10 +1046,14 @@
     "ingredients": [
       {
         "ingredient": "ING-D510",
-        "quantity": 200
+        "quantity": 140
       },
       {
-        "ingredient": "ING-G615",
+        "ingredient": "ING-G710",
+        "quantity": 150
+      },
+      {
+        "ingredient": "ING-B701",
         "quantity": 150
       },
       {
@@ -1062,11 +1066,7 @@
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V230",
-        "quantity": 1
+        "quantity": 2
       },
       {
         "ingredient": "ING-V201",
@@ -1085,39 +1085,39 @@
         "quantity": 5
       },
       {
-        "ingredient": "ING-O805",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
         "ingredient": "ING-S105",
         "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1
       }
     ],
     "steps": [
-      "Cook the couscous, then fluff it with a fork and keep it warm.",
-      "Chop the vegetables into bite-sized pieces and toss with olive oil, salt and pepper.",
+      "Cook the wholewheat couscous, then fluff it with a fork and keep it warm.",
+      "Chop the vegetables into bite-sized pieces and toss with extra virgin olive oil, smoked paprika and black pepper.",
       "Roast the vegetables until soft and slightly browned.",
       "Slice the halloumi and fry it until golden on both sides.",
-      "Add the roasted vegetables to the couscous and mix well.",
+      "Drain the chickpeas and mix them into the couscous with the roasted vegetables.",
       "Stir through lemon juice and chopped parsley and mint.",
       "Top with the halloumi slices.",
       "Serve warm with an extra squeeze of lemon."
     ],
     "nutrition": {
-      "calories": 610,
-      "protein": 27,
-      "carbs": 46,
-      "fat": 31
+      "calories": 810,
+      "protein": 37,
+      "carbs": 104,
+      "fat": 29
     },
-    "tip": "A hot pan gives halloumi the best golden crust."
+    "tip": "Pat the halloumi dry and use a separate very hot pan to give it the best golden crust."
   },
   {
     "id": "REC015",
-    "name": "Lemon Garlic Prawn Rice",
+    "name": "Lemon Garlic Basa & Prawn Rice",
     "description": "With Cherry Tomatoes, Spinach & Fresh Parsley",
     "category": "Fish",
     "prepTime": 15,
@@ -1127,20 +1127,24 @@
     "image": "rec015.jpg",
     "ingredients": [
       {
+        "ingredient": "ING-F340",
+        "quantity": 2
+      },
+      {
         "ingredient": "ING-F325",
         "quantity": 250
       },
       {
-        "ingredient": "ING-G620",
-        "quantity": 180
+        "ingredient": "ING-G625",
+        "quantity": 250
       },
       {
         "ingredient": "ING-V201",
         "quantity": 160
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-H005",
@@ -1155,40 +1159,44 @@
         "quantity": 80
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
         "quantity": 1
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.5
       }
     ],
     "steps": [
-      "Rinse the basmati rice under cold water until the water runs mostly clear.",
-      "Cook the rice in salted water until tender, then drain if necessary and keep covered.",
-      "Heat the olive oil in a large frying pan and soften the garlic for a minute.",
+      "Cook the wholegrain brown rice according to the packet instructions and keep it covered.",
+      "Pat the basa dry, season with black pepper and cook it gently in a large frying pan until it begins to flake.",
+      "Move the basa to the edge of the pan, add the extra virgin olive oil and soften the Easy Garlic with the chilli flakes.",
       "Add the cherry tomatoes and cook until they soften and begin to burst.",
-      "Stir in the prawns and cook until pink, opaque and cooked through.",
+      "Stir in the prawns and cook until pink, opaque and cooked through, keeping the basa in large flakes.",
       "Add the baby spinach and let it wilt into the tomato and prawn mixture.",
-      "Fold in the cooked rice, lemon juice and chopped parsley, then season with salt and pepper.",
+      "Fold in the cooked brown rice, lemon juice and chopped parsley, then season with the measured salt and black pepper.",
       "Serve immediately with an extra squeeze of lemon if desired."
     ],
     "nutrition": {
-      "calories": 475,
-      "protein": 33,
-      "carbs": 57,
-      "fat": 12
+      "calories": 509,
+      "protein": 62,
+      "carbs": 42,
+      "fat": 11
     },
-    "tip": "Keep the heat moderate once the prawns go in, and fold in the rice gently so the grains stay separate."
+    "tip": "Microwave wholegrain rice makes this a one-pan dinner; fold gently so the rice and basa retain their texture."
   },
   {
     "id": "REC016",
     "name": "Chicken Shawarma Bowls",
-    "description": "With Couscous, Salad & Garlic Yoghurt",
+    "description": "With Wholewheat Couscous, Spinach & Garlic Yoghurt",
     "category": "Chicken",
     "prepTime": 20,
     "cookTime": 20,
@@ -1201,11 +1209,11 @@
         "quantity": 300
       },
       {
-        "ingredient": "ING-G615",
+        "ingredient": "ING-G710",
         "quantity": 150
       },
       {
-        "ingredient": "ING-V265",
+        "ingredient": "ING-V255",
         "quantity": 100
       },
       {
@@ -1225,8 +1233,8 @@
         "quantity": 60
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1.5
       },
       {
         "ingredient": "ING-C901",
@@ -1245,27 +1253,31 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-S205",
+        "quantity": 0.25
+      },
+      {
+        "ingredient": "ING-O801",
         "quantity": 1
       }
     ],
     "steps": [
-      "Mix the chicken with olive oil, cumin, smoked paprika, ground coriander, garlic, salt and pepper.",
+      "Mix the chicken with extra virgin olive oil, cumin, smoked paprika, ground coriander, sumac and one teaspoon of Easy Garlic.",
       "Cook the chicken in a hot pan until browned and cooked through.",
-      "Prepare the couscous according to the packet instructions.",
-      "Chop the salad leaves, cucumber, cherry tomatoes and red onion.",
-      "Stir lemon juice into the Greek yoghurt to make a quick garlic yoghurt.",
+      "Prepare the wholewheat couscous according to the packet instructions.",
+      "Chop the baby spinach, cucumber, cherry tomatoes and red onion.",
+      "Stir lemon juice and the remaining Easy Garlic into the Greek yoghurt.",
       "Fluff the couscous and divide it between bowls.",
       "Add the salad and top with the chicken.",
       "Spoon over the garlic yoghurt and serve."
     ],
     "nutrition": {
-      "calories": 540,
-      "protein": 44,
-      "carbs": 40,
-      "fat": 21
+      "calories": 622,
+      "protein": 51,
+      "carbs": 75,
+      "fat": 14
     },
-    "tip": "Toast the spices briefly with the chicken to deepen the shawarma flavour."
+    "tip": "Toast the spices briefly with the chicken; keep the sumac measured to a quarter teaspoon so its sharp flavour stays balanced."
   },
   {
     "id": "REC017",
@@ -1291,7 +1303,7 @@
         "quantity": 120
       },
       {
-        "ingredient": "ING-V265",
+        "ingredient": "ING-V255",
         "quantity": 100
       },
       {
@@ -1319,14 +1331,22 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
       }
     ],
     "steps": [
-      "Season the chicken with olive oil, oregano, salt and pepper.",
+      "Season the chicken with extra virgin olive oil, oregano, smoked paprika and black pepper.",
       "Cook the chicken in a hot pan until it is browned and cooked through.",
-      "Mix the salad leaves, cucumber, cherry tomatoes and red onion in a bowl.",
+      "Mix the baby spinach, cucumber, cherry tomatoes and red onion in a bowl.",
       "Warm the pittas.",
       "Stir a little lemon juice into the tzatziki for a brighter flavour.",
       "Fill each pitta with the salad and chicken.",
@@ -1334,12 +1354,12 @@
       "Serve immediately while the pittas are still warm."
     ],
     "nutrition": {
-      "calories": 560,
-      "protein": 46,
-      "carbs": 39,
-      "fat": 24
+      "calories": 622,
+      "protein": 51,
+      "carbs": 59,
+      "fat": 23
     },
-    "tip": "Slice the chicken thinly after cooking so the gyros are easier to assemble."
+    "tip": "Batch-cook the seasoned chicken for this and the other pitta recipes, then slice it thinly after reheating for quick assembly."
   },
   {
     "id": "REC018",
@@ -1373,28 +1393,32 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-C955",
         "quantity": 400
       },
       {
-        "ingredient": "ING-G605",
+        "ingredient": "ING-G705",
         "quantity": 180
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 120
       },
       {
         "ingredient": "ING-H001",
         "quantity": 5
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 1
+        "quantity": 0.25
       },
       {
         "ingredient": "ING-S105",
@@ -1405,17 +1429,17 @@
       "Mix the turkey mince with the egg, breadcrumbs, parmesan, salt and pepper.",
       "Shape the mixture into meatballs.",
       "Brown the meatballs in olive oil in a large pan.",
-      "Add the onion and garlic and soften them gently.",
+      "Add the fresh onion and Easy Garlic and soften them gently.",
       "Pour in the passata and simmer until the sauce thickens.",
       "Cook the wholemeal penne until al dente.",
-      "Toss the pasta through the sauce and meatballs and add the basil.",
+      "Wilt the baby spinach into the sauce, then toss through the wholemeal penne, meatballs and basil.",
       "Serve with extra parmesan scattered on top."
     ],
     "nutrition": {
-      "calories": 610,
-      "protein": 38,
-      "carbs": 58,
-      "fat": 24
+      "calories": 456,
+      "protein": 33,
+      "carbs": 48,
+      "fat": 15
     },
     "tip": "Wet your hands slightly when rolling the meatballs to stop the mixture sticking."
   },
@@ -1436,26 +1460,26 @@
       },
       {
         "ingredient": "ING-D505",
-        "quantity": 200
+        "quantity": 140
       },
       {
-        "ingredient": "ING-G605",
+        "ingredient": "ING-G705",
         "quantity": 180
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 250
+        "quantity": 350
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       },
       {
@@ -1467,32 +1491,40 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-S101",
+        "ingredient": "ING-V255",
+        "quantity": 80
+      },
+      {
+        "ingredient": "ING-S150",
         "quantity": 1
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.5
       }
     ],
     "steps": [
       "Heat the oven and cut the chicken breast into bite-sized pieces.",
-      "Place the cherry tomatoes, onion and garlic in a baking dish, drizzle with olive oil and season with salt and pepper.",
+      "Place the cherry tomatoes, onion and Easy Garlic in a baking dish, drizzle with extra virgin olive oil and season with oregano, chilli flakes and black pepper.",
       "Nestle the block of feta into the centre, arrange the chicken around it and turn the chicken in the seasoned oil.",
       "Bake until the tomatoes are soft, the feta is melting and the chicken is cooked through with no pink remaining.",
-      "Cook the penne until al dente while the chicken and tomatoes roast, reserving a little pasta water.",
+      "Cook the wholemeal penne until al dente while the chicken and tomatoes roast, reserving a little pasta water.",
       "Mash the feta and tomatoes together, then stir in enough pasta water to make a silky sauce.",
-      "Toss the penne, cooked chicken and fresh basil through the feta sauce.",
+      "Wilt the baby spinach into the sauce, then toss through the penne, cooked chicken and fresh basil.",
       "Check the seasoning and serve immediately."
     ],
     "nutrition": {
-      "calories": 825,
-      "protein": 58,
-      "carbs": 66,
-      "fat": 38
+      "calories": 790,
+      "protein": 54,
+      "carbs": 81,
+      "fat": 28
     },
     "tip": "Cut the chicken into evenly sized pieces so it cooks through at the same time as the tomatoes and feta."
   },
   {
     "id": "REC020",
     "name": "Chicken, Spinach & Chickpea Curry",
-    "description": "With Basmati Rice & Fresh Coriander",
+    "description": "With Wholegrain Brown Rice & Fresh Coriander",
     "category": "Chicken",
     "prepTime": 20,
     "cookTime": 30,
@@ -1502,11 +1534,11 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 500
+        "quantity": 375
       },
       {
         "ingredient": "ING-B701",
-        "quantity": 250
+        "quantity": 400
       },
       {
         "ingredient": "ING-V255",
@@ -1517,16 +1549,16 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
-        "quantity": 2
+        "ingredient": "ING-C999",
+        "quantity": 1
       },
       {
         "ingredient": "ING-C950",
         "quantity": 400
       },
       {
-        "ingredient": "ING-G620",
-        "quantity": 200
+        "ingredient": "ING-G625",
+        "quantity": 500
       },
       {
         "ingredient": "ING-S155",
@@ -1545,30 +1577,436 @@
         "quantity": 1
       },
       {
+        "ingredient": "ING-S190",
+        "quantity": 1
+      },
+      {
         "ingredient": "ING-H010",
         "quantity": 5
       },
       {
-        "ingredient": "ING-O805",
+        "ingredient": "ING-O801",
         "quantity": 1
       }
     ],
     "steps": [
-      "Cook the basmati rice and keep it covered while you make the curry.",
-      "Cut the chicken breast into bite-sized pieces, then heat the olive oil in a large pan.",
+      "Cook the wholegrain brown rice according to the packet instructions and keep it covered while you make the curry.",
+      "Cut the chicken breast into bite-sized pieces, then heat the extra virgin olive oil in a large pan.",
       "Brown the chicken on all sides, add the onion and cook until softened.",
-      "Add the garlic, turmeric, cumin, ground coriander and chilli flakes, then stir for one minute.",
+      "Add the Easy Garlic, turmeric, cumin, ground coriander, ground ginger and chilli flakes, then stir for one minute.",
       "Stir in the chickpeas and chopped tomatoes and bring the sauce to a gentle simmer.",
       "Cook until the sauce thickens and the chicken is cooked through with no pink remaining.",
       "Add the baby spinach, let it wilt, then season and stir through most of the fresh coriander.",
       "Serve the curry over the rice with the remaining coriander on top."
     ],
     "nutrition": {
-      "calories": 630,
-      "protein": 47,
-      "carbs": 70,
-      "fat": 18
+      "calories": 518,
+      "protein": 37,
+      "carbs": 71,
+      "fat": 10
     },
-    "tip": "Keep the curry at a gentle simmer so the chicken stays tender; loosen the sauce with a splash of water if needed."
+    "tip": "Microwave wholegrain rice saves a saucepan; keep the curry at a gentle simmer so the chicken stays tender."
+  },
+  {
+    "id": "REC021",
+    "name": "Smoky Chicken, Butter Bean & Artichoke Stew",
+    "description": "With Chorizo, Red Pepper & Rosemary",
+    "category": "Chicken",
+    "prepTime": 15,
+    "cookTime": 30,
+    "serves": 4,
+    "difficulty": "Easy",
+    "image": "rec021.jpg",
+    "ingredients": [
+      {
+        "ingredient": "ING-M401",
+        "quantity": 500
+      },
+      {
+        "ingredient": "ING-B710",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-V340",
+        "quantity": 200
+      },
+      {
+        "ingredient": "ING-M450",
+        "quantity": 40
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-H025",
+        "quantity": 5
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
+      }
+    ],
+    "steps": [
+      "Cut the chicken breast into bite-sized pieces and finely dice the chorizo.",
+      "Heat the extra virgin olive oil in a large casserole pan and cook the chorizo briefly until it releases its smoky oils.",
+      "Add the chicken and brown it lightly on all sides.",
+      "Add the fresh onion and red pepper and cook until they begin to soften.",
+      "Stir in the Easy Garlic, smoked paprika, chopped rosemary and black pepper for one minute.",
+      "Add the chopped tomatoes, drained butter beans and artichoke hearts, then bring to a gentle simmer.",
+      "Cook uncovered until the sauce has thickened and the chicken is cooked through with no pink remaining.",
+      "Check the seasoning without automatically adding salt, then serve in warm bowls."
+    ],
+    "nutrition": {
+      "calories": 420,
+      "protein": 42,
+      "carbs": 36,
+      "fat": 11
+    },
+    "tip": "Dice the chorizo very finely so 40 g flavours the entire stew; it already supplies salt, so taste before adding any more."
+  },
+  {
+    "id": "REC022",
+    "name": "Turkey & Red Lentil Bolognese",
+    "description": "With Wholemeal Penne, Spinach & Fresh Basil",
+    "category": "Turkey",
+    "prepTime": 15,
+    "cookTime": 35,
+    "serves": 4,
+    "difficulty": "Easy",
+    "image": "rec022.jpg",
+    "ingredients": [
+      {
+        "ingredient": "ING-M410",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-B730",
+        "quantity": 150
+      },
+      {
+        "ingredient": "ING-C955",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-G705",
+        "quantity": 300
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 160
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 5
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
+      }
+    ],
+    "steps": [
+      "Rinse the red lentils under cold water and leave them to drain.",
+      "Heat the extra virgin olive oil in a large pan and soften the fresh onion.",
+      "Add the turkey mince and cook until lightly browned, breaking it up with a spoon.",
+      "Stir in the Easy Garlic, dried oregano and black pepper for one minute.",
+      "Add the passata and red lentils with enough water to keep the sauce loose, then simmer until the lentils are tender.",
+      "Cook the wholemeal penne until al dente while the sauce simmers, reserving a little pasta water.",
+      "Wilt the baby spinach into the bolognese and loosen with pasta water if needed.",
+      "Toss with the penne, stir through the fresh basil and serve."
+    ],
+    "nutrition": {
+      "calories": 630,
+      "protein": 44,
+      "carbs": 84,
+      "fat": 13
+    },
+    "tip": "The lentils thicken as they cook, so add water gradually rather than letting the sauce catch on the bottom of the pan."
+  },
+  {
+    "id": "REC023",
+    "name": "BBQ Turkey Breast with Butter Bean Salad",
+    "description": "With Roasted Peppers, Cherry Tomatoes & Parsley",
+    "category": "BBQ",
+    "prepTime": 20,
+    "cookTime": 15,
+    "serves": 4,
+    "difficulty": "Easy",
+    "image": "rec023.jpg",
+    "ingredients": [
+      {
+        "ingredient": "ING-M415",
+        "quantity": 600
+      },
+      {
+        "ingredient": "ING-B710",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-P010",
+        "quantity": 200
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 250
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 2
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 2
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 2
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
+      }
+    ],
+    "steps": [
+      "Coat the turkey breast with one tablespoon of extra virgin olive oil, Easy Garlic, smoked paprika, oregano and black pepper.",
+      "Heat the BBQ for direct cooking and allow the turkey to marinate while it comes to temperature.",
+      "Drain and rinse the butter beans, then slice the roasted red peppers, cherry tomatoes and red onion.",
+      "Combine the beans and vegetables in a large serving bowl.",
+      "Whisk the lemon juice and zest with the remaining olive oil and chopped parsley, then fold through the salad.",
+      "Cook the turkey on the BBQ until browned and cooked through with no pink remaining.",
+      "Rest the turkey for five minutes before slicing it across the grain.",
+      "Serve the sliced turkey over the butter bean salad with any remaining lemon dressing."
+    ],
+    "nutrition": {
+      "calories": 390,
+      "protein": 44,
+      "carbs": 34,
+      "fat": 10
+    },
+    "tip": "Flatten thicker parts of the turkey breast to an even depth so the meat cooks at the same rate and stays juicy."
+  },
+  {
+    "id": "REC024",
+    "name": "BBQ Chicken Caprese Skewers",
+    "description": "With Pesto Quinoa, Mozzarella & Fresh Basil",
+    "category": "BBQ",
+    "prepTime": 20,
+    "cookTime": 20,
+    "serves": 4,
+    "difficulty": "Easy",
+    "image": "rec024.jpg",
+    "ingredients": [
+      {
+        "ingredient": "ING-M401",
+        "quantity": 600
+      },
+      {
+        "ingredient": "ING-G695",
+        "quantity": 240
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 2
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 2
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 300
+      },
+      {
+        "ingredient": "ING-D520",
+        "quantity": 100
+      },
+      {
+        "ingredient": "ING-C935",
+        "quantity": 40
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 10
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
+      }
+    ],
+    "steps": [
+      "If using wooden skewers, soak them in water while the BBQ heats for direct cooking.",
+      "Cut the chicken, courgettes and red peppers into even bite-sized pieces.",
+      "Thread the chicken, vegetables and cherry tomatoes onto skewers, then brush with half the pesto mixed with Easy Garlic and black pepper.",
+      "Cook the skewers on the BBQ, turning regularly, until the vegetables are charred and the chicken is cooked through.",
+      "Cook the quinoa according to the packet instructions, then fluff it with a fork.",
+      "Stir the remaining pesto, lemon juice, lemon zest and most of the fresh basil through the quinoa.",
+      "Rest the skewers briefly, then serve them over the pesto quinoa.",
+      "Tear over the mozzarella and finish with the remaining basil."
+    ],
+    "nutrition": {
+      "calories": 580,
+      "protein": 48,
+      "carbs": 54,
+      "fat": 17
+    },
+    "tip": "Keep the chicken and vegetables similar in size and leave a little space between pieces so the BBQ heat can circulate."
+  },
+  {
+    "id": "REC025",
+    "name": "Healthy Chicken, Chorizo & Seafood Paella",
+    "description": "With Prawns, Mussels & Peas",
+    "category": "Chicken",
+    "prepTime": 20,
+    "cookTime": 35,
+    "serves": 4,
+    "difficulty": "Medium",
+    "image": "rec025.jpg",
+    "ingredients": [
+      {
+        "ingredient": "ING-M401",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-M450",
+        "quantity": 50
+      },
+      {
+        "ingredient": "ING-F325",
+        "quantity": 200
+      },
+      {
+        "ingredient": "ING-F360",
+        "quantity": 400
+      },
+      {
+        "ingredient": "ING-G715",
+        "quantity": 300
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 750
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 200
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-V370",
+        "quantity": 150
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-S155",
+        "quantity": 0.25
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5
+      }
+    ],
+    "steps": [
+      "Warm the low-salt chicken stock and stir in the turmeric while you prepare the other ingredients.",
+      "Heat the extra virgin olive oil in a wide paella pan, cook the finely diced chorizo briefly, then add and lightly brown the chicken.",
+      "Add the fresh onion and red pepper and cook until softened.",
+      "Stir in the Easy Garlic, smoked paprika, black pepper and paella rice until every grain is coated.",
+      "Add the chopped tomatoes and seasoned stock, spread the rice evenly and simmer gently without stirring until most of the liquid is absorbed.",
+      "Nestle the cleaned mussels into the rice, cover loosely and cook until they begin to open.",
+      "Add the prawns and frozen peas and cook until the prawns are opaque, the mussels are open and the chicken is cooked through; discard any mussels that remain closed.",
+      "Rest for five minutes, then finish with lemon juice, lemon wedges and chopped parsley."
+    ],
+    "nutrition": {
+      "calories": 610,
+      "protein": 52,
+      "carbs": 73,
+      "fat": 12
+    },
+    "tip": "Use the widest pan you have and resist stirring after adding the stock; the thin rice layer cooks more evenly and can develop a lightly toasted base."
   }
 ]

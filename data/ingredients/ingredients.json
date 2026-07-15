@@ -318,7 +318,7 @@
     "id": "ING-F305",
     "name": "Pollock Fillet",
     "category": "Fish & Seafood",
-    "unit": "fillet",
+    "unit": "g",
     "pantry": false
   },
   {
@@ -755,9 +755,9 @@
     "unit": "g",
     "pantry": true
   },
-  {
-    "id": "ING-G645",
-    "name": "Spanish Rice",
+{
+  "id": "ING-G645",
+  "name": "Spanish Grains",
     "category": "Grains & Pasta",
     "unit": "g",
     "pantry": false
@@ -1336,11 +1336,53 @@
     "unit": "g",
     "pantry": true
   },
+{
+  "id": "ING-P055",
+  "name": "Ground Almonds",
+  "category": "Sauces & Pantry",
+  "unit": "g",
+  "pantry": true
+},
+{
+  "id": "ING-G705",
+  "name": "Wholemeal Penne",
+  "category": "Grains & Pasta",
+  "unit": "g",
+  "pantry": true
+},
+{
+  "id": "ING-G710",
+  "name": "Wholewheat Couscous",
+  "category": "Grains & Pasta",
+  "unit": "g",
+  "pantry": true
+},
+{
+  "id": "ING-V395",
+  "name": "Rainbow Slaw Mix",
+  "category": "Vegetables",
+  "unit": "g",
+  "pantry": false
+},
   {
-    "id": "ING-P055",
-    "name": "Ground Almonds",
+    "id": "ING-P060",
+    "name": "Low-Salt Soy Sauce",
     "category": "Sauces & Pantry",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-G715",
+    "name": "Paella Rice",
+    "category": "Grains & Pasta",
     "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-P065",
+    "name": "Low-Salt Chicken Stock",
+    "category": "Sauces & Pantry",
+    "unit": "ml",
     "pantry": true
   }
 ]
