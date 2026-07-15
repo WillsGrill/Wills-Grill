@@ -26,7 +26,7 @@ Only converted images that are still referenced by the current recipe draft are 
 
 ## Running locally
 
-Serve the folder through a local web server rather than opening HTML files directly. For example, use the VS Code Live Server extension or another static file server. The app fetches the public Will's Grill JSON files and image files, so an internet connection is required when loading the initial data.
+From the repository root, run `python3 recipemanager/local_server.py` and open `http://127.0.0.1:8000/recipemanager/index.html`. This local-only server lets the Export page's **Save to repository** action write validated drafts to `data/recipes/recipes.json`, `data/ingredients/ingredients.json`, and any staged recipe images. Review `git diff`, then commit and push normally. GitHub Pages remains read-only, so use Download ZIP when Recipe Manager is not running through the local server.
 
 ## Browser storage
 

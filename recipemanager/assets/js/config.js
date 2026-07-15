@@ -4,12 +4,18 @@
     Recipe Manager Configuration
 ============================================ */
 
+const ROOT = window.location.pathname.includes("/recipemanager/pages/")
+    ? "../../"
+    : "../";
+
 const CONFIG = {
 
-    recipesFile: "https://willsgrill.github.io/Wills-Grill/data/recipes/recipes.json",
+    recipesFile: `${ROOT}data/recipes/recipes.json`,
 
-    ingredientsFile: "https://willsgrill.github.io/Wills-Grill/data/ingredients/ingredients.json",
+    ingredientsFile: `${ROOT}data/ingredients/ingredients.json`,
 
-    recipeImages: "https://willsgrill.github.io/Wills-Grill/assets/images/recipes/"
+    recipeImages: `${ROOT}assets/images/recipes/`,
+
+    saveEndpoint: `${ROOT}api/recipemanager/save`
 
 };

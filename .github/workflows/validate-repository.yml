@@ -1,0 +1,55 @@
+name: Validate repository structure
+
+on:
+  push:
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # This placeholder validation keeps the repository layout stable until source compilation is introduced.
+      - name: Confirm required repository paths
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required_directories=(
+            assets
+            assets/css
+            assets/images
+            assets/images/recipes
+            assets/js
+            data
+            data/ingredients
+            data/recipes
+            pages
+            recipemanager
+            recipemanager/assets
+            recipemanager/assets/css
+            recipemanager/assets/js
+            recipemanager/pages
+            source
+            source/images
+            source/recipes
+          )
+
+          required_files=(
+            index.html
+            recipemanager/index.html
+            recipemanager/local_server.py
+            source/ingredients.yml
+          )
+
+          for directory in "${required_directories[@]}"; do
+            test -d "$directory"
+          done
+
+          for file in "${required_files[@]}"; do
+            test -f "$file"
+          done
+
+          echo "Repository structure validated successfully."

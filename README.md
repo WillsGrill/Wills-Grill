@@ -12,6 +12,12 @@ From the project root, start a local server with Python:
 
 Then open http://localhost:8000 in a browser.
 
+To edit the repository data through Recipe Manager, run:
+
+	python3 recipemanager/local_server.py
+
+Then open http://127.0.0.1:8000/recipemanager/index.html. Use **Save to repository** on the Export page, review `git diff`, and commit the changes normally.
+
 ## Main journeys
 
 - Browse and search recipes.
@@ -25,3 +31,5 @@ Then open http://localhost:8000 in a browser.
 - `data/` contains the recipe and ingredient databases.
 - `assets/` contains stylesheets, scripts, images, and supporting assets.
 - `pages/` contains the Browse, Recipe, Shopping List, and Meal Pack pages.
+- `recipemanager/` contains the private Recipe Manager editor, available at `recipemanager/index.html`.
+- `source/` reserves the future recipe, image, and ingredient source files; it does not currently power the website.

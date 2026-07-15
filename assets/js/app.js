@@ -7,7 +7,12 @@ app.js
 
 "use strict";
 
-document.addEventListener("DOMContentLoaded", initialiseApp);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialiseApp);
+}
+else {
+    initialiseApp();
+}
 
 async function initialiseApp() {
 

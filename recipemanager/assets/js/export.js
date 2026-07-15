@@ -4,6 +4,7 @@ const downloadPackageButton = document.getElementById("downloadPackageButton");
 const packageSummary = document.getElementById("packageSummary");
 const packageStatus = document.getElementById("packageStatus");
 const refreshDataButton = document.getElementById("refreshDataButton");
+const saveRepositoryButton = document.getElementById("saveRepositoryButton");
 
 let recipes = [];
 let ingredients = [];
@@ -16,6 +17,7 @@ const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 
 downloadPackageButton.addEventListener("click", downloadExportZip);
 refreshDataButton.addEventListener("click", discardLocalChanges);
+saveRepositoryButton.addEventListener("click", saveToRepository);
 initialiseExportPage();
 
 async function initialiseExportPage() {
@@ -35,11 +37,48 @@ async function initialiseExportPage() {
         const changedImages = await getChangedRecipeImages(recipes);
         packageSummary.textContent = `${recipes.length} recipes, ${ingredients.length} ingredients, and ${changedImages.length} changed image${changedImages.length === 1 ? "" : "s"}.`;
         downloadPackageButton.disabled = false;
+        saveRepositoryButton.disabled = false;
     }
     catch (error) {
         console.error(error);
         packageSummary.textContent = "The current website data could not be loaded.";
         setStatus("Unable to prepare the export. Check the configured data source.", true);
+    }
+}
+
+async function saveToRepository() {
+    saveRepositoryButton.disabled = true;
+    setStatus("Saving to the local repository...");
+
+    try {
+        const validationError = validateExportData();
+        if (validationError) throw new Error(validationError);
+
+        const changedImages = await getChangedRecipeImages(recipes);
+        const images = await Promise.all(changedImages.map(async (image) => ({
+            filename: image.filename,
+            content: await blobToBase64(image.blob)
+        })));
+
+        const response = await fetch(CONFIG.saveEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ recipes, ingredients, images })
+        });
+
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            throw new Error(result.error || "The local save request failed.");
+        }
+
+        setStatus("Saved to the repository. Review git diff, then commit and push your changes.");
+    }
+    catch (error) {
+        console.error(error);
+        setStatus("Unable to save locally. Start Recipe Manager with python3 recipemanager/local_server.py, then try again.", true);
+    }
+    finally {
+        saveRepositoryButton.disabled = false;
     }
 }
 
@@ -219,6 +258,15 @@ function downloadBlob(blob, filename) {
     anchor.click();
     document.body.removeChild(anchor);
     URL.revokeObjectURL(url);
+}
+
+function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",", 2)[1]);
+        reader.onerror = () => reject(new Error("Unable to read a changed recipe image."));
+        reader.readAsDataURL(blob);
+    });
 }
 
 function getDateStamp() {
