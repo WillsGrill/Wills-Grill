@@ -242,55 +242,55 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": "300"
+        "quantity": 300
       },
       {
         "ingredient": "ING-G650",
-        "quantity": "2"
+        "quantity": 2
       },
       {
         "ingredient": "ING-C997",
-        "quantity": "120"
+        "quantity": 120
       },
       {
         "ingredient": "ING-V250",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-V201",
-        "quantity": "160"
+        "quantity": 160
       },
       {
         "ingredient": "ING-V205",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-D505",
-        "quantity": "50"
+        "quantity": 50
       },
       {
         "ingredient": "ING-C975",
-        "quantity": "40"
+        "quantity": 40
       },
       {
         "ingredient": "ING-C901",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-O801",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-C999",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-S150",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "ingredient": "ING-S105",
-        "quantity": "1"
+        "quantity": 1
       }
     ],
     "steps": [

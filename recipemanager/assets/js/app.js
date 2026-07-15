@@ -32,8 +32,8 @@ async function loadDashboardStats() {
             throw new Error("Website data must contain recipe and ingredient arrays.");
         }
 
-        recipes = readDraft(CONFIG.recipesDraftKey, recipes);
-        ingredients = readDraft(CONFIG.ingredientsDraftKey, ingredients);
+        const recipeDraft = DraftStore.inspect(CONFIG.recipesDraftKey, recipes);
+        const ingredientDraft = DraftStore.inspect(CONFIG.ingredientsDraftKey, ingredients);
 
         updateStat(
 
@@ -51,6 +51,8 @@ async function loadDashboardStats() {
 
         );
 
+        renderDraftStatus(recipeDraft, ingredientDraft, recipes.length, ingredients.length);
+
     }
 
     catch(error){
@@ -65,14 +67,21 @@ async function loadDashboardStats() {
 
 }
 
-function readDraft(key, fallback) {
-    try {
-        const draft = JSON.parse(localStorage.getItem(key));
-        return Array.isArray(draft) ? draft : fallback;
-    }
-    catch (error) {
-        return fallback;
-    }
+function renderDraftStatus(recipeDraft, ingredientDraft, recipeCount, ingredientCount) {
+    document.querySelector(".draft-dashboard-warning")?.remove();
+
+    if (!recipeDraft.hasDraft && !ingredientDraft.hasDraft) return;
+
+    const warning = document.createElement("section");
+    warning.className = `draft-dashboard-warning ${recipeDraft.stale || ingredientDraft.stale ? "error" : ""}`;
+    warning.setAttribute("role", "status");
+    warning.innerHTML = `
+        <h3>${recipeDraft.stale || ingredientDraft.stale ? "Older browser draft detected" : "Browser draft available"}</h3>
+        <p>Repository: ${recipeCount} recipes and ${ingredientCount} ingredients. Draft: ${recipeDraft.data.length} recipes and ${ingredientDraft.data.length} ingredients.</p>
+        <p>Open Recipes, Ingredients or Export to review, safely merge, back up, or discard the draft before saving.</p>
+    `;
+
+    document.querySelector(".content header")?.insertAdjacentElement("afterend", warning);
 }
 
 async function loadJSON(path){

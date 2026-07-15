@@ -7,10 +7,19 @@ let creatingIngredient = false;
 let ingredientSearchText = "";
 let ingredientCategoryFilter = "";
 let ingredientSortKey = "name-asc";
+let repositoryIngredients = [];
+let ingredientDraftBlocked = false;
+let ingredientEditorDirty = false;
 
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 
 document.addEventListener("DOMContentLoaded", initialiseIngredientsPage);
+
+window.addEventListener("beforeunload", (event) => {
+    if (!ingredientEditorDirty) return;
+    event.preventDefault();
+    event.returnValue = "";
+});
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && document.getElementById("ingredientEditorPanel")?.classList.contains("open")) {
@@ -77,10 +86,15 @@ async function loadIngredientData() {
             throw new Error("Website data must contain ingredient and recipe arrays.");
         }
 
-        ingredients = readDraft(INGREDIENTS_DRAFT_KEY, ingredientData);
-        recipes = readDraft(CONFIG.recipesDraftKey, recipeData);
+        repositoryIngredients = ingredientData;
+        const ingredientDraft = await DraftStore.resolve(INGREDIENTS_DRAFT_KEY, ingredientData, "ingredient");
+        const recipeDraft = await DraftStore.resolve(CONFIG.recipesDraftKey, recipeData, "recipe");
+        ingredients = ingredientDraft.data;
+        recipes = recipeDraft.data;
+        ingredientDraftBlocked = Boolean(ingredientDraft.blocked || recipeDraft.blocked);
         populateIngredientCategoryFilter();
         renderIngredientTable();
+        renderDraftBlockNotice();
 
     }
     catch (error) {
@@ -220,6 +234,11 @@ function deleteIngredient(id) {
     const ingredient = findIngredientById(id);
     if (!ingredient) return;
 
+    if (ingredientDraftBlocked) {
+        alert("This older draft is open for review only. Reload this page and merge or discard it before deleting ingredients.");
+        return;
+    }
+
     const usage = recipes.filter((recipe) => {
         return (recipe.ingredients || []).some((row) => row.ingredient === ingredient.id);
     });
@@ -232,10 +251,17 @@ function deleteIngredient(id) {
 
     if (!confirm(`Delete ${ingredient.name || ingredient.id}?`)) return;
 
+    const deletedIndex = ingredients.findIndex((item) => item.id === ingredient.id);
     ingredients = ingredients.filter((item) => item.id !== ingredient.id);
-    saveDraft(INGREDIENTS_DRAFT_KEY, ingredients);
+    saveIngredientDraft();
     populateIngredientCategoryFilter();
     renderIngredientTable();
+    showUndoToast(`${ingredient.name || ingredient.id} deleted.`, () => {
+        ingredients.splice(Math.max(0, deletedIndex), 0, ingredient);
+        saveIngredientDraft();
+        populateIngredientCategoryFilter();
+        renderIngredientTable();
+    });
 }
 
 function createBlankIngredient() {
@@ -243,7 +269,8 @@ function createBlankIngredient() {
         id: "",
         name: "",
         category: "",
-        unit: ""
+        unit: "",
+        pantry: false
     };
 }
 
@@ -251,20 +278,26 @@ function openIngredientEditor(ingredient) {
     if (!ingredient) return;
     currentIngredient = { ...ingredient };
     creatingIngredient = !ingredient.id;
+    ingredientEditorDirty = false;
     renderIngredientEditor();
     const editorPanel = document.getElementById("ingredientEditorPanel");
     if (editorPanel) {
         editorPanel.classList.add("open");
+        editorPanel.setAttribute("aria-hidden", "false");
+        editorPanel.querySelector("input,button,select,textarea")?.focus();
     }
 }
 
 function closeIngredientEditor() {
+    if (ingredientEditorDirty && !confirm("Discard your unsaved ingredient changes?")) return;
     const editorPanel = document.getElementById("ingredientEditorPanel");
     if (editorPanel) {
         editorPanel.classList.remove("open");
+        editorPanel.setAttribute("aria-hidden", "true");
     }
     currentIngredient = null;
     creatingIngredient = false;
+    ingredientEditorDirty = false;
 }
 
 function renderIngredientEditor() {
@@ -298,6 +331,10 @@ function renderIngredientEditor() {
                     Unit
                     <input id="ingredientUnit" value="${escapeHtml(currentIngredient.unit || "")}">
                 </label>
+                <label class="checkbox-field full-width">
+                    <input id="ingredientPantry" type="checkbox" ${currentIngredient.pantry ? "checked" : ""}>
+                    Pantry staple
+                </label>
             </div>
             <div class="editor-actions">
                 <button type="submit" class="primary-button">Save</button>
@@ -322,6 +359,8 @@ function renderIngredientEditor() {
     attachCategoryPicker(document.querySelector(".category-picker"));
 
     if (form) {
+        form.addEventListener("input", () => { ingredientEditorDirty = true; });
+        form.addEventListener("change", () => { ingredientEditorDirty = true; });
         form.addEventListener("submit", (event) => {
             event.preventDefault();
             saveIngredientFromEditor();
@@ -394,14 +433,21 @@ function saveIngredientFromEditor() {
     const nameInput = document.getElementById("ingredientName");
     const categoryInput = document.getElementById("ingredientCategory");
     const unitInput = document.getElementById("ingredientUnit");
+    const pantryInput = document.getElementById("ingredientPantry");
 
-    if (!idInput || !nameInput || !categoryInput || !unitInput) return;
+    if (!idInput || !nameInput || !categoryInput || !unitInput || !pantryInput) return;
+
+    if (ingredientDraftBlocked) {
+        alert("This older draft is open for review only. Reload this page and merge or discard it before saving.");
+        return;
+    }
 
     const updatedIngredient = {
         id: creatingIngredient ? generateIngredientId(categoryInput.value) : idInput.value.trim(),
         name: nameInput.value.trim(),
         category: categoryInput.value.trim(),
-        unit: unitInput.value.trim()
+        unit: unitInput.value.trim(),
+        pantry: pantryInput.checked
     };
 
     const validationError = validateIngredient(updatedIngredient);
@@ -419,15 +465,16 @@ function saveIngredientFromEditor() {
         ingredients.push(updatedIngredient);
     }
 
-    saveDraft(INGREDIENTS_DRAFT_KEY, ingredients);
+    saveIngredientDraft();
     populateIngredientCategoryFilter();
     renderIngredientTable();
+    ingredientEditorDirty = false;
     closeIngredientEditor();
 }
 
 function validateIngredient(ingredient) {
-    if (!ingredient.id || !/^ING-[A-Z]-\d{3}$/.test(ingredient.id)) {
-        return "Ingredient ID must use the ING-X-000 convention.";
+    if (!ingredient.id || !/^ING-[A-Z]\d{3}$/.test(ingredient.id)) {
+        return "Ingredient ID must use the ING-X000 convention.";
     }
 
     if (!ingredient.name) {
@@ -447,7 +494,7 @@ function validateIngredient(ingredient) {
 
 function generateIngredientId(category = "") {
     const typeCode = (category.trim().charAt(0) || "X").toUpperCase();
-    const prefix = `ING-${typeCode}-`;
+    const prefix = `ING-${typeCode}`;
     const nextNumber = ingredients.reduce((highestNumber, ingredient) => {
         const match = (ingredient.id || "").match(new RegExp(`^${prefix}(\\d+)$`, "i"));
         return match ? Math.max(highestNumber, Number(match[1])) : highestNumber;
@@ -456,18 +503,32 @@ function generateIngredientId(category = "") {
     return `${prefix}${String(nextNumber).padStart(3, "0")}`;
 }
 
-function readDraft(key, fallback) {
-    try {
-        const draft = JSON.parse(localStorage.getItem(key));
-        return Array.isArray(draft) ? draft : (Array.isArray(fallback) ? fallback : []);
-    }
-    catch (error) {
-        return Array.isArray(fallback) ? fallback : [];
-    }
+function saveIngredientDraft() {
+    DraftStore.write(INGREDIENTS_DRAFT_KEY, ingredients, repositoryIngredients);
 }
 
-function saveDraft(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
+function renderDraftBlockNotice() {
+    document.querySelector(".ingredient-draft-warning")?.remove();
+    if (!ingredientDraftBlocked) return;
+    const notice = document.createElement("p");
+    notice.className = "ingredient-draft-warning editor-feedback error";
+    notice.textContent = "An older draft is open for review only. Reload this page and merge or discard it before saving.";
+    document.querySelector(".page-header")?.insertAdjacentElement("afterend", notice);
+}
+
+function showUndoToast(message, undo) {
+    document.querySelector(".manager-toast")?.remove();
+    const toast = document.createElement("div");
+    toast.className = "manager-toast";
+    toast.setAttribute("role", "status");
+    toast.innerHTML = `<span>${escapeHtml(message)}</span><button type="button" class="secondary-button">Undo</button>`;
+    const timer = window.setTimeout(() => toast.remove(), 7000);
+    toast.querySelector("button").addEventListener("click", () => {
+        window.clearTimeout(timer);
+        toast.remove();
+        undo();
+    });
+    document.body.appendChild(toast);
 }
 
 function escapeHtml(value) {

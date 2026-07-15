@@ -1,0 +1,11 @@
+{
+  "name": "wills-grill",
+  "private": true,
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.3",
+    "@playwright/test": "1.60.0"
+  }
+}

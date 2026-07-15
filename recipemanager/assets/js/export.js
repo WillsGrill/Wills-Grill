@@ -7,6 +7,10 @@ const saveRepositoryButton = document.getElementById("saveRepositoryButton");
 
 let recipes = [];
 let ingredients = [];
+let repositoryRecipes = [];
+let repositoryIngredients = [];
+let saveSession = null;
+let exportBlocked = false;
 
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
@@ -25,16 +29,28 @@ async function initialiseExportPage() {
             loadJSON(CONFIG.ingredientsFile)
         ]);
 
-        recipes = readDraft(RECIPES_DRAFT_KEY, recipeData);
-        ingredients = readDraft(INGREDIENTS_DRAFT_KEY, ingredientData);
+        repositoryRecipes = recipeData;
+        repositoryIngredients = ingredientData;
+        const recipeDraft = await DraftStore.resolve(RECIPES_DRAFT_KEY, recipeData, "recipe");
+        const ingredientDraft = await DraftStore.resolve(INGREDIENTS_DRAFT_KEY, ingredientData, "ingredient");
+        recipes = recipeDraft.data;
+        ingredients = ingredientDraft.data;
+        exportBlocked = Boolean(recipeDraft.blocked || ingredientDraft.blocked);
 
         if (!Array.isArray(recipes) || !Array.isArray(ingredients)) {
             throw new Error("Website data must contain JSON arrays.");
         }
 
+        saveSession = await loadSaveSession();
         const changedImages = await getChangedRecipeImages(recipes);
         packageSummary.textContent = `${recipes.length} recipes, ${ingredients.length} ingredients, and ${changedImages.length} changed image${changedImages.length === 1 ? "" : "s"}.`;
-        saveRepositoryButton.disabled = false;
+        saveRepositoryButton.disabled = exportBlocked || !saveSession;
+        if (exportBlocked) {
+            setStatus("An older draft is open for review only. Reload and choose Merge safely or Discard old draft before saving.", true);
+        }
+        else if (!saveSession) {
+            setStatus("Repository saving is available only when Recipe Manager is opened from the local launcher.", true);
+        }
     }
     catch (error) {
         console.error(error);
@@ -44,6 +60,7 @@ async function initialiseExportPage() {
 }
 
 async function saveToRepository() {
+    if (exportBlocked || !saveSession) return;
     saveRepositoryButton.disabled = true;
     setStatus("Saving to the local repository...");
 
@@ -59,16 +76,29 @@ async function saveToRepository() {
 
         const response = await fetch(CONFIG.saveEndpoint, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ recipes, ingredients, images })
+            headers: {
+                "Content-Type": "application/json",
+                "X-Recipe-Manager-Token": saveSession.token
+            },
+            body: JSON.stringify({
+                recipes,
+                ingredients,
+                images,
+                expectedRevision: saveSession.revision
+            })
         });
 
         const result = await response.json().catch(() => ({}));
         if (!response.ok) {
+            if (response.status === 409) saveSession = null;
             throw new Error(result.error || "The local save request failed.");
         }
 
-        setStatus("Saved to the repository. Review git diff, then commit and push your changes.");
+        DraftStore.clear(RECIPES_DRAFT_KEY);
+        DraftStore.clear(INGREDIENTS_DRAFT_KEY);
+        await clearChangedRecipeImages();
+        saveSession.revision = result.revision;
+        setStatus("Saved to the repository. Browser drafts and staged images were cleared. Review git diff, then commit and push your changes.");
     }
     catch (error) {
         console.error(error);
@@ -78,7 +108,7 @@ async function saveToRepository() {
         setStatus(message, true);
     }
     finally {
-        saveRepositoryButton.disabled = false;
+        saveRepositoryButton.disabled = exportBlocked || !saveSession;
     }
 }
 
@@ -89,12 +119,13 @@ function validateExportData() {
     for (const ingredient of ingredients) {
         if (!ingredient.id || !/^ING-[A-Z]\d{3}$/.test(ingredient.id)) return `Ingredient ${ingredient.id || "without an ID"} has an invalid ID.`;
         if (!ingredient.name || !ingredient.category) return `Ingredient ${ingredient.id} is missing a name or category.`;
+        if (typeof ingredient.pantry !== "boolean") return `Ingredient ${ingredient.id} needs a true or false pantry value.`;
         if (ingredientIds.has(ingredient.id)) return `Duplicate ingredient ID: ${ingredient.id}.`;
         ingredientIds.add(ingredient.id);
     }
 
     for (const recipe of recipes) {
-        if (!recipe.id || recipeIds.has(recipe.id)) return `Recipe IDs must be present and unique: ${recipe.id || "missing ID"}.`;
+        if (!recipe.id || !/^REC\d{3}$/.test(recipe.id) || recipeIds.has(recipe.id)) return `Recipe IDs must use REC000 and be unique: ${recipe.id || "missing ID"}.`;
         if (!recipe.name || !recipe.category || !recipe.description || !recipe.difficulty || !recipe.tip) {
             return `Recipe ${recipe.id} is missing required information.`;
         }
@@ -105,8 +136,12 @@ function validateExportData() {
             return `Recipe ${recipe.id} needs exactly ${METHOD_STEP_COUNT} completed method steps.`;
         }
         if (!Array.isArray(recipe.ingredients) || !recipe.ingredients.length) return `Recipe ${recipe.id} needs at least one ingredient.`;
-        if (recipe.ingredients.some((row) => !ingredientIds.has(row.ingredient) || !Number.isFinite(Number(row.quantity)) || Number(row.quantity) <= 0)) {
+        if (recipe.ingredients.some((row) => !ingredientIds.has(row.ingredient) || !Number.isFinite(row.quantity) || row.quantity <= 0)) {
             return `Recipe ${recipe.id} has an invalid ingredient reference or quantity.`;
+        }
+        const numericFields = [recipe.prepTime, recipe.cookTime, recipe.serves, recipe.nutrition?.calories, recipe.nutrition?.protein, recipe.nutrition?.carbs, recipe.nutrition?.fat];
+        if (numericFields.some((value) => !Number.isFinite(value) || value < 0) || recipe.serves <= 0) {
+            return `Recipe ${recipe.id} has invalid timing, serving, or nutrition values.`;
         }
         recipeIds.add(recipe.id);
     }
@@ -119,6 +154,18 @@ function discardLocalChanges() {
     localStorage.removeItem(RECIPES_DRAFT_KEY);
     localStorage.removeItem(INGREDIENTS_DRAFT_KEY);
     clearChangedRecipeImages().then(() => window.location.reload());
+}
+
+async function loadSaveSession() {
+    try {
+        const response = await fetch(CONFIG.sessionEndpoint, { cache: "no-store" });
+        if (!response.ok) return null;
+        const session = await response.json();
+        return session?.token && session?.revision ? session : null;
+    }
+    catch (error) {
+        return null;
+    }
 }
 
 function clearChangedRecipeImages() {
@@ -183,7 +230,7 @@ function getChangedRecipeImages(recipeList) {
             getAllRequest.onsuccess = () => {
                 database.close();
                 const referencedImages = new Set(recipeList.map((recipe) => recipe.image).filter(Boolean));
-                resolve((getAllRequest.result || []).filter((image) => referencedImages.has(image.filename)));
+                resolve((getAllRequest.result || []).filter((image) => referencedImages.has(image.filename.replace(/^thumbs\//, ""))));
             };
             getAllRequest.onerror = () => {
                 database.close();
@@ -193,16 +240,6 @@ function getChangedRecipeImages(recipeList) {
 
         request.onerror = () => resolve([]);
     });
-}
-
-function readDraft(key, fallback) {
-    try {
-        const draft = JSON.parse(localStorage.getItem(key));
-        return Array.isArray(draft) ? draft : (Array.isArray(fallback) ? fallback : []);
-    }
-    catch (error) {
-        return Array.isArray(fallback) ? fallback : [];
-    }
 }
 
 function blobToBase64(blob) {

@@ -18,6 +18,8 @@ To edit the repository data through Recipe Manager, run:
 
 Then open http://127.0.0.1:8000/recipemanager/index.html. Use **Save to repository** on the Export page, review `git diff`, and commit the changes normally.
 
+On macOS, you can instead double-click `Start Recipe Manager.command`; it starts the server and opens Safari for you.
+
 ## Main journeys
 
 - Browse and search recipes.
@@ -33,3 +35,11 @@ Then open http://127.0.0.1:8000/recipemanager/index.html. Use **Save to reposito
 - `pages/` contains the Browse, Recipe, Shopping List, and Meal Pack pages.
 - `recipemanager/` contains the private Recipe Manager editor, available at `recipemanager/index.html`.
 - `source/` reserves the future recipe, image, and ingredient source files; it does not currently power the website.
+
+## Checks
+
+Run the data, image, and local-server checks with:
+
+    python3 -m unittest discover -s tests -p 'test_*.py'
+
+The GitHub Actions workflow also runs responsive Playwright journeys and accessibility checks at mobile, tablet, and desktop sizes.

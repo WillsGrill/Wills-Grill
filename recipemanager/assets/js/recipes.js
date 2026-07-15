@@ -9,6 +9,9 @@ let recipeSearchText = "";
 let recipeCategoryFilter = "";
 let recipeSortKey = "name-asc";
 let pendingRecipeImage = null;
+let repositoryRecipes = [];
+let recipeDraftBlocked = false;
+let editorDirty = false;
 
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
@@ -22,6 +25,12 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && document.getElementById("editorPanel")?.classList.contains("open")) {
         closeEditor();
     }
+});
+
+window.addEventListener("beforeunload", (event) => {
+    if (!editorDirty) return;
+    event.preventDefault();
+    event.returnValue = "";
 });
 
 function initialiseRecipesPage() {
@@ -89,12 +98,17 @@ async function loadRecipeData() {
             throw new Error("Website data must contain recipe and ingredient arrays.");
         }
 
-        recipes = readDraft(RECIPES_DRAFT_KEY, recipeData).map(normalizeRecipeSteps);
-        ingredients = readDraft(INGREDIENTS_DRAFT_KEY, ingredientData);
-        saveDraft(RECIPES_DRAFT_KEY, recipes);
+        repositoryRecipes = recipeData.map(normalizeRecipeSteps);
+        const recipeDraft = await DraftStore.resolve(RECIPES_DRAFT_KEY, repositoryRecipes, "recipes");
+        const ingredientDraft = await DraftStore.resolve(INGREDIENTS_DRAFT_KEY, ingredientData, "ingredients");
+
+        recipes = recipeDraft.data.map(normalizeRecipeSteps);
+        ingredients = ingredientDraft.data;
+        recipeDraftBlocked = Boolean(recipeDraft.blocked || ingredientDraft.blocked);
 
         populateRecipeCategoryFilter();
         renderRecipeTable();
+        renderDraftBlockNotice();
 
     }
     catch (error) {
@@ -276,14 +290,22 @@ function deleteRecipe(recipeId) {
     const recipe = findRecipeById(recipeId);
     if (!recipe || !recipe.id) return;
 
+    if (recipeDraftBlocked) {
+        alert("This older draft is open for review only. Reload this page and merge or discard it before deleting recipes.");
+        return;
+    }
+
     if (!confirm(`Delete ${recipe.name || recipe.id}? This change will be included in the next export.`)) return;
 
+    const deletedIndex = recipes.findIndex((item) => item.id === recipe.id);
     recipes = recipes.filter((item) => item.id !== recipe.id);
-    saveDraft(RECIPES_DRAFT_KEY, recipes);
-    if (!recipes.some((item) => item.image === recipe.image)) {
-        removeChangedRecipeImage(recipe.image);
-    }
+    saveRecipeDraft();
     renderRecipeTable();
+    showUndoToast(`${recipe.name || recipe.id} deleted.`, () => {
+        recipes.splice(Math.max(0, deletedIndex), 0, recipe);
+        saveRecipeDraft();
+        renderRecipeTable();
+    });
 }
 
 function openEditor(recipe) {
@@ -294,12 +316,15 @@ function openEditor(recipe) {
     editingRecipeId = recipe.id || null;
     activeEditorTab = "general";
     pendingRecipeImage = null;
+    editorDirty = false;
     renderEditor();
 
     const editorPanel = document.getElementById("editorPanel");
 
     if (editorPanel) {
         editorPanel.classList.add("open");
+        editorPanel.setAttribute("aria-hidden", "false");
+        editorPanel.querySelector("input,button,select,textarea")?.focus();
     }
 
     const previewButton = document.getElementById("previewRecipeButton");
@@ -310,16 +335,20 @@ function openEditor(recipe) {
 
 function closeEditor() {
 
+    if (editorDirty && !confirm("Discard unsaved recipe changes?")) return;
+
     const editorPanel = document.getElementById("editorPanel");
 
     if (editorPanel) {
         editorPanel.classList.remove("open");
+        editorPanel.setAttribute("aria-hidden", "true");
     }
 
     currentRecipe = null;
     editingRecipeId = null;
     activeEditorTab = "general";
     pendingRecipeImage = null;
+    editorDirty = false;
 
     const previewButton = document.getElementById("previewRecipeButton");
     if (previewButton) previewButton.disabled = true;
@@ -336,7 +365,7 @@ function previewRecipe(recipe) {
 
     localStorage.setItem(CONFIG.recipePreviewKey, JSON.stringify({ recipe, ingredients }));
     const url = `${CONFIG.recipePreviewPage}?id=${encodeURIComponent(recipe.id)}&preview=recipemanager`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener");
 }
 
 function duplicateCurrentRecipe() {
@@ -351,6 +380,7 @@ function duplicateCurrentRecipe() {
     currentRecipe = duplicate;
     activeEditorTab = "general";
     renderEditor();
+    editorDirty = true;
     updateActiveTab();
     showEditorFeedback("Recipe duplicated. Add a new image, then save it as a new recipe.", false);
 }
@@ -415,6 +445,7 @@ function renderEditor() {
                     <button type="button" class="secondary-button" data-action="add-ingredient">+ Add Ingredient</button>
                 </div>
                 <table class="editor-table">
+                    <caption class="visually-hidden">Ingredients and quantities for this recipe</caption>
                     <thead>
                         <tr>
                             <th>Ingredient</th>
@@ -492,7 +523,7 @@ function renderEditor() {
                 ` : '<p class="field-help">No image has been added to this recipe.</p>'}
             </div>
 
-            <p id="editorFeedback" class="editor-feedback"></p>
+            <p id="editorFeedback" class="editor-feedback" aria-live="polite"></p>
         </form>
     `;
 
@@ -500,6 +531,8 @@ function renderEditor() {
 
     if (form) {
         form.addEventListener("submit", handleRecipeSave);
+        form.addEventListener("input", markEditorDirty);
+        form.addEventListener("change", markEditorDirty);
     }
 
     const duplicateButton = document.getElementById("duplicateRecipeButton");
@@ -549,7 +582,7 @@ function renderIngredientRows(ingredientRows) {
                 </div>
             </td>
             <td>
-                <input type="text" inputmode="decimal" data-field="quantity" data-index="${index}" value="${escapeHtml(row.quantity || "")}">
+                <input type="text" inputmode="decimal" data-field="quantity" data-index="${index}" value="${escapeHtml(row.quantity || "")}" aria-label="Quantity for ingredient ${index + 1}">
             </td>
             <td>
                 <button type="button" class="secondary-button" data-action="remove-ingredient" data-index="${index}">Remove</button>
@@ -569,6 +602,12 @@ async function handleRecipeImageSelection(event) {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    if (file.size > 20 * 1024 * 1024) {
+        showEditorFeedback("Choose an image smaller than 20 MB.", true);
+        event.target.value = "";
+        return;
+    }
+
     const preview = document.getElementById("recipeImagePreview");
     const imageField = document.getElementById("recipeImage");
     const filename = getNextRecipeImageFilename();
@@ -577,12 +616,14 @@ async function handleRecipeImageSelection(event) {
         if (preview) preview.textContent = "Converting image...";
 
         const image = await loadRecipeImage(file);
-        const jpegBlob = await convertRecipeImageToJpeg(image);
+        const jpegBlob = await convertRecipeImageToJpeg(image, 1600, 900, .86);
+        const thumbnailBlob = await convertRecipeImageToJpeg(image, 800, 450, .74);
 
         if (imageField) imageField.value = filename;
         if (currentRecipe) currentRecipe.image = filename;
 
-        pendingRecipeImage = { filename, blob: jpegBlob };
+        pendingRecipeImage = { filename, blob: jpegBlob, thumbnailBlob };
+        editorDirty = true;
         displayCurrentRecipeImage(jpegBlob, filename);
 
         if (preview) {
@@ -644,11 +685,27 @@ function loadRecipeImage(file) {
     });
 }
 
-function convertRecipeImageToJpeg(image) {
+function convertRecipeImageToJpeg(image, targetWidth = 1600, targetHeight = 900, quality = .86) {
     return new Promise((resolve, reject) => {
         const canvas = document.createElement("canvas");
-        canvas.width = image.naturalWidth;
-        canvas.height = image.naturalHeight;
+        const sourceRatio = image.naturalWidth / image.naturalHeight;
+        const targetRatio = targetWidth / targetHeight;
+        let sourceX = 0;
+        let sourceY = 0;
+        let sourceWidth = image.naturalWidth;
+        let sourceHeight = image.naturalHeight;
+
+        if (sourceRatio > targetRatio) {
+            sourceWidth = image.naturalHeight * targetRatio;
+            sourceX = (image.naturalWidth - sourceWidth) / 2;
+        }
+        else {
+            sourceHeight = image.naturalWidth / targetRatio;
+            sourceY = (image.naturalHeight - sourceHeight) / 2;
+        }
+
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
 
         const context = canvas.getContext("2d");
         if (!context) {
@@ -658,10 +715,20 @@ function convertRecipeImageToJpeg(image) {
 
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(image, 0, 0);
+        context.drawImage(
+            image,
+            sourceX,
+            sourceY,
+            sourceWidth,
+            sourceHeight,
+            0,
+            0,
+            targetWidth,
+            targetHeight
+        );
         canvas.toBlob((blob) => {
             blob ? resolve(blob) : reject(new Error("Unable to create JPEG."));
-        }, "image/jpeg", .88);
+        }, "image/jpeg", quality);
     });
 }
 
@@ -706,20 +773,6 @@ function removeChangedRecipeImage(filename) {
         transaction.objectStore("changed-images").delete(filename);
         transaction.oncomplete = () => database.close();
     };
-}
-
-function readDraft(key, fallback) {
-    try {
-        const draft = JSON.parse(localStorage.getItem(key));
-        return Array.isArray(draft) ? draft : (Array.isArray(fallback) ? fallback : []);
-    }
-    catch (error) {
-        return Array.isArray(fallback) ? fallback : [];
-    }
-}
-
-function saveDraft(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
 }
 
 function normalizeRecipeSteps(recipe) {
@@ -819,12 +872,16 @@ function updateActiveTab() {
     document.querySelectorAll(".tab").forEach((tab) => {
         const isActive = tab.getAttribute("data-tab") === activeEditorTab;
         tab.classList.toggle("active", isActive);
+        tab.setAttribute("aria-selected", String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
     });
 
     document.querySelectorAll(".editor-section").forEach((section) => {
         const sectionTab = section.getAttribute("data-tab");
         section.classList.toggle("visible", sectionTab === activeEditorTab);
         section.classList.toggle("hidden", sectionTab !== activeEditorTab);
+        section.setAttribute("role", "tabpanel");
+        section.setAttribute("aria-hidden", String(sectionTab !== activeEditorTab));
     });
 
 }
@@ -850,6 +907,7 @@ function addIngredientRow() {
 
     if (!currentRecipe) return;
     currentRecipe.ingredients.push({ ingredient: "", quantity: "" });
+    markEditorDirty();
     renderIngredientSection();
 
 }
@@ -863,6 +921,7 @@ function removeIngredientRow(index) {
         currentRecipe.ingredients = [{ ingredient: "", quantity: "" }];
     }
 
+    markEditorDirty();
     renderIngredientSection();
 
 }
@@ -893,6 +952,11 @@ async function handleRecipeSave(event) {
 
     event.preventDefault();
 
+    if (recipeDraftBlocked) {
+        showEditorFeedback("This older draft is open for review only. Reload this page and merge or discard it before saving.", true);
+        return;
+    }
+
     const recipe = collectRecipeFromForm();
 
     if (!recipe) return;
@@ -917,10 +981,13 @@ async function handleRecipeSave(event) {
         recipes.unshift(recipe);
     }
 
-    saveDraft(RECIPES_DRAFT_KEY, recipes);
+    saveRecipeDraft();
     if (pendingRecipeImage) {
         try {
-            await saveChangedRecipeImage(pendingRecipeImage.filename, pendingRecipeImage.blob);
+            await Promise.all([
+                saveChangedRecipeImage(pendingRecipeImage.filename, pendingRecipeImage.blob),
+                saveChangedRecipeImage(`thumbs/${pendingRecipeImage.filename}`, pendingRecipeImage.thumbnailBlob)
+            ]);
         }
         catch (error) {
             console.error(error);
@@ -932,6 +999,7 @@ async function handleRecipeSave(event) {
     }
     pendingRecipeImage = null;
     currentRecipe = recipe;
+    editorDirty = false;
     renderRecipeTable();
     showEditorFeedback("Recipe saved and ready for repository upload.", false);
 
@@ -981,10 +1049,51 @@ function readIngredientRows() {
 
         return {
             ingredient: ingredient?.id || typedValue,
-            quantity: row.querySelector("input[data-field='quantity']")?.value.trim() || ""
+            quantity: parseIngredientQuantity(row.querySelector("input[data-field='quantity']")?.value)
         };
     }).filter((row) => row.ingredient || row.quantity);
 
+}
+
+function parseIngredientQuantity(value) {
+    const text = String(value ?? "").trim();
+    if (!text) return "";
+    const number = Number(text);
+    return Number.isFinite(number) ? number : text;
+}
+
+function markEditorDirty() {
+    editorDirty = true;
+}
+
+function saveRecipeDraft() {
+    DraftStore.write(RECIPES_DRAFT_KEY, recipes, repositoryRecipes);
+    renderDraftBlockNotice();
+}
+
+function renderDraftBlockNotice() {
+    document.querySelector(".recipe-draft-warning")?.remove();
+    if (!recipeDraftBlocked) return;
+
+    const notice = document.createElement("p");
+    notice.className = "recipe-draft-warning editor-feedback error";
+    notice.textContent = "This older draft is open for review only. Merge or discard it before saving to the repository.";
+    document.querySelector(".page-header")?.insertAdjacentElement("afterend", notice);
+}
+
+function showUndoToast(message, undo) {
+    document.querySelector(".manager-toast")?.remove();
+    const toast = document.createElement("div");
+    toast.className = "manager-toast";
+    toast.setAttribute("role", "status");
+    toast.innerHTML = `<span>${escapeHtml(message)}</span><button type="button" class="secondary-button">Undo</button>`;
+    const timer = window.setTimeout(() => toast.remove(), 7000);
+    toast.querySelector("button").addEventListener("click", () => {
+        window.clearTimeout(timer);
+        toast.remove();
+        undo();
+    });
+    document.body.appendChild(toast);
 }
 
 function readMethodSteps() {

@@ -34,6 +34,10 @@ async function initialiseMealPack() {
             await initialiseRecipes();
         }
 
+        if (typeof updateRecipeCounter === "function") {
+            updateRecipeCounter();
+        }
+
         await renderMealPack();
 
     }
@@ -207,7 +211,7 @@ function buildContentsPage(selectedRecipes, ingredientItems) {
 
             <div class="mp-contents-row">
 
-                <span>${row.label}</span>
+                <span>${escapeHTML(row.label)}</span>
 
                 <span>${row.page}</span>
 
@@ -236,14 +240,14 @@ function buildRecipePage(recipe) {
             quantity: item.quantity * scaledQuantity
         };
         const text = formatIngredient(scaledItem);
-        return `<li>${text}</li>`;
+        return `<li>${escapeHTML(text)}</li>`;
     }).join("");
 
     const methodHTML = recipe.steps.map((step, index) => `
 
         <li>
             <span class="mp-step-number">${index + 1}</span>
-            <span>${step}</span>
+            <span>${escapeHTML(step)}</span>
         </li>
 
     `).join("");
@@ -256,12 +260,12 @@ function buildRecipePage(recipe) {
 
         <div class="mp-recipe-header">
             <div class="mp-recipe-image">
-                <img src="../assets/images/recipes/${recipe.image}" alt="${recipe.name}">
+                <img src="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="1600" height="900">
             </div>
 
             <div class="mp-recipe-summary">
-                <h2>${recipe.name}</h2>
-                <p>${recipe.description}</p>
+                <h2>${escapeHTML(recipe.name)}</h2>
+                <p>${escapeHTML(recipe.description)}</p>
 
                 <div class="mp-recipe-meta">
                     <span>Prep ${recipe.prepTime} mins</span>
@@ -277,7 +281,7 @@ function buildRecipePage(recipe) {
 
         <div class="mp-recipe-body">
             <div class="mp-info-panel">
-                <h3>Nutrition</h3>
+                <h3>Nutrition <small>(per serving)</small></h3>
                 <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
                 <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
                 <p><strong>Carbs:</strong> ${recipe.nutrition.carbs} g</p>
@@ -285,7 +289,7 @@ function buildRecipePage(recipe) {
 
                 <div class="mp-tip-panel">
                     <h3>Chef's Tip</h3>
-                    <p>${recipe.tip}</p>
+                    <p>${escapeHTML(recipe.tip)}</p>
                 </div>
             </div>
 
@@ -351,8 +355,8 @@ function buildMealPackMarkup() {
     </div>
 
     <div class="mp-pdf-actions" aria-label="Meal Pack PDF actions">
-        <button id="printMealPack" class="button">Print PDF</button>
-        <button id="downloadMealPack" class="button button-outline">Download PDF</button>
+        <button id="printMealPack" class="button" disabled>Print PDF</button>
+        <button id="downloadMealPack" class="button button-outline" disabled>Download PDF</button>
     </div>
 
     <p id="mealPackPdfStatus" class="mp-pdf-status" aria-live="polite">Building your custom Meal Pack PDF...</p>
@@ -387,6 +391,8 @@ async function renderMealPack() {
     }
 
     applyMealPackPDFToFrame(result.doc, result.filename);
+    document.getElementById("printMealPack")?.removeAttribute("disabled");
+    document.getElementById("downloadMealPack")?.removeAttribute("disabled");
     setMealPackPDFStatus("Preview ready.");
 
 }
@@ -658,7 +664,7 @@ function drawMealPackShoppingSection(doc, items, assets) {
         .map(category => ({
             category,
             entries: categories[category]
-                .map(item => `${item.quantity} ${item.unit} ${item.name}`)
+                .map(item => formatIngredientRecord(item, item.quantity))
                 .sort((a, b) => a.localeCompare(b))
         }));
 
@@ -1077,6 +1083,7 @@ function attachMealPackEvents() {
     const clearButton = document.getElementById("clearMealPack");
     if (clearButton) {
         clearButton.addEventListener("click", () => {
+            if (!window.confirm("Clear every recipe from this Meal Pack?")) return;
             localStorage.removeItem(MEALPACK_STORAGE);
             if (MEALPACK_PDF_STATE.url) {
                 URL.revokeObjectURL(MEALPACK_PDF_STATE.url);

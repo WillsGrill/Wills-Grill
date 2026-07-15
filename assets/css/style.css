@@ -14,6 +14,151 @@
     padding:0;
 }
 
+/* ---------- ACCESSIBILITY AND INTERACTION ---------- */
+
+.visually-hidden{
+    position:absolute!important;
+    width:1px!important;
+    height:1px!important;
+    padding:0!important;
+    margin:-1px!important;
+    overflow:hidden!important;
+    clip:rect(0,0,0,0)!important;
+    white-space:nowrap!important;
+    border:0!important;
+}
+
+:where(a,button,input,select):focus-visible{
+    outline:3px solid #d7b45a;
+    outline-offset:3px;
+}
+
+button:disabled{
+    cursor:not-allowed;
+    opacity:.5;
+    transform:none!important;
+}
+
+.nav-toggle{
+    display:none;
+    width:auto;
+    border:1px solid #d7b45a;
+    background:transparent;
+    color:white;
+}
+
+.nav-count{
+    display:inline-grid;
+    min-width:1.45rem;
+    height:1.45rem;
+    place-items:center;
+    padding:0 .35rem;
+    border-radius:999px;
+    background:#333;
+    color:white;
+    font-size:.75rem;
+}
+
+.nav-count.has-items{
+    background:#d7b45a;
+    color:#111;
+}
+
+.browse-filters{
+    display:grid;
+    grid-template-columns:minmax(240px,2fr) repeat(3,minmax(150px,1fr));
+    gap:14px;
+    align-items:end;
+}
+
+.browse-filters label{
+    display:grid;
+    gap:6px;
+    color:var(--grey700);
+    font-size:.85rem;
+    font-weight:700;
+}
+
+.browse-filters input,
+.browse-filters select{
+    width:100%;
+    min-height:52px;
+    padding:12px 14px;
+    border:1px solid var(--grey300);
+    border-radius:14px;
+    background:white;
+    color:var(--black);
+    font:inherit;
+}
+
+.no-results,.error-state{
+    grid-column:1 / -1;
+    text-align:center;
+}
+
+.site-toast{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:3000;
+    max-width:min(360px,calc(100vw - 32px));
+    padding:14px 18px;
+    border:1px solid #d7b45a;
+    border-radius:12px;
+    background:#111;
+    color:white;
+    box-shadow:var(--shadow-large);
+}
+
+.recipe-nutrition small,.mp-info-panel small{
+    color:var(--grey700);
+    font-size:.75em;
+    font-weight:500;
+}
+
+@media(max-width:1050px){
+    .browse-filters{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:700px){
+    .header-inner{
+        min-height:68px;
+        padding:8px 0;
+        flex-direction:row;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+    .brand{
+        flex:1;
+        min-width:0;
+        flex-direction:row;
+        gap:10px;
+        margin:0;
+    }
+    .brand-logo{height:52px;}
+    .logo-tagline{align-items:flex-start;text-align:left;gap:1px;}
+    .tagline-white,.tagline-gold{font-size:.75rem;}
+    .nav-toggle{display:inline-flex;}
+    .header-inner nav{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:8px 0 12px;
+    }
+    .header-inner nav.open{display:flex;}
+    .header-inner nav a{padding:10px 4px;}
+    .header-inner nav a::after{bottom:4px;}
+    .browse-filters{grid-template-columns:1fr;}
+    .site-toast{right:16px;bottom:16px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}
+}
+
 html{
     scroll-behavior:smooth;
 }
@@ -37,7 +182,7 @@ body{
     --grey100:#f4f4f4;
     --grey200:#e8e8e8;
     --grey300:#d8d8d8;
-    --grey500:#8c8c8c;
+    --grey500:#666666;
     --grey700:#4f4f4f;
 
     --success:#1d7a35;
@@ -292,7 +437,7 @@ nav a[aria-current="page"]::after{
 
 }
 
-.hero h2{
+.hero h1{
 
     font-size:clamp(2.7rem,6vw,4.5rem);
     margin-bottom:22px;
@@ -486,14 +631,15 @@ nav a[aria-current="page"]::after{
 
 .pdf-preview-close{
 
-    width:34px;
+    width:auto;
     height:34px;
+    padding:0 12px;
     border:1px solid #c8a24a;
-    border-radius:50%;
+    border-radius:999px;
     cursor:pointer;
     background:transparent;
     color:var(--white);
-    font-size:1.5rem;
+    font-size:.85rem;
     line-height:1;
 
 }
@@ -527,6 +673,7 @@ nav a[aria-current="page"]::after{
 
 }
 
+.page-heading-row h1,
 .page-heading-row h2{
     margin-bottom:8px;
 }
@@ -630,7 +777,7 @@ nav a[aria-current="page"]::after{
 
 }
 
-.recipe-body h3{
+.recipe-body h2{
 
     font-size:1.15rem;
 
@@ -720,10 +867,10 @@ nav a[aria-current="page"]::after{
 }
 
 .recipe-quantity-control .removeRecipe {
-    width:40px;
-    min-width:40px;
-    flex:0 0 40px;
-    padding:10px 0;
+    width:auto;
+    min-width:74px;
+    flex:0 0 auto;
+    padding:10px 12px;
     border-radius:999px;
     border:2px solid #c0392b;
     background:white;
@@ -829,7 +976,7 @@ nav a[aria-current="page"]::after{
 
 }
 
-.recipe-summary h2{
+.recipe-summary h1{
 
     font-size:2.6rem;
 
@@ -1279,7 +1426,7 @@ padding:60px 0;
 
 }
 
-.hero h2{
+.hero h1{
 
 font-size:2.5rem;
 
@@ -1519,7 +1666,7 @@ footer{
         gap:6px !important;
     }
 
-    .recipe-summary h2 {
+    .recipe-summary h1 {
         font-size: 1.35rem !important;
         line-height: 1.15 !important;
         margin: 0 !important;
@@ -1636,4 +1783,22 @@ footer{
         margin-top:0 !important;
     }
 
+}
+
+@media screen and (max-width:700px){
+    .header-inner{min-height:68px;padding:8px 0;flex-direction:row;flex-wrap:wrap;gap:10px;}
+    .brand{flex:1;min-width:0;flex-direction:row;align-items:center;gap:10px;margin:0;}
+    .brand-logo{height:52px;}
+    .logo-tagline{align-items:flex-start;text-align:left;gap:1px;margin:0;}
+    .tagline-white,.tagline-gold{font-size:.75rem;}
+    .nav-toggle{display:inline-flex;width:auto;}
+    .header-inner nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 12px;}
+    .header-inner nav.open{display:flex;}
+    .header-inner nav a{padding:10px 4px;}
+    .header-inner nav a::after{bottom:4px;}
+    .pdf-preview-overlay{padding:8px;}
+    .pdf-preview-toolbar{flex-wrap:wrap;gap:8px;padding:10px;}
+    .pdf-preview-toolbar h2{flex:1 0 calc(100% - 80px);}
+    .pdf-preview-actions{order:3;width:100%;}
+    .pdf-preview-actions .button{width:auto;flex:1;}
 }

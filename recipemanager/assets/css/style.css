@@ -162,6 +162,7 @@ header{
 
 }
 
+header h1,
 header h2{
 
     font-size:2rem;
@@ -736,11 +737,12 @@ select:focus{
     border-bottom:1px solid var(--border);
 }
 
-.editor-header #closeEditor{
+.editor-header #closeEditor,
+.editor-header #closeIngredientEditor{
 
-    width:42px;
+    min-width:70px;
     min-height:42px;
-    padding:0;
+    padding:0 14px;
     background:#242424;
     color:var(--text);
     border-color:var(--border);
@@ -748,7 +750,8 @@ select:focus{
 
 }
 
-.editor-header #closeEditor:hover:not(:disabled){
+.editor-header #closeEditor:hover:not(:disabled),
+.editor-header #closeIngredientEditor:hover:not(:disabled){
 
     background:#303030;
     border-color:#555;
@@ -1169,6 +1172,7 @@ textarea{
         padding:20px 14px;
     }
 
+    header h1,
     header h2{
         font-size:1.65rem;
     }
@@ -1197,4 +1201,70 @@ textarea{
         padding-right:10px;
     }
 
+}
+
+.visually-hidden{
+    position:absolute!important;
+    width:1px!important;
+    height:1px!important;
+    padding:0!important;
+    margin:-1px!important;
+    overflow:hidden!important;
+    clip:rect(0,0,0,0)!important;
+    white-space:nowrap!important;
+    border:0!important;
+}
+
+.checkbox-field{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center;
+    gap:10px;
+}
+
+.checkbox-field input{width:auto;}
+
+.draft-conflict-overlay{
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    display:grid;
+    place-items:center;
+    padding:24px;
+    background:rgba(0,0,0,.78);
+}
+
+.draft-conflict-dialog{
+    width:min(620px,100%);
+    padding:28px;
+    border:1px solid var(--gold);
+    border-radius:var(--radius);
+    background:var(--card);
+    box-shadow:0 24px 70px rgba(0,0,0,.45);
+}
+
+.draft-conflict-dialog h2,.draft-conflict-dialog p{margin-bottom:14px;}
+.draft-conflict-dialog p{color:var(--muted);line-height:1.5;}
+.draft-conflict-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+
+.manager-toast{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:3100;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    max-width:min(460px,calc(100vw - 32px));
+    padding:14px 16px;
+    border:1px solid var(--gold);
+    border-radius:12px;
+    background:var(--card);
+    box-shadow:0 18px 45px rgba(0,0,0,.4);
+}
+
+.recipe-draft-warning,.ingredient-draft-warning{margin:0 0 20px;}
+
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}
 }

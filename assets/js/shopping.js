@@ -102,6 +102,11 @@ function attachShoppingEvents() {
 
 function clearShoppingSelection() {
 
+    if (!getSelectedRecipes().length) {
+        showShoppingToast("There are no selected recipes to clear.");
+        return;
+    }
+
     const confirmed = window.confirm(
         "Clear all selected recipes and shopping-list tick marks?"
     );
@@ -113,6 +118,7 @@ function clearShoppingSelection() {
     updateButtons();
     updateRecipeCounter();
     generateShoppingList();
+    showShoppingToast("Recipe selection cleared.");
 
 }
 
@@ -148,6 +154,8 @@ function toggleRecipe(recipeID, quantity = 1) {
     updateRecipeCounter();
 
     generateShoppingList();
+    const selectedRecipe = selected.find(item => item.id === recipeID);
+    showShoppingToast(selectedRecipe ? "Recipe added to your selection." : "Recipe removed from your selection.");
 
 }
 
@@ -182,6 +190,7 @@ function removeRecipeFromSelection(recipeID) {
     updateButtons();
     updateRecipeCounter();
     generateShoppingList();
+    showShoppingToast("Recipe removed from your selection.");
 
 }
 
@@ -310,6 +319,7 @@ function updateButtons() {
                     Add Recipe
                 </button>
             `;
+            control.querySelector("button")?.setAttribute("aria-label", "Add recipe to selection");
             return;
         }
 
@@ -317,20 +327,23 @@ function updateButtons() {
             <button
                 class="button button-outline quantity-stepper-btn"
                 data-id="${recipeID}"
-                data-delta="-1">
+                data-delta="-1"
+                aria-label="Reduce recipe quantity">
                 −
             </button>
             <span class="quantity-value">${selection.quantity}</span>
             <button
                 class="button button-outline quantity-stepper-btn"
                 data-id="${recipeID}"
-                data-delta="1">
+                data-delta="1"
+                aria-label="Increase recipe quantity">
                 +
             </button>
             <button
                 class="button removeRecipe"
-                data-id="${recipeID}">
-                🗑
+                data-id="${recipeID}"
+                aria-label="Remove recipe from selection">
+                Remove
             </button>
         `;
 
@@ -362,6 +375,16 @@ function updateRecipeCounter() {
     if (counter) {
         counter.textContent = totalCount;
     }
+
+    document.querySelectorAll(".nav-count").forEach(badge => {
+        badge.textContent = totalCount;
+        badge.classList.toggle("has-items", totalCount > 0);
+    });
+
+    ["clearShopping", "createMealPack", "copyShoppingList", "printShopping"].forEach(id => {
+        const button = document.getElementById(id);
+        if (button) button.disabled = totalCount === 0;
+    });
 
     if (!names) return;
 
@@ -487,7 +510,10 @@ function copyShoppingListToClipboard() {
 
     const text = lines.join("\n").trim();
 
-    if (!text) return;
+    if (!text) {
+        showShoppingToast("Select at least one recipe before copying a shopping list.");
+        return;
+    }
 
     const button = document.getElementById("copyShoppingList");
 
@@ -567,6 +593,7 @@ async function loadShoppingPDFImageAsDataURL(url) {
 
 function openShoppingPDFPreview(doc, filename) {
 
+    const previousFocus = document.activeElement;
     const pdfURL = URL.createObjectURL(doc.output("blob"));
     const overlay = document.createElement("div");
     const dialog = document.createElement("section");
@@ -594,7 +621,7 @@ function openShoppingPDFPreview(doc, filename) {
     closeButton.className = "pdf-preview-close";
     closeButton.type = "button";
     closeButton.setAttribute("aria-label", "Close PDF preview");
-    closeButton.textContent = "×";
+    closeButton.textContent = "Close";
     frame.className = "pdf-preview-frame";
     frame.title = "Shopping-list PDF preview";
     frame.src = `${pdfURL}#view=FitH`;
@@ -602,6 +629,18 @@ function openShoppingPDFPreview(doc, filename) {
     const handleKeydown = event => {
         if (event.key === "Escape" && document.body.contains(overlay)) {
             closePreview();
+            return;
+        }
+        if (event.key === "Tab") {
+            const focusable = [printButton, downloadButton, closeButton];
+            if (event.shiftKey && document.activeElement === focusable[0]) {
+                event.preventDefault();
+                focusable.at(-1).focus();
+            }
+            else if (!event.shiftKey && document.activeElement === focusable.at(-1)) {
+                event.preventDefault();
+                focusable[0].focus();
+            }
         }
     };
 
@@ -610,6 +649,7 @@ function openShoppingPDFPreview(doc, filename) {
         overlay.remove();
         document.removeEventListener("keydown", handleKeydown);
         URL.revokeObjectURL(pdfURL);
+        previousFocus?.focus?.();
     };
 
     printButton.addEventListener("click", () => {
@@ -694,7 +734,7 @@ async function generateShoppingListPDF() {
         .sort()
         .map(category => {
             const entries = categories[category]
-                .map(item => `${item.quantity} ${item.unit} ${item.name}`)
+                .map(item => formatIngredientRecord(item, item.quantity))
                 .sort((a, b) => a.localeCompare(b));
 
             return { category, entries };
@@ -876,7 +916,7 @@ function buildShoppingListHTML(items) {
 
 <div class="shopping-category">
 
-<h3>${category}</h3>
+<h3>${escapeHTML(category)}</h3>
 
 <ul class="shopping-items">
 
@@ -889,10 +929,10 @@ ${categories[category].map(item => `
 <input
     class="shopping-item-check"
     type="checkbox"
-    data-shopping-item="${item.id}"
+    data-shopping-item="${escapeHTML(item.id)}"
     ${completedItems.has(String(item.id)) ? "checked" : ""}>
 
-${item.quantity} ${item.unit} ${item.name}
+${escapeHTML(formatIngredientRecord(item, item.quantity))}
 
 </label>
 
@@ -1014,6 +1054,16 @@ ${missingRecipes.length ? `<p>Missing recipes: ${missingRecipes.join(", ")}</p>`
 
     renderShoppingList(items);
 
+}
+
+function showShoppingToast(message) {
+    document.querySelector(".site-toast")?.remove();
+    const toast = document.createElement("div");
+    toast.className = "site-toast";
+    toast.setAttribute("role", "status");
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    window.setTimeout(() => toast.remove(), 2600);
 }
 
 /* ============================================

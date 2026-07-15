@@ -53,7 +53,7 @@ async function loadIngredients() {
     catch (error) {
 
         console.error(error);
-
+        throw error;
     }
 
 }
@@ -84,44 +84,54 @@ function formatIngredient(item) {
 
     );
 
-    if (!ingredient) {
+    if (!ingredient) return `${formatQuantity(item.quantity)} × ${item.ingredient}`;
+    return formatIngredientRecord(ingredient, item.quantity);
 
-        return `${item.quantity} × ${item.ingredient}`;
+}
 
+function formatQuantity(value) {
+    const quantity = Number(value);
+    if (!Number.isFinite(quantity)) return String(value ?? "");
+    if (Number.isInteger(quantity)) return String(quantity);
+    return quantity.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+function formatIngredientRecord(ingredient, quantity) {
+    const amount = formatQuantity(quantity);
+    const numericAmount = Number(quantity);
+    const unit = String(ingredient?.unit || "").trim();
+    const name = String(ingredient?.name || ingredient?.id || "Ingredient").trim();
+    if (!unit || unit === "each") return `${amount} ${name}`.trim();
+    const unitForms = unit === "leaf" ? ["leaf", "leaves"] : [unit, pluraliseUnit(unit)];
+    const unitPattern = new RegExp(`\\b(${unitForms.join("|")})\\b`, "i");
+    if (unitPattern.test(name)) {
+        const desiredForm = numericAmount === 1 ? unitForms[0] : unitForms[1];
+        const formattedName = name.replace(unitPattern, match => /^[A-Z]/.test(match)
+            ? `${desiredForm.charAt(0).toUpperCase()}${desiredForm.slice(1)}`
+            : desiredForm);
+        return `${amount} ${formattedName}`.trim();
     }
+    const fixedUnits = new Set(["g", "kg", "ml", "l", "tsp", "tbsp"]);
+    const displayUnit = fixedUnits.has(unit) || numericAmount === 1
+        ? unit
+        : pluraliseUnit(unit);
+    return `${amount} ${displayUnit} ${name}`.replace(/\s+/g, " ").trim();
+}
 
-    let unit = ingredient.unit;
+function pluraliseUnit(unit) {
+    if (unit === "leaf") return "leaves";
+    if (unit.endsWith("s")) return unit;
+    if (unit.endsWith("ch") || unit.endsWith("sh")) return `${unit}es`;
+    return `${unit}s`;
+}
 
-    if (
-        item.quantity === 1 &&
-        unit === "clove"
-    ) {
-
-        unit = "clove";
-
-    }
-
-    else if (
-        unit === "clove"
-    ) {
-
-        unit = "cloves";
-
-    }
-
-    else if (
-        item.quantity === 1 &&
-        unit === "each"
-    ) {
-
-        unit = "";
-
-    }
-
-    return `${item.quantity} ${unit} ${ingredient.name}`
-        .replace(/\s+/g, " ")
-        .trim();
-
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
 }
 
 /* ==================================================

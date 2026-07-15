@@ -23,7 +23,7 @@
         <div class="brand">
             <img class="brand-logo"
                  src="../../assets/images/logo.jpg"
-                 alt="Will's Grill">
+                 alt="Will's Grill" width="700" height="350">
             <span>Recipe Manager</span>
 
         </div>
@@ -32,7 +32,7 @@
 
             <a href="../index.html">Dashboard</a>
 
-            <a href="recipes.html" class="active">
+            <a href="recipes.html" class="active" aria-current="page">
                 Recipes
             </a>
 
@@ -56,7 +56,7 @@
 
             <div>
 
-                <h2>Recipes</h2>
+                <h1>Recipes</h1>
 
                 <p>Manage your recipe database.</p>
 
@@ -73,10 +73,13 @@
 
         <div class="toolbar">
 
+            <label class="visually-hidden" for="recipeSearch">Search recipes</label>
             <input id="recipeSearch" class="table-search" type="search" placeholder="Search recipes...">
+            <label class="visually-hidden" for="recipeCategoryFilter">Filter by category</label>
             <select id="recipeCategoryFilter" class="table-filter">
                 <option value="">All categories</option>
             </select>
+            <label class="visually-hidden" for="recipeSort">Sort recipes</label>
             <select id="recipeSort" class="table-filter">
                 <option value="name-asc">Name A–Z</option>
                 <option value="name-desc">Name Z–A</option>
@@ -87,6 +90,8 @@
         </div>
 
         <table class="recipe-table">
+
+            <caption class="visually-hidden">Recipes available to edit</caption>
 
             <thead>
 
@@ -124,40 +129,40 @@
 
 <!-- Slide-out editor -->
 
-<aside id="editorPanel" class="editor-panel">
+<aside id="editorPanel" class="editor-panel" role="dialog" aria-modal="true" aria-labelledby="recipeEditorTitle" aria-hidden="true">
 
     <div class="editor-header">
 
-        <h2>Edit Recipe</h2>
+        <h2 id="recipeEditorTitle">Edit Recipe</h2>
 
         <div class="editor-header-actions">
             <button id="previewRecipeButton" type="button" class="secondary-button" disabled>Preview</button>
-            <button id="closeEditor" type="button" aria-label="Close recipe editor">✕</button>
+            <button id="closeEditor" type="button" aria-label="Close recipe editor">Close</button>
         </div>
 
     </div>
 
     <div class="editor-body">
 
-        <div class="editor-tabs">
+        <div class="editor-tabs" role="tablist" aria-label="Recipe editor sections">
 
-            <button class="tab active" data-tab="general">
+            <button class="tab active" data-tab="general" role="tab" aria-selected="true">
                 General
             </button>
 
-            <button class="tab" data-tab="ingredients">
+            <button class="tab" data-tab="ingredients" role="tab" aria-selected="false" tabindex="-1">
                 Ingredients
             </button>
 
-            <button class="tab" data-tab="method">
+            <button class="tab" data-tab="method" role="tab" aria-selected="false" tabindex="-1">
                 Method
             </button>
 
-            <button class="tab" data-tab="nutrition">
+            <button class="tab" data-tab="nutrition" role="tab" aria-selected="false" tabindex="-1">
                 Nutrition
             </button>
 
-            <button class="tab" data-tab="image">
+            <button class="tab" data-tab="image" role="tab" aria-selected="false" tabindex="-1">
                 Image
             </button>
 

@@ -40,7 +40,8 @@ async function initialiseRecipes() {
 
         console.error(error);
 
-        return;
+        renderRecipeLoadError();
+        throw error;
 
     }
 
@@ -58,6 +59,13 @@ async function initialiseRecipes() {
 
     }
 
+}
+
+function renderRecipeLoadError() {
+    const target = document.getElementById("recipeList") || document.getElementById("recipePage");
+    if (!target) return;
+    target.innerHTML = `<div class="panel error-state" role="alert"><h2>Recipes could not be loaded</h2><p>Check your connection and try again.</p><button class="button" type="button" id="retryRecipes">Try again</button></div>`;
+    document.getElementById("retryRecipes")?.addEventListener("click", () => initialiseRecipes().catch(() => {}), { once: true });
 }
 
 function getRecipeManagerPreview() {
@@ -85,10 +93,23 @@ function renderRecipes(recipeArray) {
 
     container.innerHTML = "";
 
+    if (!recipeArray.length) {
+        container.innerHTML = `<div class="panel no-results" role="status"><h2>No recipes found</h2><p>Try clearing a filter or using a different search.</p></div>`;
+        if (typeof updateButtons === "function") updateButtons();
+        return;
+    }
+
     recipeArray.forEach(recipe => {
 
         container.insertAdjacentHTML("beforeend", createRecipeCard(recipe));
 
+    });
+
+    container.querySelectorAll("img[data-full-image]").forEach(image => {
+        image.addEventListener("error", () => {
+            if (image.src.endsWith(image.dataset.fullImage)) return;
+            image.src = image.dataset.fullImage;
+        }, { once: true });
     });
 
     if (typeof updateButtons === "function") {
@@ -108,23 +129,25 @@ function createRecipeCard(recipe) {
     <div class="recipe-image">
 
         <img
-            src="../assets/images/recipes/${recipe.image}"
-            alt="${recipe.name}"
-            loading="lazy">
+            src="../assets/images/recipes/thumbs/${escapeHTML(recipe.image)}"
+            data-full-image="../assets/images/recipes/${escapeHTML(recipe.image)}"
+            alt="${escapeHTML(recipe.name)}"
+            width="800" height="450"
+            loading="lazy" decoding="async">
 
     </div>
 
     <div class="recipe-body">
 
-        <h3>${recipe.name}</h3>
+        <h2>${escapeHTML(recipe.name)}</h2>
 
-        <p>${recipe.description}</p>
+        <p>${escapeHTML(recipe.description)}</p>
 
         <div class="recipe-meta">
 
-            <span>⏱ ${recipe.prepTime + recipe.cookTime} mins</span>
+            <span>${recipe.prepTime + recipe.cookTime} mins</span>
 
-            <span>👥 ${recipe.serves}</span>
+            <span>Serves ${recipe.serves}</span>
 
             <span>${recipe.difficulty}</span>
 
@@ -134,7 +157,7 @@ function createRecipeCard(recipe) {
 
             <button
                 class="button viewRecipe"
-                data-id="${recipe.id}">
+                data-id="${escapeHTML(recipe.id)}">
 
                 View Recipe
 
@@ -144,7 +167,7 @@ function createRecipeCard(recipe) {
 
                 <button
                     class="button button-outline addRecipe"
-                    data-id="${recipe.id}"
+                    data-id="${escapeHTML(recipe.id)}"
                     data-quantity="1">
 
                     Add
@@ -172,33 +195,19 @@ function initialiseSearch() {
     const search = document.getElementById("searchBox");
 
     if (!search) return;
-
-    search.addEventListener("input", () => {
-
+    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("proteinFilter")].filter(Boolean);
+    const applyFilters = () => {
         const value = search.value.toLowerCase().trim();
-
-        if (!value) {
-
-            renderRecipes(recipes);
-
-            return;
-
-        }
-
-        renderRecipes(
-
-            recipes.filter(recipe =>
-
-                recipe.name.toLowerCase().includes(value) ||
-
-                recipe.description.toLowerCase().includes(value) ||
-
-                recipe.category.toLowerCase().includes(value)
-
-            )
-
-        );
-
+        const category = document.getElementById("categoryFilter")?.value || "";
+        const maxTime = Number(document.getElementById("timeFilter")?.value || 0);
+        const minProtein = Number(document.getElementById("proteinFilter")?.value || 0);
+        renderRecipes(recipes.filter(recipe => {
+            const matchesText = !value || [recipe.name, recipe.description, recipe.category].some(text => text.toLowerCase().includes(value));
+            return matchesText && (!category || recipe.category === category) && (!maxTime || recipe.prepTime + recipe.cookTime <= maxTime) && (!minProtein || recipe.nutrition.protein >= minProtein);
+        }));
+    };
+    controls.forEach(control => {
+        control.addEventListener(control === search ? "input" : "change", applyFilters);
     });
 
 }
@@ -225,7 +234,7 @@ function renderRecipePage() {
 
 <div class="panel">
 
-<h2>Recipe not found</h2>
+<h1>Recipe not found</h1>
 
 <p>The requested recipe could not be found.</p>
 
@@ -265,21 +274,21 @@ function renderRecipePage() {
 
 <div class="recipe-summary">
 
-<h2>${recipe.name}</h2>
+<h1>${escapeHTML(recipe.name)}</h1>
 
-<p>${recipe.description}</p>
+<p>${escapeHTML(recipe.description)}</p>
 
 <div class="recipe-badges">
 
 <span class="badge">
 
-⏱ ${recipe.prepTime + recipe.cookTime} mins
+${recipe.prepTime + recipe.cookTime} mins
 
 </span>
 
 <span class="badge">
 
-👥 Serves ${recipe.serves}
+Serves ${recipe.serves}
 
 </span>
 
@@ -322,7 +331,7 @@ Preview & Print PDF
 
 <img
 src="../assets/images/recipes/${recipe.image}"
-alt="${recipe.name}">
+alt="${escapeHTML(recipe.name)}" width="1600" height="900">
 
 </div>
 
@@ -360,7 +369,7 @@ ${methodHTML}
 
 <section class="panel recipe-nutrition">
 
-<h3>Nutrition</h3>
+<h3>Nutrition <small>(per serving)</small></h3>
 
 <p><strong>Calories:</strong> ${recipe.nutrition.calories}</p>
 <p><strong>Protein:</strong> ${recipe.nutrition.protein} g</p>
@@ -385,12 +394,46 @@ ${methodHTML}
 
 `;
 
+    updateRecipeMetadata(recipe);
+
     if (typeof updateButtons === "function") {
 
         updateButtons();
 
     }
 
+}
+
+function updateRecipeMetadata(recipe) {
+    document.title = `${recipe.name} | Will's Grill`;
+    const description = recipe.description;
+    document.querySelector("meta[name='description']")?.setAttribute("content", description);
+    document.querySelector("meta[property='og:title']")?.setAttribute("content", recipe.name);
+    document.querySelector("meta[property='og:description']")?.setAttribute("content", description);
+    document.querySelector("meta[property='og:image']")?.setAttribute("content", new URL(`../assets/images/recipes/${recipe.image}`, location.href).href);
+    const canonical = document.querySelector("link[rel='canonical']");
+    if (canonical) canonical.href = new URL(`recipe.html?id=${encodeURIComponent(recipe.id)}`, location.href).href;
+    document.getElementById("recipeStructuredData")?.remove();
+    const ingredientLines = recipe.ingredients.map(formatIngredient);
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Recipe",
+        name: recipe.name,
+        description,
+        image: new URL(`../assets/images/recipes/${recipe.image}`, location.href).href,
+        prepTime: `PT${recipe.prepTime}M`,
+        cookTime: `PT${recipe.cookTime}M`,
+        recipeYield: `${recipe.serves} servings`,
+        recipeCategory: recipe.category,
+        recipeIngredient: ingredientLines,
+        recipeInstructions: recipe.steps.map(step => ({ "@type": "HowToStep", text: step })),
+        nutrition: { "@type": "NutritionInformation", calories: `${recipe.nutrition.calories} calories`, proteinContent: `${recipe.nutrition.protein} g`, carbohydrateContent: `${recipe.nutrition.carbs} g`, fatContent: `${recipe.nutrition.fat} g` }
+    };
+    const script = document.createElement("script");
+    script.id = "recipeStructuredData";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
 }
 
 /* ==================================================
@@ -684,6 +727,7 @@ async function generateRecipePDF(recipe) {
 
 function openRecipePDFPreview(doc, filename) {
 
+    const previousFocus = document.activeElement;
     const pdfURL = URL.createObjectURL(doc.output("blob"));
     const overlay = document.createElement("div");
     const dialog = document.createElement("section");
@@ -712,7 +756,7 @@ function openRecipePDFPreview(doc, filename) {
     closeButton.className = "pdf-preview-close";
     closeButton.type = "button";
     closeButton.setAttribute("aria-label", "Close PDF preview");
-    closeButton.textContent = "×";
+    closeButton.textContent = "Close";
     frame.className = "pdf-preview-frame";
     frame.title = "Recipe PDF preview";
     frame.src = `${pdfURL}#view=FitH`;
@@ -720,6 +764,18 @@ function openRecipePDFPreview(doc, filename) {
     const handleKeydown = event => {
         if (event.key === "Escape" && document.body.contains(overlay)) {
             closePreview();
+            return;
+        }
+        if (event.key === "Tab") {
+            const focusable = [printButton, downloadButton, closeButton];
+            if (event.shiftKey && document.activeElement === focusable[0]) {
+                event.preventDefault();
+                focusable.at(-1).focus();
+            }
+            else if (!event.shiftKey && document.activeElement === focusable.at(-1)) {
+                event.preventDefault();
+                focusable[0].focus();
+            }
         }
     };
 
@@ -728,6 +784,7 @@ function openRecipePDFPreview(doc, filename) {
         overlay.remove();
         document.removeEventListener("keydown", handleKeydown);
         URL.revokeObjectURL(pdfURL);
+        previousFocus?.focus?.();
     };
 
     printButton.addEventListener("click", () => {

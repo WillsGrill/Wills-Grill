@@ -11,7 +11,7 @@ Personal editor for preparing the recipe and ingredient data used by the Will's 
 5. Save the recipe so the image is staged for repository upload.
 6. Open **Export** and choose **Save to repository**.
 
-The Export page uses the local browser drafts rather than silently replacing them with the public website data. Use **Discard local changes** on the Export page to remove drafts and reload the current website data.
+The Export page detects drafts based on older repository data and asks you to merge, discard, review, or back them up before continuing. Use **Discard local changes** on the Export page to remove current drafts and reload the repository data.
 
 ## Running locally
 
@@ -23,4 +23,4 @@ From the repository root, run `python3 recipemanager/local_server.py` and open `
 
 Recipe and ingredient drafts are stored in the current browser profile using `localStorage`. Converted images are staged in IndexedDB. Clearing browser site data removes those drafts and staged images.
 
-This is a personal tool with no login or server-side protection. Do not add private credentials or access tokens to the frontend.
+This is a local personal tool. Repository saves require a short-lived session token and an unchanged repository revision, and the server validates the full data schema before writing. Keep using it only on your own computer and do not add private credentials to the frontend.
