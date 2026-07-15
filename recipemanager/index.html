@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Manager</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img class="brand-logo"
+                 src="https://willsgrill.github.io/Wills-Grill/assets/images/logo.jpg"
+                 alt="Will's Grill">
+            <span>Recipe Manager</span>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="pages/recipes.html">
+                Recipes
+            </a>
+
+            <a href="pages/ingredients.html">
+                Ingredients
+            </a>
+
+            <a href="pages/export.html">
+                Export
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <header>
+
+            <h2>Dashboard</h2>
+
+            <p>
+                Welcome to Recipe Manager.
+            </p>
+
+        </header>
+
+        <section class="dashboard-grid">
+
+            <a href="pages/recipes.html" class="card">
+
+                <h3>Recipes</h3>
+
+                <div class="stat" id="recipeCount">
+                    --
+                </div>
+
+                <p>Manage all recipes.</p>
+
+            </a>
+
+            <a href="pages/ingredients.html" class="card">
+
+                <h3>Ingredients</h3>
+
+                <div class="stat" id="ingredientCount">
+                    --
+                </div>
+
+                <p>Manage ingredients.</p>
+
+            </a>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
