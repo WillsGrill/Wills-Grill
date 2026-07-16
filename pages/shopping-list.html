@@ -18,7 +18,7 @@
 
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 
-    <link rel="stylesheet" href="../assets/css/style.css?v=1.8">
+    <link rel="stylesheet" href="../assets/css/style.css?v=1.9">
 
 </head>
 
@@ -77,17 +77,6 @@
 
     </p>
 
-    <aside class="selected-recipes-card mt-3" aria-labelledby="shoppingSelectedRecipesTitle">
-        <div class="selected-recipes-heading">
-            <div class="selected-recipes-title">
-                <h3 id="shoppingSelectedRecipesTitle">Selected Recipes</h3>
-                <span class="selected-recipe-count" aria-label="Selected recipe portions">0</span>
-            </div>
-            <button id="clearShopping" class="selected-recipes-clear">Clear</button>
-        </div>
-        <div class="selected-recipe-list" data-selected-recipes>No recipes selected.</div>
-    </aside>
-
     <div class="shopping-layout mt-3">
 
         <div class="shopping-sidebar">
@@ -121,6 +110,17 @@
                 </button>
 
             </div>
+
+            <details class="selected-recipes-card">
+                <summary class="selected-recipes-summary">
+                    <span id="shoppingSelectedRecipesTitle">Selected Recipes</span>
+                    <span class="selected-recipe-count" aria-label="Selected recipe portions">0</span>
+                </summary>
+                <div class="selected-recipes-content" aria-labelledby="shoppingSelectedRecipesTitle">
+                    <button id="clearShopping" class="selected-recipes-clear">Clear</button>
+                    <div class="selected-recipe-list" data-selected-recipes>No recipes selected.</div>
+                </div>
+            </details>
 
             <div class="panel">
 

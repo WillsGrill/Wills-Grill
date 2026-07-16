@@ -16,7 +16,7 @@
 
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 
-    <link rel="stylesheet" href="../assets/css/style.css?v=1.8">
+    <link rel="stylesheet" href="../assets/css/style.css?v=1.9">
 
 </head>
 
@@ -83,18 +83,18 @@
 
     </div>
 
-    <aside class="selected-recipes-card" aria-labelledby="browseSelectedRecipesTitle">
-        <div class="selected-recipes-heading">
-            <div class="selected-recipes-title">
-                <h3 id="browseSelectedRecipesTitle">Selected Recipes</h3>
-                <span class="selected-recipe-count" aria-label="Selected recipe portions">0</span>
-            </div>
+    <details class="selected-recipes-card">
+        <summary class="selected-recipes-summary">
+            <span id="browseSelectedRecipesTitle">Selected Recipes</span>
+            <span class="selected-recipe-count" aria-label="Selected recipe portions">0</span>
+        </summary>
+        <div class="selected-recipes-content" aria-labelledby="browseSelectedRecipesTitle">
             <button id="clearShopping" class="selected-recipes-clear">Clear</button>
+            <div class="selected-recipe-list" data-selected-recipes>No recipes selected.</div>
         </div>
-        <div class="selected-recipe-list" data-selected-recipes>No recipes selected.</div>
-    </aside>
+    </details>
 
-    <div class="search browse-filters">
+    <div class="search browse-search">
 
         <label class="visually-hidden" for="searchBox">Search recipes</label>
         <input
@@ -103,23 +103,28 @@
             placeholder="Search recipes..."
         >
 
-        <label>
-            <span>Protein Source</span>
-            <select id="categoryFilter">
-                <option value="">All protein sources</option>
-                <option>Beef</option><option>Chicken</option><option>Fish</option><option>Pork</option><option>Turkey</option><option>Vegetarian</option><option>Venison</option>
-            </select>
-        </label>
-        <label>
-            <span>Maximum time</span>
-            <select id="timeFilter"><option value="">Any time</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select>
-        </label>
-        <label>
-            <span>Difficulty</span>
-            <select id="difficultyFilter"><option value="">Any difficulty</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
-        </label>
-
     </div>
+
+    <details class="filter-panel">
+        <summary>Filter</summary>
+        <div class="browse-filters">
+            <label>
+                <span>Protein Source</span>
+                <select id="categoryFilter">
+                    <option value="">All protein sources</option>
+                    <option>Beef</option><option>Chicken</option><option>Fish</option><option>Pork</option><option>Turkey</option><option>Vegetarian</option><option>Venison</option>
+                </select>
+            </label>
+            <label>
+                <span>Maximum time</span>
+                <select id="timeFilter"><option value="">Any time</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select>
+            </label>
+            <label>
+                <span>Difficulty</span>
+                <select id="difficultyFilter"><option value="">Any difficulty</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </label>
+        </div>
+    </details>
 
     <div id="recipeList" class="recipe-grid" aria-live="polite">
 

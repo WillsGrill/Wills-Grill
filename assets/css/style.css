@@ -74,9 +74,61 @@ button:disabled{
 
 .browse-filters{
     display:grid;
-    grid-template-columns:minmax(240px,2fr) repeat(3,minmax(150px,1fr));
+    grid-template-columns:repeat(3,minmax(150px,1fr));
     gap:14px;
     align-items:end;
+}
+
+.browse-search input{
+    width:100%;
+    min-height:52px;
+    padding:12px 14px;
+    border:1px solid var(--grey300);
+    border-radius:14px;
+    background:white;
+    color:var(--black);
+    font:inherit;
+}
+
+.filter-panel{
+    margin:14px 0 28px;
+    border:1px solid var(--grey200);
+    border-radius:14px;
+    background:var(--grey50);
+}
+
+.filter-panel summary,
+.selected-recipes-summary{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:14px 16px;
+    cursor:pointer;
+    font-weight:700;
+    list-style:none;
+}
+
+.filter-panel summary::-webkit-details-marker,
+.selected-recipes-summary::-webkit-details-marker{
+    display:none;
+}
+
+.filter-panel summary::after,
+.selected-recipes-summary::after{
+    content:"+";
+    margin-left:auto;
+    color:var(--grey500);
+    font-size:1.2rem;
+    line-height:1;
+}
+
+.filter-panel[open] summary::after,
+.selected-recipes-card[open] .selected-recipes-summary::after{
+    content:"−";
+}
+
+.filter-panel .browse-filters{
+    padding:0 16px 16px;
 }
 
 .browse-filters label{
@@ -1193,10 +1245,21 @@ nav a[aria-current="page"]::after{
 
 .selected-recipes-card{
     width:100%;
-    padding:14px 16px;
+    padding:0;
     border:1px solid var(--grey200);
     border-radius:14px;
     background:var(--grey50);
+}
+
+.selected-recipes-content{
+    position:relative;
+    padding:0 16px 16px;
+}
+
+.selected-recipes-content > .selected-recipes-clear{
+    position:absolute;
+    top:-34px;
+    right:48px;
 }
 
 .selected-recipes-heading{
