@@ -168,6 +168,11 @@ function renderRecipes(recipeArray) {
 
 function createRecipeCard(recipe) {
 
+    const recipeNumber = Number.parseInt(String(recipe.id || "").replace(/\D/g, ""), 10);
+    const referenceBadgeHTML = Number.isFinite(recipeNumber)
+        ? `<span class="recipe-reference">Recipe ${escapeHTML(recipeNumber)}</span>`
+        : "";
+
     const imageHTML = recipe.image
         ? `<img src="../assets/images/recipes/thumbs/${escapeHTML(recipe.image)}" data-full-image="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="800" height="450" loading="lazy" decoding="async">`
         : `<div class="recipe-image-placeholder" role="img" aria-label="Image for ${escapeHTML(recipe.name)} coming soon">Image coming soon</div>`;
@@ -182,6 +187,7 @@ function createRecipeCard(recipe) {
     <div class="recipe-image">
 
         ${imageHTML}
+        ${referenceBadgeHTML}
         ${treatBadgeHTML}
 
     </div>
@@ -333,6 +339,10 @@ function renderRecipePage() {
 
     ).join("");
 
+    const recipeNumber = Number.parseInt(String(recipe.id || "").replace(/\D/g, ""), 10);
+    const referenceBadgeHTML = Number.isFinite(recipeNumber)
+        ? `<span class="recipe-reference recipe-reference-large">Recipe ${escapeHTML(recipeNumber)}</span>`
+        : "";
     const heroImageHTML = recipe.image
         ? `<img src="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="1600" height="900">`
         : `<div class="recipe-image-placeholder" role="img" aria-label="Image for ${escapeHTML(recipe.name)} coming soon">Image coming soon</div>`;
@@ -402,6 +412,7 @@ Preview & Print PDF
 <div class="recipe-hero-image">
 
 ${heroImageHTML}
+${referenceBadgeHTML}
 ${treatBadgeHTML}
 
 </div>

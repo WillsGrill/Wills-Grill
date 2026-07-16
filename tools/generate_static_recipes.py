@@ -69,7 +69,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=1.7">
+<link rel="stylesheet" href="../assets/css/style.css?v=1.8">
 <script id="recipeStructuredData" type="application/ld+json">{json_ld}</script>
 </head>
 <body>
@@ -85,7 +85,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <script src="../assets/js/config.js"></script>
 <script src="../assets/vendor/jspdf.umd.min.js"></script>
 <script src="../assets/js/pdf-style.js?v=1.4"></script>
-<script src="../assets/js/recipes.js?v=1.10"></script>
+<script src="../assets/js/recipes.js?v=1.11"></script>
 <script src="../assets/js/shopping.js?v=1.4"></script>
 <script src="../assets/js/ui.js?v=1.1"></script>
 <script src="../assets/js/app.js?v=1.2"></script>

@@ -26,12 +26,12 @@
         "ingredient": "ING-V201",
         "quantity": 160
       },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V205",
+    {
+      "ingredient": "ING-V250",
+      "quantity": 1
+    },
+    {
+      "ingredient": "ING-V205",
         "quantity": 1
       },
       {
@@ -417,7 +417,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
+        "ingredient": "ING-C999",
         "quantity": 2
       },
       {
@@ -452,7 +452,7 @@
     "steps": [
       "Cook the basmati rice and keep it covered so it stays fluffy.",
       "Heat the olive oil in a pan and soften the onion and red pepper.",
-      "Add the garlic and turkey mince, breaking the meat up as it browns.",
+      "Add the Easy Garlic and turkey mince, breaking the meat up as it browns.",
       "Stir in smoked paprika, cumin and chilli flakes.",
       "Pour in the chopped tomatoes and simmer for a few minutes.",
       "Add the red kidney beans and cook until the chilli thickens.",
@@ -470,7 +470,7 @@
   {
     "id": "REC007",
     "name": "Tuna & Cannellini Bean Salad",
-    "description": "With Cherry Tomatoes, Rocket & Lemon Dressing",
+    "description": "With Cherry Tomatoes, Mixed Leaves & Honey-Lemon Dressing",
     "category": "Fish",
     "prepTime": 15,
     "cookTime": 10,
@@ -491,29 +491,33 @@
         "quantity": 120
       },
       {
-        "ingredient": "ING-V260",
+      "ingredient": "ING-V265",
         "quantity": 80
       },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+    {
+      "ingredient": "ING-V250",
+      "quantity": 1
+    },
+    {
+      "ingredient": "ING-V420",
+      "quantity": 1
+    },
+    {
+      "ingredient": "ING-P145",
+      "quantity": 2
       },
       {
         "ingredient": "ING-O801",
         "quantity": 1
       },
-      {
-        "ingredient": "ING-C970",
-        "quantity": 1
-      },
+    {
+      "ingredient": "ING-C970",
+      "quantity": 1
+    },
+    {
+      "ingredient": "ING-C910",
+      "quantity": 0.333
+    },
       {
         "ingredient": "ING-H005",
         "quantity": 5
@@ -526,17 +530,17 @@
     "steps": [
       "Season the tuna steaks and sear them quickly in a hot pan.",
       "Drain and rinse the cannellini beans.",
-      "Whisk together lemon juice, lemon zest, olive oil, capers and black pepper.",
-      "Slice the cherry tomatoes, cucumber and red onion.",
-      "Toss the rocket with the beans and vegetables in a large bowl.",
+    "Whisk together the bottled lemon juice, honey, olive oil, capers and black pepper.",
+    "Slice the cherry tomatoes and cucumber, then core and dice the apple.",
+    "Toss the mixed leaves with the beans, tomatoes, cucumber and diced apple in a large bowl.",
       "Slice the tuna and lay it over the salad.",
       "Scatter over the chopped parsley and drizzle with the lemon dressing.",
       "Serve while the tuna is still warm."
     ],
     "nutrition": {
-      "calories": 448,
+    "calories": 485,
       "protein": 53,
-      "carbs": 41,
+    "carbs": 52,
       "fat": 10
     },
     "tip": "Do not overcook the tuna; it should stay tender in the centre."
@@ -577,7 +581,7 @@
         "quantity": 1
       },
       {
-        "ingredient": "ING-V220",
+        "ingredient": "ING-C999",
         "quantity": 2
       },
       {
@@ -595,7 +599,7 @@
     ],
     "steps": [
       "Heat the oven and cook the wholegrain Spanish grains according to the packet instructions.",
-      "Mix the extra virgin olive oil with the chopped dill, crushed garlic, lemon zest, lemon juice, salt and black pepper.",
+      "Mix the extra virgin olive oil with the chopped dill, Easy Garlic, lemon zest, lemon juice, salt and black pepper.",
       "Place each mackerel fillet on its own sheet of foil and spoon over the herb and lemon blend.",
       "Seal each foil parcel loosely, place on a baking tray and bake until the mackerel flakes easily.",
       "Steam or quickly pan-cook the tenderstem broccoli and mange tout so they remain bright and crisp.",
@@ -2033,14 +2037,14 @@
       { "ingredient": "ING-P060", "quantity": 2 },
       { "ingredient": "ING-C910", "quantity": 1 },
       { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-V415", "quantity": 15 },
-      { "ingredient": "ING-V220", "quantity": 2 },
+      { "ingredient": "ING-P110", "quantity": 2 },
+      { "ingredient": "ING-C999", "quantity": 2 },
       { "ingredient": "ING-P085", "quantity": 1 },
       { "ingredient": "ING-O815", "quantity": 1 }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
-      "Whisk the low-salt soy sauce, honey, rice vinegar, grated ginger, crushed garlic, cornflour and two tablespoons of water into a smooth teriyaki sauce.",
+      "Whisk the low-salt soy sauce, honey, rice vinegar, Easy Ginger, Easy Garlic, cornflour and two tablespoons of water into a smooth teriyaki sauce.",
       "Trim the pork tenderloin and slice it thinly across the grain so it cooks quickly.",
       "Heat half the sesame oil in a large non-stick wok and stir-fry the pork over a high heat until browned and just cooked through, then transfer to a plate.",
       "Add the remaining sesame oil, broccoli, sliced red pepper and mange tout and stir-fry for four to five minutes, adding a splash of water to help the broccoli steam.",
@@ -2103,7 +2107,7 @@
       { "ingredient": "ING-V405", "quantity": 2 },
       { "ingredient": "ING-H005", "quantity": 20 },
       { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-V220", "quantity": 1 },
+      { "ingredient": "ING-C999", "quantity": 1 },
       { "ingredient": "ING-O820", "quantity": 1 },
       { "ingredient": "ING-O801", "quantity": 2 },
       { "ingredient": "ING-S110", "quantity": 1 },
@@ -2114,7 +2118,7 @@
     "steps": [
       "Heat the oven to 220°C/200°C fan and line a large tray with baking paper.",
       "Cut the sweet potatoes into slim fries, toss with one tablespoon of olive oil, smoked paprika and black pepper, then roast for 25 to 30 minutes, turning halfway.",
-      "Finely chop the parsley and coriander and mix with the crushed garlic, red wine vinegar, chilli flakes, one tablespoon of olive oil and a tablespoon of water to make the chimichurri.",
+      "Finely chop the parsley and coriander and mix with the Easy Garlic, red wine vinegar, chilli flakes, one tablespoon of olive oil and a tablespoon of water to make the chimichurri.",
       "Trim any thick outer fat from the sirloin, pat dry and season lightly with salt and black pepper.",
       "Cook the steak on a very hot barbecue or griddle for two to four minutes per side, depending on thickness and how you like it cooked.",
       "Transfer the steak to a board, spoon over a little chimichurri and rest for five to eight minutes.",
@@ -2146,15 +2150,15 @@
       { "ingredient": "ING-P080", "quantity": 2 },
       { "ingredient": "ING-C905", "quantity": 1 },
       { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-V415", "quantity": 10 },
-      { "ingredient": "ING-V220", "quantity": 1 },
+      { "ingredient": "ING-P110", "quantity": 1 },
+      { "ingredient": "ING-C999", "quantity": 1 },
       { "ingredient": "ING-O810", "quantity": 1 }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
       "Use a vegetable peeler to make cucumber ribbons, then toss them with one tablespoon of rice vinegar and half the honey and set aside to pickle.",
       "Finely shred the red cabbage, grate the carrot and slice the spring onions, then toss together with half the lime juice.",
-      "Whisk the peanut butter, low-salt soy sauce, remaining rice vinegar and honey, grated ginger, crushed garlic, remaining lime juice and four tablespoons of warm water until smooth.",
+      "Whisk the peanut butter, low-salt soy sauce, remaining rice vinegar and honey, Easy Ginger, Easy Garlic, remaining lime juice and four tablespoons of warm water until smooth.",
       "Trim the pork tenderloin, slice thinly and coat with one-third of the satay sauce.",
       "Heat the rapeseed oil in a non-stick frying pan and cook the pork for five to seven minutes, turning, until browned and cooked through.",
       "Add the remaining satay sauce to the pan and toss for one minute until hot and lightly thickened.",
@@ -2183,7 +2187,7 @@
       { "ingredient": "ING-V205", "quantity": 1 },
       { "ingredient": "ING-V201", "quantity": 150 },
       { "ingredient": "ING-D501", "quantity": 150 },
-      { "ingredient": "ING-V220", "quantity": 1 },
+      { "ingredient": "ING-C999", "quantity": 1 },
       { "ingredient": "ING-C901", "quantity": 1 },
       { "ingredient": "ING-O801", "quantity": 1 },
       { "ingredient": "ING-H005", "quantity": 10 }
@@ -2194,7 +2198,7 @@
       "Roast the vegetables for 20 to 25 minutes, turning once, until tender and browned at the edges.",
       "Coat the chicken breasts with the Angel's Wings rub and remaining olive oil, then grill or pan-cook for five to seven minutes per side until cooked through.",
       "Cook the bulgur wheat according to the packet instructions, drain well and fluff with half the lemon juice and chopped parsley.",
-      "Mix the Greek yoghurt with the crushed garlic, remaining lemon juice and enough cold water to make a spoonable sauce.",
+      "Mix the Greek yoghurt with the Easy Garlic, remaining lemon juice and enough cold water to make a spoonable sauce.",
       "Rest the chicken for five minutes, then slice it across the grain.",
       "Divide the bulgur and roasted vegetables between bowls, add the chicken and spoon over the garlic yoghurt sauce."
     ],
@@ -2218,7 +2222,7 @@
       { "ingredient": "ING-V280", "quantity": 150 },
       { "ingredient": "ING-V285", "quantity": 2 },
       { "ingredient": "ING-V290", "quantity": 200 },
-      { "ingredient": "ING-V220", "quantity": 2 },
+      { "ingredient": "ING-C999", "quantity": 2 },
       { "ingredient": "ING-C945", "quantity": 30 },
       { "ingredient": "ING-C950", "quantity": 800 },
       { "ingredient": "ING-P025", "quantity": 1 },
@@ -2231,7 +2235,7 @@
       "Trim the pork tenderloin, cut it into chunks and pulse briefly in a food processor until coarsely minced, taking care not to turn it into a paste.",
       "Heat the olive oil in a wide pan and cook the finely chopped onion, carrot, celery and mushrooms for eight minutes until soft and lightly coloured.",
       "Add the pork and cook over a medium-high heat for five minutes, breaking it up, until no pink remains.",
-      "Stir in the crushed garlic, tomato purée and dried oregano and cook for one minute.",
+      "Stir in the Easy Garlic, tomato purée and dried oregano and cook for one minute.",
       "Add the chopped tomatoes, crumbled beef stock cube and 200ml water, then simmer uncovered for 15 to 20 minutes until rich and thick.",
       "Meanwhile, cook the wholewheat tagliatelle according to the packet instructions until al dente, reserving a mugful of pasta water.",
       "Toss the pasta with the ragù, adding a splash of reserved water if needed, and check the seasoning.",
@@ -2257,7 +2261,7 @@
       { "ingredient": "ING-B720", "quantity": 240 },
       { "ingredient": "ING-G695", "quantity": 120 },
       { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V220", "quantity": 2 },
+      { "ingredient": "ING-C999", "quantity": 2 },
       { "ingredient": "ING-C950", "quantity": 400 },
       { "ingredient": "ING-C945", "quantity": 20 },
       { "ingredient": "ING-S110", "quantity": 2 },
@@ -2272,7 +2276,7 @@
       "Halve the peppers lengthways through the stalks, remove the seeds and roast cut-side up for 12 minutes.",
       "Cook the quinoa according to the packet instructions, then drain well.",
       "Heat the olive oil in a non-stick pan and cook the chopped onion for five minutes, then add the beef and brown it thoroughly, breaking it into small pieces.",
-      "Stir in the crushed garlic, smoked paprika, cumin and tomato purée, then add the chopped tomatoes and simmer for eight minutes.",
+      "Stir in the Easy Garlic, smoked paprika, cumin and tomato purée, then add the chopped tomatoes and simmer for eight minutes.",
       "Fold the drained black beans and cooked quinoa into the beef mixture and spoon generously into the pepper halves.",
       "Return the peppers to the oven for 12 to 15 minutes until tender and the filling is piping hot.",
       "Mix the Greek yoghurt with lime juice, then spoon it over the peppers and finish with chopped coriander."
@@ -2297,7 +2301,7 @@
       { "ingredient": "ING-V210", "quantity": 1 },
       { "ingredient": "ING-V225", "quantity": 1 },
       { "ingredient": "ING-V280", "quantity": 150 },
-      { "ingredient": "ING-V220", "quantity": 2 },
+      { "ingredient": "ING-C999", "quantity": 2 },
       { "ingredient": "ING-C950", "quantity": 800 },
       { "ingredient": "ING-C945", "quantity": 30 },
       { "ingredient": "ING-P025", "quantity": 1 },
@@ -2312,7 +2316,7 @@
     "steps": [
       "Heat the olive oil in a large heavy-based pan and cook the finely chopped onion, red pepper and grated carrot for eight minutes until soft.",
       "Add the lean beef mince and cook over a medium-high heat until deeply browned, breaking it up with a wooden spoon.",
-      "Stir in the crushed garlic, cumin, smoked paprika, chilli flakes and cinnamon and cook for one minute until fragrant.",
+      "Stir in the Easy Garlic, cumin, smoked paprika, chilli flakes and cinnamon and cook for one minute until fragrant.",
       "Add the tomato purée, chopped tomatoes, crumbled beef stock cube and 250ml water and bring to a gentle simmer.",
       "Part-cover and cook for 20 minutes, stirring occasionally, until the sauce has reduced and the vegetables are tender.",
       "Rinse and drain the kidney beans, stir them into the chilli and simmer uncovered for a further 10 minutes.",
