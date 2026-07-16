@@ -48,7 +48,7 @@ const WillsGrillPDF = (() => {
         doc.rect(0, 22.3, pageWidth, .7, "F");
 
         if (assets.logoData) {
-            doc.addImage(assets.logoData, "JPEG", 10, 1.2, 40, 20);
+            doc.addImage(assets.logoData, "WEBP", 10, 1.2, 40, 20);
         }
 
         doc.setFont("helvetica", "bold");
@@ -101,7 +101,7 @@ const WillsGrillPDF = (() => {
             imageHeight = width / imageRatio;
             imageY = y - ((imageHeight - height) / 2);
         }
-        doc.addImage(imageData, "JPEG", imageX, imageY, imageWidth, imageHeight, undefined, "FAST");
+        doc.addImage(imageData, "WEBP", imageX, imageY, imageWidth, imageHeight, undefined, "FAST");
         doc.restoreGraphicsState();
     }
 

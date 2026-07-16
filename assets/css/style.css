@@ -486,7 +486,7 @@ nav a[aria-current="page"]::after{
 
 .hero-image{
 
-    background-image:url("../images/homepage-hero-image.jpg");
+    background-image:url("../images/homepage-hero-image.webp");
 
     background-size:cover;
 

@@ -550,7 +550,7 @@ async function generateRecipePDF(recipe) {
     const assets = { logoData: null };
     let imageData = null;
     try {
-        assets.logoData = await loadImageAsDataURL("../assets/images/logo.jpg");
+        assets.logoData = await loadImageAsDataURL("../assets/images/logo.webp");
     }
     catch (error) {
         console.warn("Will's Grill logo was omitted from the PDF.", error);

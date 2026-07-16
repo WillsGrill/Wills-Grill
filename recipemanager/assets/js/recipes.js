@@ -530,7 +530,7 @@ function renderEditor() {
                     <label class="full-width">
                         Upload Image
                         <input id="recipeImageFile" type="file" accept="image/*">
-                        <span class="field-help">The image will be converted to a web-friendly JPEG, named automatically, and staged for the repository upload workflow.</span>
+                        <span class="field-help">The image will be converted to a web-friendly WebP, named automatically, and staged for the repository upload workflow.</span>
                     </label>
                     <div id="recipeImagePreview" class="recipe-image-upload-preview ${currentRecipe.image ? "has-image" : ""}">
                         ${currentRecipe.image ? `<span>Current image: ${escapeHtml(currentRecipe.image)}</span>` : "Select an image to convert it."}
@@ -645,18 +645,18 @@ async function handleRecipeImageSelection(event) {
         if (preview) preview.textContent = "Converting image...";
 
         const image = await loadRecipeImage(file);
-        const jpegBlob = await convertRecipeImageToJpeg(image, 1600, 900, .86);
-        const thumbnailBlob = await convertRecipeImageToJpeg(image, 800, 450, .74);
+        const webpBlob = await convertRecipeImageToWebP(image, 1600, 900, .9);
+        const thumbnailBlob = await convertRecipeImageToWebP(image, 800, 450, .9);
 
         if (imageField) imageField.value = filename;
         if (currentRecipe) currentRecipe.image = filename;
 
-        pendingRecipeImage = { filename, blob: jpegBlob, thumbnailBlob };
+        pendingRecipeImage = { filename, blob: webpBlob, thumbnailBlob };
         editorDirty = true;
-        displayCurrentRecipeImage(jpegBlob, filename);
+        displayCurrentRecipeImage(webpBlob, filename);
 
         if (preview) {
-            preview.innerHTML = `<strong>${escapeHtml(filename)}</strong><span>Converted JPEG ready to stage when the recipe is saved.</span>`;
+            preview.innerHTML = `<strong>${escapeHtml(filename)}</strong><span>Converted WebP ready to stage when the recipe is saved.</span>`;
             preview.classList.add("has-image");
         }
     }
@@ -690,11 +690,11 @@ function getNextRecipeImageFilename() {
     }
 
     const highestNumber = recipes.reduce((highest, recipe) => {
-        const match = (recipe.image || "").match(/^rec(\d+)\.jpg$/i);
+        const match = (recipe.image || "").match(/^rec(\d+)\.webp$/i);
         return match ? Math.max(highest, Number(match[1])) : highest;
     }, 0);
 
-    return `rec${String(highestNumber + 1).padStart(3, "0")}.jpg`;
+    return `rec${String(highestNumber + 1).padStart(3, "0")}.webp`;
 }
 
 function loadRecipeImage(file) {
@@ -714,7 +714,7 @@ function loadRecipeImage(file) {
     });
 }
 
-function convertRecipeImageToJpeg(image, targetWidth = 1600, targetHeight = 900, quality = .86) {
+function convertRecipeImageToWebP(image, targetWidth = 1600, targetHeight = 900, quality = .9) {
     return new Promise((resolve, reject) => {
         const canvas = document.createElement("canvas");
         const sourceRatio = image.naturalWidth / image.naturalHeight;
@@ -756,8 +756,8 @@ function convertRecipeImageToJpeg(image, targetWidth = 1600, targetHeight = 900,
             targetHeight
         );
         canvas.toBlob((blob) => {
-            blob ? resolve(blob) : reject(new Error("Unable to create JPEG."));
-        }, "image/jpeg", quality);
+            blob ? resolve(blob) : reject(new Error("Unable to create WebP."));
+        }, "image/webp", quality);
     });
 }
 
@@ -1186,8 +1186,8 @@ function validateRecipe(recipe) {
         return "Select a valid recipe difficulty.";
     }
 
-    if (recipe.image && !/^rec\d{3}\.jpg$/i.test(recipe.image)) {
-        return "Image filename must use the rec###.jpg convention.";
+    if (recipe.image && !/^rec\d{3}\.webp$/i.test(recipe.image)) {
+        return "Image filename must use the rec###.webp convention.";
     }
 
     if (!recipe.tip) {

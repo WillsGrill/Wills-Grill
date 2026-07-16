@@ -8,7 +8,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec001.jpg",
+    "image": "rec001.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -86,7 +86,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec002.jpg",
+    "image": "rec002.webp",
     "ingredients": [
       {
         "ingredient": "ING-F310",
@@ -160,7 +160,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec003.jpg",
+    "image": "rec003.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -238,7 +238,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Medium",
-    "image": "rec004.jpg",
+    "image": "rec004.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -320,7 +320,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec005.jpg",
+    "image": "rec005.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -398,7 +398,7 @@
     "cookTime": 25,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec006.jpg",
+    "image": "rec006.webp",
     "ingredients": [
       {
         "ingredient": "ING-M410",
@@ -476,7 +476,7 @@
     "cookTime": 10,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec007.jpg",
+    "image": "rec007.webp",
     "ingredients": [
       {
         "ingredient": "ING-F330",
@@ -550,7 +550,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec008.jpg",
+    "image": "rec008.webp",
     "ingredients": [
       {
         "ingredient": "ING-F320",
@@ -620,7 +620,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Medium",
-    "image": "rec009.jpg",
+    "image": "rec009.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -706,7 +706,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec010.jpg",
+    "image": "rec010.webp",
     "ingredients": [
       {
         "ingredient": "ING-F340",
@@ -784,7 +784,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Medium",
-    "image": "rec011.jpg",
+    "image": "rec011.webp",
     "ingredients": [
       {
         "ingredient": "ING-F305",
@@ -874,7 +874,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec012.jpg",
+    "image": "rec012.webp",
     "ingredients": [
       {
         "ingredient": "ING-F301",
@@ -956,7 +956,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec013.jpg",
+    "image": "rec013.webp",
     "ingredients": [
       {
         "ingredient": "ING-F310",
@@ -1042,7 +1042,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec014.jpg",
+    "image": "rec014.webp",
     "ingredients": [
       {
         "ingredient": "ING-D510",
@@ -1124,7 +1124,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec015.jpg",
+    "image": "rec015.webp",
     "ingredients": [
       {
         "ingredient": "ING-F340",
@@ -1202,7 +1202,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Medium",
-    "image": "rec016.jpg",
+    "image": "rec016.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1288,7 +1288,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec017.jpg",
+    "image": "rec017.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1370,7 +1370,7 @@
     "cookTime": 25,
     "serves": 4,
     "difficulty": "Medium",
-    "image": "rec018.jpg",
+    "image": "rec018.webp",
     "ingredients": [
       {
         "ingredient": "ING-M410",
@@ -1452,7 +1452,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec019.jpg",
+    "image": "rec019.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1530,7 +1530,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec020.jpg",
+    "image": "rec020.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1616,7 +1616,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec021.jpg",
+    "image": "rec021.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1698,7 +1698,7 @@
     "cookTime": 35,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec022.jpg",
+    "image": "rec022.webp",
     "ingredients": [
       {
         "ingredient": "ING-M410",
@@ -1772,7 +1772,7 @@
     "cookTime": 15,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec023.jpg",
+    "image": "rec023.webp",
     "ingredients": [
       {
         "ingredient": "ING-M415",
@@ -1850,7 +1850,7 @@
     "cookTime": 20,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec024.jpg",
+    "image": "rec024.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -1924,7 +1924,7 @@
     "cookTime": 35,
     "serves": 4,
     "difficulty": "Medium",
-    "image": "rec025.jpg",
+    "image": "rec025.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
@@ -2022,7 +2022,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec026.jpg",
+    "image": "rec026.webp",
     "ingredients": [
       { "ingredient": "ING-M440", "quantity": 300 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2060,7 +2060,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec027.jpg",
+    "image": "rec027.webp",
     "ingredients": [
       { "ingredient": "ING-M460", "quantity": 300 },
       { "ingredient": "ING-V280", "quantity": 200 },
@@ -2096,7 +2096,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec028.jpg",
+    "image": "rec028.webp",
     "ingredients": [
       { "ingredient": "ING-M465", "quantity": 300 },
       { "ingredient": "ING-V325", "quantity": 400 },
@@ -2133,7 +2133,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec029.jpg",
+    "image": "rec029.webp",
     "ingredients": [
       { "ingredient": "ING-M440", "quantity": 300 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2172,7 +2172,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec030.jpg",
+    "image": "rec030.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 300 },
       { "ingredient": "ING-P090", "quantity": 1 },
@@ -2210,7 +2210,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec031.jpg",
+    "image": "rec031.webp",
     "ingredients": [
       { "ingredient": "ING-M440", "quantity": 500 },
       { "ingredient": "ING-G720", "quantity": 280 },
@@ -2249,7 +2249,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec032.jpg",
+    "image": "rec032.webp",
     "ingredients": [
       { "ingredient": "ING-M420", "quantity": 400 },
       { "ingredient": "ING-V225", "quantity": 2 },
@@ -2289,7 +2289,7 @@
     "cookTime": 35,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec033.jpg",
+    "image": "rec033.webp",
     "ingredients": [
       { "ingredient": "ING-M420", "quantity": 500 },
       { "ingredient": "ING-G625", "quantity": 240 },
@@ -2331,7 +2331,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec034.jpg",
+    "image": "rec034.webp",
     "ingredients": [
       { "ingredient": "ING-B701", "quantity": 240 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2371,7 +2371,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec035.jpg",
+    "image": "rec035.webp",
     "ingredients": [
       { "ingredient": "ING-M445", "quantity": 250 },
       { "ingredient": "ING-G725", "quantity": 300 },
@@ -2408,7 +2408,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec036.jpg",
+    "image": "rec036.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 300 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2446,7 +2446,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec037.jpg",
+    "image": "rec037.webp",
     "ingredients": [
       { "ingredient": "ING-M410", "quantity": 300 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2483,7 +2483,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec038.jpg",
+    "image": "rec038.webp",
     "ingredients": [
       { "ingredient": "ING-F340", "quantity": 2 },
       { "ingredient": "ING-V325", "quantity": 450 },
@@ -2521,7 +2521,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec039.jpg",
+    "image": "rec039.webp",
     "ingredients": [
       { "ingredient": "ING-M445", "quantity": 250 },
       { "ingredient": "ING-B720", "quantity": 240 },
@@ -2560,7 +2560,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec040.jpg",
+    "image": "rec040.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 300 },
       { "ingredient": "ING-B720", "quantity": 240 },
@@ -2599,7 +2599,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec041.jpg",
+    "image": "rec041.webp",
     "ingredients": [
       { "ingredient": "ING-F340", "quantity": 2 },
       { "ingredient": "ING-B720", "quantity": 240 },
@@ -2638,7 +2638,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec042.jpg",
+    "image": "rec042.webp",
     "ingredients": [
       { "ingredient": "ING-F340", "quantity": 2 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -2676,7 +2676,7 @@
     "cookTime": 20,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec043.jpg",
+    "image": "rec043.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 300 },
       { "ingredient": "ING-B701", "quantity": 240 },
@@ -2715,7 +2715,7 @@
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec044.jpg",
+    "image": "rec044.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 300 },
       { "ingredient": "ING-G725", "quantity": 200 },
@@ -2754,7 +2754,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec045.jpg",
+    "image": "rec045.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 400 },
       { "ingredient": "ING-F325", "quantity": 200 },
@@ -2795,7 +2795,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec046.jpg",
+    "image": "rec046.webp",
     "ingredients": [
       { "ingredient": "ING-M401", "quantity": 500 },
       { "ingredient": "ING-B701", "quantity": 240 },
@@ -2836,7 +2836,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec047.jpg",
+    "image": "rec047.webp",
     "ingredients": [
       { "ingredient": "ING-M410", "quantity": 300 },
       { "ingredient": "ING-V225", "quantity": 2 },
@@ -2875,7 +2875,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec048.jpg",
+    "image": "rec048.webp",
     "ingredients": [
       { "ingredient": "ING-M410", "quantity": 500 },
       { "ingredient": "ING-G625", "quantity": 240 },
@@ -2916,7 +2916,7 @@
     "cookTime": 30,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec049.jpg",
+    "image": "rec049.webp",
     "ingredients": [
       { "ingredient": "ING-M440", "quantity": 350 },
       { "ingredient": "ING-V320", "quantity": 400 },
@@ -2954,7 +2954,7 @@
     "cookTime": 30,
     "serves": 4,
     "difficulty": "Easy",
-    "image": "rec050.jpg",
+    "image": "rec050.webp",
     "ingredients": [
       { "ingredient": "ING-M440", "quantity": 500 },
       { "ingredient": "ING-B710", "quantity": 480 },
@@ -2994,7 +2994,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec051.jpg",
+    "image": "rec051.webp",
     "ingredients": [
       { "ingredient": "ING-F301", "quantity": 2 },
       { "ingredient": "ING-B701", "quantity": 240 },
@@ -3033,7 +3033,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec052.jpg",
+    "image": "rec052.webp",
     "ingredients": [
       { "ingredient": "ING-F340", "quantity": 2 },
       { "ingredient": "ING-G625", "quantity": 120 },
@@ -3072,7 +3072,7 @@
     "cookTime": 25,
     "serves": 2,
     "difficulty": "Easy",
-    "image": "rec053.jpg",
+    "image": "rec053.webp",
     "ingredients": [
       { "ingredient": "ING-F310", "quantity": 2 },
       { "ingredient": "ING-V325", "quantity": 400 },

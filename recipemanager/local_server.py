@@ -24,8 +24,8 @@ RECIPES_PATH = REPOSITORY_ROOT / "data/recipes/recipes.json"
 INGREDIENTS_PATH = REPOSITORY_ROOT / "data/ingredients/ingredients.json"
 MAX_REQUEST_BYTES = 30 * 1024 * 1024
 MAX_IMAGE_BYTES = 10 * 1024 * 1024
-IMAGE_NAME = re.compile(r"(?:thumbs/)?rec\d{3}\.jpg", re.IGNORECASE)
-RECIPE_IMAGE_NAME = re.compile(r"rec\d{3}\.jpg", re.IGNORECASE)
+IMAGE_NAME = re.compile(r"(?:thumbs/)?rec\d{3}\.webp", re.IGNORECASE)
+RECIPE_IMAGE_NAME = re.compile(r"rec\d{3}\.webp", re.IGNORECASE)
 RECIPE_ID = re.compile(r"REC\d{3}")
 INGREDIENT_ID = re.compile(r"ING-[A-Z]\d{3}")
 RECIPE_CATEGORIES = {"BBQ", "Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"}
@@ -168,15 +168,16 @@ class RecipeManagerHandler(SimpleHTTPRequestHandler):
         seen_images = set()
         for image in payload.get("images", []):
             if not isinstance(image, dict) or not IMAGE_NAME.fullmatch(str(image.get("filename", ""))):
-                raise ValueError("Changed image filenames must use the rec###.jpg convention.")
+                raise ValueError("Changed image filenames must use the rec###.webp convention.")
             if image["filename"].lower() in seen_images:
                 raise ValueError("Changed image filenames must be unique.")
             try:
                 image_data = base64.b64decode(image.get("content", ""), validate=True)
             except (TypeError, ValueError, binascii.Error) as error:
                 raise ValueError("A changed recipe image is invalid.") from error
-            if not image_data.startswith(b"\xff\xd8\xff") or len(image_data) > MAX_IMAGE_BYTES:
-                raise ValueError("Changed images must be JPEG files no larger than 10 MB.")
+            is_webp = image_data.startswith(b"RIFF") and image_data[8:12] == b"WEBP"
+            if not is_webp or len(image_data) > MAX_IMAGE_BYTES:
+                raise ValueError("Changed images must be WebP files no larger than 10 MB.")
             seen_images.add(image["filename"].lower())
             files[REPOSITORY_ROOT / "assets/images/recipes" / Path(image["filename"])] = image_data
         for recipe in payload["recipes"]:

@@ -660,14 +660,14 @@ async function generateMealPackPDFDocument() {
     };
 
     try {
-        assets.logoData = await loadMealPackPDFImageAsDataURL("../assets/images/logo.jpg");
+        assets.logoData = await loadMealPackPDFImageAsDataURL("../assets/images/logo.webp");
     }
     catch (error) {
         console.warn("Meal Pack PDF logo could not be loaded.", error);
     }
 
     try {
-        assets.heroData = await loadMealPackPDFImageAsDataURL("../assets/images/homepage-hero-image.jpg");
+        assets.heroData = await loadMealPackPDFImageAsDataURL("../assets/images/homepage-hero-image.webp");
     }
     catch (error) {
         console.warn("Meal Pack PDF hero image could not be loaded.", error);

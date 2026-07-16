@@ -6,7 +6,7 @@ Personal editor for preparing the recipe and ingredient data used by the Will's 
 
 1. Open Recipes or Ingredients and edit the data.
 2. Recipe changes and ingredient changes are kept as local browser drafts.
-3. Convert a recipe image from the recipe Image tab. The image is named using the `rec###.jpg` convention and remains staged in the browser instead of downloading separately.
+3. Convert a recipe image from the recipe Image tab. The image is named using the `rec###.webp` convention and remains staged in the browser instead of downloading separately.
 4. Complete all 8 method steps. The fixed number preserves the Will's Grill website layout.
 5. Save the recipe so the image is staged for repository upload.
 6. Open **Export** and choose **Save to repository**.

@@ -28,7 +28,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
     description = html.escape(str(recipe.get("description", "")), quote=True)
     image = str(recipe.get("image", ""))
     canonical = f"{BASE_URL}/recipes/{slug}.html"
-    image_url = f"{BASE_URL}/assets/images/recipes/{image}" if image else f"{BASE_URL}/assets/images/homepage-hero-image.jpg"
+    image_url = f"{BASE_URL}/assets/images/recipes/{image}" if image else f"{BASE_URL}/assets/images/homepage-hero-image.webp"
     ingredient_lines = [ingredient_line(item, ingredient_records) for item in recipe.get("ingredients", [])]
     structured_data = {
         "@context": "https://schema.org",
@@ -75,7 +75,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <body>
 <a class="skip-link button" href="#main-content">Skip to main content</a>
 <header><div class="wrapper header-inner">
-<a href="../index.html" class="brand"><img src="../assets/images/logo.jpg" alt="Will's Grill" width="700" height="350" class="brand-logo"><div class="logo-tagline"><span class="tagline-white">Healthy food.</span><span class="tagline-gold">Simple cooking.</span></div></a>
+<a href="../index.html" class="brand"><img src="../assets/images/logo.webp" alt="Will's Grill" width="700" height="350" class="brand-logo"><div class="logo-tagline"><span class="tagline-white">Healthy food.</span><span class="tagline-gold">Simple cooking.</span></div></a>
 <nav><a href="../index.html">Home</a><a href="../pages/browse.html">Browse Recipes</a><a href="../pages/shopping-list.html">Shopping List</a><a href="../pages/mealpack.html">Create Meal Pack</a></nav>
 </div></header>
 <main id="main-content" class="wrapper section"><div id="recipePage">
@@ -84,8 +84,8 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/vendor/jspdf.umd.min.js"></script>
-<script src="../assets/js/pdf-style.js?v=1.3"></script>
-<script src="../assets/js/recipes.js?v=1.9"></script>
+<script src="../assets/js/pdf-style.js?v=1.4"></script>
+<script src="../assets/js/recipes.js?v=1.10"></script>
 <script src="../assets/js/shopping.js?v=1.4"></script>
 <script src="../assets/js/ui.js?v=1.1"></script>
 <script src="../assets/js/app.js?v=1.2"></script>
