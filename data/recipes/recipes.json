@@ -473,14 +473,14 @@
     "description": "With Cherry Tomatoes, Mixed Leaves & Honey-Lemon Dressing",
     "category": "Fish",
     "prepTime": 15,
-    "cookTime": 10,
+    "cookTime": 0,
     "serves": 2,
     "difficulty": "Easy",
     "image": "rec007.webp",
     "ingredients": [
       {
-        "ingredient": "ING-F330",
-        "quantity": 2
+      "ingredient": "ING-F370",
+      "quantity": 290
       },
       {
         "ingredient": "ING-B705",
@@ -528,22 +528,22 @@
       }
     ],
     "steps": [
-      "Season the tuna steaks and sear them quickly in a hot pan.",
-      "Drain and rinse the cannellini beans.",
+    "Drain the tinned tuna thoroughly and break it into large flakes with a fork.",
+    "Drain and rinse the cannellini beans, then leave them to dry briefly.",
     "Whisk together the bottled lemon juice, honey, olive oil, capers and black pepper.",
     "Slice the cherry tomatoes and cucumber, then core and dice the apple.",
     "Toss the mixed leaves with the beans, tomatoes, cucumber and diced apple in a large bowl.",
-      "Slice the tuna and lay it over the salad.",
+    "Gently fold the tuna flakes through the salad without breaking them up too much.",
       "Scatter over the chopped parsley and drizzle with the lemon dressing.",
-      "Serve while the tuna is still warm."
+    "Serve straight away while the leaves and apple are crisp."
     ],
     "nutrition": {
-    "calories": 485,
-      "protein": 53,
+    "calories": 455,
+    "protein": 49,
     "carbs": 52,
       "fat": 10
     },
-    "tip": "Do not overcook the tuna; it should stay tender in the centre."
+  "tip": "Drain the tuna very well and fold it through last so it stays in generous flakes rather than disappearing into the salad."
   },
   {
     "id": "REC008",
@@ -717,7 +717,7 @@
         "quantity": 2
       },
       {
-        "ingredient": "ING-G705",
+      "ingredient": "ING-G660",
         "quantity": 180
       },
       {
@@ -762,7 +762,7 @@
       }
     ],
     "steps": [
-      "Cook the wholemeal penne until al dente, reserving a little pasta water before draining.",
+    "Cook the linguine until al dente, reserving a little pasta water before draining.",
       "Heat the extra virgin olive oil in a pan and soften the onion and Easy Garlic.",
       "Add the basa fillets and cook gently until they start to flake.",
       "Stir in the green pesto and cherry tomatoes.",
@@ -777,7 +777,7 @@
       "carbs": 77,
       "fat": 23
     },
-    "tip": "Fold the fish into the pasta gently so the basa stays in large flakes."
+  "tip": "Fold the fish through gently so it stays in large flakes; you can substitute the linguine with any wholemeal pasta you prefer."
   },
   {
     "id": "REC011",

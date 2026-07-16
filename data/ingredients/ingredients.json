@@ -1590,5 +1590,12 @@
     "category": "Sauces & Pantry",
     "unit": "tbsp",
     "pantry": true
+  },
+  {
+    "id": "ING-F370",
+    "name": "Tinned Tuna in Spring Water",
+    "category": "Fish & Seafood",
+    "unit": "g",
+    "pantry": true
   }
 ]
