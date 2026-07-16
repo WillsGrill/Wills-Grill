@@ -11,16 +11,18 @@ const WillsGrillPDF = (() => {
         pageWidth: 297,
         pageHeight: 210,
         margin: 10,
-        black: [0, 0, 0],
+        black: [25, 35, 30],
         white: [255, 255, 255],
-        gold: [200, 162, 74],
-        taglineGold: [215, 180, 90],
-        text: [27, 27, 27],
-        muted: [79, 79, 79],
-        grey50: [250, 250, 250],
-        grey100: [244, 244, 244],
-        grey200: [232, 232, 232],
-        grey300: [216, 216, 216],
+        gold: [102, 118, 74],
+        taglineGold: [200, 155, 60],
+        ochre: [200, 155, 60],
+        terracotta: [201, 111, 74],
+        text: [52, 58, 54],
+        muted: [104, 112, 105],
+        grey50: [250, 248, 242],
+        grey100: [247, 244, 236],
+        grey200: [228, 224, 213],
+        grey300: [210, 206, 194],
         radius: 4,
         smallRadius: 2.5,
         contentBottom: 185,
@@ -38,7 +40,7 @@ const WillsGrillPDF = (() => {
     }
 
     function drawFrame(doc, assets = {}, headerTitle = "WILL'S GRILL", pageLabel = "") {
-        const { pageWidth, pageHeight, black, white, gold, taglineGold, muted, grey50 } = THEME;
+        const { pageWidth, pageHeight, black, white, gold, ochre, taglineGold, muted, grey50 } = THEME;
 
         doc.setFillColor(...grey50);
         doc.rect(0, 0, pageWidth, pageHeight, "F");
@@ -53,7 +55,7 @@ const WillsGrillPDF = (() => {
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8.6);
-        doc.setTextColor(...gold);
+        doc.setTextColor(...ochre);
         doc.text(headerTitle, pageWidth - 10, 13.1, { align: "right" });
         doc.setFont("helvetica", "bold");
         doc.setFontSize(9);

@@ -71,7 +71,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=2.0">
+<link rel="stylesheet" href="../assets/css/style.css?v=2.1">
 <script id="recipeStructuredData" type="application/ld+json">{json_ld}</script>
 </head>
 <body>

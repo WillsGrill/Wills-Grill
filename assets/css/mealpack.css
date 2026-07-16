@@ -22,14 +22,14 @@ body {
     margin: 0;
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: #fff;
-    color: #111;
+    color: #19231e;
     line-height: 1.6;
 }
 
 button,
 a.button {
     font: inherit;
-    border: 1px solid #111;
+    border: 1px solid #19231e;
     border-radius: 999px;
     padding: 14px 24px;
     cursor: pointer;
@@ -42,20 +42,20 @@ a.button {
 
 button:hover,
 a.button:hover {
-    background: #111;
+    background: #19231e;
     color: #fff;
 }
 
 button.button-outline,
 a.button.button-outline {
     background: transparent;
-    color: #111;
-    border-color: #111;
+    color: #19231e;
+    border-color: #19231e;
 }
 
 button.button-outline:hover,
 a.button.button-outline:hover {
-    background: #111;
+    background: #19231e;
     color: #fff;
 }
 
@@ -66,7 +66,7 @@ a.button.button-outline:hover {
 }
 
 .mp-pdf-shell {
-    border: 1px solid #111;
+    border: 1px solid #19231e;
     border-radius: 24px;
     padding: 28px;
     background: #fff;
@@ -84,7 +84,7 @@ a.button.button-outline:hover {
 
 .mp-pdf-meta p {
     margin: 0;
-    color: #555;
+    color: #343a36;
 }
 
 .mp-pdf-actions {
@@ -96,15 +96,15 @@ a.button.button-outline:hover {
 
 .mp-pdf-status {
     margin: 0 0 14px;
-    color: #4f4f4f;
+    color: #343a36;
     font-size: 0.95rem;
 }
 
 .mp-pdf-frame-wrap {
-    border: 1px solid #d8d8d8;
+    border: 1px solid #d2cec2;
     border-radius: 16px;
     overflow: hidden;
-    background: #f6f6f6;
+    background: #f7f4ec;
 }
 
 .mp-pdf-frame {
@@ -112,7 +112,7 @@ a.button.button-outline:hover {
     width: 100%;
     height: min(74vh, 900px);
     border: 0;
-    background: #f6f6f6;
+    background: #f7f4ec;
 }
 
 .mp-toolbar {
@@ -142,7 +142,7 @@ a.button.button-outline:hover {
 }
 
 .mp-cover-panel {
-    border: 1px solid #111;
+    border: 1px solid #19231e;
     padding: 44px 36px;
     border-radius: 30px;
     text-align: center;
@@ -161,7 +161,7 @@ a.button.button-outline:hover {
     height: 72px;
     margin: 0 auto 24px;
     border-radius: 18px;
-    background: radial-gradient(circle at top left, #d4af37 20%, #111 40%);
+    background: radial-gradient(circle at top left, #c89b3c 20%, #19231e 40%);
 }
 
 .mp-logo-image {
@@ -191,7 +191,7 @@ a.button.button-outline:hover {
     text-transform: uppercase;
     letter-spacing: .35em;
     font-size: .85rem;
-    color: #777;
+    color: #687069;
     margin-bottom: 28px;
 }
 
@@ -216,7 +216,7 @@ a.button.button-outline:hover {
 .mp-cover-meta p:first-child {
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: #777;
+    color: #687069;
 }
 
 .mp-contents h2,
@@ -225,7 +225,7 @@ a.button.button-outline:hover {
 }
 
 .mp-card {
-    border: 1px solid #111;
+    border: 1px solid #19231e;
     border-radius: 24px;
     padding: 32px;
     background: #fff;
@@ -242,7 +242,7 @@ a.button.button-outline:hover {
     justify-content: space-between;
     gap: 24px;
     font-size: 1rem;
-    color: #444;
+    color: #343a36;
 }
 
 .mp-contents-row span:first-child {
@@ -283,7 +283,7 @@ a.button.button-outline:hover {
 .shopping-items label {
     display: block;
     line-height: 1.4;
-    color: #111;
+    color: #19231e;
     font-size: 0.95rem;
 }
 
@@ -320,7 +320,7 @@ a.button.button-outline:hover {
     border-radius: 24px;
     min-height: 180px;
     max-height: 220px;
-    background: #f4f4f4;
+    background: #f7f4ec;
 }
 
 .mp-recipe-image .treat-badge {
@@ -333,7 +333,7 @@ a.button.button-outline:hover {
     justify-content: center;
     padding: 6px 10px;
     border-radius: 999px;
-    background: #000;
+    background: #19231e;
     color: #fff;
     box-shadow: 0 3px 8px rgba(0,0,0,.22);
     font-size: .72rem;
@@ -376,7 +376,7 @@ a.button.button-outline:hover {
 
 .mp-recipe-meta span,
 .mp-recipe-badges span {
-    background: #f4f4f4;
+    background: #f7f4ec;
     padding: 8px 12px;
     border-radius: 999px;
     font-size: 0.9rem;
@@ -397,8 +397,8 @@ a.button.button-outline:hover {
 
 .mp-tip-panel {
     padding: 16px 18px;
-    border: 1px solid #e0e0e0;
-    background: #fafafa;
+    border: 1px solid #e4e0d5;
+    background: #faf8f2;
 }
 
 .mp-info-panel .mp-tip-panel {
@@ -485,7 +485,7 @@ a.button.button-outline:hover {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #111;
+    background: #19231e;
     color: #fff;
     font-weight: 700;
 }
@@ -510,7 +510,7 @@ a.button.button-outline:hover {
     max-width: 520px;
     margin: 0 auto;
     padding: 48px;
-    border: 1px solid #111;
+    border: 1px solid #19231e;
     border-radius: 24px;
 }
 
@@ -521,7 +521,7 @@ a.button.button-outline:hover {
 
 .mp-empty-card p {
     margin-bottom: 24px;
-    color: #555;
+    color: #343a36;
 }
 
 @media (max-width: 960px) {
@@ -631,7 +631,7 @@ a.button.button-outline:hover {
         height:100%;
         box-sizing:border-box;
         padding:6mm;
-        border:1px solid #c8a24a;
+        border:1px solid #66764a;
         border-radius:0;
     }
 
@@ -639,7 +639,7 @@ a.button.button-outline:hover {
         grid-template-columns:105px minmax(0, 1fr);
         gap:12px;
         padding-bottom:7px;
-        border-bottom:2px solid #c8a24a;
+        border-bottom:2px solid #66764a;
     }
 
     .mp-recipe-image,
@@ -677,7 +677,7 @@ a.button.button-outline:hover {
     }
 
     .mp-recipe-body > * {
-        border-left:1px solid #dedede;
+        border-left:1px solid #e4e0d5;
         padding-left:8px;
     }
 
@@ -722,7 +722,7 @@ a.button.button-outline:hover {
         margin-top:8px;
         padding:6px 0 0;
         border:0;
-        border-top:1px solid #c8a24a;
+        border-top:1px solid #66764a;
         background:transparent;
     }
 }
