@@ -1,6 +1,6 @@
 "use strict";
 
-const ROOT = window.location.pathname.includes("/pages/")
+const ROOT = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/recipes/")
     ? "../"
     : "";
 
@@ -11,6 +11,11 @@ const PATHS = {
     ingredients: `${ROOT}data/ingredients/ingredients.json`
 
 };
+
+function getRecipeURL(recipeID) {
+    const slug = String(recipeID || "").trim().toLowerCase();
+    return `${ROOT}recipes/${encodeURIComponent(slug)}.html`;
+}
 
 function initialiseSiteNavigation() {
     const header = document.querySelector("body > header");

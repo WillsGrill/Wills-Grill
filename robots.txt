@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /recipemanager/
+
+Sitemap: https://willsgrill.github.io/Wills-Grill/sitemap.xml

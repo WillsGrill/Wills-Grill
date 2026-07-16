@@ -57,6 +57,11 @@ jobs:
       - name: Validate data and local server
         run: python3 -m unittest discover -s tests -p 'test_*.py'
 
+      - name: Verify generated recipe pages are current
+        run: |
+          python3 tools/generate_static_recipes.py
+          git diff --exit-code -- recipes sitemap.xml
+
   browser-tests:
     runs-on: ubuntu-latest
     steps:
@@ -69,6 +74,6 @@ jobs:
       - name: Install browser test dependencies
         run: npm install
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium webkit
+        run: npx playwright install --with-deps chromium firefox webkit
       - name: Run responsive and accessibility tests
         run: npm run test:e2e

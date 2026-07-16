@@ -12,6 +12,7 @@ let pendingRecipeImage = null;
 let repositoryRecipes = [];
 let recipeDraftBlocked = false;
 let editorDirty = false;
+let recipeEditorPreviousFocus = null;
 
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
@@ -22,8 +23,20 @@ const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 document.addEventListener("DOMContentLoaded", initialiseRecipesPage);
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && document.getElementById("editorPanel")?.classList.contains("open")) {
+    const panel = document.getElementById("editorPanel");
+    if (!panel?.classList.contains("open")) return;
+    if (event.key === "Escape") {
         closeEditor();
+        return;
+    }
+    if (event.key === "Tab") {
+        const focusable = [...panel.querySelectorAll("button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex='-1'])")]
+            .filter(element => !element.closest(".hidden") && !element.hidden);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
 });
 
@@ -79,6 +92,18 @@ function initialiseRecipesPage() {
         tab.addEventListener("click", () => {
             activeEditorTab = tab.getAttribute("data-tab") || "general";
             updateActiveTab();
+        });
+        tab.addEventListener("keydown", (event) => {
+            if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+            const tabs = [...document.querySelectorAll(".tab")];
+            const currentIndex = tabs.indexOf(tab);
+            const nextIndex = event.key === "Home" ? 0
+                : event.key === "End" ? tabs.length - 1
+                : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+            event.preventDefault();
+            activeEditorTab = tabs[nextIndex].getAttribute("data-tab") || "general";
+            updateActiveTab();
+            tabs[nextIndex].focus();
         });
     });
 
@@ -312,6 +337,7 @@ function openEditor(recipe) {
 
     if (!recipe) return;
 
+    recipeEditorPreviousFocus = document.activeElement;
     currentRecipe = normalizeRecipeSteps(cloneRecipe(recipe));
     editingRecipeId = recipe.id || null;
     activeEditorTab = "general";
@@ -352,6 +378,9 @@ function closeEditor() {
 
     const previewButton = document.getElementById("previewRecipeButton");
     if (previewButton) previewButton.disabled = true;
+
+    recipeEditorPreviousFocus?.focus?.();
+    recipeEditorPreviousFocus = null;
 
 }
 
@@ -871,6 +900,9 @@ function updateActiveTab() {
 
     document.querySelectorAll(".tab").forEach((tab) => {
         const isActive = tab.getAttribute("data-tab") === activeEditorTab;
+        const tabName = tab.getAttribute("data-tab");
+        tab.id = `recipe-tab-${tabName}`;
+        tab.setAttribute("aria-controls", `recipe-panel-${tabName}`);
         tab.classList.toggle("active", isActive);
         tab.setAttribute("aria-selected", String(isActive));
         tab.tabIndex = isActive ? 0 : -1;
@@ -878,6 +910,8 @@ function updateActiveTab() {
 
     document.querySelectorAll(".editor-section").forEach((section) => {
         const sectionTab = section.getAttribute("data-tab");
+        section.id = `recipe-panel-${sectionTab}`;
+        section.setAttribute("aria-labelledby", `recipe-tab-${sectionTab}`);
         section.classList.toggle("visible", sectionTab === activeEditorTab);
         section.classList.toggle("hidden", sectionTab !== activeEditorTab);
         section.setAttribute("role", "tabpanel");

@@ -1,4 +1,5 @@
 import json
+import html
 import re
 import unittest
 from pathlib import Path
@@ -53,6 +54,25 @@ class DataIntegrityTests(unittest.TestCase):
         for page in [ROOT / "index.html", *(ROOT / "pages").glob("*.html")]:
             with self.subTest(page=page.name):
                 self.assertNotRegex(page.read_text(), r'<script[^>]+src="https?://')
+
+    def test_static_recipe_pages_and_sitemap_cover_every_recipe(self):
+        sitemap = (ROOT / "sitemap.xml").read_text()
+        for recipe in self.recipes:
+            slug = recipe["id"].lower()
+            page = ROOT / "recipes" / f"{slug}.html"
+            with self.subTest(recipe=recipe["id"]):
+                self.assertTrue(page.is_file())
+                markup = page.read_text()
+                self.assertIn(f"<title>{html.escape(recipe['name'])} | Will's Grill</title>", markup)
+                self.assertIn('type="application/ld+json"', markup)
+                self.assertIn(f"/recipes/{slug}.html", sitemap)
+
+    def test_public_recipe_strings_have_expected_types(self):
+        for recipe in self.recipes:
+            with self.subTest(recipe=recipe["id"]):
+                for field in ("name", "description", "category", "difficulty", "tip"):
+                    self.assertIsInstance(recipe.get(field), str)
+                self.assertIsInstance(recipe.get("nutrition"), dict)
 
 
 if __name__ == "__main__":

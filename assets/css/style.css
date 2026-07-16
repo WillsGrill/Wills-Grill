@@ -179,6 +179,18 @@ body{
     min-height:100vh;
 }
 
+.skip-link {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    z-index: 10000;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 /* ---------- VARIABLES ---------- */
 
 :root{
@@ -1311,6 +1323,12 @@ nav a[aria-current="page"]::after{
     flex-direction:column;
 
     gap:16px;
+
+    margin:0;
+
+    padding:0;
+
+    list-style:none;
 
 }
 

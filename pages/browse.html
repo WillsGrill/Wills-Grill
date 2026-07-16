@@ -22,6 +22,8 @@
 
 <body>
 
+<a class="skip-link button" href="#main-content">Skip to main content</a>
+
 <header>
 
     <div class="wrapper header-inner">
@@ -63,7 +65,7 @@
 
 </header>
 
-<main class="wrapper section">
+<main id="main-content" class="wrapper section">
 
     <div class="page-heading-row">
 
@@ -116,6 +118,10 @@
             <span>Minimum protein</span>
             <select id="proteinFilter"><option value="">Any amount</option><option value="25">25 g</option><option value="35">35 g</option><option value="45">45 g</option></select>
         </label>
+        <label>
+            <span>Sort by</span>
+            <select id="recipeSort"><option value="featured">Featured</option><option value="name">Name</option><option value="time">Quickest</option><option value="protein">Highest protein</option></select>
+        </label>
 
     </div>
 
@@ -138,8 +144,8 @@
 </footer>
 
 <script src="../assets/js/config.js"></script>
-<script src="../assets/js/recipes.js?v=1.1"></script>
-<script src="../assets/js/shopping.js?v=1.2"></script>
+<script src="../assets/js/recipes.js?v=1.9"></script>
+<script src="../assets/js/shopping.js?v=1.4"></script>
 <script src="../assets/js/ui.js"></script>
 <script src="../assets/js/app.js?v=1.1"></script>
 

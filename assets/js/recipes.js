@@ -25,13 +25,17 @@ async function initialiseRecipes() {
 
         }
 
-        recipes = await response.json();
+        const recipeData = await response.json();
+        if (!Array.isArray(recipeData)) throw new Error("Recipe data must be an array.");
+        recipes = recipeData.map(normaliseRecipe).filter(Boolean);
+        if (!recipes.length) throw new Error("No valid recipes were found.");
 
         const preview = getRecipeManagerPreview();
         if (preview?.recipe?.id) {
             const existingIndex = recipes.findIndex(recipe => recipe.id === preview.recipe.id);
-            if (existingIndex >= 0) recipes[existingIndex] = preview.recipe;
-            else recipes.push(preview.recipe);
+            const previewRecipe = normaliseRecipe(preview.recipe);
+            if (previewRecipe && existingIndex >= 0) recipes[existingIndex] = previewRecipe;
+            else if (previewRecipe) recipes.push(previewRecipe);
         }
 
         recipes = recipes.map(recipe => ({ ...recipe, treat: isTreatRecipe(recipe) }));
@@ -61,6 +65,46 @@ async function initialiseRecipes() {
 
     }
 
+}
+
+function normaliseRecipe(value) {
+    if (!value || typeof value !== "object") return null;
+    const id = String(value.id || "").trim();
+    const name = String(value.name || "").trim();
+    if (!id || !name) return null;
+    const number = (input, fallback = 0) => {
+        const parsed = Number(input);
+        return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+    };
+    const nutrition = value.nutrition && typeof value.nutrition === "object" ? value.nutrition : {};
+    return {
+        ...value,
+        id,
+        name,
+        description: String(value.description || ""),
+        category: String(value.category || "Other"),
+        difficulty: String(value.difficulty || "Easy"),
+        image: typeof value.image === "string" ? value.image : "",
+        prepTime: number(value.prepTime),
+        cookTime: number(value.cookTime),
+        serves: Math.max(1, number(value.serves, 1)),
+        ingredients: Array.isArray(value.ingredients)
+            ? value.ingredients.filter(item => item && typeof item === "object").map(item => ({
+                ...item,
+                ingredient: String(item.ingredient || ""),
+                quantity: number(item.quantity),
+                unit: typeof item.unit === "string" ? item.unit : ""
+            })).filter(item => item.ingredient)
+            : [],
+        steps: Array.isArray(value.steps) ? value.steps.map(String).filter(Boolean) : [],
+        tip: String(value.tip || ""),
+        nutrition: {
+            calories: number(nutrition.calories),
+            protein: number(nutrition.protein),
+            carbs: number(nutrition.carbs),
+            fat: number(nutrition.fat)
+        }
+    };
 }
 
 function renderRecipeLoadError() {
@@ -150,23 +194,23 @@ function createRecipeCard(recipe) {
 
         <div class="recipe-meta">
 
-            <span>${recipe.prepTime + recipe.cookTime} mins</span>
+            <span>${escapeHTML(recipe.prepTime + recipe.cookTime)} mins</span>
 
-            <span>Serves ${recipe.serves}</span>
+            <span>Serves ${escapeHTML(recipe.serves)}</span>
 
-            <span>${recipe.difficulty}</span>
+            <span>${escapeHTML(recipe.difficulty)}</span>
 
         </div>
 
         <div class="recipe-actions">
 
-            <button
+            <a
                 class="button viewRecipe"
-                data-id="${escapeHTML(recipe.id)}">
+                href="${escapeHTML(getRecipeURL(recipe.id))}">
 
                 View Recipe
 
-            </button>
+            </a>
 
             <div class="recipe-quantity-control" data-id="${recipe.id}">
 
@@ -200,16 +244,29 @@ function initialiseSearch() {
     const search = document.getElementById("searchBox");
 
     if (!search) return;
-    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("proteinFilter")].filter(Boolean);
+    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("proteinFilter"), document.getElementById("recipeSort")].filter(Boolean);
     const applyFilters = () => {
         const value = search.value.toLowerCase().trim();
         const category = document.getElementById("categoryFilter")?.value || "";
         const maxTime = Number(document.getElementById("timeFilter")?.value || 0);
         const minProtein = Number(document.getElementById("proteinFilter")?.value || 0);
-        renderRecipes(recipes.filter(recipe => {
-            const matchesText = !value || [recipe.name, recipe.description, recipe.category].some(text => text.toLowerCase().includes(value));
+        const sort = document.getElementById("recipeSort")?.value || "featured";
+        const filteredRecipes = recipes.filter(recipe => {
+            const ingredientText = recipe.ingredients.map(item => {
+                const record = Array.isArray(ingredients) ? ingredients.find(ingredient => ingredient.id === item.ingredient) : null;
+                return `${item.ingredient} ${record?.name || ""}`;
+            }).join(" ");
+            const matchesText = !value || [recipe.name, recipe.description, recipe.category, ingredientText]
+                .some(text => String(text).toLowerCase().includes(value));
             return matchesText && (!category || recipe.category === category) && (!maxTime || recipe.prepTime + recipe.cookTime <= maxTime) && (!minProtein || recipe.nutrition.protein >= minProtein);
-        }));
+        });
+        filteredRecipes.sort((first, second) => {
+            if (sort === "time") return (first.prepTime + first.cookTime) - (second.prepTime + second.cookTime) || first.name.localeCompare(second.name);
+            if (sort === "protein") return second.nutrition.protein - first.nutrition.protein || first.name.localeCompare(second.name);
+            if (sort === "name") return first.name.localeCompare(second.name);
+            return 0;
+        });
+        renderRecipes(filteredRecipes);
     };
     controls.forEach(control => {
         control.addEventListener(control === search ? "input" : "change", applyFilters);
@@ -229,7 +286,8 @@ function renderRecipePage() {
 
     const params = new URLSearchParams(window.location.search);
 
-    const recipeID = params.get("id");
+    const pathMatch = window.location.pathname.match(/\/recipes\/([^/]+)\.html$/i);
+    const recipeID = params.get("id") || (pathMatch ? decodeURIComponent(pathMatch[1]).toUpperCase() : "");
 
     const recipe = recipes.find(r => r.id === recipeID);
 
@@ -247,13 +305,15 @@ function renderRecipePage() {
 
 `;
 
+        document.title = "Recipe not found | Will's Grill";
+        document.querySelector("meta[name='robots']")?.setAttribute("content", "noindex");
         return;
 
     }
 
     const ingredientHTML = recipe.ingredients.map(item =>
 
-        `<li>${formatIngredient(item)}</li>`
+        `<li>${escapeHTML(formatIngredient(item))}</li>`
 
     ).join("");
 
@@ -261,13 +321,13 @@ function renderRecipePage() {
 
         `
 
-<div class="step">
+<li class="step">
 
 <div class="step-number">${index + 1}</div>
 
-<div>${step}</div>
+<div>${escapeHTML(step)}</div>
 
-</div>
+</li>
 
 `
 
@@ -294,19 +354,19 @@ function renderRecipePage() {
 
 <span class="badge">
 
-${recipe.prepTime + recipe.cookTime} mins
+${escapeHTML(recipe.prepTime + recipe.cookTime)} mins
 
 </span>
 
 <span class="badge">
 
-Serves ${recipe.serves}
+Serves ${escapeHTML(recipe.serves)}
 
 </span>
 
 <span class="badge">
 
-${recipe.difficulty}
+${escapeHTML(recipe.difficulty)}
 
 </span>
 
@@ -314,11 +374,11 @@ ${recipe.difficulty}
 
 <div class="recipe-actions">
 
-<div class="recipe-quantity-control recipe-quantity-control-large" data-id="${recipe.id}">
+<div class="recipe-quantity-control recipe-quantity-control-large" data-id="${escapeHTML(recipe.id)}">
 
 <button
 class="button addRecipe"
-data-id="${recipe.id}"
+data-id="${escapeHTML(recipe.id)}"
 data-quantity="1">
 
 Add Recipe
@@ -329,7 +389,7 @@ Add Recipe
 
 <button
 class="button button-outline printRecipe"
-data-id="${recipe.id}">
+data-id="${escapeHTML(recipe.id)}">
 
 Preview & Print PDF
 
@@ -368,11 +428,11 @@ ${ingredientHTML}
 
 <h3>Method</h3>
 
-<div class="method">
+<ol class="method">
 
 ${methodHTML}
 
-</div>
+</ol>
 
 </section>
 
@@ -393,7 +453,7 @@ ${methodHTML}
 
 <h3>Chef's Tip</h3>
 
-<p>${recipe.tip}</p>
+<p>${escapeHTML(recipe.tip)}</p>
 
 </section>
 
@@ -424,7 +484,7 @@ function updateRecipeMetadata(recipe) {
     const socialImage = document.querySelector("meta[property='og:image']");
     if (socialImage) socialImage.setAttribute("content", recipe.image ? new URL(`../assets/images/recipes/${recipe.image}`, location.href).href : "");
     const canonical = document.querySelector("link[rel='canonical']");
-    if (canonical) canonical.href = new URL(`recipe.html?id=${encodeURIComponent(recipe.id)}`, location.href).href;
+    if (canonical) canonical.href = new URL(getRecipeURL(recipe.id), location.href).href;
     document.getElementById("recipeStructuredData")?.remove();
     const ingredientLines = recipe.ingredients.map(formatIngredient);
     const structuredData = {
@@ -566,9 +626,9 @@ function openRecipePDFPreview(doc, filename) {
             const focusable = [printButton, downloadButton, closeButton];
             if (event.shiftKey && document.activeElement === focusable[0]) {
                 event.preventDefault();
-                focusable.at(-1).focus();
+                focusable[focusable.length - 1].focus();
             }
-            else if (!event.shiftKey && document.activeElement === focusable.at(-1)) {
+            else if (!event.shiftKey && document.activeElement === focusable[focusable.length - 1]) {
                 event.preventDefault();
                 focusable[0].focus();
             }
@@ -615,14 +675,6 @@ function openRecipePDFPreview(doc, filename) {
 }
 
 document.addEventListener("click", event => {
-
-    const viewButton = event.target.closest(".viewRecipe");
-
-    if (viewButton) {
-        window.location.href = `recipe.html?id=${viewButton.dataset.id}`;
-        return;
-    }
-
     const printButton = event.target.closest(".printRecipe");
 
     if (printButton) {

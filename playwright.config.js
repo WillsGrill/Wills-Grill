@@ -13,6 +13,8 @@ module.exports = defineConfig({
   projects: [
     { name: "mobile", use: { ...devices["iPhone 13"] } },
     { name: "tablet", use: { viewport: { width: 768, height: 1024 } } },
-    { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } }
+    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 } } },
+    { name: "firefox", use: { ...devices["Desktop Firefox"], viewport: { width: 1440, height: 1000 } } },
+    { name: "safari", use: { ...devices["Desktop Safari"], viewport: { width: 1440, height: 1000 } } }
   ]
 });

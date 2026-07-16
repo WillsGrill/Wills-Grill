@@ -387,7 +387,7 @@ function updateRecipeCounter() {
             const quantity = item.quantity > 1 ? ` <span class="selected-recipe-quantity">×${item.quantity}</span>` : "";
             return `
                 <div class="selected-recipe-row">
-                    <a href="recipe.html?id=${encodeURIComponent(item.id)}">${escapeHTML(recipeName)}${quantity}</a>
+                    <a href="${escapeHTML(getRecipeURL(item.id))}">${escapeHTML(recipeName)}${quantity}</a>
                     <button class="selected-recipe-remove removeRecipe" type="button" data-id="${escapeHTML(item.id)}" aria-label="Remove ${escapeHTML(recipeName)} from selected recipes">×</button>
                 </div>
             `;
@@ -439,7 +439,10 @@ function getShoppingIngredientsForRecipes(selections) {
 
             );
 
-            if (!ingredient) return;
+            if (!ingredient) {
+                console.error(`Recipe ${recipeID} references missing ingredient ${item.ingredient}.`);
+                return;
+            }
 
             const key = ingredient.id;
 
@@ -622,9 +625,9 @@ function openShoppingPDFPreview(doc, filename) {
             const focusable = [printButton, downloadButton, closeButton];
             if (event.shiftKey && document.activeElement === focusable[0]) {
                 event.preventDefault();
-                focusable.at(-1).focus();
+                focusable[focusable.length - 1].focus();
             }
-            else if (!event.shiftKey && document.activeElement === focusable.at(-1)) {
+            else if (!event.shiftKey && document.activeElement === focusable[focusable.length - 1]) {
                 event.preventDefault();
                 focusable[0].focus();
             }

@@ -10,6 +10,7 @@ let ingredientSortKey = "name-asc";
 let repositoryIngredients = [];
 let ingredientDraftBlocked = false;
 let ingredientEditorDirty = false;
+let ingredientEditorPreviousFocus = null;
 
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 
@@ -22,8 +23,20 @@ window.addEventListener("beforeunload", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && document.getElementById("ingredientEditorPanel")?.classList.contains("open")) {
+    const panel = document.getElementById("ingredientEditorPanel");
+    if (!panel?.classList.contains("open")) return;
+    if (event.key === "Escape") {
         closeIngredientEditor();
+        return;
+    }
+    if (event.key === "Tab") {
+        const focusable = [...panel.querySelectorAll("button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [href]")]
+            .filter(element => !element.hidden);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
 });
 
@@ -281,6 +294,7 @@ function createBlankIngredient() {
 
 function openIngredientEditor(ingredient) {
     if (!ingredient) return;
+    ingredientEditorPreviousFocus = document.activeElement;
     currentIngredient = { ...ingredient };
     creatingIngredient = !ingredient.id;
     ingredientEditorDirty = false;
@@ -303,6 +317,8 @@ function closeIngredientEditor() {
     currentIngredient = null;
     creatingIngredient = false;
     ingredientEditorDirty = false;
+    ingredientEditorPreviousFocus?.focus?.();
+    ingredientEditorPreviousFocus = null;
 }
 
 function renderIngredientEditor() {

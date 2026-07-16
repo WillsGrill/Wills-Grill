@@ -2,6 +2,7 @@
   "name": "wills-grill",
   "private": true,
   "scripts": {
+    "generate:recipes": "python3 tools/generate_static_recipes.py",
     "test:e2e": "playwright test"
   },
   "devDependencies": {
