@@ -37,7 +37,7 @@ function loadScriptOnce(src) {
 
 async function ensurePDFLibraries() {
     if (!window.jspdf?.jsPDF) await loadScriptOnce(`${ROOT}assets/vendor/jspdf.umd.min.js`);
-    if (!window.WillsGrillPDF) await loadScriptOnce(`${ROOT}assets/js/pdf-style.js?v=1.5`);
+    if (!window.WillsGrillPDF) await loadScriptOnce(`${ROOT}assets/js/pdf-style.js?v=1.7`);
 }
 
 function getRecipeURL(recipeID) {

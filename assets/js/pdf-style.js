@@ -45,24 +45,24 @@ const WillsGrillPDF = (() => {
         doc.setFillColor(...grey50);
         doc.rect(0, 0, pageWidth, pageHeight, "F");
         doc.setFillColor(...black);
-        doc.rect(0, 0, pageWidth, 23, "F");
+        doc.rect(0, 0, pageWidth, 28, "F");
         doc.setFillColor(...gold);
-        doc.rect(0, 22.3, pageWidth, .7, "F");
+        doc.rect(0, 27.3, pageWidth, .7, "F");
 
         if (assets.logoData) {
-            doc.addImage(assets.logoData, "WEBP", 10, 1.2, 40, 20);
+            doc.addImage(assets.logoData, "WEBP", 6, 1.2, 58, 25.5);
         }
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8.6);
         doc.setTextColor(...ochre);
-        doc.text(headerTitle, pageWidth - 10, 13.1, { align: "right" });
+        doc.text(headerTitle, pageWidth - 10, 15.6, { align: "right" });
         doc.setFont("helvetica", "bold");
         doc.setFontSize(9);
         doc.setTextColor(...white);
-        doc.text("Healthy food.", 59, 9.7);
+        doc.text("Healthy food.", 70, 11.3);
         doc.setTextColor(...taglineGold);
-        doc.text("Simple cooking.", 59, 16.1);
+        doc.text("Simple cooking.", 70, 17.7);
 
         doc.setFontSize(7.2);
         doc.setTextColor(...muted);

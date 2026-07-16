@@ -731,7 +731,7 @@ async function generateShoppingListPDF() {
     const assets = { logoData: null };
 
     try {
-        assets.logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.webp?v=2");
+        assets.logoData = await loadShoppingPDFImageAsDataURL("../assets/images/logo.webp?v=3");
     }
     catch (error) {
         console.warn("Will's Grill logo was omitted from the shopping-list PDF.", error);

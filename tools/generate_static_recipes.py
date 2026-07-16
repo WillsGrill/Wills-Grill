@@ -71,13 +71,13 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=2.1">
+<link rel="stylesheet" href="../assets/css/style.css?v=2.3">
 <script id="recipeStructuredData" type="application/ld+json">{json_ld}</script>
 </head>
 <body>
 <a class="skip-link button" href="#main-content">Skip to main content</a>
 <header><div class="wrapper header-inner">
-<a href="../index.html" class="brand"><img src="../assets/images/logo.webp?v=2" alt="Will's Grill" width="700" height="350" class="brand-logo"><div class="logo-tagline"><span class="tagline-white">Healthy food.</span><span class="tagline-gold">Simple cooking.</span></div></a>
+<a href="../index.html" class="brand"><img src="../assets/images/logo.webp?v=3" alt="Will's Grill" width="820" height="360" class="brand-logo"><div class="logo-tagline"><span class="tagline-white">Healthy food.</span><span class="tagline-gold">Simple cooking.</span></div></a>
 <nav><a href="../index.html">Home</a><a href="../pages/browse.html">Browse Recipes</a><a href="../pages/shopping-list.html">Shopping List</a><a href="../pages/mealpack.html">Create Meal Pack</a></nav>
 </div></header>
 <main id="main-content" class="wrapper section"><div id="recipePage">
@@ -85,8 +85,8 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 </div></main>
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
 <script src="../assets/js/config.js?v=1.1"></script>
-<script src="../assets/js/recipes.js?v=1.14"></script>
-<script src="../assets/js/shopping.js?v=1.6"></script>
+<script src="../assets/js/recipes.js?v=1.15"></script>
+<script src="../assets/js/shopping.js?v=1.7"></script>
 <script src="../assets/js/ui.js?v=1.1"></script>
 <script src="../assets/js/app.js?v=1.3"></script>
 </body>

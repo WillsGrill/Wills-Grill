@@ -660,7 +660,7 @@ async function generateMealPackPDFDocument() {
     };
 
     try {
-        assets.logoData = await loadMealPackPDFImageAsDataURL("../assets/images/logo.webp?v=2");
+        assets.logoData = await loadMealPackPDFImageAsDataURL("../assets/images/logo.webp?v=3");
     }
     catch (error) {
         console.warn("Meal Pack PDF logo could not be loaded.", error);
