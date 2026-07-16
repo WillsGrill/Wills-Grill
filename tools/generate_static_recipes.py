@@ -85,7 +85,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <script src="../assets/js/config.js"></script>
 <script src="../assets/vendor/jspdf.umd.min.js"></script>
 <script src="../assets/js/pdf-style.js?v=1.4"></script>
-<script src="../assets/js/recipes.js?v=1.11"></script>
+<script src="../assets/js/recipes.js?v=1.12"></script>
 <script src="../assets/js/shopping.js?v=1.4"></script>
 <script src="../assets/js/ui.js?v=1.1"></script>
 <script src="../assets/js/app.js?v=1.2"></script>

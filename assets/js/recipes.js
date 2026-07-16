@@ -250,13 +250,12 @@ function initialiseSearch() {
     const search = document.getElementById("searchBox");
 
     if (!search) return;
-    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("proteinFilter"), document.getElementById("recipeSort")].filter(Boolean);
+    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("difficultyFilter")].filter(Boolean);
     const applyFilters = () => {
         const value = search.value.toLowerCase().trim();
         const category = document.getElementById("categoryFilter")?.value || "";
         const maxTime = Number(document.getElementById("timeFilter")?.value || 0);
-        const minProtein = Number(document.getElementById("proteinFilter")?.value || 0);
-        const sort = document.getElementById("recipeSort")?.value || "featured";
+        const difficulty = document.getElementById("difficultyFilter")?.value || "";
         const filteredRecipes = recipes.filter(recipe => {
             const ingredientText = recipe.ingredients.map(item => {
                 const record = Array.isArray(ingredients) ? ingredients.find(ingredient => ingredient.id === item.ingredient) : null;
@@ -264,13 +263,7 @@ function initialiseSearch() {
             }).join(" ");
             const matchesText = !value || [recipe.name, recipe.description, recipe.category, ingredientText]
                 .some(text => String(text).toLowerCase().includes(value));
-            return matchesText && (!category || recipe.category === category) && (!maxTime || recipe.prepTime + recipe.cookTime <= maxTime) && (!minProtein || recipe.nutrition.protein >= minProtein);
-        });
-        filteredRecipes.sort((first, second) => {
-            if (sort === "time") return (first.prepTime + first.cookTime) - (second.prepTime + second.cookTime) || first.name.localeCompare(second.name);
-            if (sort === "protein") return second.nutrition.protein - first.nutrition.protein || first.name.localeCompare(second.name);
-            if (sort === "name") return first.name.localeCompare(second.name);
-            return 0;
+            return matchesText && (!category || recipe.category === category) && (!maxTime || recipe.prepTime + recipe.cookTime <= maxTime) && (!difficulty || recipe.difficulty === difficulty);
         });
         renderRecipes(filteredRecipes);
     };

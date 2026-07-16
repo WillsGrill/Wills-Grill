@@ -15,7 +15,7 @@ let exportBlocked = false;
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 const METHOD_STEP_COUNT = 8;
-const RECIPE_CATEGORIES = ["BBQ", "Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"];
+const RECIPE_CATEGORIES = ["Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"];
 const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 
 refreshDataButton.addEventListener("click", discardLocalChanges);
