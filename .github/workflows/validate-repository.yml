@@ -68,7 +68,7 @@ jobs:
           node-version: 20
       - name: Install browser test dependencies
         run: npm install
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium webkit
       - name: Run responsive and accessibility tests
         run: npm run test:e2e

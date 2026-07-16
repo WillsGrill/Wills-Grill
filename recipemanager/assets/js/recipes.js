@@ -16,7 +16,7 @@ let editorDirty = false;
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 const METHOD_STEP_COUNT = 8;
-const RECIPE_CATEGORIES = ["BBQ", "Chicken", "Fish", "Turkey", "Vegetarian"];
+const RECIPE_CATEGORIES = ["BBQ", "Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"];
 const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 
 document.addEventListener("DOMContentLoaded", initialiseRecipesPage);
@@ -1019,7 +1019,7 @@ function collectRecipeFromForm() {
         cookTime: getNumberFieldValue("recipeCookTime"),
         serves: getNumberFieldValue("recipeServes"),
         difficulty: getTextFieldValue("recipeDifficulty"),
-        image: getTextFieldValue("recipeImage"),
+        image: getTextFieldValue("recipeImage") || null,
         tip: getTextFieldValue("recipeTip"),
         ingredients: readIngredientRows(),
         steps: readMethodSteps(),
@@ -1152,11 +1152,7 @@ function validateRecipe(recipe) {
         return "Select a valid recipe difficulty.";
     }
 
-    if (!recipe.image) {
-        return "Image filename is required.";
-    }
-
-    if (!/^rec\d{3}\.jpg$/i.test(recipe.image)) {
+    if (recipe.image && !/^rec\d{3}\.jpg$/i.test(recipe.image)) {
         return "Image filename must use the rec###.jpg convention.";
     }
 

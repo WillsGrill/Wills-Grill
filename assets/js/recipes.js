@@ -34,6 +34,8 @@ async function initialiseRecipes() {
             else recipes.push(preview.recipe);
         }
 
+        recipes = recipes.map(recipe => ({ ...recipe, treat: isTreatRecipe(recipe) }));
+
     }
 
     catch (error) {
@@ -122,18 +124,21 @@ function renderRecipes(recipeArray) {
 
 function createRecipeCard(recipe) {
 
+    const imageHTML = recipe.image
+        ? `<img src="../assets/images/recipes/thumbs/${escapeHTML(recipe.image)}" data-full-image="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="800" height="450" loading="lazy" decoding="async">`
+        : `<div class="recipe-image-placeholder" role="img" aria-label="Image for ${escapeHTML(recipe.name)} coming soon">Image coming soon</div>`;
+    const treatBadgeHTML = recipe.treat
+        ? `<span class="treat-badge" title="Treat recipe – best enjoyed occasionally">Treat</span>`
+        : "";
+
     return `
 
 <article class="recipe-card">
 
     <div class="recipe-image">
 
-        <img
-            src="../assets/images/recipes/thumbs/${escapeHTML(recipe.image)}"
-            data-full-image="../assets/images/recipes/${escapeHTML(recipe.image)}"
-            alt="${escapeHTML(recipe.name)}"
-            width="800" height="450"
-            loading="lazy" decoding="async">
+        ${imageHTML}
+        ${treatBadgeHTML}
 
     </div>
 
@@ -268,6 +273,13 @@ function renderRecipePage() {
 
     ).join("");
 
+    const heroImageHTML = recipe.image
+        ? `<img src="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="1600" height="900">`
+        : `<div class="recipe-image-placeholder" role="img" aria-label="Image for ${escapeHTML(recipe.name)} coming soon">Image coming soon</div>`;
+    const treatBadgeHTML = recipe.treat
+        ? `<span class="treat-badge treat-badge-large" title="Treat recipe – best enjoyed occasionally">Treat</span>`
+        : "";
+
     container.innerHTML = `
 
 <div class="recipe-hero">
@@ -329,9 +341,8 @@ Preview & Print PDF
 
 <div class="recipe-hero-image">
 
-<img
-src="../assets/images/recipes/${recipe.image}"
-alt="${escapeHTML(recipe.name)}" width="1600" height="900">
+${heroImageHTML}
+${treatBadgeHTML}
 
 </div>
 
@@ -410,7 +421,8 @@ function updateRecipeMetadata(recipe) {
     document.querySelector("meta[name='description']")?.setAttribute("content", description);
     document.querySelector("meta[property='og:title']")?.setAttribute("content", recipe.name);
     document.querySelector("meta[property='og:description']")?.setAttribute("content", description);
-    document.querySelector("meta[property='og:image']")?.setAttribute("content", new URL(`../assets/images/recipes/${recipe.image}`, location.href).href);
+    const socialImage = document.querySelector("meta[property='og:image']");
+    if (socialImage) socialImage.setAttribute("content", recipe.image ? new URL(`../assets/images/recipes/${recipe.image}`, location.href).href : "");
     const canonical = document.querySelector("link[rel='canonical']");
     if (canonical) canonical.href = new URL(`recipe.html?id=${encodeURIComponent(recipe.id)}`, location.href).href;
     document.getElementById("recipeStructuredData")?.remove();
@@ -420,7 +432,7 @@ function updateRecipeMetadata(recipe) {
         "@type": "Recipe",
         name: recipe.name,
         description,
-        image: new URL(`../assets/images/recipes/${recipe.image}`, location.href).href,
+        ...(recipe.image ? { image: new URL(`../assets/images/recipes/${recipe.image}`, location.href).href } : {}),
         prepTime: `PT${recipe.prepTime}M`,
         cookTime: `PT${recipe.cookTime}M`,
         recipeYield: `${recipe.serves} servings`,
@@ -483,11 +495,13 @@ async function generateRecipePDF(recipe) {
     catch (error) {
         console.warn("Will's Grill logo was omitted from the PDF.", error);
     }
-    try {
-        imageData = await loadImageAsDataURL(`../assets/images/recipes/${recipe.image}`);
-    }
-    catch (error) {
-        console.warn("Recipe image was omitted from the PDF.", error);
+    if (recipe.image) {
+        try {
+            imageData = await loadImageAsDataURL(`../assets/images/recipes/${recipe.image}`);
+        }
+        catch (error) {
+            console.warn("Recipe image was omitted from the PDF.", error);
+        }
     }
     WillsGrillPDF.setDocumentProperties(doc, `${recipe.name} | Will's Grill`, "Will's Grill recipe card");
     WillsGrillPDF.drawRecipePages(doc, recipe, {

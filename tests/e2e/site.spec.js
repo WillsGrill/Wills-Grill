@@ -4,7 +4,7 @@ const AxeBuilder = require("@axe-core/playwright").default;
 test("core recipe planning journey works", async ({ page }) => {
   await page.goto("/pages/browse.html");
   await expect(page.getByRole("heading", { name: "Browse Recipes" })).toBeVisible();
-  await expect(page.locator(".recipe-card")).toHaveCount(25);
+  await expect(page.locator(".recipe-card")).toHaveCount(42);
   await page.locator(".recipe-card").first().getByRole("button", { name: /add/i }).click();
   await expect(page.locator(".nav-count")).toHaveText("1");
   await page.getByRole("link", { name: /shopping list/i }).click();
@@ -61,7 +61,7 @@ test("all recipe and shopping PDF layouts render without overflow errors", async
       shoppingPages: shoppingDoc.getNumberOfPages()
     };
   });
-  expect(result.recipePageCounts).toHaveLength(25);
+  expect(result.recipePageCounts).toHaveLength(42);
   expect(result.recipePageCounts.every(item => item.pages >= 1 && item.pages <= 2)).toBeTruthy();
   expect(result.shoppingPages).toBeGreaterThan(1);
 });

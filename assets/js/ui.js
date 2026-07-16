@@ -72,6 +72,12 @@ function ingredientFromID(id) {
 
 }
 
+function isTreatRecipe(recipe) {
+    return Array.isArray(recipe?.ingredients) && recipe.ingredients.some(item =>
+        ingredientFromID(item.ingredient)?.treat === true
+    );
+}
+
 /* ==================================================
    Ingredient Formatter
 ================================================== */

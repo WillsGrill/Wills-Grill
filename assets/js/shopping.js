@@ -356,25 +356,12 @@ function updateButtons() {
 ============================================ */
 
 function updateRecipeCounter() {
-
-    const counter = document.getElementById(
-
-        "selectedRecipeCount"
-
-    );
-
-    const names = document.getElementById(
-
-        "selectedRecipeNames"
-
-    );
-
     const selected = getSelectedRecipes();
     const totalCount = selected.reduce((total, item) => total + item.quantity, 0);
 
-    if (counter) {
+    document.querySelectorAll("#selectedRecipeCount, .selected-recipe-count").forEach(counter => {
         counter.textContent = totalCount;
-    }
+    });
 
     document.querySelectorAll(".nav-count").forEach(badge => {
         badge.textContent = totalCount;
@@ -386,26 +373,26 @@ function updateRecipeCounter() {
         if (button) button.disabled = totalCount === 0;
     });
 
-    if (!names) return;
+    document.querySelectorAll("[data-selected-recipes]").forEach(container => {
+        if (!selected.length) {
+            container.textContent = "No recipes selected.";
+            return;
+        }
 
-    if (!selected.length) {
-        names.textContent = "No recipes selected.";
-        return;
-    }
-
-    const recipeSummary = selected.map(item => {
-
-        const recipe = Array.isArray(recipes)
-            ? recipes.find(r => String(r.id).trim() === String(item.id).trim())
-            : null;
-
-        const recipeName = recipe?.name || item.id;
-
-        return item.quantity > 1 ? `${recipeName} ×${item.quantity}` : recipeName;
-
+        container.innerHTML = selected.map(item => {
+            const recipe = Array.isArray(recipes)
+                ? recipes.find(r => String(r.id).trim() === String(item.id).trim())
+                : null;
+            const recipeName = recipe?.name || item.id;
+            const quantity = item.quantity > 1 ? ` <span class="selected-recipe-quantity">×${item.quantity}</span>` : "";
+            return `
+                <div class="selected-recipe-row">
+                    <a href="recipe.html?id=${encodeURIComponent(item.id)}">${escapeHTML(recipeName)}${quantity}</a>
+                    <button class="selected-recipe-remove removeRecipe" type="button" data-id="${escapeHTML(item.id)}" aria-label="Remove ${escapeHTML(recipeName)} from selected recipes">×</button>
+                </div>
+            `;
+        }).join("");
     });
-
-    names.textContent = recipeSummary.join(", ");
 
 }
 

@@ -28,7 +28,7 @@ IMAGE_NAME = re.compile(r"(?:thumbs/)?rec\d{3}\.jpg", re.IGNORECASE)
 RECIPE_IMAGE_NAME = re.compile(r"rec\d{3}\.jpg", re.IGNORECASE)
 RECIPE_ID = re.compile(r"REC\d{3}")
 INGREDIENT_ID = re.compile(r"ING-[A-Z]\d{3}")
-RECIPE_CATEGORIES = {"BBQ", "Chicken", "Fish", "Turkey", "Vegetarian"}
+RECIPE_CATEGORIES = {"BBQ", "Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"}
 RECIPE_DIFFICULTIES = {"Easy", "Medium", "Hard"}
 METHOD_STEP_COUNT = 8
 SESSION_TOKEN = secrets.token_urlsafe(32)
@@ -59,6 +59,8 @@ def validate_data(recipes, ingredients) -> None:
             raise ValueError(f"Ingredient {ingredient_id} is missing a name or category.")
         if not isinstance(ingredient.get("unit", ""), str) or not isinstance(ingredient.get("pantry"), bool):
             raise ValueError(f"Ingredient {ingredient_id} has an invalid unit or pantry value.")
+        if "treat" in ingredient and not isinstance(ingredient["treat"], bool):
+            raise ValueError(f"Ingredient {ingredient_id} has an invalid treat value.")
         ingredient_ids.add(ingredient_id)
 
     recipe_ids = set()
@@ -73,8 +75,9 @@ def validate_data(recipes, ingredients) -> None:
                 raise ValueError(f"Recipe {recipe_id} is missing {field}.")
         if recipe.get("category") not in RECIPE_CATEGORIES or recipe.get("difficulty") not in RECIPE_DIFFICULTIES:
             raise ValueError(f"Recipe {recipe_id} has an invalid category or difficulty.")
-        if not isinstance(recipe.get("image"), str) or not RECIPE_IMAGE_NAME.fullmatch(recipe["image"]):
-            raise ValueError(f"Recipe {recipe_id} needs a rec###.jpg image.")
+        image = recipe.get("image")
+        if image is not None and (not isinstance(image, str) or not RECIPE_IMAGE_NAME.fullmatch(image)):
+            raise ValueError(f"Recipe {recipe_id} has an invalid image filename.")
         if not isinstance(recipe.get("steps"), list) or len(recipe["steps"]) != METHOD_STEP_COUNT or any(not isinstance(step, str) or not step.strip() for step in recipe["steps"]):
             raise ValueError(f"Recipe {recipe_id} needs exactly {METHOD_STEP_COUNT} completed method steps.")
         rows = recipe.get("ingredients")

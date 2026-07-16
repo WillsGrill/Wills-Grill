@@ -32,11 +32,12 @@ function initialiseSiteNavigation() {
 
     const shoppingLink = [...nav.querySelectorAll("a")].find(link => link.textContent.includes("Shopping List"));
     if (shoppingLink && !shoppingLink.querySelector(".nav-count")) {
+        shoppingLink.classList.add("shopping-nav-link");
         const count = document.createElement("span");
         count.className = "nav-count";
         count.setAttribute("aria-label", "selected recipes");
         count.textContent = "0";
-        shoppingLink.append(" ", count);
+        shoppingLink.append(count);
     }
 }
 

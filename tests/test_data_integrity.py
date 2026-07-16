@@ -37,11 +37,17 @@ class DataIntegrityTests(unittest.TestCase):
     def test_recipe_images_and_thumbnails_exist(self):
         for recipe in self.recipes:
             with self.subTest(recipe=recipe["id"]):
+                if not recipe.get("image"):
+                    continue
                 self.assertTrue((ROOT / "assets/images/recipes" / recipe["image"]).is_file())
                 self.assertTrue((ROOT / "assets/images/recipes/thumbs" / recipe["image"]).is_file())
 
     def test_ingredient_pantry_values_are_boolean(self):
         self.assertTrue(all(isinstance(item.get("pantry"), bool) for item in self.ingredients))
+
+    def test_treat_values_belong_to_ingredients_and_are_boolean(self):
+        self.assertFalse(any("treat" in recipe for recipe in self.recipes))
+        self.assertTrue(all(isinstance(ingredient["treat"], bool) for ingredient in self.ingredients if "treat" in ingredient))
 
     def test_local_pages_do_not_depend_on_remote_scripts(self):
         for page in [ROOT / "index.html", *(ROOT / "pages").glob("*.html")]:

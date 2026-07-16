@@ -79,13 +79,18 @@
 
         </div>
 
-        <button id="clearShopping" class="button button-outline">
-
-            Clear Selection
-
-        </button>
-
     </div>
+
+    <aside class="selected-recipes-card" aria-labelledby="browseSelectedRecipesTitle">
+        <div class="selected-recipes-heading">
+            <div class="selected-recipes-title">
+                <h3 id="browseSelectedRecipesTitle">Selected Recipes</h3>
+                <span class="selected-recipe-count" aria-label="Selected recipe portions">0</span>
+            </div>
+            <button id="clearShopping" class="selected-recipes-clear">Clear</button>
+        </div>
+        <div class="selected-recipe-list" data-selected-recipes>No recipes selected.</div>
+    </aside>
 
     <div class="search browse-filters">
 
@@ -100,7 +105,7 @@
             <span>Category</span>
             <select id="categoryFilter">
                 <option value="">All categories</option>
-                <option>BBQ</option><option>Chicken</option><option>Fish</option><option>Turkey</option><option>Vegetarian</option>
+                <option>BBQ</option><option>Beef</option><option>Chicken</option><option>Fish</option><option>Pork</option><option>Turkey</option><option>Vegetarian</option><option>Venison</option>
             </select>
         </label>
         <label>

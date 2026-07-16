@@ -250,13 +250,22 @@ const WillsGrillPDF = (() => {
         drawRoundedImage(doc, assets.imageData, 16, 33, 54, 41, 3.5);
 
         const titleX = 77;
-        const titleSize = fitSingleLineFont(doc, recipe.name, 199, 18, 13);
-        drawText(doc, recipe.name, titleX, 41.5, 199, {
+        const titleWidth = recipe.treat ? 181 : 199;
+        const titleSize = fitSingleLineFont(doc, recipe.name, titleWidth, 18, 13);
+        drawText(doc, recipe.name, titleX, 41.5, titleWidth, {
             fontSize: titleSize,
             lineHeight: 6.5,
             color: THEME.text,
             fontStyle: "bold"
         });
+        if (recipe.treat) {
+            doc.setFillColor(...THEME.black);
+            doc.roundedRect(258, 34, 19, 7.5, 3.75, 3.75, "F");
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(7.2);
+            doc.setTextColor(...THEME.white);
+            doc.text("TREAT", 267.5, 38.9, { align: "center" });
+        }
         let descriptionSize = 8.4;
         let descriptionLines = wrapText(doc, recipe.description, 199, { fontSize: descriptionSize });
         while (descriptionLines.length > 2 && descriptionSize > 6.8) {

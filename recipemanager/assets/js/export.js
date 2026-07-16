@@ -15,7 +15,7 @@ let exportBlocked = false;
 const RECIPES_DRAFT_KEY = CONFIG.recipesDraftKey;
 const INGREDIENTS_DRAFT_KEY = CONFIG.ingredientsDraftKey;
 const METHOD_STEP_COUNT = 8;
-const RECIPE_CATEGORIES = ["BBQ", "Chicken", "Fish", "Turkey", "Vegetarian"];
+const RECIPE_CATEGORIES = ["BBQ", "Beef", "Chicken", "Fish", "Pork", "Turkey", "Vegetarian", "Venison"];
 const RECIPE_DIFFICULTIES = ["Easy", "Medium", "Hard"];
 
 refreshDataButton.addEventListener("click", discardLocalChanges);
@@ -120,6 +120,7 @@ function validateExportData() {
         if (!ingredient.id || !/^ING-[A-Z]\d{3}$/.test(ingredient.id)) return `Ingredient ${ingredient.id || "without an ID"} has an invalid ID.`;
         if (!ingredient.name || !ingredient.category) return `Ingredient ${ingredient.id} is missing a name or category.`;
         if (typeof ingredient.pantry !== "boolean") return `Ingredient ${ingredient.id} needs a true or false pantry value.`;
+        if (ingredient.treat !== undefined && typeof ingredient.treat !== "boolean") return `Ingredient ${ingredient.id} has an invalid treat value.`;
         if (ingredientIds.has(ingredient.id)) return `Duplicate ingredient ID: ${ingredient.id}.`;
         ingredientIds.add(ingredient.id);
     }
@@ -131,7 +132,7 @@ function validateExportData() {
         }
         if (!RECIPE_CATEGORIES.includes(recipe.category)) return `Recipe ${recipe.id} has an invalid category.`;
         if (!RECIPE_DIFFICULTIES.includes(recipe.difficulty)) return `Recipe ${recipe.id} has an invalid difficulty.`;
-        if (!/^rec\d{3}\.jpg$/i.test(recipe.image || "")) return `Recipe ${recipe.id} needs a rec###.jpg image.`;
+        if (recipe.image && !/^rec\d{3}\.jpg$/i.test(recipe.image)) return `Recipe ${recipe.id} has an invalid image filename.`;
         if (!Array.isArray(recipe.steps) || recipe.steps.length !== METHOD_STEP_COUNT || recipe.steps.some((step) => !String(step).trim())) {
             return `Recipe ${recipe.id} needs exactly ${METHOD_STEP_COUNT} completed method steps.`;
         }

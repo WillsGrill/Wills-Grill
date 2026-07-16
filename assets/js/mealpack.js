@@ -252,6 +252,13 @@ function buildRecipePage(recipe) {
 
     `).join("");
 
+    const imageHTML = recipe.image
+        ? `<img src="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="1600" height="900">`
+        : `<div class="recipe-image-placeholder" role="img" aria-label="Image for ${escapeHTML(recipe.name)} coming soon">Image coming soon</div>`;
+    const treatBadgeHTML = recipe.treat
+        ? `<span class="treat-badge" title="Treat recipe – best enjoyed occasionally">Treat</span>`
+        : "";
+
     return `
 
 <section class="mp-page mp-recipe">
@@ -260,7 +267,8 @@ function buildRecipePage(recipe) {
 
         <div class="mp-recipe-header">
             <div class="mp-recipe-image">
-                <img src="../assets/images/recipes/${escapeHTML(recipe.image)}" alt="${escapeHTML(recipe.name)}" width="1600" height="900">
+                ${imageHTML}
+                ${treatBadgeHTML}
             </div>
 
             <div class="mp-recipe-summary">
@@ -665,7 +673,7 @@ async function generateMealPackPDFDocument() {
         console.warn("Meal Pack PDF hero image could not be loaded.", error);
     }
 
-    await Promise.all(data.selectedRecipes.map(async recipe => {
+    await Promise.all(data.selectedRecipes.filter(recipe => recipe.image).map(async recipe => {
         try {
             assets.recipeImages[recipe.image] = await loadMealPackPDFImageAsDataURL(
                 `../assets/images/recipes/${recipe.image}`

@@ -396,14 +396,16 @@
     "name": "Lean Beef Mince (5%)",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M425",
     "name": "Lean Beef Steak",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-D501",
@@ -1068,42 +1070,48 @@
     "name": "Lamb Mince",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M435",
     "name": "Lamb Leg Steak",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M440",
     "name": "Pork Tenderloin",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M445",
     "name": "Pork Mince",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M450",
     "name": "Chorizo",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-M455",
     "name": "Pancetta",
     "category": "Meat & Poultry",
     "unit": "g",
-    "pantry": false
+    "pantry": false,
+    "treat": true
   },
   {
     "id": "ING-D540",
@@ -1384,5 +1392,182 @@
     "category": "Sauces & Pantry",
     "unit": "ml",
     "pantry": true
+  },
+  {
+    "id": "ING-M460",
+    "name": "Venison Steak",
+    "category": "Meat & Poultry",
+    "unit": "g",
+    "pantry": false,
+    "treat": true
+  },
+  {
+    "id": "ING-M465",
+    "name": "Lean Sirloin Steak",
+    "category": "Meat & Poultry",
+    "unit": "g",
+    "pantry": false,
+    "treat": true
+  },
+  {
+    "id": "ING-V400",
+    "name": "Parsnips",
+    "category": "Vegetables",
+    "unit": "g",
+    "pantry": false
+  },
+  {
+    "id": "ING-V405",
+    "name": "Pak Choi",
+    "category": "Vegetables",
+    "unit": "each",
+    "pantry": false
+  },
+  {
+    "id": "ING-V410",
+    "name": "Red Cabbage",
+    "category": "Vegetables",
+    "unit": "g",
+    "pantry": false
+  },
+  {
+    "id": "ING-V415",
+    "name": "Fresh Ginger",
+    "category": "Vegetables",
+    "unit": "g",
+    "pantry": false
+  },
+  {
+    "id": "ING-P070",
+    "name": "Blackberries",
+    "category": "Fruit",
+    "unit": "g",
+    "pantry": false
+  },
+  {
+    "id": "ING-P075",
+    "name": "Natural Peanut Butter",
+    "category": "Sauces & Pantry",
+    "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-P080",
+    "name": "Rice Vinegar",
+    "category": "Oils & Vinegars",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P085",
+    "name": "Cornflour",
+    "category": "Sauces & Pantry",
+    "unit": "tsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P090",
+    "name": "Angel's Wings Rub",
+    "category": "Spices",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-G720",
+    "name": "Wholewheat Tagliatelle",
+    "category": "Grains & Pasta",
+    "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-P095",
+    "name": "Light Coconut Milk",
+    "category": "Sauces & Pantry",
+    "unit": "ml",
+    "pantry": true
+  },
+  {
+    "id": "ING-S230",
+    "name": "Mild Curry Powder",
+    "category": "Spices",
+    "unit": "tsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-G725",
+    "name": "Wholemeal Udon Noodles",
+    "category": "Grains & Pasta",
+    "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-P100",
+    "name": "Marmite",
+    "category": "Sauces & Pantry",
+    "unit": "tsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P105",
+    "name": "Red Chilli Jam",
+    "category": "Sauces & Pantry",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P110",
+    "name": "Easy Ginger",
+    "category": "Sauces & Pantry",
+    "unit": "tsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P115",
+    "name": "Gochujang Paste",
+    "category": "Sauces & Pantry",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P120",
+    "name": "Sesame Seeds",
+    "category": "Sauces & Pantry",
+    "unit": "tbsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-P125",
+    "name": "Roasted Peanuts",
+    "category": "Sauces & Pantry",
+    "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-V420",
+    "name": "Apple",
+    "category": "Fruit",
+    "unit": "each",
+    "pantry": false
+  },
+  {
+    "id": "ING-P130",
+    "name": "Chipotle Paste",
+    "category": "Sauces & Pantry",
+    "unit": "tsp",
+    "pantry": true
+  },
+  {
+    "id": "ING-G730",
+    "name": "Small Wholemeal Tortillas",
+    "category": "Grains & Pasta",
+    "unit": "each",
+    "pantry": true
+  },
+  {
+    "id": "ING-V425",
+    "name": "Sugar Snap Peas",
+    "category": "Vegetables",
+    "unit": "g",
+    "pantry": false
   }
 ]

@@ -86,10 +86,13 @@ async function loadIngredientData() {
             throw new Error("Website data must contain ingredient and recipe arrays.");
         }
 
-        repositoryIngredients = ingredientData;
-        const ingredientDraft = await DraftStore.resolve(INGREDIENTS_DRAFT_KEY, ingredientData, "ingredient");
+        // Keep an immutable baseline for draft revision checks. Without the copy,
+        // editing `ingredients` also mutated `repositoryIngredients`, so a reload
+        // incorrectly treated the newly saved draft as stale.
+        repositoryIngredients = ingredientData.map((ingredient) => ({ ...ingredient }));
+        const ingredientDraft = await DraftStore.resolve(INGREDIENTS_DRAFT_KEY, repositoryIngredients, "ingredient");
         const recipeDraft = await DraftStore.resolve(CONFIG.recipesDraftKey, recipeData, "recipe");
-        ingredients = ingredientDraft.data;
+        ingredients = ingredientDraft.data.map((ingredient) => ({ ...ingredient }));
         recipes = recipeDraft.data;
         ingredientDraftBlocked = Boolean(ingredientDraft.blocked || recipeDraft.blocked);
         populateIngredientCategoryFilter();
@@ -104,7 +107,7 @@ async function loadIngredientData() {
         const table = document.getElementById("ingredientTable");
 
         if (table) {
-            table.innerHTML = '<tr><td colspan="5" class="empty-state">Unable to load ingredients.</td></tr>';
+            table.innerHTML = '<tr><td colspan="6" class="empty-state">Unable to load ingredients.</td></tr>';
         }
 
     }
@@ -179,7 +182,7 @@ function renderIngredientTable() {
     visibleIngredients.sort(compareIngredients);
 
     if (!visibleIngredients.length) {
-        tableBody.innerHTML = '<tr><td colspan="5" class="empty-state">No ingredients found.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="6" class="empty-state">No ingredients found.</td></tr>';
         return;
     }
 
@@ -189,6 +192,7 @@ function renderIngredientTable() {
             <td>${escapeHtml(ingredient.name || "")}</td>
             <td>${escapeHtml(ingredient.category || "")}</td>
             <td>${escapeHtml(ingredient.unit || "")}</td>
+            <td>${ingredient.treat ? "Yes" : "No"}</td>
             <td class="edit-action">
                 <div class="table-actions">
                     <button type="button" class="secondary-button table-action-button" data-action="edit-ingredient" data-ingredient-id="${escapeHtml(ingredient.id || "")}">Edit</button>
@@ -270,7 +274,8 @@ function createBlankIngredient() {
         name: "",
         category: "",
         unit: "",
-        pantry: false
+        pantry: false,
+        treat: false
     };
 }
 
@@ -334,6 +339,10 @@ function renderIngredientEditor() {
                 <label class="checkbox-field full-width">
                     <input id="ingredientPantry" type="checkbox" ${currentIngredient.pantry ? "checked" : ""}>
                     Pantry staple
+                </label>
+                <label class="checkbox-field full-width">
+                    <input id="ingredientTreat" type="checkbox" ${currentIngredient.treat ? "checked" : ""}>
+                    Mark recipes containing this ingredient as a treat
                 </label>
             </div>
             <div class="editor-actions">
@@ -434,8 +443,9 @@ function saveIngredientFromEditor() {
     const categoryInput = document.getElementById("ingredientCategory");
     const unitInput = document.getElementById("ingredientUnit");
     const pantryInput = document.getElementById("ingredientPantry");
+    const treatInput = document.getElementById("ingredientTreat");
 
-    if (!idInput || !nameInput || !categoryInput || !unitInput || !pantryInput) return;
+    if (!idInput || !nameInput || !categoryInput || !unitInput || !pantryInput || !treatInput) return;
 
     if (ingredientDraftBlocked) {
         alert("This older draft is open for review only. Reload this page and merge or discard it before saving.");
@@ -447,7 +457,8 @@ function saveIngredientFromEditor() {
         name: nameInput.value.trim(),
         category: categoryInput.value.trim(),
         unit: unitInput.value.trim(),
-        pantry: pantryInput.checked
+        pantry: pantryInput.checked,
+        treat: treatInput.checked
     };
 
     const validationError = validateIngredient(updatedIngredient);
