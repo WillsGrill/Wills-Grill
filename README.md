@@ -25,7 +25,7 @@ On macOS, you can instead double-click `Start Recipe Manager.command`; it starts
 - Browse and search recipes.
 - Add recipes and adjust their quantities.
 - Generate a combined shopping list.
-- Tick off shopping items; ticks are retained in the current browser.
+- Tick off shopping items: ticks are retained in the current browser.
 - Create and print a meal pack.
 
 ## Project structure
