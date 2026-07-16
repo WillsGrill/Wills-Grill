@@ -27,7 +27,8 @@ test("search and filters have a clear empty state", async ({ page }) => {
 
 test("recipe links, filters, and empty actions behave clearly", async ({ page }) => {
   await page.goto("/pages/browse.html");
-  await page.getByLabel("Category").selectOption("Fish");
+  await page.locator(".filter-panel summary").click();
+  await page.getByLabel("Protein Source").selectOption("Fish");
   await expect(page.locator(".recipe-card").first()).toBeVisible();
   await page.locator(".recipe-card").first().getByRole("link", { name: "View Recipe" }).click();
   await expect(page.locator("#recipePage h1")).toBeVisible();
