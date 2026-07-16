@@ -1569,5 +1569,19 @@
     "category": "Vegetables",
     "unit": "g",
     "pantry": false
+  },
+  {
+    "id": "ING-P135",
+    "name": "Dried Apricots",
+    "category": "Fruit",
+    "unit": "g",
+    "pantry": true
+  },
+  {
+    "id": "ING-P140",
+    "name": "Thai Green Curry Paste",
+    "category": "Sauces & Pantry",
+    "unit": "tbsp",
+    "pantry": true
   }
 ]
