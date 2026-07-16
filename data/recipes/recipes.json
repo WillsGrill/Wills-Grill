@@ -3106,5 +3106,44 @@
     ],
     "nutrition": { "calories": 638, "protein": 42, "carbs": 62, "fat": 25 },
     "tip": "Salmon's unsaturated fats make it a heart-friendly choice; the spice crust supplies bold flavour without added salt."
+  },
+  {
+    "id": "REC054",
+    "name": "Smoky Turkey, Mushroom & Butter Bean Casserole",
+    "description": "With Red Peppers, Spinach & Lemon",
+    "category": "Turkey",
+    "prepTime": 15,
+    "cookTime": 40,
+    "serves": 8,
+    "difficulty": "Easy",
+    "image": "rec054.webp",
+    "ingredients": [
+      { "ingredient": "ING-M410", "quantity": 1000 },
+      { "ingredient": "ING-V210", "quantity": 2 },
+      { "ingredient": "ING-V290", "quantity": 400 },
+      { "ingredient": "ING-V225", "quantity": 3 },
+      { "ingredient": "ING-B710", "quantity": 480 },
+      { "ingredient": "ING-C950", "quantity": 800 },
+      { "ingredient": "ING-P065", "quantity": 400 },
+      { "ingredient": "ING-V255", "quantity": 240 },
+      { "ingredient": "ING-C999", "quantity": 4 },
+      { "ingredient": "ING-S110", "quantity": 4 },
+      { "ingredient": "ING-S120", "quantity": 2 },
+      { "ingredient": "ING-S170", "quantity": 2 },
+      { "ingredient": "ING-P145", "quantity": 2 },
+      { "ingredient": "ING-O805", "quantity": 2 }
+    ],
+    "steps": [
+      "Heat half the olive oil in a large lidded casserole over a medium-high heat and brown the turkey mince in two batches, transferring each batch to a clean plate.",
+      "Add the remaining olive oil, diced onions and diced red peppers to the casserole and cook for six minutes until softened.",
+      "Add the sliced mushrooms and cook over a medium-high heat until their moisture evaporates and they begin to brown.",
+      "Stir in the Easy Garlic, smoked paprika, ground cumin and dried thyme for 30 seconds until fragrant.",
+      "Return the turkey to the casserole, pour in the chopped tomatoes and low-salt chicken stock and stir thoroughly.",
+      "Cover and simmer gently for 20 minutes, stirring occasionally, until the turkey is completely cooked with no pink remaining.",
+      "Stir in the drained butter beans and simmer uncovered for eight minutes until the casserole has thickened.",
+      "Fold through the baby spinach and bottled lemon juice, allow the spinach to wilt, then season with pepper and salt only if needed."
+    ],
+    "nutrition": { "calories": 390, "protein": 43, "carbs": 31, "fat": 10 },
+    "tip": "Cool promptly and freeze in airtight portions for up to three months; defrost in the fridge and reheat thoroughly. Frozen sliced peppers can replace fresh peppers to save preparation time."
   }
 ]
