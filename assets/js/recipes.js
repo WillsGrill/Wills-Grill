@@ -250,12 +250,25 @@ function initialiseSearch() {
     const search = document.getElementById("searchBox");
 
     if (!search) return;
-    const controls = [search, document.getElementById("categoryFilter"), document.getElementById("timeFilter"), document.getElementById("difficultyFilter")].filter(Boolean);
-    const applyFilters = () => {
+    const categoryControl = document.getElementById("categoryFilter");
+    const timeControl = document.getElementById("timeFilter");
+    const difficultyControl = document.getElementById("difficultyFilter");
+    const clearButton = document.getElementById("clearFilters");
+    const filterCount = document.getElementById("activeFilterCount");
+    const controls = [search, categoryControl, timeControl, difficultyControl].filter(Boolean);
+    const restoreFromURL = () => {
+        const params = new URLSearchParams(location.search);
+        search.value = params.get("q") || "";
+        if (categoryControl) categoryControl.value = params.get("protein") || "";
+        if (timeControl) timeControl.value = params.get("time") || "";
+        if (difficultyControl) difficultyControl.value = params.get("difficulty") || "";
+    };
+    const applyFilters = (updateURL = true) => {
         const value = search.value.toLowerCase().trim();
-        const category = document.getElementById("categoryFilter")?.value || "";
-        const maxTime = Number(document.getElementById("timeFilter")?.value || 0);
-        const difficulty = document.getElementById("difficultyFilter")?.value || "";
+        const category = categoryControl?.value || "";
+        const time = timeControl?.value || "";
+        const maxTime = Number(time || 0);
+        const difficulty = difficultyControl?.value || "";
         const filteredRecipes = recipes.filter(recipe => {
             const ingredientText = recipe.ingredients.map(item => {
                 const record = Array.isArray(ingredients) ? ingredients.find(ingredient => ingredient.id === item.ingredient) : null;
@@ -266,10 +279,35 @@ function initialiseSearch() {
             return matchesText && (!category || recipe.category === category) && (!maxTime || recipe.prepTime + recipe.cookTime <= maxTime) && (!difficulty || recipe.difficulty === difficulty);
         });
         renderRecipes(filteredRecipes);
+        const activeCount = [value, category, time, difficulty].filter(Boolean).length;
+        if (filterCount) {
+            filterCount.hidden = activeCount === 0;
+            filterCount.textContent = `${activeCount} active`;
+        }
+        if (clearButton) clearButton.disabled = activeCount === 0;
+        if (updateURL) {
+            const params = new URLSearchParams();
+            if (value) params.set("q", search.value.trim());
+            if (category) params.set("protein", category);
+            if (time) params.set("time", time);
+            if (difficulty) params.set("difficulty", difficulty);
+            history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}${location.hash}`);
+        }
     };
     controls.forEach(control => {
         control.addEventListener(control === search ? "input" : "change", applyFilters);
     });
+    clearButton?.addEventListener("click", () => {
+        controls.forEach(control => { control.value = ""; });
+        applyFilters();
+        search.focus();
+    });
+    window.addEventListener("popstate", () => {
+        restoreFromURL();
+        applyFilters(false);
+    });
+    restoreFromURL();
+    applyFilters(false);
 
 }
 
@@ -598,6 +636,7 @@ function openRecipePDFPreview(doc, filename) {
     const downloadButton = document.createElement("button");
     const closeButton = document.createElement("button");
     const frame = document.createElement("iframe");
+    let backgroundElements = [];
 
     overlay.className = "pdf-preview-overlay";
     overlay.setAttribute("role", "presentation");
@@ -644,6 +683,7 @@ function openRecipePDFPreview(doc, filename) {
         overlay.remove();
         document.removeEventListener("keydown", handleKeydown);
         URL.revokeObjectURL(pdfURL);
+        backgroundElements.forEach(({ element, inert }) => { element.inert = inert; });
         previousFocus?.focus?.();
     };
 
@@ -674,6 +714,10 @@ function openRecipePDFPreview(doc, filename) {
     dialog.append(toolbar, frame);
     overlay.append(dialog);
     document.body.append(overlay);
+    backgroundElements = [...document.body.children]
+        .filter(element => element !== overlay)
+        .map(element => ({ element, inert: element.inert }));
+    backgroundElements.forEach(({ element }) => { element.inert = true; });
     closeButton.focus();
 
 }
@@ -687,7 +731,14 @@ document.addEventListener("click", event => {
         );
 
         if (recipe) {
-            generateRecipePDF(recipe);
+            printButton.disabled = true;
+            ensurePDFLibraries()
+                .then(() => generateRecipePDF(recipe))
+                .catch(error => {
+                    console.error("Unable to prepare the recipe PDF.", error);
+                    showShoppingToast("The PDF tools could not be loaded. Please try again.");
+                })
+                .finally(() => { printButton.disabled = false; });
         }
 
         return;

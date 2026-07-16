@@ -6,12 +6,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PdfLayoutTests(unittest.TestCase):
-    def test_every_pdf_page_loads_the_shared_design_system(self):
-        for relative_page in ("pages/recipe.html", "pages/shopping-list.html", "pages/mealpack.html"):
-            html = (ROOT / relative_page).read_text()
+    def test_pdf_design_system_is_eager_only_where_immediately_required(self):
+        mealpack_html = (ROOT / "pages/mealpack.html").read_text()
+        self.assertIn("../assets/js/pdf-style.js", mealpack_html)
+        for relative_page in ("pages/recipe.html", "pages/shopping-list.html"):
             with self.subTest(page=relative_page):
-                self.assertIn("../assets/js/pdf-style.js", html)
-                self.assertLess(html.index("pdf-style.js"), html.index("assets/js/", html.index("pdf-style.js") + 1))
+                self.assertNotIn("../assets/js/pdf-style.js", (ROOT / relative_page).read_text())
+
+        config_script = (ROOT / "assets/js/config.js").read_text()
+        self.assertIn("async function ensurePDFLibraries", config_script)
+        self.assertIn("assets/js/pdf-style.js", config_script)
 
     def test_generators_use_shared_measured_layouts(self):
         recipe_script = (ROOT / "assets/js/recipes.js").read_text()

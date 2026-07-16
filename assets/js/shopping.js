@@ -59,7 +59,14 @@ function attachShoppingEvents() {
         const printButton = event.target.closest("#printShopping");
 
         if (printButton) {
-            generateShoppingListPDF();
+            printButton.disabled = true;
+            ensurePDFLibraries()
+                .then(() => generateShoppingListPDF())
+                .catch(error => {
+                    console.error("Unable to prepare the shopping-list PDF.", error);
+                    showShoppingToast("The PDF tools could not be loaded. Please try again.");
+                })
+                .finally(() => { printButton.disabled = !getSelectedRecipes().length; });
             return;
         }
 
@@ -594,6 +601,7 @@ function openShoppingPDFPreview(doc, filename) {
     const downloadButton = document.createElement("button");
     const closeButton = document.createElement("button");
     const frame = document.createElement("iframe");
+    let backgroundElements = [];
 
     overlay.className = "pdf-preview-overlay";
     dialog.className = "pdf-preview-dialog";
@@ -639,6 +647,7 @@ function openShoppingPDFPreview(doc, filename) {
         overlay.remove();
         document.removeEventListener("keydown", handleKeydown);
         URL.revokeObjectURL(pdfURL);
+        backgroundElements.forEach(({ element, inert }) => { element.inert = inert; });
         previousFocus?.focus?.();
     };
 
@@ -669,6 +678,10 @@ function openShoppingPDFPreview(doc, filename) {
     dialog.append(toolbar, frame);
     overlay.append(dialog);
     document.body.append(overlay);
+    backgroundElements = [...document.body.children]
+        .filter(element => element !== overlay)
+        .map(element => ({ element, inert: element.inert }));
+    backgroundElements.forEach(({ element }) => { element.inert = true; });
     closeButton.focus();
 
 }
@@ -921,21 +934,3 @@ function renderShoppingList(items){
     container.innerHTML = buildShoppingListHTML(items);
 
 }
-
-/* ============================================
-   Refresh Shopping Page
-============================================ */
-
-document.addEventListener(
-
-    "DOMContentLoaded",
-
-    ()=>{
-
-        if (typeof generateShoppingList === "function") {
-            generateShoppingList();
-        }
-
-    }
-
-);

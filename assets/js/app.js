@@ -38,10 +38,6 @@ async function initialiseApp() {
             updateRecipeCounter();
         }
 
-        if (typeof generateShoppingList === "function") {
-            generateShoppingList();
-        }
-
     }
 
     catch (error) {

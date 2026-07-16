@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self'; connect-src 'self'; frame-src 'self' blob:; worker-src 'self' blob:; object-src 'self' blob:; base-uri 'self'; form-action 'self'">
 
     <title>Shopping List | Will's Grill</title>
     <meta name="description" content="Build one combined shopping list from your selected Will's Grill recipes.">
@@ -18,7 +19,7 @@
 
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 
-    <link rel="stylesheet" href="../assets/css/style.css?v=1.9">
+    <link rel="stylesheet" href="../assets/css/style.css?v=2.0">
 
 </head>
 
@@ -83,7 +84,7 @@
 
             <div class="panel">
 
-                <h3>Actions</h3>
+                <h2>Actions</h2>
 
                 <button
                     id="createMealPack"
@@ -124,7 +125,7 @@
 
             <div class="panel">
 
-                <h3>Shopping Tips</h3>
+                <h2>Shopping Tips</h2>
 
                 <p>Tick items as you shop.</p>
                 <p>Pantry items are included.</p>
@@ -164,13 +165,11 @@
 
 <!-- JavaScript -->
 
-<script src="../assets/js/config.js"></script>
+<script src="../assets/js/config.js?v=1.1"></script>
 <script src="../assets/js/ui.js"></script>
-<script src="../assets/js/recipes.js?v=1.12"></script>
-<script src="../assets/vendor/jspdf.umd.min.js"></script>
-<script src="../assets/js/pdf-style.js?v=1.4"></script>
-<script src="../assets/js/shopping.js?v=1.4"></script>
-<script src="../assets/js/app.js"></script>
+<script src="../assets/js/recipes.js?v=1.13"></script>
+<script src="../assets/js/shopping.js?v=1.5"></script>
+<script src="../assets/js/app.js?v=1.3"></script>
 
 </body>
 

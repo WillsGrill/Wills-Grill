@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +60,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self'; connect-src 'self'; frame-src 'self' blob:; worker-src 'self' blob:; object-src 'self' blob:; base-uri 'self'; form-action 'self'">
 <title>{name} | Will's Grill</title>
 <meta name="description" content="{description}">
 <meta property="og:title" content="{name} | Will's Grill">
@@ -69,7 +71,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=1.9">
+<link rel="stylesheet" href="../assets/css/style.css?v=2.0">
 <script id="recipeStructuredData" type="application/ld+json">{json_ld}</script>
 </head>
 <body>
@@ -82,13 +84,11 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <article class="panel"><h1>{name}</h1><p>{description}</p><h2>Ingredients</h2><ul>{ingredients_html}</ul><h2>Method</h2><ol>{steps_html}</ol></article>
 </div></main>
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
-<script src="../assets/js/config.js"></script>
-<script src="../assets/vendor/jspdf.umd.min.js"></script>
-<script src="../assets/js/pdf-style.js?v=1.4"></script>
-<script src="../assets/js/recipes.js?v=1.12"></script>
-<script src="../assets/js/shopping.js?v=1.4"></script>
+<script src="../assets/js/config.js?v=1.1"></script>
+<script src="../assets/js/recipes.js?v=1.13"></script>
+<script src="../assets/js/shopping.js?v=1.5"></script>
 <script src="../assets/js/ui.js?v=1.1"></script>
-<script src="../assets/js/app.js?v=1.2"></script>
+<script src="../assets/js/app.js?v=1.3"></script>
 </body>
 </html>
 '''
@@ -98,6 +98,15 @@ def main() -> None:
     recipes = json.loads((ROOT / "data/recipes/recipes.json").read_text(encoding="utf-8"))
     ingredient_data = json.loads((ROOT / "data/ingredients/ingredients.json").read_text(encoding="utf-8"))
     ingredients = {str(item["id"]): item for item in ingredient_data}
+    homepage = ROOT / "index.html"
+    homepage_markup = homepage.read_text(encoding="utf-8")
+    homepage_markup = re.sub(
+        r'(<p class="stat-value" id="recipeCount">\s*)\d+(\s*</p>)',
+        rf"\g<1>{len(recipes)}\g<2>",
+        homepage_markup,
+        count=1,
+    )
+    homepage.write_text(homepage_markup, encoding="utf-8")
     output = ROOT / "recipes"
     output.mkdir(exist_ok=True)
     expected = set()

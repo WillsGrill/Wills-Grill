@@ -32,15 +32,82 @@ test("recipe links, filters, and empty actions behave clearly", async ({ page })
   await expect(page.locator(".recipe-card").first()).toBeVisible();
   await page.locator(".recipe-card").first().getByRole("link", { name: "View Recipe" }).click();
   await expect(page.locator("#recipePage h1")).toBeVisible();
-  expect(await page.evaluate(() => new window.jspdf.jsPDF().output("arraybuffer").byteLength)).toBeGreaterThan(0);
+  expect(await page.evaluate(() => Boolean(window.jspdf))).toBeFalsy();
+  await page.getByRole("button", { name: "Preview & Print PDF" }).click();
+  await expect(page.getByRole("dialog", { name: "Your recipe PDF" })).toBeVisible();
+  await expect(page.locator("body > header")).toHaveAttribute("inert", "");
+  await page.getByRole("button", { name: "Close PDF preview" }).click();
+  await expect(page.getByRole("dialog", { name: "Your recipe PDF" })).toHaveCount(0);
   await page.goto("/pages/shopping-list.html");
   await expect(page.getByRole("button", { name: "Copy Shopping List" })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Print Shopping List" })).toBeDisabled();
 });
 
+test("filter state is shareable, restorable, and clearable", async ({ page }) => {
+  await page.goto("/pages/browse.html?q=chicken&protein=Chicken&time=45&difficulty=Easy");
+  await expect(page.getByLabel("Search recipes")).toHaveValue("chicken");
+  await page.locator(".filter-panel summary").click();
+  await expect(page.getByLabel("Protein Source")).toHaveValue("Chicken");
+  await expect(page.getByLabel("Maximum time")).toHaveValue("45");
+  await expect(page.getByLabel("Difficulty")).toHaveValue("Easy");
+  await expect(page.locator("#activeFilterCount")).toHaveText("4 active");
+  await page.reload();
+  await expect(page.getByLabel("Search recipes")).toHaveValue("chicken");
+  await page.locator(".filter-panel summary").click();
+  await page.getByRole("button", { name: "Clear filters" }).click();
+  await expect(page).toHaveURL(/\/pages\/browse\.html$/);
+  await expect(page.locator(".recipe-card")).toHaveCount(await page.evaluate(() => recipes.length));
+});
+
+test("keyboard navigation exposes and operates the mobile menu", async ({ page }) => {
+  const viewport = page.viewportSize();
+  test.skip(!viewport || viewport.width >= 700, "Mobile navigation check");
+  await page.goto("/");
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("button", { name: "Menu" })).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("navigation").getByRole("link", { name: "Home" })).toBeFocused();
+});
+
+test("data loading failure provides an actionable retry state", async ({ page }) => {
+  await page.route("**/data/recipes/recipes.json", route => route.abort());
+  await page.goto("/pages/browse.html");
+  await expect(page.getByRole("alert")).toContainText("Something went wrong");
+  await expect(page.getByRole("button", { name: "Try again" })).toBeVisible();
+});
+
+test("invalid saved selection is recovered safely", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("willsGrillShopping", "not-json"));
+  await page.goto("/pages/shopping-list.html");
+  await expect(page.locator(".selected-recipe-count")).toHaveText("0");
+  await expect(page.getByRole("button", { name: "Copy Shopping List" })).toBeDisabled();
+  await expect(page.getByText("No recipes have been selected yet.")).toBeVisible();
+});
+
+test("shopping selection quantities and clear confirmation behave correctly", async ({ page }) => {
+  await page.goto("/pages/browse.html");
+  const firstCard = page.locator(".recipe-card").first();
+  await firstCard.getByRole("button", { name: /add/i }).click();
+  await firstCard.getByRole("button", { name: "Increase recipe quantity" }).click();
+  await expect(firstCard.locator(".quantity-value")).toHaveText("2");
+  await page.goto("/pages/shopping-list.html");
+  page.once("dialog", dialog => dialog.dismiss());
+  await page.locator(".selected-recipes-card summary").click();
+  await page.getByRole("button", { name: "Clear" }).click();
+  await expect(page.locator(".selected-recipe-count")).toHaveText("2");
+  page.once("dialog", dialog => dialog.accept());
+  await page.getByRole("button", { name: "Clear" }).click();
+  await expect(page.locator(".selected-recipe-count")).toHaveText("0");
+});
+
 test("all recipe and shopping PDF layouts render without overflow errors", async ({ page }) => {
   await page.goto("/pages/recipe.html?id=REC025");
   await expect(page.locator("#recipePage h1")).toBeVisible();
+  await page.evaluate(() => ensurePDFLibraries());
   const result = await page.evaluate(() => {
     const recipePageCounts = recipes.map(recipe => {
       const doc = new window.jspdf.jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
