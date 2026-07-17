@@ -258,6 +258,12 @@ function buildRecipePage(recipe) {
     const treatBadgeHTML = recipe.treat
         ? `<span class="treat-badge" title="Treat recipe – best enjoyed occasionally">Treat</span>`
         : "";
+    const freezeableBadgeHTML = recipe.freezeable
+        ? `<span class="freezeable-badge" title="Suitable for freezing">Freezeable</span>`
+        : "";
+    const statusBadgesHTML = treatBadgeHTML || freezeableBadgeHTML
+        ? `<div class="recipe-status-badges">${treatBadgeHTML}${freezeableBadgeHTML}</div>`
+        : "";
 
     return `
 
@@ -268,7 +274,7 @@ function buildRecipePage(recipe) {
         <div class="mp-recipe-header">
             <div class="mp-recipe-image">
                 ${imageHTML}
-                ${treatBadgeHTML}
+                ${statusBadgesHTML}
             </div>
 
             <div class="mp-recipe-summary">

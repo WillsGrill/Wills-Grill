@@ -391,6 +391,7 @@
   },
   {
     "id": "REC006",
+    "freezeable": true,
     "name": "Turkey & Bean Chilli",
     "description": "With Rice & Fresh Coriander",
     "category": "Turkey",
@@ -781,6 +782,7 @@
   },
   {
     "id": "REC011",
+    "freezeable": true,
     "name": "Thai Fishcakes",
     "description": "With Sweet Chilli Dip & Asian Slaw",
     "category": "Fish",
@@ -1367,6 +1369,7 @@
   },
   {
     "id": "REC018",
+    "freezeable": true,
     "name": "Turkey Meatballs in Tomato Sauce",
     "description": "With Wholemeal Pasta & Parmesan",
     "category": "Turkey",
@@ -1527,6 +1530,7 @@
   },
   {
     "id": "REC020",
+    "freezeable": true,
     "name": "Chicken, Spinach & Chickpea Curry",
     "description": "With Wholegrain Brown Rice & Fresh Coriander",
     "category": "Chicken",
@@ -1613,6 +1617,7 @@
   },
   {
     "id": "REC021",
+    "freezeable": true,
     "name": "Smoky Chicken, Butter Bean & Aubergine Stew",
     "description": "With Chorizo, Red Pepper & Rosemary",
     "category": "Chicken",
@@ -1695,6 +1700,7 @@
   },
   {
     "id": "REC022",
+    "freezeable": true,
     "name": "Turkey & Red Lentil Bolognese",
     "description": "With Wholemeal Penne, Spinach & Fresh Basil",
     "category": "Turkey",
@@ -1847,37 +1853,41 @@
   },
   {
     "id": "REC024",
-    "name": "BBQ Chicken Caprese Skewers",
+    "name": "BBQ Chicken and Halloumi Caprese Skewers",
     "description": "With Pesto Quinoa, Mozzarella & Fresh Basil",
     "category": "Chicken",
     "prepTime": 20,
     "cookTime": 20,
-    "serves": 4,
+    "serves": 2,
     "difficulty": "Easy",
     "image": "rec024.webp",
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 600
+        "quantity": 250
       },
       {
         "ingredient": "ING-G695",
-        "quantity": 240
+        "quantity": 120
       },
       {
         "ingredient": "ING-V240",
-        "quantity": 2
+        "quantity": 1
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 2
+        "quantity": 1
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 300
+        "quantity": 150
       },
       {
         "ingredient": "ING-D520",
+        "quantity": 50
+      },
+      {
+        "ingredient": "ING-D510",
         "quantity": 100
       },
       {
@@ -1897,14 +1907,18 @@
         "quantity": 10
       },
       {
+        "ingredient": "ING-O805",
+        "quantity": 1
+      },
+      {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.25
       }
     ],
     "steps": [
-      "If using wooden skewers, soak them in water while the BBQ heats for direct cooking.",
-      "Cut the chicken, courgettes and red peppers into even bite-sized pieces.",
-      "Thread the chicken, vegetables and cherry tomatoes onto skewers, then brush with half the pesto mixed with Easy Garlic and black pepper.",
+      "Light the BBQ for direct cooking and, if using wooden skewers, soak them in water while it heats.",
+      "Cut the chicken, halloumi, courgette and red pepper into even bite-sized pieces.",
+      "Thread the chicken, halloumi, vegetables and cherry tomatoes onto skewers, then brush with half the pesto mixed with the olive oil, Easy Garlic and black pepper.",
       "Cook the skewers on the BBQ, turning regularly, until the vegetables are charred and the chicken is cooked through.",
       "Cook the quinoa according to the packet instructions, then fluff it with a fork.",
       "Stir the remaining pesto, lemon juice, lemon zest and most of the fresh basil through the quinoa.",
@@ -1912,10 +1926,10 @@
       "Tear over the mozzarella and finish with the remaining basil."
     ],
     "nutrition": {
-      "calories": 580,
-      "protein": 48,
-      "carbs": 54,
-      "fat": 17
+      "calories": 810,
+      "protein": 53,
+      "carbs": 48,
+      "fat": 34
     },
     "tip": "Keep the chicken and vegetables similar in size and leave a little space between pieces so the BBQ heat can circulate."
   },
@@ -2207,6 +2221,7 @@
   },
   {
     "id": "REC031",
+    "freezeable": true,
     "name": "Pork Fillet Ragù",
     "description": "With Wholewheat Tagliatelle & Hidden Vegetables",
     "category": "Pork",
@@ -2246,6 +2261,7 @@
   },
   {
     "id": "REC032",
+    "freezeable": true,
     "name": "Smoky Beef & Black Bean Stuffed Peppers",
     "description": "With Quinoa, Tomatoes & Lime Yoghurt",
     "category": "Beef",
@@ -2286,6 +2302,7 @@
   },
   {
     "id": "REC033",
+    "freezeable": true,
     "name": "Healthy Traditional Beef Chilli Con Carne",
     "description": "With Kidney Beans, Peppers & Brown Rice",
     "category": "Beef",
@@ -2328,6 +2345,7 @@
   },
   {
     "id": "REC034",
+    "freezeable": true,
     "name": "Fragrant Chicken, Chickpea & Courgette Curry",
     "description": "With Zesty Parsley Brown Rice",
     "category": "Chicken",
@@ -2793,6 +2811,7 @@
   },
   {
     "id": "REC046",
+    "freezeable": true,
     "name": "Moroccan Chicken & Apricot Tagine",
     "description": "With Chickpeas, Carrots & Fragrant Spices",
     "category": "Chicken",
@@ -2834,6 +2853,7 @@
   },
   {
     "id": "REC047",
+    "freezeable": true,
     "name": "Turkey Enchilada Stuffed Peppers",
     "description": "With Black Beans, Sweetcorn & Lime Yoghurt",
     "category": "Turkey",
@@ -2873,6 +2893,7 @@
   },
   {
     "id": "REC048",
+    "freezeable": true,
     "name": "Turkey Keema with Peas & Spinach",
     "description": "With Brown Rice, Tomatoes & Warming Spices",
     "category": "Turkey",
@@ -2952,6 +2973,7 @@
   },
   {
     "id": "REC050",
+    "freezeable": true,
     "name": "Smoky Pork, Pepper & Butter Bean Casserole",
     "description": "With Spinach, Tomatoes & Rosemary",
     "category": "Pork",
@@ -3031,6 +3053,7 @@
   },
   {
     "id": "REC052",
+    "freezeable": true,
     "name": "Thai Green Basa Curry",
     "description": "With Peppers, Green Beans, Spinach & Brown Rice",
     "category": "Fish",
@@ -3109,6 +3132,7 @@
   },
   {
     "id": "REC054",
+    "freezeable": true,
     "name": "Smoky Turkey, Mushroom & Butter Bean Casserole",
     "description": "With Red Peppers, Spinach & Lemon",
     "category": "Turkey",

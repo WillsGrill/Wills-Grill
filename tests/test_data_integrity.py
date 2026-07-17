@@ -50,6 +50,9 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertFalse(any("treat" in recipe for recipe in self.recipes))
         self.assertTrue(all(isinstance(ingredient["treat"], bool) for ingredient in self.ingredients if "treat" in ingredient))
 
+    def test_freezeable_recipe_values_are_boolean(self):
+        self.assertTrue(all(isinstance(recipe["freezeable"], bool) for recipe in self.recipes if "freezeable" in recipe))
+
     def test_local_pages_do_not_depend_on_remote_scripts(self):
         for page in [ROOT / "index.html", *(ROOT / "pages").glob("*.html")]:
             with self.subTest(page=page.name):

@@ -75,6 +75,8 @@ def validate_data(recipes, ingredients) -> None:
                 raise ValueError(f"Recipe {recipe_id} is missing {field}.")
         if recipe.get("category") not in RECIPE_CATEGORIES or recipe.get("difficulty") not in RECIPE_DIFFICULTIES:
             raise ValueError(f"Recipe {recipe_id} has an invalid category or difficulty.")
+        if "freezeable" in recipe and not isinstance(recipe["freezeable"], bool):
+            raise ValueError(f"Recipe {recipe_id} has an invalid freezeable value.")
         image = recipe.get("image")
         if image is not None and (not isinstance(image, str) or not RECIPE_IMAGE_NAME.fullmatch(image)):
             raise ValueError(f"Recipe {recipe_id} has an invalid image filename.")

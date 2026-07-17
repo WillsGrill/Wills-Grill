@@ -364,11 +364,13 @@ header{
 
     display:block;
 
+    transform:translateY(-12px);
+
 }
 
 .brand:hover .brand-logo{
 
-    transform:scale(1.05);
+    transform:translateY(-12px) scale(1.05);
 
 }
 
@@ -766,7 +768,7 @@ nav a[aria-current="page"]::after{
     display:grid;
 
     grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
+        repeat(auto-fill,minmax(260px,1fr));
 
     gap:22px;
 
@@ -812,11 +814,19 @@ nav a[aria-current="page"]::after{
 
 }
 
-.treat-badge{
+.recipe-status-badges{
     position:absolute;
     top:12px;
     right:12px;
     z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:7px;
+}
+
+.treat-badge,
+.freezeable-badge{
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -831,6 +841,11 @@ nav a[aria-current="page"]::after{
     letter-spacing:.04em;
     line-height:1;
     text-transform:uppercase;
+}
+
+.freezeable-badge{
+    background:#356f8a;
+    color:white;
 }
 
 .recipe-reference{
@@ -858,9 +873,14 @@ nav a[aria-current="page"]::after{
     font-size:.88rem;
 }
 
-.treat-badge-large{
+.recipe-status-badges-large{
     top:18px;
     right:18px;
+    gap:9px;
+}
+
+.treat-badge-large,
+.freezeable-badge-large{
     padding:9px 14px;
     font-size:.82rem;
 }
@@ -873,9 +893,14 @@ nav a[aria-current="page"]::after{
         font-size:.78rem;
     }
 
-    .treat-badge-large{
+    .recipe-status-badges-large{
         top:12px;
         right:12px;
+        gap:7px;
+    }
+
+    .treat-badge-large,
+    .freezeable-badge-large{
         padding:7px 11px;
         font-size:.74rem;
     }
@@ -2029,7 +2054,8 @@ footer{
 @media screen and (max-width:700px){
     .header-inner{min-height:84px;padding:8px 0;flex-direction:row;flex-wrap:wrap;gap:10px;}
     .brand{flex:1;min-width:0;flex-direction:row;align-items:center;gap:10px;margin:0;}
-    .brand-logo{height:68px;}
+    .brand-logo{height:68px;transform:translateY(-7px);}
+    .brand:hover .brand-logo{transform:translateY(-7px) scale(1.05);}
     .logo-tagline{align-items:flex-start;text-align:left;gap:1px;margin:0;}
     .tagline-white,.tagline-gold{font-size:.75rem;}
     .nav-toggle{display:inline-flex;width:auto;}

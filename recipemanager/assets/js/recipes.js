@@ -285,6 +285,7 @@ function createBlankRecipe() {
         cookTime: "",
         serves: "",
         difficulty: "",
+        freezeable: false,
         ingredients: [{ ingredient: "", quantity: "" }],
         steps: Array(METHOD_STEP_COUNT).fill(""),
         nutrition: {
@@ -460,6 +461,10 @@ function renderEditor() {
                         <select id="recipeDifficulty" required>
                             ${renderRecipeChoiceOptions(RECIPE_DIFFICULTIES, currentRecipe.difficulty)}
                         </select>
+                    </label>
+                    <label>
+                        <input id="recipeFreezeable" type="checkbox" ${currentRecipe.freezeable ? "checked" : ""}>
+                        Suitable for freezing
                     </label>
                     <label class="full-width">
                         Chef's Tip
@@ -1053,6 +1058,7 @@ function collectRecipeFromForm() {
         cookTime: getNumberFieldValue("recipeCookTime"),
         serves: getNumberFieldValue("recipeServes"),
         difficulty: getTextFieldValue("recipeDifficulty"),
+        freezeable: Boolean(document.getElementById("recipeFreezeable")?.checked),
         image: getTextFieldValue("recipeImage") || null,
         tip: getTextFieldValue("recipeTip"),
         ingredients: readIngredientRows(),
@@ -1184,6 +1190,10 @@ function validateRecipe(recipe) {
 
     if (!RECIPE_DIFFICULTIES.includes(recipe.difficulty)) {
         return "Select a valid recipe difficulty.";
+    }
+
+    if (typeof recipe.freezeable !== "boolean") {
+        return "Freezeable must be set to yes or no.";
     }
 
     if (recipe.image && !/^rec\d{3}\.webp$/i.test(recipe.image)) {

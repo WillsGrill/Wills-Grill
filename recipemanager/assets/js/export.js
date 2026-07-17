@@ -132,6 +132,7 @@ function validateExportData() {
         }
         if (!RECIPE_CATEGORIES.includes(recipe.category)) return `Recipe ${recipe.id} has an invalid category.`;
         if (!RECIPE_DIFFICULTIES.includes(recipe.difficulty)) return `Recipe ${recipe.id} has an invalid difficulty.`;
+        if (recipe.freezeable !== undefined && typeof recipe.freezeable !== "boolean") return `Recipe ${recipe.id} has an invalid freezeable value.`;
         if (recipe.image && !/^rec\d{3}\.webp$/i.test(recipe.image)) return `Recipe ${recipe.id} has an invalid image filename.`;
         if (!Array.isArray(recipe.steps) || recipe.steps.length !== METHOD_STEP_COUNT || recipe.steps.some((step) => !String(step).trim())) {
             return `Recipe ${recipe.id} needs exactly ${METHOD_STEP_COUNT} completed method steps.`;

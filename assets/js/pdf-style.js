@@ -17,6 +17,7 @@ const WillsGrillPDF = (() => {
         taglineGold: [200, 155, 60],
         ochre: [200, 155, 60],
         terracotta: [201, 111, 74],
+        blue: [53, 111, 138],
         text: [52, 58, 54],
         muted: [104, 112, 105],
         grey50: [250, 248, 242],
@@ -252,7 +253,7 @@ const WillsGrillPDF = (() => {
         drawRoundedImage(doc, assets.imageData, 16, 33, 54, 41, 3.5);
 
         const titleX = 77;
-        const titleWidth = recipe.treat ? 181 : 199;
+        const titleWidth = recipe.treat || recipe.freezeable ? 174 : 199;
         const titleSize = fitSingleLineFont(doc, recipe.name, titleWidth, 18, 13);
         drawText(doc, recipe.name, titleX, 41.5, titleWidth, {
             fontSize: titleSize,
@@ -267,6 +268,15 @@ const WillsGrillPDF = (() => {
             doc.setFontSize(7.2);
             doc.setTextColor(...THEME.white);
             doc.text("TREAT", 267.5, 38.9, { align: "center" });
+        }
+        if (recipe.freezeable) {
+            const badgeY = recipe.treat ? 43 : 34;
+            doc.setFillColor(...THEME.blue);
+            doc.roundedRect(252, badgeY, 25, 7.5, 3.75, 3.75, "F");
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(6.4);
+            doc.setTextColor(...THEME.white);
+            doc.text("FREEZEABLE", 264.5, badgeY + 4.9, { align: "center" });
         }
         let descriptionSize = 8.4;
         let descriptionLines = wrapText(doc, recipe.description, 199, { fontSize: descriptionSize });

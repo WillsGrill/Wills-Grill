@@ -179,6 +179,12 @@ function createRecipeCard(recipe) {
     const treatBadgeHTML = recipe.treat
         ? `<span class="treat-badge" title="Treat recipe – best enjoyed occasionally">Treat</span>`
         : "";
+    const freezeableBadgeHTML = recipe.freezeable
+        ? `<span class="freezeable-badge" title="Suitable for freezing">Freezeable</span>`
+        : "";
+    const statusBadgesHTML = treatBadgeHTML || freezeableBadgeHTML
+        ? `<div class="recipe-status-badges">${treatBadgeHTML}${freezeableBadgeHTML}</div>`
+        : "";
 
     return `
 
@@ -188,7 +194,7 @@ function createRecipeCard(recipe) {
 
         ${imageHTML}
         ${referenceBadgeHTML}
-        ${treatBadgeHTML}
+        ${statusBadgesHTML}
 
     </div>
 
@@ -380,6 +386,12 @@ function renderRecipePage() {
     const treatBadgeHTML = recipe.treat
         ? `<span class="treat-badge treat-badge-large" title="Treat recipe – best enjoyed occasionally">Treat</span>`
         : "";
+    const freezeableBadgeHTML = recipe.freezeable
+        ? `<span class="freezeable-badge freezeable-badge-large" title="Suitable for freezing">Freezeable</span>`
+        : "";
+    const statusBadgesHTML = treatBadgeHTML || freezeableBadgeHTML
+        ? `<div class="recipe-status-badges recipe-status-badges-large">${treatBadgeHTML}${freezeableBadgeHTML}</div>`
+        : "";
 
     container.innerHTML = `
 
@@ -444,7 +456,7 @@ Preview & Print PDF
 
 ${heroImageHTML}
 ${referenceBadgeHTML}
-${treatBadgeHTML}
+${statusBadgesHTML}
 
 </div>
 
