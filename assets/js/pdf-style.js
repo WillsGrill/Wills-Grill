@@ -61,9 +61,9 @@ const WillsGrillPDF = (() => {
         doc.setFont("helvetica", "bold");
         doc.setFontSize(9);
         doc.setTextColor(...white);
-        doc.text("Healthy food.", 70, 11.3);
+        doc.text("Healthy food.", 70, 14.2);
         doc.setTextColor(...taglineGold);
-        doc.text("Simple cooking.", 70, 17.7);
+        doc.text("Simple cooking.", 70, 20.6);
 
         doc.setFontSize(7.2);
         doc.setTextColor(...muted);
