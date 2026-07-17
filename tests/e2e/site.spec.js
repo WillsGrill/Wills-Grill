@@ -137,7 +137,7 @@ test("all recipe and shopping PDF layouts render without overflow errors", async
     };
   });
   expect(result.recipePageCounts.length).toBeGreaterThan(0);
-  expect(result.recipePageCounts.every(item => item.pages >= 1 && item.pages <= 2)).toBeTruthy();
+  expect(result.recipePageCounts.filter(item => item.pages !== 1)).toEqual([]);
   expect(result.shoppingPages).toBeGreaterThan(1);
 });
 

@@ -189,9 +189,45 @@ const WillsGrillPDF = (() => {
         };
     }
 
-    function measureStepLayout(doc, steps, textWidth, availableHeight) {
-        let fontSize = 8;
-        let lineHeight = 3.35;
+    function measureTwoColumnIngredientLayout(doc, ingredientLines, width, availableHeight) {
+        let fontSize = 7.2;
+        let best = null;
+
+        while (fontSize >= 6) {
+            const lineHeight = 2.85 + ((fontSize - 6) * .18);
+            const entries = ingredientLines.map(text => {
+                const isHeading = String(text).startsWith("§");
+                const displayText = isHeading ? String(text).slice(1).toUpperCase() : text;
+                const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
+                return {
+                    lines,
+                    isHeading,
+                    height: isHeading ? Math.max(4.6, lines.length * lineHeight) : Math.max(3.8, lines.length * lineHeight)
+                };
+            });
+
+            const candidates = [];
+            for (let split = 1; split < entries.length; split += 1) {
+                if (entries[split - 1].isHeading) continue;
+                const columns = [entries.slice(0, split), entries.slice(split)];
+                const heights = columns.map(column => column.reduce((sum, entry) => sum + entry.height, 0));
+                const score = Math.max(...heights);
+                candidates.push({ fontSize, lineHeight, columns, score, startsSection: entries[split].isHeading });
+            }
+            candidates.sort((first, second) => Number(second.startsSection) - Number(first.startsSection) || first.score - second.score);
+            const fitting = candidates.find(candidate => candidate.score <= availableHeight);
+            if (fitting) return { ...fitting, fits: true };
+            const candidate = candidates.sort((first, second) => first.score - second.score)[0];
+            if (candidate && (!best || candidate.score < best.score)) best = candidate;
+            fontSize -= .2;
+        }
+
+        return { ...best, fits: false };
+    }
+
+    function measureStepLayout(doc, steps, textWidth, availableHeight, compact = false) {
+        let fontSize = compact ? 7.6 : 8;
+        let lineHeight = compact ? 3.1 : 3.35;
         let entries = [];
 
         do {
@@ -200,14 +236,14 @@ const WillsGrillPDF = (() => {
                 return {
                     index,
                     lines,
-                    height: Math.max(8, (lines.length * lineHeight) + 3.4)
+                    height: Math.max(compact ? 7.2 : 8, (lines.length * lineHeight) + (compact ? 2.7 : 3.4))
                 };
             });
-            const totalHeight = entries.reduce((sum, entry) => sum + entry.height, 0) + (Math.max(0, entries.length - 1) * 1.2);
-            if (totalHeight <= availableHeight || fontSize <= 6.8) break;
+            const totalHeight = entries.reduce((sum, entry) => sum + entry.height, 0) + (Math.max(0, entries.length - 1) * (compact ? .8 : 1.2));
+            if (totalHeight <= availableHeight || fontSize <= (compact ? 6.2 : 6.8)) break;
             fontSize -= .2;
             lineHeight -= .08;
-        } while (fontSize >= 6.8);
+        } while (fontSize >= (compact ? 6.2 : 6.8));
 
         return { fontSize, lineHeight, entries };
     }
@@ -224,7 +260,7 @@ const WillsGrillPDF = (() => {
         return Math.max(1, count);
     }
 
-    function drawStepBoxes(doc, entries, x, startY, width, fontSize, lineHeight, startNumber = 1) {
+    function drawStepBoxes(doc, entries, x, startY, width, fontSize, lineHeight, startNumber = 1, compact = false) {
         let y = startY;
         entries.forEach((entry, localIndex) => {
             drawCard(doc, x, y, width, entry.height, {
@@ -245,7 +281,7 @@ const WillsGrillPDF = (() => {
                 lineHeight,
                 color: THEME.muted
             });
-            y += entry.height + 1.2;
+            y += entry.height + (compact ? .8 : 1.2);
         });
         return y;
     }
@@ -311,32 +347,41 @@ const WillsGrillPDF = (() => {
 
         const panelY = 83;
         const panelHeight = 102;
-        const ingredientsPanel = { x: 12, width: 65 };
-        const methodPanel = { x: 82, width: 127 };
+        const compactIngredients = Boolean(options.compactIngredients);
+        const ingredientsPanel = { x: 12, width: compactIngredients ? 83 : 65 };
+        const methodPanel = { x: compactIngredients ? 100 : 82, width: compactIngredients ? 109 : 127 };
         const detailsPanel = { x: 214, width: 71 };
 
         drawCard(doc, ingredientsPanel.x, panelY, ingredientsPanel.width, panelHeight);
         drawCard(doc, methodPanel.x, panelY, methodPanel.width, panelHeight);
         sectionTitle(doc, "Ingredients", 17, 92);
-        sectionTitle(doc, "Method", 87, 92);
+        sectionTitle(doc, "Method", methodPanel.x + 5, 92);
 
-        const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 54, 78);
-        let ingredientY = 101;
-        ingredientLayout.entries.forEach(entry => {
-            if (!entry.isHeading) {
-                doc.setFillColor(...THEME.gold);
-                doc.circle(18, ingredientY - 1, .65, "F");
-            }
-            drawText(doc, entry.lines, entry.isHeading ? 17 : 20.5, ingredientY, entry.isHeading ? 55 : 52, {
-                fontSize: entry.isHeading ? ingredientLayout.fontSize - .2 : ingredientLayout.fontSize,
-                lineHeight: ingredientLayout.lineHeight,
-                color: entry.isHeading ? THEME.gold : THEME.muted,
-                fontStyle: entry.isHeading ? "bold" : "normal"
+        const ingredientLayout = compactIngredients
+            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 35, 78)
+            : measureIngredientLayout(doc, ingredientLines, 54, 78);
+        const ingredientColumns = compactIngredients ? ingredientLayout.columns : [ingredientLayout.entries];
+        ingredientColumns.forEach((entries, columnIndex) => {
+            const columnX = 17 + (columnIndex * 39);
+            let ingredientY = 101;
+            entries.forEach(entry => {
+                if (!entry.isHeading) {
+                    doc.setFillColor(...THEME.gold);
+                    doc.circle(columnX + 1, ingredientY - 1, .58, "F");
+                }
+                const textX = entry.isHeading ? columnX : (compactIngredients ? columnX + 3.2 : 20.5);
+                const textWidth = entry.isHeading ? (compactIngredients ? 36 : 55) : (compactIngredients ? 33 : 52);
+                drawText(doc, entry.lines, textX, ingredientY, textWidth, {
+                    fontSize: entry.isHeading ? ingredientLayout.fontSize - .2 : ingredientLayout.fontSize,
+                    lineHeight: ingredientLayout.lineHeight,
+                    color: entry.isHeading ? THEME.gold : THEME.muted,
+                    fontStyle: entry.isHeading ? "bold" : "normal"
+                });
+                ingredientY += entry.height;
             });
-            ingredientY += entry.height;
         });
 
-        drawStepBoxes(doc, firstStepEntries, 87, 99.5, 117, stepLayout.fontSize, stepLayout.lineHeight, 1);
+        drawStepBoxes(doc, firstStepEntries, methodPanel.x + 5, 99.5, methodPanel.width - 10, stepLayout.fontSize, stepLayout.lineHeight, 1, compactIngredients);
 
         drawCard(doc, detailsPanel.x, panelY, detailsPanel.width, 39, { fill: THEME.grey100 });
         sectionTitle(doc, "Nutrition", 219, 92);
@@ -461,19 +506,24 @@ const WillsGrillPDF = (() => {
         const firstPage = doc.getNumberOfPages();
         const ingredientLines = options.ingredientLines || [];
         const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 54, 78);
-        let ingredientFitCount = ingredientLayout.totalHeight <= 78
+        const twoColumnLayout = ingredientLayout.totalHeight > 78
+            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 35, 78)
+            : null;
+        const compactIngredients = Boolean(twoColumnLayout?.fits);
+        let ingredientFitCount = compactIngredients || ingredientLayout.totalHeight <= 78
             ? ingredientLines.length
             : entriesThatFit(ingredientLayout.entries, 78, 0);
         if (ingredientFitCount < ingredientLines.length && String(ingredientLines[ingredientFitCount - 1]).startsWith("§")) {
             ingredientFitCount -= 1;
         }
-        const stepLayout = measureStepLayout(doc, recipe.steps, 105, 81);
-        const fitCount = entriesThatFit(stepLayout.entries, 81, 1.2);
+        const stepLayout = measureStepLayout(doc, recipe.steps, compactIngredients ? 87 : 105, compactIngredients ? 84 : 81, compactIngredients);
+        const fitCount = entriesThatFit(stepLayout.entries, compactIngredients ? 84 : 81, compactIngredients ? .8 : 1.2);
         const firstEntries = stepLayout.entries.slice(0, fitCount);
 
         drawRecipeBasePage(doc, recipe, {
             ...options,
-            ingredientLines: ingredientLines.slice(0, ingredientFitCount)
+            ingredientLines: ingredientLines.slice(0, ingredientFitCount),
+            compactIngredients
         }, firstEntries, stepLayout);
 
         if (fitCount < recipe.steps.length) {
