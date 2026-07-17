@@ -96,7 +96,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <article class="panel recipe-ingredients"><h1>{name}</h1><p>{description}</p><h2>Ingredients</h2><ul class="ingredients">{ingredients_html}</ul><h2>Method</h2><ol>{steps_html}</ol></article>
 </div></main>
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
-<script src="../assets/js/config.js?v=1.2"></script>
+<script src="../assets/js/config.js?v=1.3"></script>
 <script src="../assets/js/recipes.js?v=1.16"></script>
 <script src="../assets/js/shopping.js?v=1.7"></script>
 <script src="../assets/js/ui.js?v=1.2"></script>

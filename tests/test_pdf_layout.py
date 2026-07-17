@@ -26,6 +26,7 @@ class PdfLayoutTests(unittest.TestCase):
         self.assertIn("WillsGrillPDF.drawShoppingPages", shopping_script)
         self.assertIn("WillsGrillPDF.drawRecipePages", mealpack_script)
         self.assertIn("WillsGrillPDF.drawShoppingPages", mealpack_script)
+        self.assertIn("assets/images/recipes/thumbs/${recipe.image}", mealpack_script)
 
         for script in (recipe_script, shopping_script, mealpack_script):
             self.assertNotIn("doc.addImage(", script)

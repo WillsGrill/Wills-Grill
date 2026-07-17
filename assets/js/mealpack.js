@@ -688,7 +688,7 @@ async function generateMealPackPDFDocument() {
     await Promise.all(data.selectedRecipes.filter(recipe => recipe.image).map(async recipe => {
         try {
             assets.recipeImages[recipe.image] = await loadMealPackPDFImageAsDataURL(
-                `../assets/images/recipes/${recipe.image}`
+                `../assets/images/recipes/thumbs/${recipe.image}`
             );
         }
         catch (error) {
