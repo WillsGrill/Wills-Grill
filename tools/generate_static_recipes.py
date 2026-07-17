@@ -22,6 +22,18 @@ def ingredient_line(item: dict, ingredients: dict[str, dict]) -> str:
     return " ".join(str(part) for part in (quantity, unit, name) if part not in ("", None)).strip()
 
 
+def render_ingredients(items: list[dict], ingredients: dict[str, dict]) -> str:
+    parts = []
+    previous_section = None
+    for item in items:
+        section = str(item.get("section", "")).strip()
+        if section and section != previous_section:
+            parts.append(f'<li class="ingredient-section-heading"><h4>{html.escape(section)}</h4></li>')
+        parts.append(f"<li>{html.escape(ingredient_line(item, ingredients))}</li>")
+        previous_section = section
+    return "".join(parts)
+
+
 def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
     recipe_id = str(recipe["id"])
     slug = recipe_id.lower()
@@ -52,7 +64,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
         },
     }
     json_ld = json.dumps(structured_data, ensure_ascii=False).replace("</", "<\\/")
-    ingredients_html = "".join(f"<li>{html.escape(line)}</li>" for line in ingredient_lines)
+    ingredients_html = render_ingredients(recipe.get("ingredients", []), ingredient_records)
     steps_html = "".join(f'<li class="step"><div class="step-number">{index}</div><div>{html.escape(str(step))}</div></li>' for index, step in enumerate(recipe.get("steps", []), 1))
 
     return f'''<!DOCTYPE html>
@@ -71,7 +83,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/style.css?v=2.3">
+<link rel="stylesheet" href="../assets/css/style.css?v=2.4">
 <script id="recipeStructuredData" type="application/ld+json">{json_ld}</script>
 </head>
 <body>
@@ -81,13 +93,13 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <nav><a href="../index.html">Home</a><a href="../pages/browse.html">Browse Recipes</a><a href="../pages/shopping-list.html">Shopping List</a><a href="../pages/mealpack.html">Create Meal Pack</a></nav>
 </div></header>
 <main id="main-content" class="wrapper section"><div id="recipePage">
-<article class="panel"><h1>{name}</h1><p>{description}</p><h2>Ingredients</h2><ul>{ingredients_html}</ul><h2>Method</h2><ol>{steps_html}</ol></article>
+<article class="panel recipe-ingredients"><h1>{name}</h1><p>{description}</p><h2>Ingredients</h2><ul class="ingredients">{ingredients_html}</ul><h2>Method</h2><ol>{steps_html}</ol></article>
 </div></main>
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
-<script src="../assets/js/config.js?v=1.1"></script>
-<script src="../assets/js/recipes.js?v=1.15"></script>
+<script src="../assets/js/config.js?v=1.2"></script>
+<script src="../assets/js/recipes.js?v=1.16"></script>
 <script src="../assets/js/shopping.js?v=1.7"></script>
-<script src="../assets/js/ui.js?v=1.1"></script>
+<script src="../assets/js/ui.js?v=1.2"></script>
 <script src="../assets/js/app.js?v=1.3"></script>
 </body>
 </html>

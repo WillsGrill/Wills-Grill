@@ -482,6 +482,7 @@ function renderEditor() {
                     <caption class="visually-hidden">Ingredients and quantities for this recipe</caption>
                     <thead>
                         <tr>
+                            <th>Section</th>
                             <th>Ingredient</th>
                             <th>Quantity</th>
                             <th></th>
@@ -491,6 +492,10 @@ function renderEditor() {
                         ${renderIngredientRows(currentRecipe.ingredients || [])}
                     </tbody>
                 </table>
+                <datalist id="recipeSectionSuggestions">
+                    ${[...new Set((currentRecipe.ingredients || []).map(row => String(row.section || "").trim()).filter(Boolean))]
+                        .map(section => `<option value="${escapeHtml(section)}"></option>`).join("")}
+                </datalist>
             </div>
 
             <div class="editor-section ${activeEditorTab === "method" ? "visible" : "hidden"}" data-tab="method">
@@ -593,6 +598,15 @@ function renderIngredientRows(ingredientRows) {
 
     return ingredientRows.map((row, index) => `
         <tr>
+            <td>
+                <input type="text"
+                       data-field="section"
+                       data-index="${index}"
+                       list="recipeSectionSuggestions"
+                       value="${escapeHtml(row.section || "")}"
+                       placeholder="e.g. For the sauce"
+                       aria-label="Section for ingredient ${index + 1}">
+            </td>
             <td>
                 <div class="ingredient-picker">
                     <input type="search"
@@ -945,7 +959,9 @@ function handleEditorAction(event) {
 function addIngredientRow() {
 
     if (!currentRecipe) return;
-    currentRecipe.ingredients.push({ ingredient: "", quantity: "" });
+    currentRecipe.ingredients = readIngredientRows();
+    const previousSection = currentRecipe.ingredients.at(-1)?.section || "";
+    currentRecipe.ingredients.push({ section: previousSection, ingredient: "", quantity: "" });
     markEditorDirty();
     renderIngredientSection();
 
@@ -954,6 +970,7 @@ function addIngredientRow() {
 function removeIngredientRow(index) {
 
     if (!currentRecipe) return;
+    currentRecipe.ingredients = readIngredientRows();
     currentRecipe.ingredients.splice(index, 1);
 
     if (!currentRecipe.ingredients.length) {
@@ -1088,6 +1105,7 @@ function readIngredientRows() {
         });
 
         return {
+            section: row.querySelector("input[data-field='section']")?.value.trim() || "",
             ingredient: ingredient?.id || typedValue,
             quantity: parseIngredientQuantity(row.querySelector("input[data-field='quantity']")?.value)
         };
@@ -1220,15 +1238,10 @@ function validateRecipe(recipe) {
         return `Ingredient reference does not exist: ${unknownIngredient.ingredient}.`;
     }
 
-    const duplicateIngredients = new Set();
-    const repeatedIngredient = recipe.ingredients.find((row) => {
-        if (duplicateIngredients.has(row.ingredient)) return true;
-        duplicateIngredients.add(row.ingredient);
-        return false;
-    });
+    const invalidSection = recipe.ingredients.find((row) => typeof row.section !== "string" || row.section.length > 80);
 
-    if (repeatedIngredient) {
-        return `Ingredient is listed more than once: ${repeatedIngredient.ingredient}.`;
+    if (invalidSection) {
+        return "Ingredient sections must be text no longer than 80 characters.";
     }
 
     if (recipe.steps.length !== METHOD_STEP_COUNT || recipe.steps.some((step) => !step)) {

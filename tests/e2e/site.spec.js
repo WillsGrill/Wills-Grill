@@ -114,7 +114,7 @@ test("all recipe and shopping PDF layouts render without overflow errors", async
       const pages = WillsGrillPDF.drawRecipePages(doc, recipe, {
         assets: {},
         imageData: null,
-        ingredientLines: recipe.ingredients.map(formatIngredient),
+        ingredientLines: formatSectionedIngredientLines(recipe.ingredients),
         serves: recipe.serves
       });
       return { id: recipe.id, pages: pages.lastPage - pages.firstPage + 1 };
@@ -191,7 +191,11 @@ test("requested responsive widths do not create horizontal overflow", async ({ p
     await page.setViewportSize({ width, height: width < 700 ? 700 : 1000 });
     for (const path of ["/", "/pages/browse.html", "/recipes/rec001.html", "/pages/shopping-list.html", "/pages/mealpack.html"]) {
       await page.goto(path);
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy();
+      const dimensions = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth
+      }));
+      expect(dimensions.scrollWidth, `${path} overflowed at ${width}px (scroll ${dimensions.scrollWidth}px, client ${dimensions.clientWidth}px)`).toBeLessThanOrEqual(dimensions.clientWidth);
     }
   }
 });

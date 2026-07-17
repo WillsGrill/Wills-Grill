@@ -916,6 +916,25 @@ nav a[aria-current="page"]::after{
 
 }
 
+.ingredients .ingredient-section-heading,
+.recipe-ingredients .ingredient-section-heading{
+    list-style:none;
+    margin:18px 0 7px;
+}
+
+.ingredients .ingredient-section-heading:first-child,
+.recipe-ingredients .ingredient-section-heading:first-child{
+    margin-top:0;
+}
+
+.ingredient-section-heading h4{
+    margin:0;
+    color:var(--green);
+    font-size:.88rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+}
+
 .recipe-image-placeholder{
     display:flex;
     width:100%;
@@ -2051,7 +2070,7 @@ footer{
 
 }
 
-@media screen and (max-width:700px){
+@media screen and (max-width:900px){
     .header-inner{min-height:84px;padding:8px 0;flex-direction:row;flex-wrap:wrap;gap:10px;}
     .brand{flex:1;min-width:0;flex-direction:row;align-items:center;gap:10px;margin:0;}
     .brand-logo{height:68px;transform:translateY(-7px);}
@@ -2063,6 +2082,9 @@ footer{
     .header-inner nav.open{display:flex;}
     .header-inner nav a{padding:10px 4px;}
     .header-inner nav a::after{bottom:4px;}
+}
+
+@media screen and (max-width:700px){
     .browse-filters{grid-template-columns:1fr;}
     .filter-clear{width:100%;}
     .site-toast{right:16px;bottom:16px;}
@@ -2071,4 +2093,12 @@ footer{
     .pdf-preview-toolbar h2{flex:1 0 calc(100% - 80px);}
     .pdf-preview-actions{order:3;width:100%;}
     .pdf-preview-actions .button{width:auto;flex:1;}
+}
+
+@media screen and (max-width:340px){
+    .brand{gap:8px;}
+    .brand-logo{height:54px;transform:translateY(-6px);}
+    .brand:hover .brand-logo{transform:translateY(-6px) scale(1.05);}
+    .tagline-white,.tagline-gold{font-size:.68rem;}
+    .nav-toggle{padding:8px 10px;font-size:.9rem;}
 }

@@ -12,51 +12,68 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-B705",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 160
-      },
-    {
-      "ingredient": "ING-V250",
-      "quantity": 1
-    },
-    {
-      "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-D505",
-        "quantity": 60
-      },
-      {
-        "ingredient": "ING-C975",
-        "quantity": 40
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 300,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 2
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 120,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-B705",
+        "quantity": 120,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 160,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-D505",
+        "quantity": 60,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-C975",
+        "quantity": 40,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the dressing"
       }
     ],
     "steps": [
@@ -90,47 +107,68 @@
     "ingredients": [
       {
         "ingredient": "ING-F310",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-G645",
-        "quantity": 150
-      },
-      {
-        "ingredient": "ING-V300",
-        "quantity": 160
-      },
-      {
-        "ingredient": "ING-V305",
-        "quantity": 140
+        "quantity": 2,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-O801",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 0.5,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-H015",
-        "quantity": 5
-      },
-      {
-        "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 5,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 0.5,
+        "section": "For the salmon"
+      },
+      {
+        "ingredient": "ING-G645",
+        "quantity": 150,
+        "section": "For the Spanish grains"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the Spanish grains"
+      },
+      {
+        "ingredient": "ING-V300",
+        "quantity": 160,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-V305",
+        "quantity": 140,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-S101",
+        "quantity": 0.25,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the vegetables"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the vegetables"
       }
     ],
     "steps": [
@@ -164,51 +202,63 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-G650",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-C997",
-        "quantity": 80
-      },
-      {
-        "ingredient": "ING-C998",
-        "quantity": 60
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 100
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-D505",
-        "quantity": 30
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 300,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 2,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-C998",
+        "quantity": 60,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 100,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 120,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-D505",
+        "quantity": 30,
+        "section": "For the pitta filling"
+      },
+      {
+        "ingredient": "ING-C997",
+        "quantity": 80,
+        "section": "For the tzatziki"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the tzatziki"
       }
     ],
     "steps": [
@@ -242,55 +292,68 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-G650",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-C997",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 160
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-D505",
-        "quantity": 50
-      },
-      {
-        "ingredient": "ING-C975",
-        "quantity": 40
+        "quantity": 300,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 160,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-D505",
+        "quantity": 50,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-C975",
+        "quantity": 40,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 2,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-C997",
+        "quantity": 120,
+        "section": "To serve"
       }
     ],
     "steps": [
@@ -324,51 +387,63 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-G655",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-C998",
-        "quantity": 70
-      },
-      {
-        "ingredient": "ING-D505",
-        "quantity": 35
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 100
-      },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 300,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-G655",
+        "quantity": 2,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-C998",
+        "quantity": 70,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-D505",
+        "quantity": 35,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 100,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 120,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the wraps"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the wraps"
       }
     ],
     "steps": [
@@ -403,51 +478,63 @@
     "ingredients": [
       {
         "ingredient": "ING-M410",
-        "quantity": 350
+        "quantity": 350,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-B715",
-        "quantity": 200
+        "quantity": 200,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-C950",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-O805",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-S120",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-S130",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chilli"
       },
       {
         "ingredient": "ING-G620",
-        "quantity": 200
+        "quantity": 200,
+        "section": "To serve"
       },
       {
         "ingredient": "ING-H010",
-        "quantity": 5
+        "quantity": 5,
+        "section": "To serve"
       }
     ],
     "steps": [
@@ -480,71 +567,83 @@
     "image": "rec007.webp",
     "ingredients": [
       {
-      "ingredient": "ING-F370",
-      "quantity": 290
+        "ingredient": "ING-F370",
+        "quantity": 290,
+        "section": "For the salad"
       },
       {
         "ingredient": "ING-B705",
-        "quantity": 200
+        "quantity": 200,
+        "section": "For the salad"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 120
+        "quantity": 120,
+        "section": "For the salad"
       },
       {
-      "ingredient": "ING-V265",
-        "quantity": 80
+        "ingredient": "ING-V265",
+        "quantity": 80,
+        "section": "For the salad"
       },
-    {
-      "ingredient": "ING-V250",
-      "quantity": 1
-    },
-    {
-      "ingredient": "ING-V420",
-      "quantity": 1
-    },
-    {
-      "ingredient": "ING-P145",
-      "quantity": 2
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V420",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 5,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-P145",
+        "quantity": 2,
+        "section": "For the dressing"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the dressing"
       },
-    {
-      "ingredient": "ING-C970",
-      "quantity": 1
-    },
-    {
-      "ingredient": "ING-C910",
-      "quantity": 0.333
-    },
       {
-        "ingredient": "ING-H005",
-        "quantity": 5
+        "ingredient": "ING-C970",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 0.333,
+        "section": "For the dressing"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the dressing"
       }
     ],
     "steps": [
-    "Drain the tinned tuna thoroughly and break it into large flakes with a fork.",
-    "Drain and rinse the cannellini beans, then leave them to dry briefly.",
-    "Whisk together the bottled lemon juice, honey, olive oil, capers and black pepper.",
-    "Slice the cherry tomatoes and cucumber, then core and dice the apple.",
-    "Toss the mixed leaves with the beans, tomatoes, cucumber and diced apple in a large bowl.",
-    "Gently fold the tuna flakes through the salad without breaking them up too much.",
+      "Drain the tinned tuna thoroughly and break it into large flakes with a fork.",
+      "Drain and rinse the cannellini beans, then leave them to dry briefly.",
+      "Whisk together the bottled lemon juice, honey, olive oil, capers and black pepper.",
+      "Slice the cherry tomatoes and cucumber, then core and dice the apple.",
+      "Toss the mixed leaves with the beans, tomatoes, cucumber and diced apple in a large bowl.",
+      "Gently fold the tuna flakes through the salad without breaking them up too much.",
       "Scatter over the chopped parsley and drizzle with the lemon dressing.",
-    "Serve straight away while the leaves and apple are crisp."
+      "Serve straight away while the leaves and apple are crisp."
     ],
     "nutrition": {
-    "calories": 455,
-    "protein": 49,
-    "carbs": 52,
+      "calories": 455,
+      "protein": 49,
+      "carbs": 52,
       "fat": 10
     },
-  "tip": "Drain the tuna very well and fold it through last so it stays in generous flakes rather than disappearing into the salad."
+    "tip": "Drain the tuna very well and fold it through last so it stays in generous flakes rather than disappearing into the salad."
   },
   {
     "id": "REC008",
@@ -559,43 +658,53 @@
     "ingredients": [
       {
         "ingredient": "ING-F320",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-G645",
-        "quantity": 150
-      },
-      {
-        "ingredient": "ING-V300",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V305",
-        "quantity": 100
+        "quantity": 2,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-H015",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the mackerel parcels"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the mackerel parcels"
+      },
+      {
+        "ingredient": "ING-G645",
+        "quantity": 150,
+        "section": "For the Spanish grains"
+      },
+      {
+        "ingredient": "ING-V300",
+        "quantity": 120,
+        "section": "For the vegetables"
+      },
+      {
+        "ingredient": "ING-V305",
+        "quantity": 100,
+        "section": "For the vegetables"
       }
     ],
     "steps": [
@@ -629,59 +738,73 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 200
+        "quantity": 200,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-D530",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-C950",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-S120",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-D505",
-        "quantity": 50
+        "quantity": 50,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 80
+        "quantity": 80,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-S130",
-        "quantity": 0.5
-      },
-      {
-        "ingredient": "ING-G650",
-        "quantity": 2
+        "quantity": 0.5,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shakshuka"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 2,
+        "section": "To serve"
       }
     ],
     "steps": [
@@ -715,55 +838,67 @@
     "ingredients": [
       {
         "ingredient": "ING-F340",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the pasta"
       },
       {
-      "ingredient": "ING-G660",
-        "quantity": 180
+        "ingredient": "ING-G660",
+        "quantity": 180,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 100
-      },
-      {
-        "ingredient": "ING-D515",
-        "quantity": 25
+        "quantity": 100,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-C935",
-        "quantity": 35
+        "quantity": 35,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 80
+        "quantity": 80,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 5
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the pasta"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-D515",
+        "quantity": 25,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 5,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "To finish"
       }
     ],
     "steps": [
-    "Cook the linguine until al dente, reserving a little pasta water before draining.",
+      "Cook the linguine until al dente, reserving a little pasta water before draining.",
       "Heat the extra virgin olive oil in a pan and soften the onion and Easy Garlic.",
       "Add the basa fillets and cook gently until they start to flake.",
       "Stir in the green pesto and cherry tomatoes.",
@@ -778,7 +913,7 @@
       "carbs": 77,
       "fat": 23
     },
-  "tip": "Fold the fish through gently so it stays in large flakes; you can substitute the linguine with any wholemeal pasta you prefer."
+    "tip": "Fold the fish through gently so it stays in large flakes; you can substitute the linguine with any wholemeal pasta you prefer."
   },
   {
     "id": "REC011",
@@ -794,63 +929,88 @@
     "ingredients": [
       {
         "ingredient": "ING-F305",
-        "quantity": 300
+        "quantity": 300,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-D530",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-G640",
-        "quantity": 60
+        "quantity": 60,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-V295",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-H010",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-C905",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-P060",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-O815",
-        "quantity": 1
+        "quantity": 0.5,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 0.5
-      },
-      {
-        "ingredient": "ING-V395",
-        "quantity": 200
-      },
-      {
-        "ingredient": "ING-D501",
-        "quantity": 80
-      },
-      {
-        "ingredient": "ING-C910",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-S130",
-        "quantity": 1
+        "quantity": 0.5,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the fishcakes"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the fishcakes"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.25,
+        "section": "For the sweet chilli dip"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 80,
+        "section": "For the sweet chilli dip"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the sweet chilli dip"
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 1,
+        "section": "For the sweet chilli dip"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.25,
+        "section": "For the slaw"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the slaw"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 1,
+        "section": "For the slaw"
+      },
+      {
+        "ingredient": "ING-V395",
+        "quantity": 200,
+        "section": "For the slaw"
       }
     ],
     "steps": [
@@ -884,55 +1044,68 @@
     "ingredients": [
       {
         "ingredient": "ING-F301",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the herb-crusted cod"
       },
       {
         "ingredient": "ING-G640",
-        "quantity": 60
+        "quantity": 60,
+        "section": "For the herb-crusted cod"
       },
       {
         "ingredient": "ING-H005",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the herb-crusted cod"
       },
       {
         "ingredient": "ING-S170",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the herb-crusted cod"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V240",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V245",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V225",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-O801",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-S101",
-        "quantity": 0.25
-      },
-      {
-        "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the herb-crusted cod"
       },
       {
         "ingredient": "ING-C915",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the herb-crusted cod"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V245",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 2,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-S101",
+        "quantity": 0.25,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
       }
     ],
     "steps": [
@@ -966,59 +1139,73 @@
     "ingredients": [
       {
         "ingredient": "ING-F310",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-V240",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V245",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V225",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-G710",
-        "quantity": 150
+        "quantity": 2,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-H001",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the salmon"
       },
       {
         "ingredient": "ING-H005",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the salmon"
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V245",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 120,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the roasted vegetables"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the roasted vegetables"
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the roasted vegetables"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the roasted vegetables"
+      },
+      {
+        "ingredient": "ING-G710",
+        "quantity": 150,
+        "section": "For the couscous"
       }
     ],
     "steps": [
@@ -1051,56 +1238,69 @@
     "image": "rec014.webp",
     "ingredients": [
       {
-        "ingredient": "ING-D510",
-        "quantity": 140
-      },
-      {
         "ingredient": "ING-G710",
-        "quantity": 150
+        "quantity": 150,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-B701",
-        "quantity": 150
+        "quantity": 150,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-V240",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-V245",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H005",
-        "quantity": 5
-      },
-      {
-        "ingredient": "ING-H020",
-        "quantity": 5
+        "quantity": 120,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the couscous and vegetables"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the couscous and vegetables"
+      },
+      {
+        "ingredient": "ING-D510",
+        "quantity": 140,
+        "section": "For the halloumi"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 5,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H020",
+        "quantity": 5,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -1134,51 +1334,63 @@
     "ingredients": [
       {
         "ingredient": "ING-F340",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-F325",
-        "quantity": 250
+        "quantity": 250,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-G625",
-        "quantity": 250
+        "quantity": 250,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 160
+        "quantity": 160,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H005",
-        "quantity": 5
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 80
+        "quantity": 80,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the seafood rice"
       },
       {
         "ingredient": "ING-S130",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the seafood rice"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 5,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -1212,59 +1424,78 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-G710",
-        "quantity": 150
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 100
-      },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-D501",
-        "quantity": 60
+        "quantity": 300,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1.5
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-S120",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-S125",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-S205",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the shawarma chicken"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the shawarma chicken"
+      },
+      {
+        "ingredient": "ING-G710",
+        "quantity": 150,
+        "section": "For the couscous"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 100,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 120,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 60,
+        "section": "For the garlic yoghurt"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the garlic yoghurt"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the garlic yoghurt"
       }
     ],
     "steps": [
@@ -1298,55 +1529,68 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 300
-      },
-      {
-        "ingredient": "ING-G650",
-        "quantity": 2
-      },
-      {
-        "ingredient": "ING-C997",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 100
-      },
-      {
-        "ingredient": "ING-V250",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-D505",
-        "quantity": 50
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
+        "quantity": 300,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 2,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-C997",
+        "quantity": 120,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 100,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 120,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-D505",
+        "quantity": 50,
+        "section": "For the gyros"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the gyros"
       }
     ],
     "steps": [
@@ -1381,55 +1625,73 @@
     "ingredients": [
       {
         "ingredient": "ING-M410",
-        "quantity": 350
+        "quantity": 350,
+        "section": "For the meatballs"
       },
       {
         "ingredient": "ING-D530",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the meatballs"
       },
       {
         "ingredient": "ING-G635",
-        "quantity": 40
+        "quantity": 40,
+        "section": "For the meatballs"
       },
       {
         "ingredient": "ING-D515",
-        "quantity": 30
-      },
-      {
-        "ingredient": "ING-V210",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C999",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C955",
-        "quantity": 400
-      },
-      {
-        "ingredient": "ING-G705",
-        "quantity": 180
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 120
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 5
-      },
-      {
-        "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 20,
+        "section": "For the meatballs"
       },
       {
         "ingredient": "ING-S101",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the meatballs"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the meatballs"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-C955",
+        "quantity": 400,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 120,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 5,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-G705",
+        "quantity": 180,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-D515",
+        "quantity": 10,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -1463,51 +1725,63 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 250
+        "quantity": 250,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-D505",
-        "quantity": 140
-      },
-      {
-        "ingredient": "ING-G705",
-        "quantity": 180
+        "quantity": 140,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 350
+        "quantity": 350,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-V205",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 5
+        "quantity": 1,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-V255",
-        "quantity": 80
+        "quantity": 1,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the chicken and feta bake"
       },
       {
         "ingredient": "ING-S130",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the chicken and feta bake"
+      },
+      {
+        "ingredient": "ING-G705",
+        "quantity": 180,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 5,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 80,
+        "section": "For the pasta"
       }
     ],
     "steps": [
@@ -1542,59 +1816,73 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 375
+        "quantity": 375,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-B701",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 120
+        "quantity": 120,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-C950",
-        "quantity": 400
-      },
-      {
-        "ingredient": "ING-G625",
-        "quantity": 500
+        "quantity": 400,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-S155",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-S120",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-S125",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-S130",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-S190",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H010",
-        "quantity": 5
+        "quantity": 1,
+        "section": "For the curry"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 500,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 5,
+        "section": "To serve"
       }
     ],
     "steps": [
@@ -1629,55 +1917,68 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 500
+        "quantity": 500,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-B710",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-V245",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-M450",
-        "quantity": 40
+        "quantity": 40,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-C950",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-O820",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-H025",
-        "quantity": 5
+        "quantity": 5,
+        "section": "For the stew"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the stew"
+      },
+      {
+        "ingredient": "ING-O820",
+        "quantity": 1,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -1712,47 +2013,58 @@
     "ingredients": [
       {
         "ingredient": "ING-M410",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-B730",
-        "quantity": 150
+        "quantity": 150,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-C955",
-        "quantity": 400
-      },
-      {
-        "ingredient": "ING-G705",
-        "quantity": 300
+        "quantity": 400,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 160
+        "quantity": 160,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 5
+        "quantity": 1,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the bolognese"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the bolognese"
+      },
+      {
+        "ingredient": "ING-G705",
+        "quantity": 300,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 5,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -1786,51 +2098,68 @@
     "ingredients": [
       {
         "ingredient": "ING-M415",
-        "quantity": 600
-      },
-      {
-        "ingredient": "ING-B710",
-        "quantity": 400
-      },
-      {
-        "ingredient": "ING-P010",
-        "quantity": 200
-      },
-      {
-        "ingredient": "ING-V201",
-        "quantity": 250
-      },
-      {
-        "ingredient": "ING-V205",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 2
+        "quantity": 600,
+        "section": "For the BBQ turkey"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 2
+        "quantity": 1,
+        "section": "For the BBQ turkey"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the BBQ turkey"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 2
+        "quantity": 2,
+        "section": "For the BBQ turkey"
       },
       {
         "ingredient": "ING-S150",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H005",
-        "quantity": 10
+        "quantity": 1,
+        "section": "For the BBQ turkey"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the BBQ turkey"
+      },
+      {
+        "ingredient": "ING-B710",
+        "quantity": 400,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-P010",
+        "quantity": 200,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 250,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 2,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the butter bean salad"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "For the butter bean salad"
       }
     ],
     "steps": [
@@ -1864,55 +2193,78 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 250
-      },
-      {
-        "ingredient": "ING-G695",
-        "quantity": 120
+        "quantity": 250,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-V240",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-V201",
-        "quantity": 150
-      },
-      {
-        "ingredient": "ING-D520",
-        "quantity": 50
+        "quantity": 150,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-D510",
-        "quantity": 100
+        "quantity": 100,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-C935",
-        "quantity": 40
+        "quantity": 20,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 10
+        "quantity": 1,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-O805",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the skewers"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.25
+        "quantity": 0.25,
+        "section": "For the skewers"
+      },
+      {
+        "ingredient": "ING-G695",
+        "quantity": 120,
+        "section": "For the pesto quinoa"
+      },
+      {
+        "ingredient": "ING-C935",
+        "quantity": 20,
+        "section": "For the pesto quinoa"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the pesto quinoa"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 8,
+        "section": "For the pesto quinoa"
+      },
+      {
+        "ingredient": "ING-D520",
+        "quantity": 50,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 2,
+        "section": "To serve"
       }
     ],
     "steps": [
@@ -1946,71 +2298,88 @@
     "ingredients": [
       {
         "ingredient": "ING-M401",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-M450",
-        "quantity": 50
+        "quantity": 50,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-F325",
-        "quantity": 200
+        "quantity": 200,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-F360",
-        "quantity": 400
+        "quantity": 400,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-G715",
-        "quantity": 300
+        "quantity": 300,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-P065",
-        "quantity": 750
+        "quantity": 750,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-C950",
-        "quantity": 200
+        "quantity": 200,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-V225",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-V370",
-        "quantity": 150
+        "quantity": 150,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-S110",
-        "quantity": 1
+        "quantity": 1,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-S155",
-        "quantity": 0.25
-      },
-      {
-        "ingredient": "ING-C901",
-        "quantity": 1
-      },
-      {
-        "ingredient": "ING-H005",
-        "quantity": 10
+        "quantity": 0.25,
+        "section": "For the paella"
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 0.5
+        "quantity": 0.5,
+        "section": "For the paella"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "To finish"
       }
     ],
     "steps": [
@@ -2042,19 +2411,71 @@
     "difficulty": "Easy",
     "image": "rec026.webp",
     "ingredients": [
-      { "ingredient": "ING-M440", "quantity": 300 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V270", "quantity": 160 },
-      { "ingredient": "ING-V305", "quantity": 100 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V295", "quantity": 2 },
-      { "ingredient": "ING-P060", "quantity": 2 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-P110", "quantity": 2 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-P085", "quantity": 1 },
-      { "ingredient": "ING-O815", "quantity": 1 }
+      {
+        "ingredient": "ING-M440",
+        "quantity": 300,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-V270",
+        "quantity": 160,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-V305",
+        "quantity": 100,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 2,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 1,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 2,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-P085",
+        "quantity": 1,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 1,
+        "section": "For the teriyaki pork"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -2066,7 +2487,12 @@
       "Toss everything for one to two minutes until glossy and thickened, checking that the pork is piping hot.",
       "Divide the brown rice between bowls, top with the stir-fry and finish with sliced spring onions."
     ],
-    "nutrition": { "calories": 536, "protein": 45, "carbs": 67, "fat": 10 },
+    "nutrition": {
+      "calories": 536,
+      "protein": 45,
+      "carbs": 67,
+      "fat": 10
+    },
     "tip": "Slice the pork while it is slightly chilled; thin, even pieces brown fast without drying out."
   },
   {
@@ -2080,17 +2506,61 @@
     "difficulty": "Easy",
     "image": "rec027.webp",
     "ingredients": [
-      { "ingredient": "ING-M460", "quantity": 300 },
-      { "ingredient": "ING-V280", "quantity": 200 },
-      { "ingredient": "ING-V400", "quantity": 200 },
-      { "ingredient": "ING-V325", "quantity": 300 },
-      { "ingredient": "ING-P070", "quantity": 120 },
-      { "ingredient": "ING-V215", "quantity": 1 },
-      { "ingredient": "ING-P025", "quantity": 0.5 },
-      { "ingredient": "ING-O830", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 1 },
-      { "ingredient": "ING-H025", "quantity": 5 },
-      { "ingredient": "ING-S105", "quantity": 0.5 }
+      {
+        "ingredient": "ING-M460",
+        "quantity": 300,
+        "section": "For the venison"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the venison"
+      },
+      {
+        "ingredient": "ING-H025",
+        "quantity": 5,
+        "section": "For the venison"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the venison"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 200,
+        "section": "For the roasted roots"
+      },
+      {
+        "ingredient": "ING-V400",
+        "quantity": 200,
+        "section": "For the roasted roots"
+      },
+      {
+        "ingredient": "ING-V325",
+        "quantity": 300,
+        "section": "For the roasted roots"
+      },
+      {
+        "ingredient": "ING-P070",
+        "quantity": 120,
+        "section": "For the blackberry sauce"
+      },
+      {
+        "ingredient": "ING-V215",
+        "quantity": 1,
+        "section": "For the blackberry sauce"
+      },
+      {
+        "ingredient": "ING-P025",
+        "quantity": 0.5,
+        "section": "For the blackberry sauce"
+      },
+      {
+        "ingredient": "ING-O830",
+        "quantity": 1,
+        "section": "For the blackberry sauce"
+      }
     ],
     "steps": [
       "Heat the oven to 220°C/200°C fan and place a large baking tray inside to heat.",
@@ -2102,7 +2572,12 @@
       "Add the blackberries, balsamic vinegar, half a beef stock cube and 150ml water; simmer for five minutes, lightly crushing some berries until the sauce is glossy.",
       "Slice the rested venison across the grain and serve with the roasted roots and warm blackberry sauce."
     ],
-    "nutrition": { "calories": 522, "protein": 42, "carbs": 66, "fat": 11 },
+    "nutrition": {
+      "calories": 522,
+      "protein": 42,
+      "carbs": 66,
+      "fat": 11
+    },
     "tip": "Venison is very lean, so rest it well and avoid cooking beyond medium if you want it tender."
   },
   {
@@ -2116,18 +2591,66 @@
     "difficulty": "Easy",
     "image": "rec028.webp",
     "ingredients": [
-      { "ingredient": "ING-M465", "quantity": 300 },
-      { "ingredient": "ING-V325", "quantity": 400 },
-      { "ingredient": "ING-V405", "quantity": 2 },
-      { "ingredient": "ING-H005", "quantity": 20 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-O820", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 2 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-S130", "quantity": 0.25 },
-      { "ingredient": "ING-S105", "quantity": 0.5 },
-      { "ingredient": "ING-S101", "quantity": 0.25 }
+      {
+        "ingredient": "ING-M465",
+        "quantity": 300,
+        "section": "For the steak"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the steak"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the steak"
+      },
+      {
+        "ingredient": "ING-S101",
+        "quantity": 0.25,
+        "section": "For the steak"
+      },
+      {
+        "ingredient": "ING-V325",
+        "quantity": 400,
+        "section": "For the sweet potatoes"
+      },
+      {
+        "ingredient": "ING-V405",
+        "quantity": 2,
+        "section": "For the pak choi"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 20,
+        "section": "For the chimichurri"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "For the chimichurri"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the chimichurri"
+      },
+      {
+        "ingredient": "ING-O820",
+        "quantity": 1,
+        "section": "For the chimichurri"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 2,
+        "section": "For the chimichurri"
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.25,
+        "section": "For the chimichurri"
+      }
     ],
     "steps": [
       "Heat the oven to 220°C/200°C fan and line a large tray with baking paper.",
@@ -2139,7 +2662,12 @@
       "Halve the pak choi lengthways and char it cut-side down for two to three minutes, then turn and cook until just tender.",
       "Slice the steak across the grain and serve with the pak choi, sweet potato fries and remaining chimichurri."
     ],
-    "nutrition": { "calories": 584, "protein": 43, "carbs": 49, "fat": 24 },
+    "nutrition": {
+      "calories": 584,
+      "protein": 43,
+      "carbs": 49,
+      "fat": 24
+    },
     "tip": "Sirloin brings plenty of flavour but stays relatively lean when the outer fat is trimmed before cooking."
   },
   {
@@ -2153,20 +2681,76 @@
     "difficulty": "Easy",
     "image": "rec029.webp",
     "ingredients": [
-      { "ingredient": "ING-M440", "quantity": 300 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V250", "quantity": 0.5 },
-      { "ingredient": "ING-V410", "quantity": 120 },
-      { "ingredient": "ING-V280", "quantity": 100 },
-      { "ingredient": "ING-V295", "quantity": 2 },
-      { "ingredient": "ING-P075", "quantity": 40 },
-      { "ingredient": "ING-P060", "quantity": 2 },
-      { "ingredient": "ING-P080", "quantity": 2 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M440",
+        "quantity": 300,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 0.5,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-V410",
+        "quantity": 120,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 100,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 2,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the crunchy slaw"
+      },
+      {
+        "ingredient": "ING-P075",
+        "quantity": 40,
+        "section": "For the satay sauce"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 2,
+        "section": "For the satay sauce"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the satay sauce"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the satay sauce"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the satay sauce"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -2178,7 +2762,12 @@
       "Add the remaining satay sauce to the pan and toss for one minute until hot and lightly thickened.",
       "Build the bowls with brown rice, crunchy slaw, drained pickled cucumber and pork satay, then scatter over the spring onions."
     ],
-    "nutrition": { "calories": 610, "protein": 47, "carbs": 74, "fat": 16 },
+    "nutrition": {
+      "calories": 610,
+      "protein": 47,
+      "carbs": 74,
+      "fat": 16
+    },
     "tip": "Loosen natural peanut butter with warm water before adding it to the pan for a creamy sauce without coconut milk."
   },
   {
@@ -2192,19 +2781,71 @@
     "difficulty": "Easy",
     "image": "rec030.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-P090", "quantity": 1 },
-      { "ingredient": "ING-G690", "quantity": 120 },
-      { "ingredient": "ING-V240", "quantity": 1 },
-      { "ingredient": "ING-V245", "quantity": 0.5 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-V201", "quantity": 150 },
-      { "ingredient": "ING-D501", "quantity": 150 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-C901", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 1 },
-      { "ingredient": "ING-H005", "quantity": 10 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-P090",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-G690",
+        "quantity": 120,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 1,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-V245",
+        "quantity": 0.5,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 150,
+        "section": "For the grain bowls"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 150,
+        "section": "For the garlic yoghurt"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the garlic yoghurt"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the garlic yoghurt"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "For the garlic yoghurt"
+      }
     ],
     "steps": [
       "Heat the oven to 220°C/200°C fan and line a large roasting tray.",
@@ -2216,7 +2857,12 @@
       "Rest the chicken for five minutes, then slice it across the grain.",
       "Divide the bulgur and roasted vegetables between bowls, add the chicken and spoon over the garlic yoghurt sauce."
     ],
-    "nutrition": { "calories": 563, "protein": 53, "carbs": 64, "fat": 12 },
+    "nutrition": {
+      "calories": 563,
+      "protein": 53,
+      "carbs": 64,
+      "fat": 12
+    },
     "tip": "If your Angel's Wings rub contains salt, do not add extra seasoning until you have tasted the finished dish."
   },
   {
@@ -2231,20 +2877,76 @@
     "difficulty": "Easy",
     "image": "rec031.webp",
     "ingredients": [
-      { "ingredient": "ING-M440", "quantity": 500 },
-      { "ingredient": "ING-G720", "quantity": 280 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V280", "quantity": 150 },
-      { "ingredient": "ING-V285", "quantity": 2 },
-      { "ingredient": "ING-V290", "quantity": 200 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-C945", "quantity": 30 },
-      { "ingredient": "ING-C950", "quantity": 800 },
-      { "ingredient": "ING-P025", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 1 },
-      { "ingredient": "ING-S150", "quantity": 1 },
-      { "ingredient": "ING-H001", "quantity": 10 },
-      { "ingredient": "ING-D515", "quantity": 20 }
+      {
+        "ingredient": "ING-M440",
+        "quantity": 500,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 150,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-V285",
+        "quantity": 2,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-V290",
+        "quantity": 200,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-C945",
+        "quantity": 30,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 800,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-P025",
+        "quantity": 1,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1,
+        "section": "For the pork ragù"
+      },
+      {
+        "ingredient": "ING-G720",
+        "quantity": 280,
+        "section": "For the pasta"
+      },
+      {
+        "ingredient": "ING-H001",
+        "quantity": 10,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-D515",
+        "quantity": 20,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Trim the pork tenderloin, cut it into chunks and pulse briefly in a food processor until coarsely minced, taking care not to turn it into a paste.",
@@ -2256,7 +2958,12 @@
       "Toss the pasta with the ragù, adding a splash of reserved water if needed, and check the seasoning.",
       "Divide between warm bowls and finish with fresh basil and a light grating of Parmesan."
     ],
-    "nutrition": { "calories": 558, "protein": 46, "carbs": 69, "fat": 13 },
+    "nutrition": {
+      "calories": 558,
+      "protein": 46,
+      "carbs": 69,
+      "fat": 13
+    },
     "tip": "Pulse the pork in short bursts; a coarse texture makes a meatier ragù and prevents the lean fillet becoming dense."
   },
   {
@@ -2271,21 +2978,81 @@
     "difficulty": "Easy",
     "image": "rec032.webp",
     "ingredients": [
-      { "ingredient": "ING-M420", "quantity": 400 },
-      { "ingredient": "ING-V225", "quantity": 2 },
-      { "ingredient": "ING-V230", "quantity": 2 },
-      { "ingredient": "ING-B720", "quantity": 240 },
-      { "ingredient": "ING-G695", "quantity": 120 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-C950", "quantity": 400 },
-      { "ingredient": "ING-C945", "quantity": 20 },
-      { "ingredient": "ING-S110", "quantity": 2 },
-      { "ingredient": "ING-S120", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 120 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-H010", "quantity": 10 }
+      {
+        "ingredient": "ING-M420",
+        "quantity": 400,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 2,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V230",
+        "quantity": 2,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-B720",
+        "quantity": 240,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-G695",
+        "quantity": 120,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-C945",
+        "quantity": 20,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 2,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 120,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 10,
+        "section": "For the lime yoghurt"
+      }
     ],
     "steps": [
       "Heat the oven to 210°C/190°C fan and line a roasting tray.",
@@ -2297,7 +3064,12 @@
       "Return the peppers to the oven for 12 to 15 minutes until tender and the filling is piping hot.",
       "Mix the Greek yoghurt with lime juice, then spoon it over the peppers and finish with chopped coriander."
     ],
-    "nutrition": { "calories": 465, "protein": 39, "carbs": 51, "fat": 12 },
+    "nutrition": {
+      "calories": 465,
+      "protein": 39,
+      "carbs": 51,
+      "fat": 12
+    },
     "tip": "Choose broad, evenly shaped peppers so they sit flat and hold plenty of filling without tipping."
   },
   {
@@ -2312,23 +3084,91 @@
     "difficulty": "Easy",
     "image": "rec033.webp",
     "ingredients": [
-      { "ingredient": "ING-M420", "quantity": 500 },
-      { "ingredient": "ING-G625", "quantity": 240 },
-      { "ingredient": "ING-B715", "quantity": 240 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V280", "quantity": 150 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-C950", "quantity": 800 },
-      { "ingredient": "ING-C945", "quantity": 30 },
-      { "ingredient": "ING-P025", "quantity": 1 },
-      { "ingredient": "ING-S120", "quantity": 2 },
-      { "ingredient": "ING-S110", "quantity": 2 },
-      { "ingredient": "ING-S130", "quantity": 0.5 },
-      { "ingredient": "ING-S185", "quantity": 0.25 },
-      { "ingredient": "ING-O801", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 120 },
-      { "ingredient": "ING-H010", "quantity": 10 }
+      {
+        "ingredient": "ING-M420",
+        "quantity": 500,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-B715",
+        "quantity": 240,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 150,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 800,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-C945",
+        "quantity": 30,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-P025",
+        "quantity": 1,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 2,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 2,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.5,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-S185",
+        "quantity": 0.25,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the chilli"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 240,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 120,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 10,
+        "section": "To serve"
+      }
     ],
     "steps": [
       "Heat the olive oil in a large heavy-based pan and cook the finely chopped onion, red pepper and grated carrot for eight minutes until soft.",
@@ -2340,7 +3180,12 @@
       "Meanwhile, cook the brown rice according to the packet instructions and drain well.",
       "Serve the chilli over the rice with Greek yoghurt and chopped coriander."
     ],
-    "nutrition": { "calories": 586, "protein": 44, "carbs": 78, "fat": 12 },
+    "nutrition": {
+      "calories": 586,
+      "protein": 44,
+      "carbs": 78,
+      "fat": 12
+    },
     "tip": "Browning the mince properly before adding liquid creates the slow-cooked flavour this quicker chilli needs."
   },
   {
@@ -2355,22 +3200,86 @@
     "difficulty": "Easy",
     "image": "rec034.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-B701", "quantity": 240 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V240", "quantity": 1 },
-      { "ingredient": "ING-V215", "quantity": 1 },
-      { "ingredient": "ING-P095", "quantity": 200 },
-      { "ingredient": "ING-C950", "quantity": 200 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S230", "quantity": 2 },
-      { "ingredient": "ING-S120", "quantity": 1 },
-      { "ingredient": "ING-S125", "quantity": 1 },
-      { "ingredient": "ING-S155", "quantity": 0.5 },
-      { "ingredient": "ING-S185", "quantity": 0.25 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-H005", "quantity": 15 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-B701",
+        "quantity": 240,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-V215",
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-P095",
+        "quantity": 200,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 200,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-S230",
+        "quantity": 2,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-S125",
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-S155",
+        "quantity": 0.5,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-S185",
+        "quantity": 0.25,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the curry"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 15,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions until tender, then drain well.",
@@ -2382,7 +3291,12 @@
       "Fold the lime zest, half the lime juice and most of the chopped parsley through the brown rice.",
       "Season the curry with the remaining lime juice and serve over the zesty rice with the remaining parsley."
     ],
-    "nutrition": { "calories": 748, "protein": 53, "carbs": 87, "fat": 21 },
+    "nutrition": {
+      "calories": 748,
+      "protein": 53,
+      "carbs": 87,
+      "fat": 21
+    },
     "tip": "Curry powder with cumin, coriander, turmeric and a little cinnamon gives a fragrant East African-style profile without needing a specialist Zanzibar blend."
   },
   {
@@ -2396,18 +3310,66 @@
     "difficulty": "Easy",
     "image": "rec035.webp",
     "ingredients": [
-      { "ingredient": "ING-M445", "quantity": 250 },
-      { "ingredient": "ING-G725", "quantity": 300 },
-      { "ingredient": "ING-V255", "quantity": 120 },
-      { "ingredient": "ING-V295", "quantity": 3 },
-      { "ingredient": "ING-P075", "quantity": 35 },
-      { "ingredient": "ING-P125", "quantity": 20 },
-      { "ingredient": "ING-P100", "quantity": 2 },
-      { "ingredient": "ING-P105", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M445",
+        "quantity": 250,
+        "section": "For the pork udon"
+      },
+      {
+        "ingredient": "ING-G725",
+        "quantity": 300,
+        "section": "For the pork udon"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 120,
+        "section": "For the pork udon"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the pork udon"
+      },
+      {
+        "ingredient": "ING-P075",
+        "quantity": 35,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P100",
+        "quantity": 2,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P105",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 3,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-P125",
+        "quantity": 20,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Whisk the peanut butter, Marmite, chilli jam, low-salt soy sauce, Easy Ginger, Easy Garlic and five tablespoons of hot water until smooth.",
@@ -2419,7 +3381,12 @@
       "Add the noodles and sauce and toss for two minutes, loosening with reserved cooking water until glossy but not heavy.",
       "Divide between bowls and finish with the reserved spring onion and roughly chopped roasted peanuts."
     ],
-    "nutrition": { "calories": 609, "protein": 43, "carbs": 64, "fat": 22 },
+    "nutrition": {
+      "calories": 609,
+      "protein": 43,
+      "carbs": 64,
+      "fat": 22
+    },
     "tip": "Marmite is powerful and salty, so start with two level teaspoons and use low-salt soy sauce to keep the seasoning balanced."
   },
   {
@@ -2433,19 +3400,71 @@
     "difficulty": "Easy",
     "image": "rec036.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V405", "quantity": 2 },
-      { "ingredient": "ING-V280", "quantity": 150 },
-      { "ingredient": "ING-D530", "quantity": 2 },
-      { "ingredient": "ING-V295", "quantity": 2 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 2 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-O815", "quantity": 2 },
-      { "ingredient": "ING-P085", "quantity": 2 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the crispy chicken"
+      },
+      {
+        "ingredient": "ING-P085",
+        "quantity": 2,
+        "section": "For the crispy chicken"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-V405",
+        "quantity": 2,
+        "section": "For the vegetables and egg"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 150,
+        "section": "For the vegetables and egg"
+      },
+      {
+        "ingredient": "ING-D530",
+        "quantity": 2,
+        "section": "For the vegetables and egg"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "For the vegetables and egg"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 2,
+        "section": "For the vegetables and egg"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 2,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the sauce"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 1,
+        "section": "For the sauce"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -2457,7 +3476,12 @@
       "Divide the rice between bowls and arrange the chicken, carrot and pak choi separately over the top.",
       "Add an egg to each bowl, drizzle with the remaining sauce and finish with sliced spring onions."
     ],
-    "nutrition": { "calories": 590, "protein": 51, "carbs": 70, "fat": 14 },
+    "nutrition": {
+      "calories": 590,
+      "protein": 51,
+      "carbs": 70,
+      "fat": 14
+    },
     "tip": "A light cornflour coating gives the chicken crisp edges with very little oil, while soy and honey recreate ketjap manis using common pantry ingredients."
   },
   {
@@ -2471,18 +3495,66 @@
     "difficulty": "Easy",
     "image": "rec037.webp",
     "ingredients": [
-      { "ingredient": "ING-M410", "quantity": 300 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V255", "quantity": 120 },
-      { "ingredient": "ING-V250", "quantity": 0.5 },
-      { "ingredient": "ING-D530", "quantity": 2 },
-      { "ingredient": "ING-P115", "quantity": 1.5 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-P120", "quantity": 1 },
-      { "ingredient": "ING-O815", "quantity": 2 },
-      { "ingredient": "ING-V295", "quantity": 2 }
+      {
+        "ingredient": "ING-M410",
+        "quantity": 300,
+        "section": "For the gochujang turkey"
+      },
+      {
+        "ingredient": "ING-P115",
+        "quantity": 1.5,
+        "section": "For the gochujang turkey"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the gochujang turkey"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the gochujang turkey"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 1,
+        "section": "For the gochujang turkey"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the spinach rice"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 120,
+        "section": "For the spinach rice"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 0.5,
+        "section": "For the cucumber"
+      },
+      {
+        "ingredient": "ING-D530",
+        "quantity": 2,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-P120",
+        "quantity": 1,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 2,
+        "section": "To serve"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "To serve"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, adding the spinach for the final two minutes so it wilts into the rice.",
@@ -2494,7 +3566,12 @@
       "Divide the spinach rice between bowls and top with the gochujang turkey, cucumber and eggs.",
       "Finish with sesame seeds and finely sliced spring onions."
     ],
-    "nutrition": { "calories": 574, "protein": 43, "carbs": 70, "fat": 15 },
+    "nutrition": {
+      "calories": 574,
+      "protein": 43,
+      "carbs": 70,
+      "fat": 15
+    },
     "tip": "Lean turkey mince takes on the gochujang glaze just as well as pork while reducing saturated fat and keeping the bowl high in protein."
   },
   {
@@ -2508,19 +3585,76 @@
     "difficulty": "Easy",
     "image": "rec038.webp",
     "ingredients": [
-      { "ingredient": "ING-F340", "quantity": 2 },
-      { "ingredient": "ING-V325", "quantity": 450 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-P085", "quantity": 2 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-S105", "quantity": 0.5 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-V295", "quantity": 2 },
-      { "ingredient": "ING-P120", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-F340",
+        "quantity": 2,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-P085",
+        "quantity": 2,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 0.5,
+        "section": "For the glazed basa"
+      },
+      {
+        "ingredient": "ING-V325",
+        "quantity": 450,
+        "section": "For the sweet potato wedges"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 0.5,
+        "section": "For the sweet potato wedges"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-P120",
+        "quantity": 1,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Heat the oven to 220°C/200°C fan and line a large tray with baking paper.",
@@ -2532,7 +3666,12 @@
       "Scatter the sesame seeds over the fish and check that it flakes easily at its thickest point.",
       "Serve with the sweet potato wedges and finish with chopped coriander and sliced spring onion."
     ],
-    "nutrition": { "calories": 488, "protein": 33, "carbs": 70, "fat": 9 },
+    "nutrition": {
+      "calories": 488,
+      "protein": 33,
+      "carbs": 70,
+      "fat": 9
+    },
     "tip": "Add the honey glaze only near the end of cooking so it turns glossy without catching or burning."
   },
   {
@@ -2546,20 +3685,96 @@
     "difficulty": "Easy",
     "image": "rec039.webp",
     "ingredients": [
-      { "ingredient": "ING-M445", "quantity": 250 },
-      { "ingredient": "ING-B720", "quantity": 240 },
-      { "ingredient": "ING-G730", "quantity": 6 },
-      { "ingredient": "ING-V420", "quantity": 1 },
-      { "ingredient": "ING-V410", "quantity": 100 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-P130", "quantity": 2 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 100 },
-      { "ingredient": "ING-O820", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M445",
+        "quantity": 250,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the pork"
+      },
+      {
+        "ingredient": "ING-B720",
+        "quantity": 240,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-V420",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V410",
+        "quantity": 100,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-O820",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the chipotle yoghurt"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 100,
+        "section": "For the chipotle yoghurt"
+      },
+      {
+        "ingredient": "ING-G730",
+        "quantity": 6,
+        "section": "To serve"
+      }
     ],
     "steps": [
       "Finely shred the red cabbage, cut the apple into matchsticks and thinly slice half the red onion.",
@@ -2571,7 +3786,12 @@
       "Mix the Greek yoghurt with the remaining lime juice and warm the tortillas in a dry pan.",
       "Spread each tortilla with refried beans, add the pork and apple slaw and finish with chipotle-lime yoghurt."
     ],
-    "nutrition": { "calories": 648, "protein": 44, "carbs": 77, "fat": 19 },
+    "nutrition": {
+      "calories": 648,
+      "protein": 44,
+      "carbs": 77,
+      "fat": 19
+    },
     "tip": "Keep the slaw undressed until shortly before serving so the apple stays crisp and fresh."
   },
   {
@@ -2585,20 +3805,96 @@
     "difficulty": "Easy",
     "image": "rec040.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-B720", "quantity": 240 },
-      { "ingredient": "ING-G730", "quantity": 6 },
-      { "ingredient": "ING-V420", "quantity": 1 },
-      { "ingredient": "ING-V410", "quantity": 100 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-P130", "quantity": 2 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 100 },
-      { "ingredient": "ING-O820", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the chicken"
+      },
+      {
+        "ingredient": "ING-B720",
+        "quantity": 240,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-V420",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V410",
+        "quantity": 100,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-O820",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the chipotle yoghurt"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 100,
+        "section": "For the chipotle yoghurt"
+      },
+      {
+        "ingredient": "ING-G730",
+        "quantity": 6,
+        "section": "To serve"
+      }
     ],
     "steps": [
       "Finely shred the red cabbage, cut the apple into matchsticks and thinly slice half the red onion.",
@@ -2610,7 +3906,12 @@
       "Mix the Greek yoghurt with the remaining lime juice and warm the tortillas in a dry pan.",
       "Spread each tortilla with refried beans, add the chicken and apple slaw and finish with chipotle-lime yoghurt."
     ],
-    "nutrition": { "calories": 625, "protein": 51, "carbs": 77, "fat": 13 },
+    "nutrition": {
+      "calories": 625,
+      "protein": 51,
+      "carbs": 77,
+      "fat": 13
+    },
     "tip": "Thin chicken strips cook quickly and stay juicy, making this the leanest meat version of the taco recipe."
   },
   {
@@ -2624,23 +3925,94 @@
     "difficulty": "Easy",
     "image": "rec041.webp",
     "ingredients": [
-      { "ingredient": "ING-F340", "quantity": 2 },
-      { "ingredient": "ING-B720", "quantity": 240 },
-      { "ingredient": "ING-G730", "quantity": 6 },
-      { "ingredient": "ING-V420", "quantity": 1 },
-      { "ingredient": "ING-V410", "quantity": 100 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-P130", "quantity": 2 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 100 },
-      { "ingredient": "ING-O820", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-F340",
+        "quantity": 2,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the basa"
+      },
+      {
+        "ingredient": "ING-B720",
+        "quantity": 240,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 0.5,
+        "section": "For the refried beans"
+      },
+      {
+        "ingredient": "ING-V420",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V410",
+        "quantity": 100,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-O820",
+        "quantity": 1,
+        "section": "For the apple slaw"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 100,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-G730",
+        "quantity": 6,
+        "section": "To serve"
+      }
     ],
     "steps": [
-      "Finely shred the red cabbage, cut the apple into matchsticks and thinly slice half the red onion.",
+      "Finely shred the red cabbage, cut the apple into matchsticks and thinly slice the red onion.",
       "Toss the cabbage, apple and sliced onion with the red wine vinegar and half the lime juice and set aside.",
       "Mash the drained black beans with half the Easy Garlic, half the chipotle paste and four tablespoons of water.",
       "Warm the bean mixture in a small pan for five minutes, stirring until creamy but still textured.",
@@ -2649,7 +4021,12 @@
       "Mix the Greek yoghurt with the remaining lime juice and warm the tortillas in a dry pan.",
       "Spread each tortilla with refried beans, add the basa and apple slaw and finish with lime yoghurt."
     ],
-    "nutrition": { "calories": 576, "protein": 39, "carbs": 78, "fat": 12 },
+    "nutrition": {
+      "calories": 576,
+      "protein": 39,
+      "carbs": 78,
+      "fat": 12
+    },
     "tip": "Use less chipotle in the yoghurt for the fish version so its delicate flavour is not overwhelmed."
   },
   {
@@ -2663,19 +4040,76 @@
     "difficulty": "Easy",
     "image": "rec042.webp",
     "ingredients": [
-      { "ingredient": "ING-F340", "quantity": 2 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-V305", "quantity": 120 },
-      { "ingredient": "ING-V425", "quantity": 120 },
-      { "ingredient": "ING-V295", "quantity": 3 },
-      { "ingredient": "ING-P060", "quantity": 2 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-O815", "quantity": 2 },
-      { "ingredient": "ING-P120", "quantity": 1 },
-      { "ingredient": "ING-P085", "quantity": 1 }
+      {
+        "ingredient": "ING-F340",
+        "quantity": 2,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 2,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-P085",
+        "quantity": 1,
+        "section": "For the teriyaki basa"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-V305",
+        "quantity": 120,
+        "section": "For the sesame greens"
+      },
+      {
+        "ingredient": "ING-V425",
+        "quantity": 120,
+        "section": "For the sesame greens"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 1,
+        "section": "For the sesame greens"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 3,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-P120",
+        "quantity": 1,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -2687,7 +4121,12 @@
       "Pour in the remaining sauce and simmer briefly until glossy, then return the fish to coat lightly.",
       "Serve with the brown rice and sesame greens and finish with sesame seeds and sliced spring onions."
     ],
-    "nutrition": { "calories": 512, "protein": 34, "carbs": 74, "fat": 10 },
+    "nutrition": {
+      "calories": 512,
+      "protein": 34,
+      "carbs": 74,
+      "fat": 10
+    },
     "tip": "Basa is delicate, so turn it only once and add it back to the glaze at the very end."
   },
   {
@@ -2701,20 +4140,96 @@
     "difficulty": "Easy",
     "image": "rec043.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-B701", "quantity": 240 },
-      { "ingredient": "ING-G650", "quantity": 1 },
-      { "ingredient": "ING-D501", "quantity": 150 },
-      { "ingredient": "ING-V250", "quantity": 1 },
-      { "ingredient": "ING-V201", "quantity": 160 },
-      { "ingredient": "ING-V205", "quantity": 0.5 },
-      { "ingredient": "ING-H020", "quantity": 10 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S230", "quantity": 2 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-S120", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 2 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the tikka chicken"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 75,
+        "section": "For the tikka chicken"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.5,
+        "section": "For the tikka chicken"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the tikka chicken"
+      },
+      {
+        "ingredient": "ING-S230",
+        "quantity": 2,
+        "section": "For the tikka chicken"
+      },
+      {
+        "ingredient": "ING-B701",
+        "quantity": 240,
+        "section": "For the crispy chickpeas"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the crispy chickpeas"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 1,
+        "section": "For the crispy chickpeas"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 2,
+        "section": "For the crispy chickpeas"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 160,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.25,
+        "section": "For the salad"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 75,
+        "section": "For the mint yoghurt"
+      },
+      {
+        "ingredient": "ING-H020",
+        "quantity": 10,
+        "section": "For the mint yoghurt"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.25,
+        "section": "For the mint yoghurt"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the mint yoghurt"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 1,
+        "section": "To serve"
+      }
     ],
     "steps": [
       "Heat the oven to 200°C fan and line a baking tray.",
@@ -2726,7 +4241,12 @@
       "Toast the wholemeal pitta, cut it into wedges and divide it between two bowls with the salad.",
       "Add the tikka chicken and chickpeas, then spoon over the mint yoghurt and serve."
     ],
-    "nutrition": { "calories": 590, "protein": 62, "carbs": 57, "fat": 13 },
+    "nutrition": {
+      "calories": 590,
+      "protein": 62,
+      "carbs": 57,
+      "fat": 13
+    },
     "tip": "Roasting the chickpeas beside the chicken adds texture without needing extra oil or salt."
   },
   {
@@ -2740,20 +4260,76 @@
     "difficulty": "Easy",
     "image": "rec044.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 300 },
-      { "ingredient": "ING-G725", "quantity": 200 },
-      { "ingredient": "ING-V395", "quantity": 200 },
-      { "ingredient": "ING-V250", "quantity": 1 },
-      { "ingredient": "ING-V295", "quantity": 3 },
-      { "ingredient": "ING-P115", "quantity": 1 },
-      { "ingredient": "ING-P060", "quantity": 1 },
-      { "ingredient": "ING-C910", "quantity": 1 },
-      { "ingredient": "ING-P080", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-O815", "quantity": 1 },
-      { "ingredient": "ING-P120", "quantity": 1 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 300,
+        "section": "For the sticky chicken"
+      },
+      {
+        "ingredient": "ING-O815",
+        "quantity": 1,
+        "section": "For the sticky chicken"
+      },
+      {
+        "ingredient": "ING-P115",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-P060",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-C910",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-P080",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the dressing"
+      },
+      {
+        "ingredient": "ING-G725",
+        "quantity": 200,
+        "section": "For the noodle salad"
+      },
+      {
+        "ingredient": "ING-V395",
+        "quantity": 200,
+        "section": "For the noodle salad"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the noodle salad"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 3,
+        "section": "For the noodle salad"
+      },
+      {
+        "ingredient": "ING-P120",
+        "quantity": 1,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Cook the wholemeal udon according to the packet instructions, rinse under cold water and drain well.",
@@ -2765,7 +4341,12 @@
       "Toss the noodles with the slaw, cucumber, most of the spring onions and the remaining dressing.",
       "Divide between bowls, top with the sticky chicken and finish with sesame seeds and the remaining spring onions."
     ],
-    "nutrition": { "calories": 556, "protein": 50, "carbs": 65, "fat": 11 },
+    "nutrition": {
+      "calories": 556,
+      "protein": 50,
+      "carbs": 65,
+      "fat": 11
+    },
     "tip": "Rinsing the noodles stops them clumping and keeps this warm salad fresh and crisp."
   },
   {
@@ -2779,22 +4360,86 @@
     "difficulty": "Easy",
     "image": "rec045.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 400 },
-      { "ingredient": "ING-F325", "quantity": 200 },
-      { "ingredient": "ING-M450", "quantity": 50 },
-      { "ingredient": "ING-G625", "quantity": 240 },
-      { "ingredient": "ING-C950", "quantity": 400 },
-      { "ingredient": "ING-P065", "quantity": 600 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V235", "quantity": 1 },
-      { "ingredient": "ING-V285", "quantity": 2 },
-      { "ingredient": "ING-V370", "quantity": 150 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S110", "quantity": 2 },
-      { "ingredient": "ING-S170", "quantity": 1 },
-      { "ingredient": "ING-S160", "quantity": 0.25 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 400,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-M450",
+        "quantity": 50,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 240,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 600,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-V235",
+        "quantity": 1,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-V285",
+        "quantity": 2,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 2,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-S170",
+        "quantity": 1,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-S160",
+        "quantity": 0.25,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-F325",
+        "quantity": 200,
+        "section": "Add near the end"
+      },
+      {
+        "ingredient": "ING-V370",
+        "quantity": 150,
+        "section": "Add near the end"
+      }
     ],
     "steps": [
       "Dice the chicken, chorizo, onion, peppers and celery into small, even pieces.",
@@ -2806,7 +4451,12 @@
       "Stir in the prawns and peas, cover again and cook for four to five minutes until the prawns are pink and the rice is tender.",
       "Rest off the heat for five minutes, fluff the rice and serve in warm bowls."
     ],
-    "nutrition": { "calories": 516, "protein": 44, "carbs": 58, "fat": 11 },
+    "nutrition": {
+      "calories": 516,
+      "protein": 44,
+      "carbs": 58,
+      "fat": 11
+    },
     "tip": "A small amount of finely diced chorizo flavours the whole pan while keeping saturated fat and salt in check."
   },
   {
@@ -2821,22 +4471,91 @@
     "difficulty": "Easy",
     "image": "rec046.webp",
     "ingredients": [
-      { "ingredient": "ING-M401", "quantity": 500 },
-      { "ingredient": "ING-B701", "quantity": 240 },
-      { "ingredient": "ING-P135", "quantity": 80 },
-      { "ingredient": "ING-G710", "quantity": 240 },
-      { "ingredient": "ING-C950", "quantity": 400 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V280", "quantity": 300 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S120", "quantity": 2 },
-      { "ingredient": "ING-S125", "quantity": 1 },
-      { "ingredient": "ING-S185", "quantity": 0.5 },
-      { "ingredient": "ING-S155", "quantity": 0.5 },
-      { "ingredient": "ING-P065", "quantity": 300 },
-      { "ingredient": "ING-C901", "quantity": 1 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M401",
+        "quantity": 500,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-B701",
+        "quantity": 240,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-P135",
+        "quantity": 80,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-V280",
+        "quantity": 300,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 2,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-S125",
+        "quantity": 1,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-S185",
+        "quantity": 0.5,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-S155",
+        "quantity": 0.5,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 300,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the tagine"
+      },
+      {
+        "ingredient": "ING-G710",
+        "quantity": 240,
+        "section": "For the couscous"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the couscous"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "For the couscous"
+      }
     ],
     "steps": [
       "Cut the chicken into large chunks, slice the carrots and onion and halve the dried apricots.",
@@ -2848,7 +4567,12 @@
       "Prepare the wholewheat couscous according to the packet instructions and fluff with half the lemon juice and chopped coriander.",
       "Brighten the tagine with the remaining lemon juice and serve it over the couscous."
     ],
-    "nutrition": { "calories": 573, "protein": 48, "carbs": 72, "fat": 9 },
+    "nutrition": {
+      "calories": 573,
+      "protein": 48,
+      "carbs": 72,
+      "fat": 9
+    },
     "tip": "Keeping the apricots to a small handful gives gentle sweetness while the carrots and spices do most of the work."
   },
   {
@@ -2863,20 +4587,76 @@
     "difficulty": "Easy",
     "image": "rec047.webp",
     "ingredients": [
-      { "ingredient": "ING-M410", "quantity": 300 },
-      { "ingredient": "ING-V225", "quantity": 2 },
-      { "ingredient": "ING-B720", "quantity": 160 },
-      { "ingredient": "ING-V375", "quantity": 100 },
-      { "ingredient": "ING-C950", "quantity": 200 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-D525", "quantity": 30 },
-      { "ingredient": "ING-D501", "quantity": 100 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-S120", "quantity": 1 },
-      { "ingredient": "ING-P130", "quantity": 1 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M410",
+        "quantity": 300,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 2,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-B720",
+        "quantity": 160,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V375",
+        "quantity": 100,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 200,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-D525",
+        "quantity": 30,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-P130",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the stuffed peppers"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 100,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the lime yoghurt"
+      }
     ],
     "steps": [
       "Heat the oven to 200°C fan, halve the peppers lengthways and remove the seeds.",
@@ -2888,7 +4668,12 @@
       "Mix the Greek yoghurt with the lime zest and juice.",
       "Serve two stuffed pepper halves per person with the lime yoghurt spooned over the top."
     ],
-    "nutrition": { "calories": 536, "protein": 52, "carbs": 48, "fat": 16 },
+    "nutrition": {
+      "calories": 536,
+      "protein": 52,
+      "carbs": 48,
+      "fat": 16
+    },
     "tip": "A small amount of mature cheddar delivers plenty of flavour; choose a reduced-fat version if available."
   },
   {
@@ -2903,22 +4688,86 @@
     "difficulty": "Easy",
     "image": "rec048.webp",
     "ingredients": [
-      { "ingredient": "ING-M410", "quantity": 500 },
-      { "ingredient": "ING-G625", "quantity": 240 },
-      { "ingredient": "ING-C950", "quantity": 400 },
-      { "ingredient": "ING-V370", "quantity": 200 },
-      { "ingredient": "ING-V255", "quantity": 200 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-P110", "quantity": 2 },
-      { "ingredient": "ING-S120", "quantity": 2 },
-      { "ingredient": "ING-S125", "quantity": 1 },
-      { "ingredient": "ING-S155", "quantity": 0.5 },
-      { "ingredient": "ING-S160", "quantity": 0.25 },
-      { "ingredient": "ING-P065", "quantity": 150 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-M410",
+        "quantity": 500,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-V370",
+        "quantity": 200,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 200,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 2,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 2,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-S125",
+        "quantity": 1,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-S155",
+        "quantity": 0.5,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-S160",
+        "quantity": 0.25,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 150,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the turkey keema"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 240,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -2930,7 +4779,12 @@
       "Squeeze in the lime juice and stir through most of the chopped coriander.",
       "Serve the turkey keema with the brown rice and finish with the remaining coriander."
     ],
-    "nutrition": { "calories": 485, "protein": 39, "carbs": 56, "fat": 12 },
+    "nutrition": {
+      "calories": 485,
+      "protein": 39,
+      "carbs": 56,
+      "fat": 12
+    },
     "tip": "Let the tomato sauce reduce before adding the vegetables so the finished keema stays rich rather than watery."
   },
   {
@@ -2944,19 +4798,91 @@
     "difficulty": "Easy",
     "image": "rec049.webp",
     "ingredients": [
-      { "ingredient": "ING-M440", "quantity": 350 },
-      { "ingredient": "ING-V320", "quantity": 400 },
-      { "ingredient": "ING-V201", "quantity": 160 },
-      { "ingredient": "ING-V250", "quantity": 1 },
-      { "ingredient": "ING-V205", "quantity": 0.5 },
-      { "ingredient": "ING-D501", "quantity": 120 },
-      { "ingredient": "ING-C901", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S150", "quantity": 2 },
-      { "ingredient": "ING-S110", "quantity": 0.5 },
-      { "ingredient": "ING-H005", "quantity": 10 },
-      { "ingredient": "ING-O801", "quantity": 2 },
-      { "ingredient": "ING-S105", "quantity": 0.5 }
+      {
+        "ingredient": "ING-M440",
+        "quantity": 350,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 0.5,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the pork souvlaki"
+      },
+      {
+        "ingredient": "ING-V320",
+        "quantity": 400,
+        "section": "For the lemon potatoes"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the lemon potatoes"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the lemon potatoes"
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1,
+        "section": "For the lemon potatoes"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 1,
+        "section": "For the lemon potatoes"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 160,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 1,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the Greek salad"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 120,
+        "section": "For the herby yoghurt"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "For the herby yoghurt"
+      }
     ],
     "steps": [
       "Heat the oven to 200°C fan, halve the new potatoes and place them on a large baking tray.",
@@ -2968,7 +4894,12 @@
       "Chop the parsley and mix it with the Greek yoghurt and a spoonful of water.",
       "Serve the pork with the lemon potatoes, Greek salad and herby yoghurt."
     ],
-    "nutrition": { "calories": 579, "protein": 50, "carbs": 47, "fat": 21 },
+    "nutrition": {
+      "calories": 579,
+      "protein": 50,
+      "carbs": 47,
+      "fat": 21
+    },
     "tip": "Pork tenderloin is naturally lean; cut it into even chunks so it cooks quickly without drying out."
   },
   {
@@ -2983,21 +4914,81 @@
     "difficulty": "Easy",
     "image": "rec050.webp",
     "ingredients": [
-      { "ingredient": "ING-M440", "quantity": 500 },
-      { "ingredient": "ING-B710", "quantity": 480 },
-      { "ingredient": "ING-C950", "quantity": 400 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V230", "quantity": 1 },
-      { "ingredient": "ING-V210", "quantity": 1 },
-      { "ingredient": "ING-V255", "quantity": 200 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-C945", "quantity": 20 },
-      { "ingredient": "ING-S110", "quantity": 2 },
-      { "ingredient": "ING-S175", "quantity": 1 },
-      { "ingredient": "ING-S130", "quantity": 0.25 },
-      { "ingredient": "ING-P065", "quantity": 250 },
-      { "ingredient": "ING-O810", "quantity": 1 },
-      { "ingredient": "ING-H005", "quantity": 10 }
+      {
+        "ingredient": "ING-M440",
+        "quantity": 500,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-B710",
+        "quantity": 480,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 400,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V230",
+        "quantity": 1,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 1,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 200,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-C945",
+        "quantity": 20,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S175",
+        "quantity": 1,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S130",
+        "quantity": 0.25,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 250,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Trim the pork tenderloin and cut it into bite-sized pieces, then slice the peppers and onion.",
@@ -3009,7 +5000,12 @@
       "Stir in the spinach a handful at a time until wilted and add a splash of water if the casserole is too thick.",
       "Taste, season with black pepper if needed and serve scattered with chopped parsley."
     ],
-    "nutrition": { "calories": 414, "protein": 44, "carbs": 38, "fat": 9 },
+    "nutrition": {
+      "calories": 414,
+      "protein": 44,
+      "carbs": 38,
+      "fat": 9
+    },
     "tip": "Browning the pork first builds flavour, but returning it only for the final simmer keeps this lean cut tender."
   },
   {
@@ -3023,20 +5019,76 @@
     "difficulty": "Easy",
     "image": "rec051.webp",
     "ingredients": [
-      { "ingredient": "ING-F301", "quantity": 2 },
-      { "ingredient": "ING-B701", "quantity": 240 },
-      { "ingredient": "ING-V201", "quantity": 250 },
-      { "ingredient": "ING-V240", "quantity": 1 },
-      { "ingredient": "ING-V205", "quantity": 1 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-C975", "quantity": 30 },
-      { "ingredient": "ING-C901", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 2 },
-      { "ingredient": "ING-S150", "quantity": 1 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-O801", "quantity": 2 },
-      { "ingredient": "ING-H005", "quantity": 10 },
-      { "ingredient": "ING-S105", "quantity": 0.5 }
+      {
+        "ingredient": "ING-F301",
+        "quantity": 2,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-B701",
+        "quantity": 240,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 250,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-V240",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-C975",
+        "quantity": 30,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-S150",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 1,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-O801",
+        "quantity": 2,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-S105",
+        "quantity": 0.5,
+        "section": "For the traybake"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Heat the oven to 200°C fan and line a large, shallow baking tray.",
@@ -3048,7 +5100,12 @@
       "Squeeze over the remaining lemon juice and gently stir the tray juices through the chickpeas.",
       "Divide between two plates and finish with plenty of chopped parsley."
     ],
-    "nutrition": { "calories": 529, "protein": 44, "carbs": 48, "fat": 18 },
+    "nutrition": {
+      "calories": 529,
+      "protein": 44,
+      "carbs": 48,
+      "fat": 18
+    },
     "tip": "Rinse the chickpeas and olives before using them to reduce their salt while keeping their flavour and texture."
   },
   {
@@ -3063,20 +5120,81 @@
     "difficulty": "Easy",
     "image": "rec052.webp",
     "ingredients": [
-      { "ingredient": "ING-F340", "quantity": 2 },
-      { "ingredient": "ING-G625", "quantity": 120 },
-      { "ingredient": "ING-P095", "quantity": 200 },
-      { "ingredient": "ING-P140", "quantity": 2 },
-      { "ingredient": "ING-V225", "quantity": 1 },
-      { "ingredient": "ING-V275", "quantity": 160 },
-      { "ingredient": "ING-V255", "quantity": 100 },
-      { "ingredient": "ING-V295", "quantity": 3 },
-      { "ingredient": "ING-P110", "quantity": 1 },
-      { "ingredient": "ING-C999", "quantity": 1 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-C930", "quantity": 1 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-O810", "quantity": 1 }
+      {
+        "ingredient": "ING-F340",
+        "quantity": 2,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-P095",
+        "quantity": 200,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-P140",
+        "quantity": 2,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-V275",
+        "quantity": 160,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 100,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 2,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-P110",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-C930",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the green curry"
+      },
+      {
+        "ingredient": "ING-G625",
+        "quantity": 120,
+        "section": "For the rice"
+      },
+      {
+        "ingredient": "ING-V295",
+        "quantity": 1,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Cook the brown rice according to the packet instructions, then drain and keep warm.",
@@ -3088,7 +5206,12 @@
       "Fold in the spinach, lime juice and fish sauce and cook just until the spinach has wilted.",
       "Serve with the brown rice and finish with coriander and the green spring onion tops."
     ],
-    "nutrition": { "calories": 526, "protein": 35, "carbs": 63, "fat": 15 },
+    "nutrition": {
+      "calories": 526,
+      "protein": 35,
+      "carbs": 63,
+      "fat": 15
+    },
     "tip": "Curry pastes vary in heat and salt, so start with less if needed and use lime and coriander to lift the finished sauce."
   },
   {
@@ -3102,20 +5225,91 @@
     "difficulty": "Easy",
     "image": "rec053.webp",
     "ingredients": [
-      { "ingredient": "ING-F310", "quantity": 2 },
-      { "ingredient": "ING-V325", "quantity": 400 },
-      { "ingredient": "ING-V375", "quantity": 160 },
-      { "ingredient": "ING-V201", "quantity": 160 },
-      { "ingredient": "ING-V205", "quantity": 0.5 },
-      { "ingredient": "ING-C905", "quantity": 1 },
-      { "ingredient": "ING-H010", "quantity": 15 },
-      { "ingredient": "ING-S110", "quantity": 1 },
-      { "ingredient": "ING-S115", "quantity": 1 },
-      { "ingredient": "ING-S135", "quantity": 0.5 },
-      { "ingredient": "ING-S170", "quantity": 0.5 },
-      { "ingredient": "ING-S160", "quantity": 0.25 },
-      { "ingredient": "ING-O810", "quantity": 2 },
-      { "ingredient": "ING-D501", "quantity": 80 }
+      {
+        "ingredient": "ING-F310",
+        "quantity": 2,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 0.5,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-S115",
+        "quantity": 1,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-S135",
+        "quantity": 0.5,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-S170",
+        "quantity": 0.5,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-S160",
+        "quantity": 0.25,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the Cajun salmon"
+      },
+      {
+        "ingredient": "ING-V325",
+        "quantity": 400,
+        "section": "For the sweet potatoes"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 0.5,
+        "section": "For the sweet potatoes"
+      },
+      {
+        "ingredient": "ING-O810",
+        "quantity": 1,
+        "section": "For the sweet potatoes"
+      },
+      {
+        "ingredient": "ING-V375",
+        "quantity": 160,
+        "section": "For the corn salsa"
+      },
+      {
+        "ingredient": "ING-V201",
+        "quantity": 160,
+        "section": "For the corn salsa"
+      },
+      {
+        "ingredient": "ING-V205",
+        "quantity": 0.5,
+        "section": "For the corn salsa"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.75,
+        "section": "For the corn salsa"
+      },
+      {
+        "ingredient": "ING-H010",
+        "quantity": 15,
+        "section": "For the corn salsa"
+      },
+      {
+        "ingredient": "ING-C905",
+        "quantity": 0.25,
+        "section": "For the lime yoghurt"
+      },
+      {
+        "ingredient": "ING-D501",
+        "quantity": 80,
+        "section": "For the lime yoghurt"
+      }
     ],
     "steps": [
       "Heat the oven to 200°C fan and line a large baking tray.",
@@ -3127,7 +5321,12 @@
       "Toss the salsa ingredients with the lime zest and juice, then stir a spoonful of lime juice into the Greek yoghurt.",
       "Serve the Cajun salmon with the roasted sweet potato, corn salsa and lime yoghurt."
     ],
-    "nutrition": { "calories": 638, "protein": 42, "carbs": 62, "fat": 25 },
+    "nutrition": {
+      "calories": 638,
+      "protein": 42,
+      "carbs": 62,
+      "fat": 25
+    },
     "tip": "Salmon's unsaturated fats make it a heart-friendly choice; the spice crust supplies bold flavour without added salt."
   },
   {
@@ -3142,20 +5341,76 @@
     "difficulty": "Easy",
     "image": "rec054.webp",
     "ingredients": [
-      { "ingredient": "ING-M410", "quantity": 1000 },
-      { "ingredient": "ING-V210", "quantity": 2 },
-      { "ingredient": "ING-V290", "quantity": 400 },
-      { "ingredient": "ING-V225", "quantity": 3 },
-      { "ingredient": "ING-B710", "quantity": 480 },
-      { "ingredient": "ING-C950", "quantity": 800 },
-      { "ingredient": "ING-P065", "quantity": 400 },
-      { "ingredient": "ING-V255", "quantity": 240 },
-      { "ingredient": "ING-C999", "quantity": 4 },
-      { "ingredient": "ING-S110", "quantity": 4 },
-      { "ingredient": "ING-S120", "quantity": 2 },
-      { "ingredient": "ING-S170", "quantity": 2 },
-      { "ingredient": "ING-P145", "quantity": 2 },
-      { "ingredient": "ING-O805", "quantity": 2 }
+      {
+        "ingredient": "ING-M410",
+        "quantity": 1000,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V210",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V290",
+        "quantity": 400,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V225",
+        "quantity": 3,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-B710",
+        "quantity": 480,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-C950",
+        "quantity": 800,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-P065",
+        "quantity": 400,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 4,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S110",
+        "quantity": 4,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S120",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-S170",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-O805",
+        "quantity": 2,
+        "section": "For the casserole"
+      },
+      {
+        "ingredient": "ING-V255",
+        "quantity": 240,
+        "section": "To finish"
+      },
+      {
+        "ingredient": "ING-P145",
+        "quantity": 2,
+        "section": "To finish"
+      }
     ],
     "steps": [
       "Heat half the olive oil in a large lidded casserole over a medium-high heat and brown the turkey mince in two batches, transferring each batch to a clean plate.",
@@ -3167,7 +5422,12 @@
       "Stir in the drained butter beans and simmer uncovered for eight minutes until the casserole has thickened.",
       "Fold through the baby spinach and bottled lemon juice, allow the spinach to wilt, then season with pepper and salt only if needed."
     ],
-    "nutrition": { "calories": 390, "protein": 43, "carbs": 31, "fat": 10 },
+    "nutrition": {
+      "calories": 390,
+      "protein": 43,
+      "carbs": 31,
+      "fat": 10
+    },
     "tip": "Cool promptly and freeze in airtight portions for up to three months; defrost in the fridge and reheat thoroughly. Frozen sliced peppers can replace fresh peppers to save preparation time."
   }
 ]

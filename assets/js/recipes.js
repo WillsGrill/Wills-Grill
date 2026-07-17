@@ -93,7 +93,8 @@ function normaliseRecipe(value) {
                 ...item,
                 ingredient: String(item.ingredient || ""),
                 quantity: number(item.quantity),
-                unit: typeof item.unit === "string" ? item.unit : ""
+                unit: typeof item.unit === "string" ? item.unit : "",
+                section: typeof item.section === "string" ? item.section.trim() : ""
             })).filter(item => item.ingredient)
             : [],
         steps: Array.isArray(value.steps) ? value.steps.map(String).filter(Boolean) : [],
@@ -354,11 +355,7 @@ function renderRecipePage() {
 
     }
 
-    const ingredientHTML = recipe.ingredients.map(item =>
-
-        `<li>${escapeHTML(formatIngredient(item))}</li>`
-
-    ).join("");
+    const ingredientHTML = renderSectionedIngredientHTML(recipe.ingredients);
 
     const methodHTML = recipe.steps.map((step, index) =>
 
@@ -529,6 +526,18 @@ ${methodHTML}
 
 }
 
+function renderSectionedIngredientHTML(items) {
+    let previousSection = null;
+    return items.map(item => {
+        const section = String(item.section || "").trim();
+        const heading = section && section !== previousSection
+            ? `<li class="ingredient-section-heading"><h4>${escapeHTML(section)}</h4></li>`
+            : "";
+        previousSection = section;
+        return `${heading}<li>${escapeHTML(formatIngredient(item))}</li>`;
+    }).join("");
+}
+
 function updateRecipeMetadata(recipe) {
     document.title = `${recipe.name} | Will's Grill`;
     const description = recipe.description;
@@ -621,7 +630,7 @@ async function generateRecipePDF(recipe) {
     WillsGrillPDF.drawRecipePages(doc, recipe, {
         assets,
         imageData,
-        ingredientLines: recipe.ingredients.map(formatIngredient),
+        ingredientLines: formatSectionedIngredientLines(recipe.ingredients),
         serves: recipe.serves
     });
     WillsGrillPDF.addPageNumbers(doc);

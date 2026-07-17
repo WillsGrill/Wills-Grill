@@ -355,6 +355,23 @@ a.button.button-outline:hover {
     background: #356f8a;
 }
 
+.mp-list-ingredients .ingredient-section-heading {
+    list-style: none;
+    margin: 12px 0 5px;
+}
+
+.mp-list-ingredients .ingredient-section-heading:first-child {
+    margin-top: 0;
+}
+
+.mp-list-ingredients .ingredient-section-heading h4 {
+    margin: 0;
+    color: #66764a;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
 .mp-recipe-image img {
     display: block;
     width: 100%;

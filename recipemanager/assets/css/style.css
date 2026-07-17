@@ -1039,6 +1039,19 @@ textarea{
     vertical-align:top;
 }
 
+.editor-table th:first-child,
+.editor-table td:first-child{
+    width:24%;
+}
+
+@media (max-width:760px){
+    .editor-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+}
+
 .section-header{
 
     display:flex;

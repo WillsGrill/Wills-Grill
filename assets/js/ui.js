@@ -95,6 +95,18 @@ function formatIngredient(item) {
 
 }
 
+function formatSectionedIngredientLines(items) {
+    let previousSection = null;
+    return items.flatMap(item => {
+        const section = String(item.section || "").trim();
+        const lines = [];
+        if (section && section !== previousSection) lines.push(`§${section}`);
+        lines.push(formatIngredient(item));
+        previousSection = section;
+        return lines;
+    });
+}
+
 function formatQuantity(value) {
     const quantity = Number(value);
     if (!Number.isFinite(quantity)) return String(value ?? "");

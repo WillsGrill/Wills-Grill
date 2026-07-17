@@ -234,13 +234,19 @@ function buildRecipePage(recipe) {
     const quantity = parseInt(recipe.quantity || 1, 10);
     const scaledQuantity = Number.isFinite(quantity) && quantity > 0 ? quantity : 1;
 
+    let previousIngredientSection = null;
     const ingredientHTML = recipe.ingredients.map(item => {
         const scaledItem = {
             ...item,
             quantity: item.quantity * scaledQuantity
         };
         const text = formatIngredient(scaledItem);
-        return `<li>${escapeHTML(text)}</li>`;
+        const section = String(item.section || "").trim();
+        const heading = section && section !== previousIngredientSection
+            ? `<li class="ingredient-section-heading"><h4>${escapeHTML(section)}</h4></li>`
+            : "";
+        previousIngredientSection = section;
+        return `${heading}<li>${escapeHTML(text)}</li>`;
     }).join("");
 
     const methodHTML = recipe.steps.map((step, index) => `
@@ -631,7 +637,7 @@ function drawMealPackRecipePage(doc, recipe, assets) {
     return WillsGrillPDF.drawRecipePages(doc, recipe, {
         assets,
         imageData: assets.recipeImages[recipe.image] || null,
-        ingredientLines: scaledIngredients.map(formatIngredient),
+        ingredientLines: formatSectionedIngredientLines(scaledIngredients),
         serves: recipe.serves * scaledQuantity
     });
 }

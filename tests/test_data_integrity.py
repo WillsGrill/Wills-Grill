@@ -34,6 +34,9 @@ class DataIntegrityTests(unittest.TestCase):
                     self.assertIsInstance(row["quantity"], (int, float))
                     self.assertNotIsInstance(row["quantity"], bool)
                     self.assertGreater(row["quantity"], 0)
+                    if "section" in row:
+                        self.assertIsInstance(row["section"], str)
+                        self.assertLessEqual(len(row["section"]), 80)
 
     def test_recipe_images_and_thumbnails_exist(self):
         for recipe in self.recipes:
@@ -53,6 +56,20 @@ class DataIntegrityTests(unittest.TestCase):
     def test_freezeable_recipe_values_are_boolean(self):
         self.assertTrue(all(isinstance(recipe["freezeable"], bool) for recipe in self.recipes if "freezeable" in recipe))
 
+    def test_every_recipe_ingredient_has_a_contiguous_section(self):
+        for recipe in self.recipes:
+            with self.subTest(recipe=recipe["id"]):
+                sections = [row.get("section", "").strip() for row in recipe["ingredients"]]
+                self.assertTrue(all(sections))
+                completed = set()
+                previous = None
+                for section in sections:
+                    if section != previous:
+                        self.assertNotIn(section, completed)
+                        if previous is not None:
+                            completed.add(previous)
+                    previous = section
+
     def test_local_pages_do_not_depend_on_remote_scripts(self):
         for page in [ROOT / "index.html", *(ROOT / "pages").glob("*.html")]:
             with self.subTest(page=page.name):
@@ -69,6 +86,8 @@ class DataIntegrityTests(unittest.TestCase):
                 self.assertIn(f"<title>{html.escape(recipe['name'])} | Will's Grill</title>", markup)
                 self.assertIn('type="application/ld+json"', markup)
                 self.assertIn(f"/recipes/{slug}.html", sitemap)
+                for section in {row["section"] for row in recipe["ingredients"]}:
+                    self.assertIn(f"<h4>{html.escape(section)}</h4>", markup)
 
     def test_public_recipe_strings_have_expected_types(self):
         for recipe in self.recipes:

@@ -170,8 +170,10 @@ const WillsGrillPDF = (() => {
 
         do {
             entries = ingredientLines.map(text => {
-                const lines = wrapText(doc, text, width, { fontSize });
-                return { lines, height: Math.max(4.3, lines.length * lineHeight) };
+                const isHeading = String(text).startsWith("§");
+                const displayText = isHeading ? String(text).slice(1).toUpperCase() : text;
+                const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
+                return { lines, isHeading, height: isHeading ? Math.max(5.6, lines.length * lineHeight) : Math.max(4.3, lines.length * lineHeight) };
             });
             const totalHeight = entries.reduce((sum, entry) => sum + entry.height, 0);
             if (totalHeight <= availableHeight || fontSize <= 6.6) break;
@@ -321,12 +323,15 @@ const WillsGrillPDF = (() => {
         const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 54, 78);
         let ingredientY = 101;
         ingredientLayout.entries.forEach(entry => {
-            doc.setFillColor(...THEME.gold);
-            doc.circle(18, ingredientY - 1, .65, "F");
-            drawText(doc, entry.lines, 20.5, ingredientY, 52, {
-                fontSize: ingredientLayout.fontSize,
+            if (!entry.isHeading) {
+                doc.setFillColor(...THEME.gold);
+                doc.circle(18, ingredientY - 1, .65, "F");
+            }
+            drawText(doc, entry.lines, entry.isHeading ? 17 : 20.5, ingredientY, entry.isHeading ? 55 : 52, {
+                fontSize: entry.isHeading ? ingredientLayout.fontSize - .2 : ingredientLayout.fontSize,
                 lineHeight: ingredientLayout.lineHeight,
-                color: THEME.muted
+                color: entry.isHeading ? THEME.gold : THEME.muted,
+                fontStyle: entry.isHeading ? "bold" : "normal"
             });
             ingredientY += entry.height;
         });
@@ -424,20 +429,25 @@ const WillsGrillPDF = (() => {
             let consumed = 0;
 
             for (const line of remaining) {
-                const lines = wrapText(doc, line, columnWidth - 8, { fontSize: 8 });
-                const height = Math.max(5, lines.length * 3.4);
+                const isHeading = String(line).startsWith("§");
+                const displayText = isHeading ? String(line).slice(1).toUpperCase() : line;
+                const lines = wrapText(doc, displayText, columnWidth - 8, { fontSize: isHeading ? 7.6 : 8 });
+                const height = isHeading ? Math.max(6, lines.length * 3.4) : Math.max(5, lines.length * 3.4);
                 if (y + height > 61 + maxColumnHeight) {
                     if (column === 1) break;
                     column = 1;
                     y = 61;
                 }
                 const x = 19 + (column * (columnWidth + columnGap));
-                doc.setFillColor(...THEME.gold);
-                doc.circle(x, y - 1, .7, "F");
-                drawText(doc, lines, x + 3, y, columnWidth - 8, {
-                    fontSize: 8,
+                if (!isHeading) {
+                    doc.setFillColor(...THEME.gold);
+                    doc.circle(x, y - 1, .7, "F");
+                }
+                drawText(doc, lines, isHeading ? x : x + 3, y, columnWidth - 8, {
+                    fontSize: isHeading ? 7.6 : 8,
                     lineHeight: 3.4,
-                    color: THEME.muted
+                    color: isHeading ? THEME.gold : THEME.muted,
+                    fontStyle: isHeading ? "bold" : "normal"
                 });
                 y += height + 1.5;
                 consumed += 1;
@@ -451,9 +461,12 @@ const WillsGrillPDF = (() => {
         const firstPage = doc.getNumberOfPages();
         const ingredientLines = options.ingredientLines || [];
         const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 54, 78);
-        const ingredientFitCount = ingredientLayout.totalHeight <= 78
+        let ingredientFitCount = ingredientLayout.totalHeight <= 78
             ? ingredientLines.length
             : entriesThatFit(ingredientLayout.entries, 78, 0);
+        if (ingredientFitCount < ingredientLines.length && String(ingredientLines[ingredientFitCount - 1]).startsWith("§")) {
+            ingredientFitCount -= 1;
+        }
         const stepLayout = measureStepLayout(doc, recipe.steps, 105, 81);
         const fitCount = entriesThatFit(stepLayout.entries, 81, 1.2);
         const firstEntries = stepLayout.entries.slice(0, fitCount);
