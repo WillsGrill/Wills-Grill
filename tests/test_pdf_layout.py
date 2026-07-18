@@ -27,6 +27,8 @@ class PdfLayoutTests(unittest.TestCase):
         self.assertIn("WillsGrillPDF.drawRecipePages", mealpack_script)
         self.assertIn("WillsGrillPDF.drawShoppingPages", mealpack_script)
         self.assertIn("assets/images/recipes/thumbs/${recipe.image}", mealpack_script)
+        self.assertIn("quantity: item.quantity * scaledQuantity", mealpack_script)
+        self.assertIn("scaled: scaledQuantity > 1", mealpack_script)
 
         for script in (recipe_script, shopping_script, mealpack_script):
             self.assertNotIn("doc.addImage(", script)
@@ -45,6 +47,36 @@ class PdfLayoutTests(unittest.TestCase):
         ):
             with self.subTest(feature=required_feature):
                 self.assertIn(required_feature, shared_script)
+
+    def test_recipe_status_tags_follow_difficulty_in_the_metadata_row(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn('drawPill(doc, recipe.difficulty, titleX + 74, 65.2, 29);', shared_script)
+        self.assertIn('drawStatusPill(doc, "Treat", statusX, 65.2, 20, THEME.black);', shared_script)
+        self.assertIn('drawStatusPill(doc, "Freezeable", statusX, 65.2, 28, THEME.blue, 6.4);', shared_script)
+
+    def test_recipe_number_is_appended_to_the_pdf_title(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn('const reference = recipeNumber ? `(Recipe ${recipeNumber})` : "";', shared_script)
+        self.assertIn('doc.setTextColor(...THEME.muted);', shared_script)
+        self.assertIn('doc.text(reference, titleX + titleTextWidth + 3, 41.5);', shared_script)
+
+    def test_recipe_pdf_centres_method_text_and_rebalances_type_sizes(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn('const textY = circleY + .75 - (((entry.lines.length - 1) * lineHeight) / 2);', shared_script)
+        self.assertIn('let fontSize = compact ? 8.2 : 8.6;', shared_script)
+        self.assertIn('let tipFontSize = 7.4;', shared_script)
+
+    def test_scaled_meal_pack_recipes_are_labelled_in_gold(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn('options.scaled ? "(Scaled)" : ""', shared_script)
+        self.assertIn('doc.setTextColor(...THEME.gold);', shared_script)
+
+    def test_pdf_header_and_ingredient_section_spacing_are_balanced(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn('doc.text("Healthy food.", 70, 11.6);', shared_script)
+        self.assertIn('doc.text("Simple cooking.", 70, 18);', shared_script)
+        self.assertIn('Math.max(6.6, (lines.length * lineHeight) + 1)', shared_script)
+        self.assertIn('Math.max(5.2, (lines.length * lineHeight) + 1)', shared_script)
 
 
 if __name__ == "__main__":

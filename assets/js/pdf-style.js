@@ -51,7 +51,9 @@ const WillsGrillPDF = (() => {
         doc.rect(0, 27.3, pageWidth, .7, "F");
 
         if (assets.logoData) {
-            doc.addImage(assets.logoData, "WEBP", 6, 1.2, 58, 25.5);
+            // The wordmark sits below the bitmap's midpoint, so lift the asset to
+            // give the visible text equal black space above and below.
+            doc.addImage(assets.logoData, "WEBP", 6, -1.4, 58, 25.5);
         }
 
         doc.setFont("helvetica", "bold");
@@ -61,9 +63,9 @@ const WillsGrillPDF = (() => {
         doc.setFont("helvetica", "bold");
         doc.setFontSize(9);
         doc.setTextColor(...white);
-        doc.text("Healthy food.", 70, 14.2);
+        doc.text("Healthy food.", 70, 11.6);
         doc.setTextColor(...taglineGold);
-        doc.text("Simple cooking.", 70, 20.6);
+        doc.text("Simple cooking.", 70, 18);
 
         doc.setFontSize(7.2);
         doc.setTextColor(...muted);
@@ -154,11 +156,27 @@ const WillsGrillPDF = (() => {
         doc.text(String(label), x + (width / 2), y + 4.9, { align: "center" });
     }
 
-    function sectionTitle(doc, title, x, y) {
+    function drawStatusPill(doc, label, x, y, width, fill, fontSize = 7.2) {
+        doc.setFillColor(...fill);
+        doc.roundedRect(x, y, width, 7.5, 3.75, 3.75, "F");
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(fontSize);
+        doc.setTextColor(...THEME.white);
+        doc.text(String(label).toUpperCase(), x + (width / 2), y + 4.9, { align: "center" });
+    }
+
+    function sectionTitle(doc, title, x, y, suffix = "") {
         doc.setFont("helvetica", "bold");
         doc.setFontSize(9.2);
         doc.setTextColor(...THEME.text);
-        doc.text(String(title).toUpperCase(), x, y);
+        const heading = String(title).toUpperCase();
+        doc.text(heading, x, y);
+        if (suffix) {
+            const headingWidth = doc.getTextWidth(heading);
+            doc.setFontSize(7.2);
+            doc.setTextColor(...THEME.gold);
+            doc.text(String(suffix).toUpperCase(), x + headingWidth + 2, y);
+        }
         doc.setFillColor(...THEME.gold);
         doc.roundedRect(x, y + 2, 12, .8, .4, .4, "F");
     }
@@ -173,7 +191,7 @@ const WillsGrillPDF = (() => {
                 const isHeading = String(text).startsWith("§");
                 const displayText = isHeading ? String(text).slice(1).toUpperCase() : text;
                 const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
-                return { lines, isHeading, height: isHeading ? Math.max(5.6, lines.length * lineHeight) : Math.max(4.3, lines.length * lineHeight) };
+                return { lines, isHeading, height: isHeading ? Math.max(6.6, (lines.length * lineHeight) + 1) : Math.max(4.3, lines.length * lineHeight) };
             });
             const totalHeight = entries.reduce((sum, entry) => sum + entry.height, 0);
             if (totalHeight <= availableHeight || fontSize <= 6.6) break;
@@ -202,7 +220,7 @@ const WillsGrillPDF = (() => {
                 return {
                     lines,
                     isHeading,
-                    height: isHeading ? Math.max(4.2, lines.length * lineHeight) : Math.max(3.4, lines.length * lineHeight)
+                    height: isHeading ? Math.max(5.2, (lines.length * lineHeight) + 1) : Math.max(3.4, lines.length * lineHeight)
                 };
             });
 
@@ -226,10 +244,10 @@ const WillsGrillPDF = (() => {
     }
 
     function measureStepLayout(doc, steps, textWidth, availableHeight, compact = false) {
-        let fontSize = compact ? 7.6 : 8;
-        let lineHeight = compact ? 3.1 : 3.35;
+        let fontSize = compact ? 8.2 : 8.6;
+        let lineHeight = compact ? 3.3 : 3.55;
         let entries = [];
-        const minimumFontSize = compact ? 5.4 : 6.8;
+        const minimumFontSize = compact ? 5.8 : 7.2;
 
         do {
             entries = steps.map((step, index) => {
@@ -283,7 +301,8 @@ const WillsGrillPDF = (() => {
             doc.setFontSize(6.2);
             doc.setTextColor(...THEME.white);
             doc.text(String(startNumber + localIndex), x + 4.8, circleY + .1, { align: "center", baseline: "middle" });
-            drawText(doc, entry.lines, x + 9.2, y + 3.5, width - 12, {
+            const textY = circleY + .75 - (((entry.lines.length - 1) * lineHeight) / 2);
+            drawText(doc, entry.lines, x + 9.2, textY, width - 12, {
                 fontSize,
                 lineHeight,
                 color: THEME.muted
@@ -298,30 +317,29 @@ const WillsGrillPDF = (() => {
         drawRoundedImage(doc, assets.imageData, 16, 33, 54, 41, 3.5);
 
         const titleX = 77;
-        const titleWidth = recipe.treat || recipe.freezeable ? 174 : 199;
-        const titleSize = fitSingleLineFont(doc, recipe.name, titleWidth, 18, 13);
-        drawText(doc, recipe.name, titleX, 41.5, titleWidth, {
-            fontSize: titleSize,
-            lineHeight: 6.5,
-            color: THEME.text,
-            fontStyle: "bold"
-        });
-        if (recipe.treat) {
-            doc.setFillColor(...THEME.black);
-            doc.roundedRect(258, 34, 19, 7.5, 3.75, 3.75, "F");
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(7.2);
-            doc.setTextColor(...THEME.white);
-            doc.text("TREAT", 267.5, 38.9, { align: "center" });
-        }
-        if (recipe.freezeable) {
-            const badgeY = recipe.treat ? 43 : 34;
-            doc.setFillColor(...THEME.blue);
-            doc.roundedRect(252, badgeY, 25, 7.5, 3.75, 3.75, "F");
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(6.4);
-            doc.setTextColor(...THEME.white);
-            doc.text("FREEZEABLE", 264.5, badgeY + 4.9, { align: "center" });
+        const titleWidth = 199;
+        const recipeNumber = String(recipe.id || "").replace(/^REC0*/i, "") || String(recipe.id || "");
+        const reference = recipeNumber ? `(Recipe ${recipeNumber})` : "";
+        let titleSize = 18;
+        let referenceSize = 9;
+        let titleTextWidth;
+        doc.setFont("helvetica", "bold");
+        do {
+            doc.setFontSize(titleSize);
+            titleTextWidth = doc.getTextWidth(recipe.name);
+            referenceSize = Math.max(7, titleSize * .5);
+            doc.setFontSize(referenceSize);
+            if (titleTextWidth + (reference ? 3 + doc.getTextWidth(reference) : 0) <= titleWidth) break;
+            titleSize -= .5;
+        } while (titleSize > 11);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(titleSize);
+        doc.setTextColor(...THEME.text);
+        doc.text(recipe.name, titleX, 41.5);
+        if (reference) {
+            doc.setFontSize(referenceSize);
+            doc.setTextColor(...THEME.muted);
+            doc.text(reference, titleX + titleTextWidth + 3, 41.5);
         }
         let descriptionSize = 8.4;
         let descriptionLines = wrapText(doc, recipe.description, 199, { fontSize: descriptionSize });
@@ -342,6 +360,14 @@ const WillsGrillPDF = (() => {
         drawPill(doc, `${recipe.prepTime + recipe.cookTime} mins`, titleX, 65.2, 34);
         drawPill(doc, `Serves ${serves}`, titleX + 38, 65.2, 32);
         drawPill(doc, recipe.difficulty, titleX + 74, 65.2, 29);
+        let statusX = titleX + 107;
+        if (recipe.treat) {
+            drawStatusPill(doc, "Treat", statusX, 65.2, 20, THEME.black);
+            statusX += 24;
+        }
+        if (recipe.freezeable) {
+            drawStatusPill(doc, "Freezeable", statusX, 65.2, 28, THEME.blue, 6.4);
+        }
     }
 
     function drawRecipeBasePage(doc, recipe, options, firstStepEntries, stepLayout) {
@@ -361,7 +387,7 @@ const WillsGrillPDF = (() => {
 
         drawCard(doc, ingredientsPanel.x, panelY, ingredientsPanel.width, panelHeight);
         drawCard(doc, methodPanel.x, panelY, methodPanel.width, panelHeight);
-        sectionTitle(doc, "Ingredients", 17, 92);
+        sectionTitle(doc, "Ingredients", 17, 92, options.scaled ? "(Scaled)" : "");
         sectionTitle(doc, "Method", methodPanel.x + 5, 92);
 
         const ingredientLayout = compactIngredients
@@ -407,20 +433,20 @@ const WillsGrillPDF = (() => {
             const x = 219 + ((index % 2) * 31.5);
             const y = 103 + (Math.floor(index / 2) * 9.5);
             doc.setFont("helvetica", "bold");
-            doc.setFontSize(6.8);
+            doc.setFontSize(6.2);
             doc.setTextColor(...THEME.muted);
             doc.text(label.toUpperCase(), x, y);
-            doc.setFontSize(9.2);
+            doc.setFontSize(8.4);
             doc.setTextColor(...THEME.text);
             doc.text(String(value), x, y + 4.5);
         });
 
         drawCard(doc, detailsPanel.x, 127, detailsPanel.width, 58);
         sectionTitle(doc, "Chef's Tip", 219, 136);
-        let tipFontSize = 8;
-        let tipLineHeight = 3.45;
+        let tipFontSize = 7.4;
+        let tipLineHeight = 3.2;
         let tipLines = wrapText(doc, recipe.tip, 61, { fontSize: tipFontSize });
-        while ((tipLines.length * tipLineHeight) > 39 && tipFontSize > 6.6) {
+        while ((tipLines.length * tipLineHeight) > 39 && tipFontSize > 6.2) {
             tipFontSize -= .2;
             tipLineHeight -= .08;
             tipLines = wrapText(doc, recipe.tip, 61, { fontSize: tipFontSize });
@@ -457,7 +483,7 @@ const WillsGrillPDF = (() => {
         }
     }
 
-    function drawIngredientContinuationPages(doc, recipe, ingredientLines, assets) {
+    function drawIngredientContinuationPages(doc, recipe, ingredientLines, assets, scaled = false) {
         let remaining = [...ingredientLines];
 
         while (remaining.length) {
@@ -471,7 +497,7 @@ const WillsGrillPDF = (() => {
                 color: THEME.text,
                 fontStyle: "bold"
             });
-            sectionTitle(doc, "Ingredients", 17, 52);
+            sectionTitle(doc, "Ingredients", 17, 52, scaled ? "(Scaled)" : "");
 
             const columnWidth = 126;
             const columnGap = 10;
@@ -484,7 +510,7 @@ const WillsGrillPDF = (() => {
                 const isHeading = String(line).startsWith("§");
                 const displayText = isHeading ? String(line).slice(1).toUpperCase() : line;
                 const lines = wrapText(doc, displayText, columnWidth - 8, { fontSize: isHeading ? 7.6 : 8 });
-                const height = isHeading ? Math.max(6, lines.length * 3.4) : Math.max(5, lines.length * 3.4);
+                const height = isHeading ? Math.max(7, (lines.length * 3.4) + 1) : Math.max(5, lines.length * 3.4);
                 if (y + height > 61 + maxColumnHeight) {
                     if (column === 1) break;
                     column = 1;
@@ -538,7 +564,7 @@ const WillsGrillPDF = (() => {
             drawMethodContinuationPages(doc, recipe, recipe.steps.slice(fitCount), options.assets || {}, fitCount + 1);
         }
         if (ingredientFitCount < ingredientLines.length) {
-            drawIngredientContinuationPages(doc, recipe, ingredientLines.slice(ingredientFitCount), options.assets || {});
+            drawIngredientContinuationPages(doc, recipe, ingredientLines.slice(ingredientFitCount), options.assets || {}, options.scaled);
         }
 
         return { firstPage, lastPage: doc.getNumberOfPages() };

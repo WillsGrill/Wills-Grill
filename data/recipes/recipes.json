@@ -1619,13 +1619,13 @@
     "category": "Turkey",
     "prepTime": 20,
     "cookTime": 25,
-    "serves": 4,
+    "serves": 2,
     "difficulty": "Medium",
     "image": "rec018.webp",
     "ingredients": [
       {
         "ingredient": "ING-M410",
-        "quantity": 350,
+        "quantity": 250,
         "section": "For the meatballs"
       },
       {
@@ -1635,12 +1635,12 @@
       },
       {
         "ingredient": "ING-G635",
-        "quantity": 40,
+        "quantity": 30,
         "section": "For the meatballs"
       },
       {
         "ingredient": "ING-D515",
-        "quantity": 20,
+        "quantity": 15,
         "section": "For the meatballs"
       },
       {
@@ -1650,67 +1650,72 @@
       },
       {
         "ingredient": "ING-S105",
-        "quantity": 1,
+        "quantity": 0.75,
         "section": "For the meatballs"
       },
       {
         "ingredient": "ING-V210",
-        "quantity": 1,
+        "quantity": 0.5,
         "section": "For the tomato sauce"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 1,
+        "quantity": 2,
+        "section": "For the tomato sauce"
+      },
+      {
+        "ingredient": "ING-P100",
+        "quantity": 0.5,
         "section": "For the tomato sauce"
       },
       {
         "ingredient": "ING-C955",
-        "quantity": 400,
+        "quantity": 250,
         "section": "For the tomato sauce"
       },
       {
         "ingredient": "ING-V255",
-        "quantity": 120,
-        "section": "For the tomato sauce"
-      },
-      {
-        "ingredient": "ING-H001",
-        "quantity": 5,
+        "quantity": 60,
         "section": "For the tomato sauce"
       },
       {
         "ingredient": "ING-O801",
-        "quantity": 1,
+        "quantity": 0.5,
         "section": "For the tomato sauce"
       },
       {
         "ingredient": "ING-G705",
-        "quantity": 180,
+        "quantity": 90,
         "section": "For the pasta"
       },
       {
+        "ingredient": "ING-H001",
+        "quantity": 2.5,
+        "section": "To finish"
+      },
+      {
         "ingredient": "ING-D515",
-        "quantity": 10,
+        "quantity": 5,
         "section": "To finish"
       }
     ],
     "steps": [
-      "Mix the turkey mince with the egg, breadcrumbs, parmesan, salt and pepper.",
-      "Shape the mixture into meatballs.",
-      "Brown the meatballs in olive oil in a large pan.",
-      "Add the fresh onion and Easy Garlic and soften them gently.",
-      "Pour in the passata and simmer until the sauce thickens.",
-      "Cook the wholemeal penne until al dente.",
-      "Wilt the baby spinach into the sauce, then toss through the wholemeal penne, meatballs and basil.",
-      "Serve with extra parmesan scattered on top."
+      "Mix the turkey mince with the egg, breadcrumbs, 15g parmesan, salt and black pepper until just combined.",
+      "With damp hands, shape the mixture into 12 evenly sized meatballs.",
+      "Heat the extra virgin olive oil in a large frying pan over a medium-high heat and brown the meatballs all over for 5 minutes.",
+      "Push the meatballs to one side, add the onion and soften for 4 minutes, then stir in the Easy Garlic for 1 minute.",
+      "Pour in the passata, stir in the Marmite and simmer gently for 12 to 15 minutes, turning the meatballs occasionally, until the sauce has thickened and the turkey is cooked through with no pink remaining.",
+      "Meanwhile, cook the wholemeal penne in boiling water until al dente, then drain.",
+      "Stir the baby spinach into the tomato sauce until wilted, then toss through the drained penne and remove the pan from the heat.",
+      "Tear over the fresh basil, fold it through the pasta and serve immediately with the remaining 5g parmesan scattered on top."
     ],
     "nutrition": {
-      "calories": 456,
-      "protein": 33,
-      "carbs": 48,
-      "fat": 15
+      "calories": 550,
+      "protein": 42,
+      "carbs": 52,
+      "fat": 18
     },
-    "tip": "Wet your hands slightly when rolling the meatballs to stop the mixture sticking."
+    "tip": "The cooked meatballs and tomato sauce freeze well without the pasta for up to 3 months. Defrost in the fridge, reheat until piping hot throughout, then cook fresh pasta and add the spinach and basil."
   },
   {
     "id": "REC019",

@@ -638,7 +638,8 @@ function drawMealPackRecipePage(doc, recipe, assets) {
         assets,
         imageData: assets.recipeImages[recipe.image] || null,
         ingredientLines: formatSectionedIngredientLines(scaledIngredients),
-        serves: recipe.serves * scaledQuantity
+        serves: recipe.serves * scaledQuantity,
+        scaled: scaledQuantity > 1
     });
 }
 
