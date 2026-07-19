@@ -240,13 +240,12 @@ function buildRecipePage(recipe) {
             ...item,
             quantity: item.quantity * scaledQuantity
         };
-        const text = formatIngredient(scaledItem);
         const section = String(item.section || "").trim();
         const heading = section && section !== previousIngredientSection
             ? `<li class="ingredient-section-heading"><h4>${escapeHTML(section)}</h4></li>`
             : "";
         previousIngredientSection = section;
-        return `${heading}<li>${escapeHTML(text)}</li>`;
+        return `${heading}<li>${escapeHTML(formatRecipeIngredient(scaledItem))}</li>`;
     }).join("");
 
     const methodHTML = recipe.steps.map((step, index) => `

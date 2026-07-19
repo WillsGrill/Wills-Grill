@@ -95,13 +95,23 @@ function formatIngredient(item) {
 
 }
 
+function formatIngredientPreparation(item) {
+    return String(item?.preparation || "").trim();
+}
+
+function formatRecipeIngredient(item) {
+    const ingredient = formatIngredient(item);
+    const preparation = formatIngredientPreparation(item);
+    return preparation ? `${ingredient}, ${preparation}.` : ingredient;
+}
+
 function formatSectionedIngredientLines(items) {
     let previousSection = null;
     return items.flatMap(item => {
         const section = String(item.section || "").trim();
         const lines = [];
         if (section && section !== previousSection) lines.push(`§${section}`);
-        lines.push(formatIngredient(item));
+        lines.push(formatRecipeIngredient(item));
         previousSection = section;
         return lines;
     });

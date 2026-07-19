@@ -704,7 +704,7 @@ select:focus{
     position:fixed;
     top:0;
     right:-100%;
-    width:min(760px, 100%);
+    width:min(1080px, 100%);
     height:100vh;
     background:var(--sidebar);
     border-left:1px solid var(--border);
@@ -1030,6 +1030,7 @@ textarea{
 
     width:100%;
     border-collapse:collapse;
+    table-layout:fixed;
 }
 
 .editor-table th,
@@ -1041,12 +1042,39 @@ textarea{
 
 .editor-table th:first-child,
 .editor-table td:first-child{
-    width:24%;
+    width:18%;
+}
+
+.editor-table th:nth-child(2),
+.editor-table td:nth-child(2){
+    width:29%;
+}
+
+.editor-table th:nth-child(3),
+.editor-table td:nth-child(3){
+    width:11%;
+}
+
+.editor-table th:nth-child(4),
+.editor-table td:nth-child(4){
+    width:30%;
+}
+
+.editor-table th:last-child,
+.editor-table td:last-child{
+    width:12%;
+}
+
+.editor-table input[data-field="preparation"]{
+    min-height:44px;
+    padding:10px 12px;
+    font-size:1rem;
 }
 
 @media (max-width:760px){
     .editor-table{
         display:block;
+        min-width:820px;
         overflow-x:auto;
         white-space:nowrap;
     }

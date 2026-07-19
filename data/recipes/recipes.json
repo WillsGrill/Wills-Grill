@@ -13,7 +13,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-O801",
@@ -38,27 +39,32 @@
       {
         "ingredient": "ING-B705",
         "quantity": 120,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-D505",
         "quantity": 60,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-C975",
@@ -68,7 +74,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the dressing"
+        "section": "For the dressing",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-O801",
@@ -113,12 +120,14 @@
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the salmon"
+        "section": "For the salmon",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H015",
         "quantity": 5,
-        "section": "For the salmon"
+        "section": "For the salmon",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-S105",
@@ -133,17 +142,20 @@
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the Spanish grains"
+        "section": "For the Spanish grains",
+        "preparation": "zested"
       },
       {
         "ingredient": "ING-V300",
         "quantity": 160,
-        "section": "For the vegetables"
+        "section": "For the vegetables",
+        "preparation": "trimmed"
       },
       {
         "ingredient": "ING-V305",
         "quantity": 140,
-        "section": "For the vegetables"
+        "section": "For the vegetables",
+        "preparation": "trimmed"
       },
       {
         "ingredient": "ING-O801",
@@ -203,7 +215,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-S105",
@@ -238,17 +251,20 @@
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the pitta filling"
+        "section": "For the pitta filling",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the pitta filling"
+        "section": "For the pitta filling",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-D505",
         "quantity": 30,
-        "section": "For the pitta filling"
+        "section": "For the pitta filling",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-C997",
@@ -258,7 +274,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the tzatziki"
+        "section": "For the tzatziki",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -282,9 +299,9 @@
   {
     "id": "REC004",
     "name": "BBQ Chicken Souvlaki",
-    "description": "With Tzatziki, Greek Salad & Warm Pitta",
+    "description": "With Homemade Garlic Tzatziki, Charred Pepper, Greek Salad & Warm Pitta",
     "category": "Chicken",
-    "prepTime": 20,
+    "prepTime": 25,
     "cookTime": 15,
     "serves": 2,
     "difficulty": "Medium",
@@ -293,12 +310,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-C901",
-        "quantity": 1,
-        "section": "For the chicken"
+        "quantity": 0.5,
+        "section": "For the chicken",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-O801",
@@ -322,23 +341,27 @@
       },
       {
         "ingredient": "ING-V250",
-        "quantity": 1,
-        "section": "For the Greek salad"
+        "quantity": 0.5,
+        "section": "For the Greek salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-D505",
         "quantity": 50,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-C975",
@@ -346,33 +369,62 @@
         "section": "For the Greek salad"
       },
       {
-        "ingredient": "ING-G650",
-        "quantity": 2,
-        "section": "To serve"
+        "ingredient": "ING-V225",
+        "quantity": 1,
+        "section": "For the charred pepper",
+        "preparation": "quartered and deseeded"
       },
       {
-        "ingredient": "ING-C997",
-        "quantity": 120,
+        "ingredient": "ING-D501",
+        "quantity": 150,
+        "section": "For the garlic tzatziki"
+      },
+      {
+        "ingredient": "ING-V250",
+        "quantity": 0.5,
+        "section": "For the garlic tzatziki",
+        "preparation": "coarsely grated"
+      },
+      {
+        "ingredient": "ING-C999",
+        "quantity": 2,
+        "section": "For the garlic tzatziki"
+      },
+      {
+        "ingredient": "ING-C901",
+        "quantity": 0.5,
+        "section": "For the garlic tzatziki",
+        "preparation": "juiced"
+      },
+      {
+        "ingredient": "ING-H015",
+        "quantity": 5,
+        "section": "For the garlic tzatziki",
+        "preparation": "finely chopped"
+      },
+      {
+        "ingredient": "ING-G650",
+        "quantity": 2,
         "section": "To serve"
       }
     ],
     "steps": [
-      "Cut the chicken into strips and marinate with extra virgin olive oil, Easy Garlic, oregano, lemon juice and zest, and black pepper.",
-      "Cook the chicken on a hot griddle, lined baking tray or air-fryer basket until nicely charred and cooked through.",
-      "Prepare a Greek salad with cucumber, cherry tomatoes, red onion, feta and olives.",
-      "Warm the pittas in a dry pan or oven.",
-      "Stir the tzatziki so it is smooth and ready to spoon over the chicken.",
-      "Pile the salad into each pitta and top with the chicken strips.",
-      "Add a generous spoonful of tzatziki and a little extra lemon if needed.",
-      "Serve with the remaining salad on the side."
+      "Squeeze the grated cucumber firmly to remove excess water, then mix it with the Greek yoghurt, 2 teaspoons Easy Garlic, dill and the juice of half a lemon; season with black pepper and chill while you cook.",
+      "Coat the chicken strips with the olive oil, remaining Easy Garlic, oregano, black pepper and the zest and juice of half a lemon.",
+      "Heat a large griddle pan or barbecue until very hot, add the pepper quarters and cook for 3 minutes to give them a head start.",
+      "Add the chicken to the griddle alongside the pepper and cook everything for 6 to 8 minutes, turning regularly, until the pepper is softened and charred and the chicken has no pink remaining.",
+      "Toss the diced cucumber, halved tomatoes, sliced red onion, feta and olives together, then slice the charred pepper into strips.",
+      "Warm the wholemeal pittas in a dry pan or oven until soft and pliable.",
+      "Split each pitta and fill with the Greek salad, charred pepper and hot chicken strips.",
+      "Spoon over the garlic tzatziki and serve immediately with any remaining salad and tzatziki alongside."
     ],
     "nutrition": {
-      "calories": 640,
-      "protein": 49,
-      "carbs": 60,
-      "fat": 25
+      "calories": 620,
+      "protein": 51,
+      "carbs": 64,
+      "fat": 22
     },
-    "tip": "If time allows, marinate the chicken for 30 minutes before cooking for extra flavour."
+    "tip": "The tzatziki can be made a day ahead and refrigerated in a covered container. Refrigerate leftover cooked chicken for up to 2 days and reheat until piping hot; assemble the pittas only when serving."
   },
   {
     "id": "REC005",
@@ -388,7 +440,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-S105",
@@ -418,7 +471,8 @@
       {
         "ingredient": "ING-D505",
         "quantity": 35,
-        "section": "For the wraps"
+        "section": "For the wraps",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-V255",
@@ -428,22 +482,26 @@
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the wraps"
+        "section": "For the wraps",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the wraps"
+        "section": "For the wraps",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the wraps"
+        "section": "For the wraps",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the wraps"
+        "section": "For the wraps",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -484,7 +542,8 @@
       {
         "ingredient": "ING-B715",
         "quantity": 200,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-C950",
@@ -494,7 +553,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -504,7 +564,8 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-O805",
@@ -534,7 +595,8 @@
       {
         "ingredient": "ING-H010",
         "quantity": 5,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "roughly chopped"
       }
     ],
     "steps": [
@@ -569,17 +631,20 @@
       {
         "ingredient": "ING-F370",
         "quantity": 290,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-B705",
         "quantity": 200,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V265",
@@ -589,17 +654,20 @@
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V420",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "cored and diced"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 5,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-P145",
@@ -614,7 +682,8 @@
       {
         "ingredient": "ING-C970",
         "quantity": 1,
-        "section": "For the dressing"
+        "section": "For the dressing",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-C910",
@@ -664,7 +733,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the mackerel parcels"
+        "section": "For the mackerel parcels",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-O801",
@@ -679,7 +749,8 @@
       {
         "ingredient": "ING-H015",
         "quantity": 5,
-        "section": "For the mackerel parcels"
+        "section": "For the mackerel parcels",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-S101",
@@ -699,12 +770,14 @@
       {
         "ingredient": "ING-V300",
         "quantity": 120,
-        "section": "For the vegetables"
+        "section": "For the vegetables",
+        "preparation": "trimmed"
       },
       {
         "ingredient": "ING-V305",
         "quantity": 100,
-        "section": "For the vegetables"
+        "section": "For the vegetables",
+        "preparation": "trimmed"
       }
     ],
     "steps": [
@@ -739,7 +812,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 200,
-        "section": "For the shakshuka"
+        "section": "For the shakshuka",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-D530",
@@ -754,12 +828,14 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the shakshuka"
+        "section": "For the shakshuka",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the shakshuka"
+        "section": "For the shakshuka",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -779,7 +855,8 @@
       {
         "ingredient": "ING-D505",
         "quantity": 50,
-        "section": "For the shakshuka"
+        "section": "For the shakshuka",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-V255",
@@ -849,12 +926,14 @@
       {
         "ingredient": "ING-V201",
         "quantity": 100,
-        "section": "For the pasta"
+        "section": "For the pasta",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the pasta"
+        "section": "For the pasta",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C999",
@@ -884,17 +963,20 @@
       {
         "ingredient": "ING-D515",
         "quantity": 25,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely grated"
       },
       {
         "ingredient": "ING-H001",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -930,7 +1012,8 @@
       {
         "ingredient": "ING-F305",
         "quantity": 300,
-        "section": "For the fishcakes"
+        "section": "For the fishcakes",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-D530",
@@ -945,17 +1028,20 @@
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "For the fishcakes"
+        "section": "For the fishcakes",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 5,
-        "section": "For the fishcakes"
+        "section": "For the fishcakes",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the fishcakes"
+        "section": "For the fishcakes",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-O801",
@@ -975,7 +1061,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 0.25,
-        "section": "For the sweet chilli dip"
+        "section": "For the sweet chilli dip",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -995,7 +1082,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 0.25,
-        "section": "For the slaw"
+        "section": "For the slaw",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-P060",
@@ -1014,7 +1102,7 @@
       }
     ],
     "steps": [
-      "Flake the pollock and mix it with the egg, panko, spring onions and coriander.",
+      "Finely chop the pollock and mix it with the egg, panko, spring onions and coriander.",
       "Season the mixture with salt, pepper and a squeeze of lime.",
       "Shape into small fishcakes and chill briefly if the mixture feels soft.",
       "Mix the Greek yoghurt, honey, chilli flakes and a little lime juice for the dip.",
@@ -1055,7 +1143,8 @@
       {
         "ingredient": "ING-H005",
         "quantity": 5,
-        "section": "For the herb-crusted cod"
+        "section": "For the herb-crusted cod",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-S170",
@@ -1065,7 +1154,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the herb-crusted cod"
+        "section": "For the herb-crusted cod",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-C915",
@@ -1080,17 +1170,20 @@
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V245",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-O801",
@@ -1145,42 +1238,50 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the salmon"
+        "section": "For the salmon",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H001",
         "quantity": 5,
-        "section": "For the salmon"
+        "section": "For the salmon",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 5,
-        "section": "For the salmon"
+        "section": "For the salmon",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into roasting pieces"
       },
       {
         "ingredient": "ING-V245",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into roasting pieces"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into roasting pieces"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the roasted vegetables"
+        "section": "For the roasted vegetables",
+        "preparation": "cut into wedges"
       },
       {
         "ingredient": "ING-O801",
@@ -1245,27 +1346,32 @@
       {
         "ingredient": "ING-B701",
         "quantity": 150,
-        "section": "For the couscous and vegetables"
+        "section": "For the couscous and vegetables",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the couscous and vegetables"
+        "section": "For the couscous and vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V245",
         "quantity": 1,
-        "section": "For the couscous and vegetables"
+        "section": "For the couscous and vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 2,
-        "section": "For the couscous and vegetables"
+        "section": "For the couscous and vegetables",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the couscous and vegetables"
+        "section": "For the couscous and vegetables",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-O801",
@@ -1285,22 +1391,26 @@
       {
         "ingredient": "ING-D510",
         "quantity": 140,
-        "section": "For the halloumi"
+        "section": "For the halloumi",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-H020",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -1350,7 +1460,8 @@
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the seafood rice"
+        "section": "For the seafood rice",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-C999",
@@ -1385,12 +1496,14 @@
       {
         "ingredient": "ING-H005",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -1425,7 +1538,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the shawarma chicken"
+        "section": "For the shawarma chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-C999",
@@ -1465,22 +1579,26 @@
       {
         "ingredient": "ING-V255",
         "quantity": 100,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "roughly chopped"
       },
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-D501",
@@ -1495,7 +1613,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the garlic yoghurt"
+        "section": "For the garlic yoghurt",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -1530,7 +1649,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-S150",
@@ -1570,27 +1690,32 @@
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the gyros"
+        "section": "For the gyros",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the gyros"
+        "section": "For the gyros",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 120,
-        "section": "For the gyros"
+        "section": "For the gyros",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-D505",
         "quantity": 50,
-        "section": "For the gyros"
+        "section": "For the gyros",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the gyros"
+        "section": "For the gyros",
+        "preparation": "juiced"
       }
     ],
     "steps": [
@@ -1641,7 +1766,8 @@
       {
         "ingredient": "ING-D515",
         "quantity": 15,
-        "section": "For the meatballs"
+        "section": "For the meatballs",
+        "preparation": "finely grated"
       },
       {
         "ingredient": "ING-S101",
@@ -1656,7 +1782,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 0.5,
-        "section": "For the tomato sauce"
+        "section": "For the tomato sauce",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C999",
@@ -1691,12 +1818,14 @@
       {
         "ingredient": "ING-H001",
         "quantity": 2.5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "torn"
       },
       {
         "ingredient": "ING-D515",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely grated"
       }
     ],
     "steps": [
@@ -1731,12 +1860,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 250,
-        "section": "For the chicken and feta bake"
+        "section": "For the chicken and feta bake",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-D505",
         "quantity": 140,
-        "section": "For the chicken and feta bake"
+        "section": "For the chicken and feta bake",
+        "preparation": "left whole"
       },
       {
         "ingredient": "ING-V201",
@@ -1751,7 +1882,8 @@
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the chicken and feta bake"
+        "section": "For the chicken and feta bake",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-O801",
@@ -1781,7 +1913,8 @@
       {
         "ingredient": "ING-H001",
         "quantity": 5,
-        "section": "For the pasta"
+        "section": "For the pasta",
+        "preparation": "torn"
       },
       {
         "ingredient": "ING-V255",
@@ -1822,12 +1955,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 375,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-B701",
         "quantity": 400,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V255",
@@ -1837,7 +1972,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -1887,7 +2023,8 @@
       {
         "ingredient": "ING-H010",
         "quantity": 5,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "roughly chopped"
       }
     ],
     "steps": [
@@ -1923,22 +2060,26 @@
       {
         "ingredient": "ING-M401",
         "quantity": 500,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-B710",
         "quantity": 400,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-V245",
         "quantity": 1,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-M450",
         "quantity": 40,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C950",
@@ -1948,12 +2089,14 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -1973,7 +2116,8 @@
       {
         "ingredient": "ING-H025",
         "quantity": 5,
-        "section": "For the stew"
+        "section": "For the stew",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-S105",
@@ -2024,7 +2168,8 @@
       {
         "ingredient": "ING-B730",
         "quantity": 150,
-        "section": "For the bolognese"
+        "section": "For the bolognese",
+        "preparation": "rinsed and drained"
       },
       {
         "ingredient": "ING-C955",
@@ -2039,7 +2184,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the bolognese"
+        "section": "For the bolognese",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C999",
@@ -2069,7 +2215,8 @@
       {
         "ingredient": "ING-H001",
         "quantity": 5,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "torn"
       }
     ],
     "steps": [
@@ -2134,27 +2281,32 @@
       {
         "ingredient": "ING-B710",
         "quantity": 400,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-P010",
         "quantity": 200,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 250,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 2,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-O801",
@@ -2164,7 +2316,8 @@
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "For the butter bean salad"
+        "section": "For the butter bean salad",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -2199,17 +2352,20 @@
       {
         "ingredient": "ING-M401",
         "quantity": 250,
-        "section": "For the skewers"
+        "section": "For the skewers",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the skewers"
+        "section": "For the skewers",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the skewers"
+        "section": "For the skewers",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V201",
@@ -2219,7 +2375,8 @@
       {
         "ingredient": "ING-D510",
         "quantity": 100,
-        "section": "For the skewers"
+        "section": "For the skewers",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-C935",
@@ -2254,22 +2411,26 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the pesto quinoa"
+        "section": "For the pesto quinoa",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-H001",
         "quantity": 8,
-        "section": "For the pesto quinoa"
+        "section": "For the pesto quinoa",
+        "preparation": "torn"
       },
       {
         "ingredient": "ING-D520",
         "quantity": 50,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "torn"
       },
       {
         "ingredient": "ING-H001",
         "quantity": 2,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "torn"
       }
     ],
     "steps": [
@@ -2304,12 +2465,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 400,
-        "section": "For the paella"
+        "section": "For the paella",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-M450",
         "quantity": 50,
-        "section": "For the paella"
+        "section": "For the paella",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-F325",
@@ -2319,7 +2482,8 @@
       {
         "ingredient": "ING-F360",
         "quantity": 400,
-        "section": "For the paella"
+        "section": "For the paella",
+        "preparation": "cleaned and debearded"
       },
       {
         "ingredient": "ING-G715",
@@ -2339,12 +2503,14 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the paella"
+        "section": "For the paella",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the paella"
+        "section": "For the paella",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -2379,12 +2545,14 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "cut into wedges"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -2419,12 +2587,14 @@
       {
         "ingredient": "ING-M440",
         "quantity": 300,
-        "section": "For the teriyaki pork"
+        "section": "For the teriyaki pork",
+        "preparation": "thinly sliced across the grain"
       },
       {
         "ingredient": "ING-V270",
         "quantity": 160,
-        "section": "For the teriyaki pork"
+        "section": "For the teriyaki pork",
+        "preparation": "cut into small florets"
       },
       {
         "ingredient": "ING-V305",
@@ -2434,12 +2604,14 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the teriyaki pork"
+        "section": "For the teriyaki pork",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "For the teriyaki pork"
+        "section": "For the teriyaki pork",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-P060",
@@ -2524,7 +2696,8 @@
       {
         "ingredient": "ING-H025",
         "quantity": 5,
-        "section": "For the venison"
+        "section": "For the venison",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-S105",
@@ -2534,17 +2707,20 @@
       {
         "ingredient": "ING-V280",
         "quantity": 200,
-        "section": "For the roasted roots"
+        "section": "For the roasted roots",
+        "preparation": "cut into slim batons"
       },
       {
         "ingredient": "ING-V400",
         "quantity": 200,
-        "section": "For the roasted roots"
+        "section": "For the roasted roots",
+        "preparation": "cut into slim batons"
       },
       {
         "ingredient": "ING-V325",
         "quantity": 300,
-        "section": "For the roasted roots"
+        "section": "For the roasted roots",
+        "preparation": "cut into slim batons"
       },
       {
         "ingredient": "ING-P070",
@@ -2554,7 +2730,8 @@
       {
         "ingredient": "ING-V215",
         "quantity": 1,
-        "section": "For the blackberry sauce"
+        "section": "For the blackberry sauce",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-P025",
@@ -2599,7 +2776,8 @@
       {
         "ingredient": "ING-M465",
         "quantity": 300,
-        "section": "For the steak"
+        "section": "For the steak",
+        "preparation": "trimmed"
       },
       {
         "ingredient": "ING-S110",
@@ -2619,22 +2797,26 @@
       {
         "ingredient": "ING-V325",
         "quantity": 400,
-        "section": "For the sweet potatoes"
+        "section": "For the sweet potatoes",
+        "preparation": "cut into slim fries"
       },
       {
         "ingredient": "ING-V405",
         "quantity": 2,
-        "section": "For the pak choi"
+        "section": "For the pak choi",
+        "preparation": "halved lengthways"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 20,
-        "section": "For the chimichurri"
+        "section": "For the chimichurri",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "For the chimichurri"
+        "section": "For the chimichurri",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-C999",
@@ -2689,7 +2871,8 @@
       {
         "ingredient": "ING-M440",
         "quantity": 300,
-        "section": "For the pork"
+        "section": "For the pork",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-O810",
@@ -2704,22 +2887,26 @@
       {
         "ingredient": "ING-V250",
         "quantity": 0.5,
-        "section": "For the crunchy slaw"
+        "section": "For the crunchy slaw",
+        "preparation": "peeled into ribbons"
       },
       {
         "ingredient": "ING-V410",
         "quantity": 120,
-        "section": "For the crunchy slaw"
+        "section": "For the crunchy slaw",
+        "preparation": "finely shredded"
       },
       {
         "ingredient": "ING-V280",
         "quantity": 100,
-        "section": "For the crunchy slaw"
+        "section": "For the crunchy slaw",
+        "preparation": "grated"
       },
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "For the crunchy slaw"
+        "section": "For the crunchy slaw",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-P080",
@@ -2729,7 +2916,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the crunchy slaw"
+        "section": "For the crunchy slaw",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-P075",
@@ -2809,22 +2997,26 @@
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the grain bowls"
+        "section": "For the grain bowls",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V245",
         "quantity": 0.5,
-        "section": "For the grain bowls"
+        "section": "For the grain bowls",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the grain bowls"
+        "section": "For the grain bowls",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the grain bowls"
+        "section": "For the grain bowls",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-V201",
@@ -2844,12 +3036,14 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the garlic yoghurt"
+        "section": "For the garlic yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "For the garlic yoghurt"
+        "section": "For the garlic yoghurt",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -2885,27 +3079,32 @@
       {
         "ingredient": "ING-M440",
         "quantity": 500,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "coarsely minced"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-V280",
         "quantity": 150,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-V285",
         "quantity": 2,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-V290",
         "quantity": 200,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-C999",
@@ -2925,7 +3124,8 @@
       {
         "ingredient": "ING-P025",
         "quantity": 1,
-        "section": "For the pork ragù"
+        "section": "For the pork ragù",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-O801",
@@ -2945,12 +3145,14 @@
       {
         "ingredient": "ING-H001",
         "quantity": 10,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "torn"
       },
       {
         "ingredient": "ING-D515",
         "quantity": 20,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely grated"
       }
     ],
     "steps": [
@@ -2991,17 +3193,20 @@
       {
         "ingredient": "ING-V225",
         "quantity": 2,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "halved and deseeded"
       },
       {
         "ingredient": "ING-V230",
         "quantity": 2,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "halved and deseeded"
       },
       {
         "ingredient": "ING-B720",
         "quantity": 240,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-G695",
@@ -3011,7 +3216,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-C999",
@@ -3051,12 +3257,14 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the lime yoghurt"
+        "section": "For the lime yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 10,
-        "section": "For the lime yoghurt"
+        "section": "For the lime yoghurt",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -3097,22 +3305,26 @@
       {
         "ingredient": "ING-B715",
         "quantity": 240,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-V280",
         "quantity": 150,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "grated"
       },
       {
         "ingredient": "ING-C999",
@@ -3132,7 +3344,8 @@
       {
         "ingredient": "ING-P025",
         "quantity": 1,
-        "section": "For the chilli"
+        "section": "For the chilli",
+        "preparation": "crumbled"
       },
       {
         "ingredient": "ING-S120",
@@ -3172,7 +3385,8 @@
       {
         "ingredient": "ING-H010",
         "quantity": 10,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -3208,22 +3422,26 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-B701",
         "quantity": 240,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "cut into half-moons"
       },
       {
         "ingredient": "ING-V215",
         "quantity": 1,
-        "section": "For the curry"
+        "section": "For the curry",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-P095",
@@ -3278,12 +3496,14 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-H005",
         "quantity": 15,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -3368,12 +3588,14 @@
       {
         "ingredient": "ING-V295",
         "quantity": 3,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-P125",
         "quantity": 20,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "roughly chopped"
       }
     ],
     "steps": [
@@ -3408,7 +3630,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the crispy chicken"
+        "section": "For the crispy chicken",
+        "preparation": "cut into strips"
       },
       {
         "ingredient": "ING-P085",
@@ -3423,12 +3646,14 @@
       {
         "ingredient": "ING-V405",
         "quantity": 2,
-        "section": "For the vegetables and egg"
+        "section": "For the vegetables and egg",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V280",
         "quantity": 150,
-        "section": "For the vegetables and egg"
+        "section": "For the vegetables and egg",
+        "preparation": "shredded"
       },
       {
         "ingredient": "ING-D530",
@@ -3438,7 +3663,8 @@
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "For the vegetables and egg"
+        "section": "For the vegetables and egg",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-O815",
@@ -3538,7 +3764,8 @@
       {
         "ingredient": "ING-V250",
         "quantity": 0.5,
-        "section": "For the cucumber"
+        "section": "For the cucumber",
+        "preparation": "cut into thin half-moons"
       },
       {
         "ingredient": "ING-D530",
@@ -3558,7 +3785,8 @@
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "To serve"
+        "section": "To serve",
+        "preparation": "finely sliced"
       }
     ],
     "steps": [
@@ -3618,7 +3846,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the glazed basa"
+        "section": "For the glazed basa",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-S105",
@@ -3638,7 +3867,8 @@
       {
         "ingredient": "ING-V325",
         "quantity": 450,
-        "section": "For the sweet potato wedges"
+        "section": "For the sweet potato wedges",
+        "preparation": "cut into slim wedges"
       },
       {
         "ingredient": "ING-O810",
@@ -3648,12 +3878,14 @@
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-P120",
@@ -3698,7 +3930,8 @@
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the pork"
+        "section": "For the pork",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-P130",
@@ -3728,7 +3961,8 @@
       {
         "ingredient": "ING-B720",
         "quantity": 240,
-        "section": "For the refried beans"
+        "section": "For the refried beans",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-P130",
@@ -3743,22 +3977,26 @@
       {
         "ingredient": "ING-V420",
         "quantity": 1,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "cut into matchsticks"
       },
       {
         "ingredient": "ING-V410",
         "quantity": 100,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "finely shredded"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-O820",
@@ -3768,7 +4006,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the chipotle yoghurt"
+        "section": "For the chipotle yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -3813,12 +4052,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the chicken"
+        "section": "For the chicken",
+        "preparation": "finely chopped"
       },
       {
         "ingredient": "ING-P130",
@@ -3848,7 +4089,8 @@
       {
         "ingredient": "ING-B720",
         "quantity": 240,
-        "section": "For the refried beans"
+        "section": "For the refried beans",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-P130",
@@ -3863,22 +4105,26 @@
       {
         "ingredient": "ING-V420",
         "quantity": 1,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "cut into matchsticks"
       },
       {
         "ingredient": "ING-V410",
         "quantity": 100,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "finely shredded"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-O820",
@@ -3888,7 +4134,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the chipotle yoghurt"
+        "section": "For the chipotle yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -3963,7 +4210,8 @@
       {
         "ingredient": "ING-B720",
         "quantity": 240,
-        "section": "For the refried beans"
+        "section": "For the refried beans",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-P130",
@@ -3978,22 +4226,26 @@
       {
         "ingredient": "ING-V420",
         "quantity": 1,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "cut into matchsticks"
       },
       {
         "ingredient": "ING-V410",
         "quantity": 100,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "finely shredded"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the apple slaw"
+        "section": "For the apple slaw",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-O820",
@@ -4003,7 +4255,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 0.5,
-        "section": "For the lime yoghurt"
+        "section": "For the lime yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -4108,7 +4361,8 @@
       {
         "ingredient": "ING-V295",
         "quantity": 3,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-P120",
@@ -4148,7 +4402,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the tikka chicken"
+        "section": "For the tikka chicken",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-D501",
@@ -4173,7 +4428,8 @@
       {
         "ingredient": "ING-B701",
         "quantity": 240,
-        "section": "For the crispy chickpeas"
+        "section": "For the crispy chickpeas",
+        "preparation": "drained and patted dry"
       },
       {
         "ingredient": "ING-S110",
@@ -4193,22 +4449,26 @@
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.25,
-        "section": "For the salad"
+        "section": "For the salad",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -4218,12 +4478,14 @@
       {
         "ingredient": "ING-H020",
         "quantity": 10,
-        "section": "For the mint yoghurt"
+        "section": "For the mint yoghurt",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.25,
-        "section": "For the mint yoghurt"
+        "section": "For the mint yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-C999",
@@ -4268,7 +4530,8 @@
       {
         "ingredient": "ING-M401",
         "quantity": 300,
-        "section": "For the sticky chicken"
+        "section": "For the sticky chicken",
+        "preparation": "thinly sliced"
       },
       {
         "ingredient": "ING-O815",
@@ -4298,7 +4561,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the dressing"
+        "section": "For the dressing",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-P110",
@@ -4323,12 +4587,14 @@
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the noodle salad"
+        "section": "For the noodle salad",
+        "preparation": "peeled into ribbons"
       },
       {
         "ingredient": "ING-V295",
         "quantity": 3,
-        "section": "For the noodle salad"
+        "section": "For the noodle salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-P120",
@@ -4368,12 +4634,14 @@
       {
         "ingredient": "ING-M401",
         "quantity": 400,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-M450",
         "quantity": 50,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-G625",
@@ -4393,22 +4661,26 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V235",
         "quantity": 1,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V285",
         "quantity": 2,
-        "section": "For the jambalaya base"
+        "section": "For the jambalaya base",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
@@ -4479,17 +4751,20 @@
       {
         "ingredient": "ING-M401",
         "quantity": 500,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "cut into large chunks"
       },
       {
         "ingredient": "ING-B701",
         "quantity": 240,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-P135",
         "quantity": 80,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-C950",
@@ -4499,12 +4774,14 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V280",
         "quantity": 300,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-C999",
@@ -4539,7 +4816,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the tagine"
+        "section": "For the tagine",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-O810",
@@ -4554,12 +4832,14 @@
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the couscous"
+        "section": "For the couscous",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "For the couscous"
+        "section": "For the couscous",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -4600,12 +4880,14 @@
       {
         "ingredient": "ING-V225",
         "quantity": 2,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "halved and deseeded"
       },
       {
         "ingredient": "ING-B720",
         "quantity": 160,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-V375",
@@ -4620,12 +4902,14 @@
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-D525",
         "quantity": 30,
-        "section": "For the stuffed peppers"
+        "section": "For the stuffed peppers",
+        "preparation": "grated"
       },
       {
         "ingredient": "ING-C999",
@@ -4660,7 +4944,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the lime yoghurt"
+        "section": "For the lime yoghurt",
+        "preparation": "zested and juiced"
       }
     ],
     "steps": [
@@ -4716,7 +5001,8 @@
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the turkey keema"
+        "section": "For the turkey keema",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C999",
@@ -4766,12 +5052,14 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -4806,12 +5094,14 @@
       {
         "ingredient": "ING-M440",
         "quantity": 350,
-        "section": "For the pork souvlaki"
+        "section": "For the pork souvlaki",
+        "preparation": "cut into chunks"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the pork souvlaki"
+        "section": "For the pork souvlaki",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-C999",
@@ -4841,12 +5131,14 @@
       {
         "ingredient": "ING-V320",
         "quantity": 400,
-        "section": "For the lemon potatoes"
+        "section": "For the lemon potatoes",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-C901",
         "quantity": 0.5,
-        "section": "For the lemon potatoes"
+        "section": "For the lemon potatoes",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-C999",
@@ -4866,17 +5158,20 @@
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V250",
         "quantity": 1,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the Greek salad"
+        "section": "For the Greek salad",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-D501",
@@ -4886,7 +5181,8 @@
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "For the herby yoghurt"
+        "section": "For the herby yoghurt",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -4922,12 +5218,14 @@
       {
         "ingredient": "ING-M440",
         "quantity": 500,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "cut into bite-sized pieces"
       },
       {
         "ingredient": "ING-B710",
         "quantity": 480,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-C950",
@@ -4937,17 +5235,20 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V230",
         "quantity": 1,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V210",
         "quantity": 1,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V255",
@@ -4992,7 +5293,8 @@
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -5032,7 +5334,8 @@
       {
         "ingredient": "ING-B701",
         "quantity": 240,
-        "section": "For the traybake"
+        "section": "For the traybake",
+        "preparation": "drained and rinsed"
       },
       {
         "ingredient": "ING-V201",
@@ -5042,17 +5345,20 @@
       {
         "ingredient": "ING-V240",
         "quantity": 1,
-        "section": "For the traybake"
+        "section": "For the traybake",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 1,
-        "section": "For the traybake"
+        "section": "For the traybake",
+        "preparation": "cut into wedges"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the traybake"
+        "section": "For the traybake",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-C975",
@@ -5062,7 +5368,8 @@
       {
         "ingredient": "ING-C901",
         "quantity": 1,
-        "section": "For the traybake"
+        "section": "For the traybake",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-C999",
@@ -5092,7 +5399,8 @@
       {
         "ingredient": "ING-H005",
         "quantity": 10,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -5128,7 +5436,8 @@
       {
         "ingredient": "ING-F340",
         "quantity": 2,
-        "section": "For the green curry"
+        "section": "For the green curry",
+        "preparation": "cut into large chunks"
       },
       {
         "ingredient": "ING-P095",
@@ -5143,12 +5452,14 @@
       {
         "ingredient": "ING-V225",
         "quantity": 1,
-        "section": "For the green curry"
+        "section": "For the green curry",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V275",
         "quantity": 160,
-        "section": "For the green curry"
+        "section": "For the green curry",
+        "preparation": "trimmed"
       },
       {
         "ingredient": "ING-V255",
@@ -5158,7 +5469,8 @@
       {
         "ingredient": "ING-V295",
         "quantity": 2,
-        "section": "For the green curry"
+        "section": "For the green curry",
+        "preparation": "sliced, whites and greens separated"
       },
       {
         "ingredient": "ING-P110",
@@ -5173,7 +5485,8 @@
       {
         "ingredient": "ING-C905",
         "quantity": 1,
-        "section": "For the green curry"
+        "section": "For the green curry",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-C930",
@@ -5193,12 +5506,14 @@
       {
         "ingredient": "ING-V295",
         "quantity": 1,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "finely sliced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "To finish"
+        "section": "To finish",
+        "preparation": "chopped"
       }
     ],
     "steps": [
@@ -5268,7 +5583,8 @@
       {
         "ingredient": "ING-V325",
         "quantity": 400,
-        "section": "For the sweet potatoes"
+        "section": "For the sweet potatoes",
+        "preparation": "cut into 2cm cubes"
       },
       {
         "ingredient": "ING-S110",
@@ -5283,32 +5599,38 @@
       {
         "ingredient": "ING-V375",
         "quantity": 160,
-        "section": "For the corn salsa"
+        "section": "For the corn salsa",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-V201",
         "quantity": 160,
-        "section": "For the corn salsa"
+        "section": "For the corn salsa",
+        "preparation": "halved"
       },
       {
         "ingredient": "ING-V205",
         "quantity": 0.5,
-        "section": "For the corn salsa"
+        "section": "For the corn salsa",
+        "preparation": "finely diced"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.75,
-        "section": "For the corn salsa"
+        "section": "For the corn salsa",
+        "preparation": "zested and juiced"
       },
       {
         "ingredient": "ING-H010",
         "quantity": 15,
-        "section": "For the corn salsa"
+        "section": "For the corn salsa",
+        "preparation": "chopped"
       },
       {
         "ingredient": "ING-C905",
         "quantity": 0.25,
-        "section": "For the lime yoghurt"
+        "section": "For the lime yoghurt",
+        "preparation": "juiced"
       },
       {
         "ingredient": "ING-D501",
@@ -5354,22 +5676,26 @@
       {
         "ingredient": "ING-V210",
         "quantity": 2,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-V290",
         "quantity": 400,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "sliced"
       },
       {
         "ingredient": "ING-V225",
         "quantity": 3,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "diced"
       },
       {
         "ingredient": "ING-B710",
         "quantity": 480,
-        "section": "For the casserole"
+        "section": "For the casserole",
+        "preparation": "drained"
       },
       {
         "ingredient": "ING-C950",

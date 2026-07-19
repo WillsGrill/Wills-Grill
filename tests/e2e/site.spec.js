@@ -25,6 +25,19 @@ test("search and filters have a clear empty state", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "No recipes found" })).toBeVisible();
 });
 
+test("ingredient preparation notes appear on recipes and in Recipe Manager", async ({ page }) => {
+  await page.goto("/pages/recipe.html?id=REC001");
+  await expect(page.locator(".ingredients li:not(.ingredient-section-heading)").first()).toContainText("Chicken Breast, cut into strips.");
+  await page.goto("/recipes/rec001.html");
+  await expect(page.locator(".ingredients li:not(.ingredient-section-heading)").first()).toContainText("Chicken Breast, cut into strips.");
+  await page.goto("/recipemanager/pages/recipes.html");
+  await page.locator("[data-action='edit-recipe'][data-recipe-id='REC001']").click();
+  await page.getByRole("tab", { name: "Ingredients" }).click();
+  const preparationField = page.locator("input[data-field='preparation']").first();
+  await expect(preparationField).toHaveValue("cut into strips");
+  expect((await preparationField.boundingBox()).width).toBeGreaterThanOrEqual(180);
+});
+
 test("recipe links, filters, and empty actions behave clearly", async ({ page }) => {
   await page.goto("/pages/browse.html");
   await page.locator(".filter-panel summary").click();

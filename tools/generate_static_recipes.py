@@ -22,6 +22,12 @@ def ingredient_line(item: dict, ingredients: dict[str, dict]) -> str:
     return " ".join(str(part) for part in (quantity, unit, name) if part not in ("", None)).strip()
 
 
+def recipe_ingredient_line(item: dict, ingredients: dict[str, dict]) -> str:
+    line = ingredient_line(item, ingredients)
+    preparation = str(item.get("preparation", "")).strip()
+    return f"{line}, {preparation}." if preparation else line
+
+
 def render_ingredients(items: list[dict], ingredients: dict[str, dict]) -> str:
     parts = []
     previous_section = None
@@ -29,7 +35,7 @@ def render_ingredients(items: list[dict], ingredients: dict[str, dict]) -> str:
         section = str(item.get("section", "")).strip()
         if section and section != previous_section:
             parts.append(f'<li class="ingredient-section-heading"><h4>{html.escape(section)}</h4></li>')
-        parts.append(f"<li>{html.escape(ingredient_line(item, ingredients))}</li>")
+        parts.append(f"<li>{html.escape(recipe_ingredient_line(item, ingredients))}</li>")
         previous_section = section
     return "".join(parts)
 
@@ -42,7 +48,7 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
     image = str(recipe.get("image", ""))
     canonical = f"{BASE_URL}/recipes/{slug}.html"
     image_url = f"{BASE_URL}/assets/images/recipes/{image}" if image else f"{BASE_URL}/assets/images/homepage-hero-image.webp"
-    ingredient_lines = [ingredient_line(item, ingredient_records) for item in recipe.get("ingredients", [])]
+    ingredient_lines = [recipe_ingredient_line(item, ingredient_records) for item in recipe.get("ingredients", [])]
     structured_data = {
         "@context": "https://schema.org",
         "@type": "Recipe",
@@ -96,10 +102,10 @@ def render_page(recipe: dict, ingredient_records: dict[str, dict]) -> str:
 <article class="panel recipe-ingredients"><h1>{name}</h1><p>{description}</p><h2>Ingredients</h2><ul class="ingredients">{ingredients_html}</ul><h2>Method</h2><ol>{steps_html}</ol></article>
 </div></main>
 <footer><div class="wrapper"><p>© Will's Grill</p></div></footer>
-<script src="../assets/js/config.js?v=1.3"></script>
-<script src="../assets/js/recipes.js?v=1.16"></script>
+<script src="../assets/js/config.js?v=1.4"></script>
+<script src="../assets/js/recipes.js?v=1.17"></script>
 <script src="../assets/js/shopping.js?v=1.7"></script>
-<script src="../assets/js/ui.js?v=1.2"></script>
+<script src="../assets/js/ui.js?v=1.3"></script>
 <script src="../assets/js/app.js?v=1.3"></script>
 </body>
 </html>

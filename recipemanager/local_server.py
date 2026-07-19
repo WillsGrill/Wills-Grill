@@ -89,6 +89,8 @@ def validate_data(recipes, ingredients) -> None:
             raise ValueError(f"Recipe {recipe_id} has an invalid ingredient reference or quantity.")
         if any("section" in row and (not isinstance(row["section"], str) or len(row["section"]) > 80) for row in rows):
             raise ValueError(f"Recipe {recipe_id} has an invalid ingredient section.")
+        if any("preparation" in row and (not isinstance(row["preparation"], str) or len(row["preparation"]) > 80) for row in rows):
+            raise ValueError(f"Recipe {recipe_id} has an invalid ingredient preparation note.")
         nutrition = recipe.get("nutrition")
         if not isinstance(nutrition, dict):
             raise ValueError(f"Recipe {recipe_id} needs nutrition values.")

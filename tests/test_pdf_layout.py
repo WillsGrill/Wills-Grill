@@ -75,8 +75,15 @@ class PdfLayoutTests(unittest.TestCase):
         shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
         self.assertIn('doc.text("Healthy food.", 70, 11.6);', shared_script)
         self.assertIn('doc.text("Simple cooking.", 70, 18);', shared_script)
-        self.assertIn('Math.max(6.6, (lines.length * lineHeight) + 1)', shared_script)
-        self.assertIn('Math.max(5.2, (lines.length * lineHeight) + 1)', shared_script)
+        self.assertIn('isHeading ? 6.6 : 4.3', shared_script)
+        self.assertIn('isHeading ? 5.2 : 3.4', shared_script)
+
+    def test_pdf_ingredient_preparation_notes_use_the_shared_seamless_formatter(self):
+        shared_script = (ROOT / "assets/js/pdf-style.js").read_text()
+        self.assertIn("measureIngredientEntry", shared_script)
+        ui_script = (ROOT / "assets/js/ui.js").read_text()
+        self.assertIn('`${ingredient}, ${preparation}.`', ui_script)
+        self.assertIn("lines.push(formatRecipeIngredient(item));", ui_script)
 
 
 if __name__ == "__main__":

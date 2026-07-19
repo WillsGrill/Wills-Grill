@@ -479,12 +479,13 @@ function renderEditor() {
                     <button type="button" class="secondary-button" data-action="add-ingredient">+ Add Ingredient</button>
                 </div>
                 <table class="editor-table">
-                    <caption class="visually-hidden">Ingredients and quantities for this recipe</caption>
+                    <caption class="visually-hidden">Ingredients, quantities and preparation notes for this recipe</caption>
                     <thead>
                         <tr>
                             <th>Section</th>
                             <th>Ingredient</th>
                             <th>Quantity</th>
+                            <th>Preparation</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -631,6 +632,15 @@ function renderIngredientRows(ingredientRows) {
             </td>
             <td>
                 <input type="text" inputmode="decimal" data-field="quantity" data-index="${index}" value="${escapeHtml(row.quantity || "")}" aria-label="Quantity for ingredient ${index + 1}">
+            </td>
+            <td>
+                <input type="text"
+                       data-field="preparation"
+                       data-index="${index}"
+                       value="${escapeHtml(row.preparation || "")}"
+                       maxlength="80"
+                       placeholder="e.g. halved"
+                       aria-label="Preparation note for ingredient ${index + 1}">
             </td>
             <td>
                 <button type="button" class="secondary-button" data-action="remove-ingredient" data-index="${index}">Remove</button>
@@ -1104,10 +1114,12 @@ function readIngredientRows() {
             return item.id === ingredientValue || item.name?.toLowerCase() === typedValue.toLowerCase();
         });
 
+        const preparation = row.querySelector("input[data-field='preparation']")?.value.trim() || "";
         return {
             section: row.querySelector("input[data-field='section']")?.value.trim() || "",
             ingredient: ingredient?.id || typedValue,
-            quantity: parseIngredientQuantity(row.querySelector("input[data-field='quantity']")?.value)
+            quantity: parseIngredientQuantity(row.querySelector("input[data-field='quantity']")?.value),
+            ...(preparation ? { preparation } : {})
         };
     }).filter((row) => row.ingredient || row.quantity);
 
@@ -1242,6 +1254,12 @@ function validateRecipe(recipe) {
 
     if (invalidSection) {
         return "Ingredient sections must be text no longer than 80 characters.";
+    }
+
+    const invalidPreparation = recipe.ingredients.find((row) => row.preparation !== undefined && (typeof row.preparation !== "string" || row.preparation.length > 80));
+
+    if (invalidPreparation) {
+        return "Ingredient preparation notes must be text no longer than 80 characters.";
     }
 
     if (recipe.steps.length !== METHOD_STEP_COUNT || recipe.steps.some((step) => !step)) {

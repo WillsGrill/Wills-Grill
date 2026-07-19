@@ -37,6 +37,11 @@ class DataIntegrityTests(unittest.TestCase):
                     if "section" in row:
                         self.assertIsInstance(row["section"], str)
                         self.assertLessEqual(len(row["section"]), 80)
+                    if "preparation" in row:
+                        self.assertIsInstance(row["preparation"], str)
+                        self.assertTrue(row["preparation"].strip())
+                        self.assertLessEqual(len(row["preparation"]), 80)
+                        self.assertTrue(row["preparation"][0].islower())
 
     def test_recipe_images_and_thumbnails_exist(self):
         for recipe in self.recipes:
@@ -69,6 +74,11 @@ class DataIntegrityTests(unittest.TestCase):
                         if previous is not None:
                             completed.add(previous)
                     previous = section
+
+    def test_every_recipe_has_audited_preparation_notes(self):
+        for recipe in self.recipes:
+            with self.subTest(recipe=recipe["id"]):
+                self.assertTrue(any(row.get("preparation", "").strip() for row in recipe["ingredients"]))
 
     def test_local_pages_do_not_depend_on_remote_scripts(self):
         for page in [ROOT / "index.html", *(ROOT / "pages").glob("*.html")]:

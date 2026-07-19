@@ -181,6 +181,16 @@ const WillsGrillPDF = (() => {
         doc.roundedRect(x, y + 2, 12, .8, .4, .4, "F");
     }
 
+    function measureIngredientEntry(doc, value, width, fontSize, lineHeight, isHeading, minimumHeight) {
+        const displayText = isHeading ? String(value).slice(1).toUpperCase() : String(value);
+        const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
+        return {
+            lines,
+            isHeading,
+            height: Math.max(minimumHeight, (lines.length * lineHeight) + (isHeading ? 1 : 0))
+        };
+    }
+
     function measureIngredientLayout(doc, ingredientLines, width, availableHeight) {
         let fontSize = 7.8;
         let lineHeight = 3.35;
@@ -189,9 +199,7 @@ const WillsGrillPDF = (() => {
         do {
             entries = ingredientLines.map(text => {
                 const isHeading = String(text).startsWith("§");
-                const displayText = isHeading ? String(text).slice(1).toUpperCase() : text;
-                const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
-                return { lines, isHeading, height: isHeading ? Math.max(6.6, (lines.length * lineHeight) + 1) : Math.max(4.3, lines.length * lineHeight) };
+                return measureIngredientEntry(doc, text, width, fontSize, lineHeight, isHeading, isHeading ? 6.6 : 4.3);
             });
             const totalHeight = entries.reduce((sum, entry) => sum + entry.height, 0);
             if (totalHeight <= availableHeight || fontSize <= 6.6) break;
@@ -215,13 +223,7 @@ const WillsGrillPDF = (() => {
             const lineHeight = 2.7 + ((fontSize - 5.6) * .18);
             const entries = ingredientLines.map(text => {
                 const isHeading = String(text).startsWith("§");
-                const displayText = isHeading ? String(text).slice(1).toUpperCase() : text;
-                const lines = wrapText(doc, displayText, width, { fontSize: isHeading ? fontSize - .2 : fontSize });
-                return {
-                    lines,
-                    isHeading,
-                    height: isHeading ? Math.max(5.2, (lines.length * lineHeight) + 1) : Math.max(3.4, lines.length * lineHeight)
-                };
+                return measureIngredientEntry(doc, text, width, fontSize, lineHeight, isHeading, isHeading ? 5.2 : 3.4);
             });
 
             const candidates = [];
@@ -391,8 +393,8 @@ const WillsGrillPDF = (() => {
         sectionTitle(doc, "Method", methodPanel.x + 5, 92);
 
         const ingredientLayout = compactIngredients
-            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 39, 80)
-            : measureIngredientLayout(doc, ingredientLines, 54, 78);
+            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 36, 80)
+            : measureIngredientLayout(doc, ingredientLines, 51, 78);
         const ingredientColumns = compactIngredients ? ingredientLayout.columns : [ingredientLayout.entries];
         ingredientColumns.forEach((entries, columnIndex) => {
             const columnX = 17 + (columnIndex * 43);
@@ -508,9 +510,9 @@ const WillsGrillPDF = (() => {
 
             for (const line of remaining) {
                 const isHeading = String(line).startsWith("§");
-                const displayText = isHeading ? String(line).slice(1).toUpperCase() : line;
-                const lines = wrapText(doc, displayText, columnWidth - 8, { fontSize: isHeading ? 7.6 : 8 });
-                const height = isHeading ? Math.max(7, (lines.length * 3.4) + 1) : Math.max(5, lines.length * 3.4);
+                const entry = measureIngredientEntry(doc, line, columnWidth - 11, 8, 3.4, isHeading, isHeading ? 7 : 5);
+                const lines = entry.lines;
+                const height = entry.height;
                 if (y + height > 61 + maxColumnHeight) {
                     if (column === 1) break;
                     column = 1;
@@ -538,9 +540,9 @@ const WillsGrillPDF = (() => {
     function drawRecipePages(doc, recipe, options = {}) {
         const firstPage = doc.getNumberOfPages();
         const ingredientLines = options.ingredientLines || [];
-        const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 54, 78);
+        const ingredientLayout = measureIngredientLayout(doc, ingredientLines, 51, 78);
         const twoColumnLayout = ingredientLayout.totalHeight > 78
-            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 39, 80)
+            ? measureTwoColumnIngredientLayout(doc, ingredientLines, 36, 80)
             : null;
         const regularStepLayout = measureStepLayout(doc, recipe.steps, 105, 81);
         const compactIngredients = Boolean(twoColumnLayout) || regularStepLayout.totalHeight > 81;

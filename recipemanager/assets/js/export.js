@@ -144,6 +144,9 @@ function validateExportData() {
         if (recipe.ingredients.some((row) => row.section !== undefined && (typeof row.section !== "string" || row.section.length > 80))) {
             return `Recipe ${recipe.id} has an invalid ingredient section.`;
         }
+        if (recipe.ingredients.some((row) => row.preparation !== undefined && (typeof row.preparation !== "string" || row.preparation.length > 80))) {
+            return `Recipe ${recipe.id} has an invalid ingredient preparation note.`;
+        }
         const numericFields = [recipe.prepTime, recipe.cookTime, recipe.serves, recipe.nutrition?.calories, recipe.nutrition?.protein, recipe.nutrition?.carbs, recipe.nutrition?.fat];
         if (numericFields.some((value) => !Number.isFinite(value) || value < 0) || recipe.serves <= 0) {
             return `Recipe ${recipe.id} has invalid timing, serving, or nutrition values.`;

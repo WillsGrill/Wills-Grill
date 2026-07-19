@@ -94,7 +94,8 @@ function normaliseRecipe(value) {
                 ingredient: String(item.ingredient || ""),
                 quantity: number(item.quantity),
                 unit: typeof item.unit === "string" ? item.unit : "",
-                section: typeof item.section === "string" ? item.section.trim() : ""
+                section: typeof item.section === "string" ? item.section.trim() : "",
+                preparation: typeof item.preparation === "string" ? item.preparation.trim() : ""
             })).filter(item => item.ingredient)
             : [],
         steps: Array.isArray(value.steps) ? value.steps.map(String).filter(Boolean) : [],
@@ -534,7 +535,7 @@ function renderSectionedIngredientHTML(items) {
             ? `<li class="ingredient-section-heading"><h4>${escapeHTML(section)}</h4></li>`
             : "";
         previousSection = section;
-        return `${heading}<li>${escapeHTML(formatIngredient(item))}</li>`;
+        return `${heading}<li>${escapeHTML(formatRecipeIngredient(item))}</li>`;
     }).join("");
 }
 
@@ -549,7 +550,7 @@ function updateRecipeMetadata(recipe) {
     const canonical = document.querySelector("link[rel='canonical']");
     if (canonical) canonical.href = new URL(getRecipeURL(recipe.id), location.href).href;
     document.getElementById("recipeStructuredData")?.remove();
-    const ingredientLines = recipe.ingredients.map(formatIngredient);
+    const ingredientLines = recipe.ingredients.map(formatRecipeIngredient);
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "Recipe",
