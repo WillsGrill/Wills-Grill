@@ -4623,10 +4623,10 @@
   {
     "id": "REC045",
     "name": "Chicken & Prawn Jambalaya",
-    "description": "With Peppers, Celery & a Touch of Chorizo",
+    "description": "With Peppers, Prawns & Smoky Chorizo",
     "category": "Chicken",
     "prepTime": 15,
-    "cookTime": 30,
+    "cookTime": 25,
     "serves": 4,
     "difficulty": "Easy",
     "image": "rec045.webp",
@@ -4639,14 +4639,15 @@
       },
       {
         "ingredient": "ING-M450",
-        "quantity": 50,
+        "quantity": 100,
         "section": "For the jambalaya base",
         "preparation": "finely diced"
       },
       {
-        "ingredient": "ING-G625",
-        "quantity": 240,
-        "section": "For the jambalaya base"
+        "ingredient": "ING-G735",
+        "quantity": 500,
+        "section": "For the jambalaya base",
+        "preparation": "unheated"
       },
       {
         "ingredient": "ING-C950",
@@ -4654,9 +4655,10 @@
         "section": "For the jambalaya base"
       },
       {
-        "ingredient": "ING-P065",
-        "quantity": 600,
-        "section": "For the jambalaya base"
+        "ingredient": "ING-C965",
+        "quantity": 2,
+        "section": "For the jambalaya base",
+        "preparation": "dissolved in 150 ml boiling water"
       },
       {
         "ingredient": "ING-V210",
@@ -4678,17 +4680,22 @@
       },
       {
         "ingredient": "ING-V285",
-        "quantity": 2,
+        "quantity": 1,
         "section": "For the jambalaya base",
         "preparation": "diced"
       },
       {
         "ingredient": "ING-C999",
-        "quantity": 2,
+        "quantity": 6,
         "section": "For the jambalaya base"
       },
       {
         "ingredient": "ING-S110",
+        "quantity": 3,
+        "section": "For the jambalaya base"
+      },
+      {
+        "ingredient": "ING-S235",
         "quantity": 2,
         "section": "For the jambalaya base"
       },
@@ -4716,25 +4723,31 @@
         "ingredient": "ING-V370",
         "quantity": 150,
         "section": "Add near the end"
+      },
+      {
+        "ingredient": "ING-H005",
+        "quantity": 10,
+        "section": "Optional to finish",
+        "preparation": "chopped, optional"
       }
     ],
     "steps": [
-      "Dice the chicken, chorizo, onion, peppers and celery into small, even pieces.",
-      "Heat the rapeseed oil in a large lidded pan and cook the chorizo and chicken for five minutes until lightly coloured.",
+      "Dice the chicken, chorizo, onion, peppers and celery into small, even pieces, and loosen the unheated wholegrain rice inside its pouches.",
+      "Heat the rapeseed oil in a large, wide pan and cook the chorizo and chicken for five minutes until lightly coloured.",
       "Add the onion, peppers and celery and cook for five minutes until beginning to soften.",
-      "Stir in the Easy Garlic, smoked paprika, thyme and cayenne and cook for 30 seconds.",
-      "Add the brown rice, chopped tomatoes and low-salt stock, stir once and bring to a gentle simmer.",
-      "Cover and cook for 20 to 25 minutes, or according to the rice packet, stirring once near the end and adding a splash of water if needed.",
-      "Stir in the prawns and peas, cover again and cook for four to five minutes until the prawns are pink and the rice is tender.",
-      "Rest off the heat for five minutes, fluff the rice and serve in warm bowls."
+      "Stir in the Easy Garlic, smoked paprika, dried parsley, thyme and cayenne and cook for 30 seconds.",
+      "Dissolve the two chicken stock cubes in 150 ml boiling water, then add the stock with the chopped tomatoes. Simmer briskly for six to eight minutes with the lid off so the sauce reduces; if it still looks wet, raise the heat slightly and keep the lid off.",
+      "Stir in the prawns and peas and cook uncovered for four to five minutes, until the prawns are pink and opaque and the chicken is cooked through with no pink remaining.",
+      "Fold the unheated microwave wholegrain rice straight from the pouches into the pan and cook uncovered for three to four minutes, stirring regularly, until the rice is piping hot and has absorbed the sauce.",
+      "Take the pan off the heat, rest for two minutes, then scatter over the chopped fresh parsley if using and serve in warm bowls."
     ],
     "nutrition": {
-      "calories": 516,
-      "protein": 44,
-      "carbs": 58,
-      "fat": 11
+      "calories": 558,
+      "protein": 47,
+      "carbs": 54,
+      "fat": 16
     },
-    "tip": "A small amount of finely diced chorizo flavours the whole pan while keeping saturated fat and salt in check."
+    "tip": "Use the widest pan you have so moisture evaporates quickly. Keep the lid off throughout; if the jambalaya looks loose before the rice goes in, reduce it for another minute or two."
   },
   {
     "id": "REC046",

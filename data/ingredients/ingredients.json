@@ -1597,5 +1597,19 @@
     "category": "Fish & Seafood",
     "unit": "g",
     "pantry": true
+  },
+  {
+    "id": "ING-G735",
+    "name": "Microwave Wholegrain Rice",
+    "category": "Grains & Pasta",
+    "unit": "g",
+    "pantry": false
+  },
+  {
+    "id": "ING-S235",
+    "name": "Dried Parsley",
+    "category": "Spices",
+    "unit": "tsp",
+    "pantry": true
   }
 ]
